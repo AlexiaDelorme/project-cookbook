@@ -12,12 +12,12 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
-def hello():
-    return 'Hello World Again'
+def home():
+    return render_template("home.html")
 
-@app.route('/recipes')
-def recipes():
-    return render_template("recipes.html", recipes = mongo.db.recipes_information.find())
+@app.route('/get_recipes')
+def get_recipes():
+    return render_template("recipes.html", recipes=mongo.db.recipes_information.find())
 
 
 if __name__ == '__main__':
