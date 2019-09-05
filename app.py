@@ -22,6 +22,12 @@ def get_recipes():
 @app.route('/account')
 def add_account():
     return render_template('account.html')
+    
+@app.route('/insert_user_account', methods=['POST'])
+def insert_user_account():
+    user_accounts = mongo.db.user_accounts
+    user_accounts.insert_one(request.form.to_dict())
+    return "Thanks for signing up!"
 
 
 if __name__ == '__main__':
