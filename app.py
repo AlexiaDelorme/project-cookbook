@@ -19,6 +19,10 @@ def home():
 def get_recipes():
     return render_template("recipes.html", recipes=mongo.db.recipes_information.find())
 
+@app.route('/account')
+def add_account():
+    return render_template('account.html')
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
