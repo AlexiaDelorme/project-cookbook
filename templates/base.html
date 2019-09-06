@@ -8,7 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>The Pâtisserie Cookbook</title>
 
-    <!-- MATERIALIZE LIBRARIES -->
+    <!-- FONT AWESOME CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+
+    <!-- MATERIALIZE CDN -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
@@ -18,34 +21,56 @@
 </head>
 
 <body>
+    <div class="">
 
-    <header>
+        <header>
+            <nav class="white" role="navigation">
+                <div class="nav-wrapper container">
+                    <a id="logo-container" href="{{url_for('home')}}" class="brand-logo">Logo</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
+                        <li><a href="{{url_for('recipes')}}">RECIPES</a></li>
+                        <li><a href="">COOKBOOK</a></li>
+                        <li><a href="">ABOUT</a></li>
+                        <li><a href="{{url_for('account')}}">MY ACCOUNT</a></li>
+                    </ul>
 
-        <nav>
-            <div class="nav-wrapper">
-                <a href="{{url_for('home')}}" class="brand-logo">Logo</a>
-                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
-                    <li><a href="{{url_for('recipes')}}">RECIPES</a></li>
-                    <li><a href="">COOKBOOK</a></li>
-                    <li><a href="">ABOUT</a></li>
-                    <li><a href="{{url_for('account')}}">MY ACCOUNT</a></li>
-                </ul>
-                <ul class="side-nav" id="mobile-demo">
-                    <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
-                    <li><a href="{{url_for('recipes')}}">RECIPES</a></li>
-                    <li><a href="">COOKBOOK</a></li>
-                    <li><a href="">ABOUT</a></li>
-                    <li><a href="{{url_for('account')}}">MY ACCOUNT</a></li>
-                </ul>
+                    <ul id="nav-mobile" class="side-nav">
+                        <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
+                        <li><a href="{{url_for('recipes')}}">RECIPES</a></li>
+                        <li><a href="">COOKBOOK</a></li>
+                        <li><a href="">ABOUT</a></li>
+                        <li><a href="{{url_for('account')}}">MY ACCOUNT</a></li>
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                </div>
+            </nav>
+        </header>
+
+        {% block content %} {% endblock %}
+
+        <footer class="page-footer teal">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Company Bio</h5>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Settings</h5>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Connect</h5>
+                    </div>
+                </div>
             </div>
-        </nav>
+            <div class="footer-copyright">
+                <div class="container">
+                    &copy; 2019 Alexia Delorme - ALL RIGHTS RESERVED - TERMS AND CONDITIONS
+                </div>
+            </div>
+        </footer>
 
-    </header>
-
-    <h1> This text is outside! In the base! </h1>
-    {% block content %} {% endblock %}
+    </div>
 
     <!-- jQUERY -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -57,8 +82,10 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $(".button-collapse").sideNav();
+            $('.parallax').parallax();
         });
     </script>
+
 </body>
 
 </html>
