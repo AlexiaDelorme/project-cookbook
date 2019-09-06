@@ -15,12 +15,12 @@ mongo = PyMongo(app)
 def home():
     return render_template("home.html")
 
-@app.route('/get_recipes')
-def get_recipes():
+@app.route('/recipes')
+def recipes():
     return render_template("recipes.html", recipes=mongo.db.recipes_information.find())
 
 @app.route('/account')
-def add_account():
+def account():
     return render_template('account.html')
     
 @app.route('/insert_user_account', methods=['POST'])
