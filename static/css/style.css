@@ -22,6 +22,32 @@ p {
     }
 }
 
+/* -------------------------------------------------------------- FOOTER ------ */
+
+ul:not(.browser-default)>li {
+    list-style-type: none;
+    display: inline;
+}
+
+.icon-style {
+    font-size: 30px;
+    margin-right: 30px;
+    color: #444; 
+}
+
+.page-footer {
+    margin: 0;
+}
+
+footer ul {
+    margin-bottom: 30px
+}
+
+#copyright-color {
+    color: #444;
+}
+
+
 /* -------------------------------------------------------------- HOME ------ */
 
 img.parallax-img-size {
@@ -66,6 +92,3 @@ img.parallax-img-size {
     font-size: inherit;
 }
 
-footer.page-footer {
-    margin: 0;
-}
