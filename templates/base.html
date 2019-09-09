@@ -24,10 +24,10 @@
     <div class="">
 
         <header>
-            <nav class="white" role="navigation">
+            <nav class="white nav-sizing" role="navigation">
                 <div class="nav-wrapper container">
-                    <a id="logo-container" href="{{url_for('home')}}" class="brand-logo">Logo</a>
-                    <ul class="right hide-on-med-and-down">
+                    <a id="logo-container" href="{{url_for('home')}}" class="brand-logo"><img class="nav-sizing" src="{{url_for('static', filename='img/logo.jpg')}}" alt="The Pâtisserie"></a>
+                    <ul class="valign-wrapper nav-sizing right hide-on-med-and-down">
                         <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
                         <li><a href="{{url_for('recipes')}}">RECIPES</a></li>
                         <li><a href="">COOKBOOK</a></li>
@@ -51,21 +51,17 @@
 
         <footer class="page-footer teal">
             <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">Company Bio</h5>
-                    </div>
-                    <div class="col l3 s12">
-                        <h5 class="white-text">Settings</h5>
-                    </div>
-                    <div class="col l3 s12">
-                        <h5 class="white-text">Connect</h5>
-                    </div>
-                </div>
+                <ul>
+                    <li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                </ul>
             </div>
             <div class="footer-copyright">
                 <div class="container">
-                    &copy; 2019 Alexia Delorme - ALL RIGHTS RESERVED - TERMS AND CONDITIONS
+                    &copy; 2019 ALL RIGHTS RESERVED - TERMS AND CONDITIONS
                 </div>
             </div>
         </footer>

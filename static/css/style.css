@@ -1,15 +1,35 @@
+/* ------------------------------------------------------------ HEADER ------ */
+
 nav ul a,
-nav .brand-logo {
+.button-collapse {
     color: #444;
+}
+
+.nav-sizing {
+    height: 100px;
 }
 
 p {
     line-height: 2rem;
 }
 
-.button-collapse {
-    color: #26a69a;
+@media only screen and (min-width: 601px) {
+    nav,
+    nav .nav-wrapper i,
+    nav a.button-collapse,
+    nav a.button-collapse i {
+        line-height: 100px;
+    }
 }
+
+/* -------------------------------------------------------------- HOME ------ */
+
+img.parallax-img-size {
+    height: 100vh;
+}
+
+
+/* -------------------------------DEFAULT SETTINGS / MATERIALIZE THEME ------ */
 
 .parallax-container {
     min-height: 380px;
