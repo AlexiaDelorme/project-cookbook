@@ -13,11 +13,15 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def home():
-    return render_template("home.html")
-
+    return render_template("home.html", Page_title = "The Pâtisserie Journal", Welcome_image = "../static/img/home-bg.jpg")
+    
 @app.route('/recipes')
 def recipes():
-    return render_template("recipes.html", recipes=mongo.db.recipes_information.find())
+    return render_template("recipes.html", Page_title = "Discover recipes by...", Welcome_image = "../static/img/recipes-bg.jpg", categories = ["Categories", "Diet", "Geography", "Occasions"])
+
+@app.route('/recipes/brownie')
+def brownie():
+    return render_template("brownie.html", recipes=mongo.db.recipes_information.find())
 
 @app.route('/account')
 def account():
