@@ -16,12 +16,16 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def home():
-    return render_template("home.html", Page_title = "The Pâtisserie Journal", Welcome_image = "../static/img/home-bg.jpg")
+    return render_template("home.html", 
+    Page_name = 'Home',
+    Page_title = "The Pâtisserie Journal", 
+    Welcome_image = "../static/img/home-bg.jpg")
 
   
 @app.route('/recipes')
 def recipes():
-    return render_template("recipes.html", 
+    return render_template("recipes.html",
+    Page_name = 'Recipes',
     Page_title = "Discover recipes by...", 
     Welcome_image = "../static/img/recipes-bg.jpg", 
     categories = mongo.db.recipes_categories.find(), 
@@ -35,7 +39,8 @@ def brownie():
 
 @app.route('/account')
 def account():
-    return render_template('account.html')
+    return render_template('account.html',
+    Page_name = 'Sign up')
  
     
 @app.route('/insert_user_account', methods=['POST'])
