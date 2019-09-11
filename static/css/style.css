@@ -72,6 +72,13 @@ img.parallax-img-size {
 }
 
 
+/* ----------------------------------------------------------- RECIPES ------ */
+
+.carousel.initialized {
+    margin-top: -50px;
+}
+
+
 /* -------------------------------DEFAULT SETTINGS / MATERIALIZE THEME ------ */
 
 .parallax-container {
