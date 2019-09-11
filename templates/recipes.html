@@ -5,16 +5,32 @@
 
         {% for cat in categories %}
 
-        <div class="col s6">
-            <h5 class="center">{{ cat }}</h5>
+        <div class="col s6 category-box">
+            <h5 class="center">{{ cat.category_name }}</h5>
             <img class="card-img" src="{{url_for('static', filename='img/brownie.jpg')}}"></img>
         </div>
 
         {% endfor %}
 
     </div>
+
+    <h5 class="center">See all recipes</h5>
 </div>
 
-<h5 class="center">See all recipes</h5>
+
+<div class="container section-container">
+    
+    <div class="row center">
+        
+        <h5 class="center">Our favourite recipes</h5>
+        <div class="carousel">
+            {% for image in carousel %}
+            <a class="carousel-item" href="#"><img src="{{ image }}"></a>
+            {% endfor %}
+        </div>
+
+    </div>
+    
+</div>
 
 {% endblock %}
