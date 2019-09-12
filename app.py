@@ -32,16 +32,10 @@ def recipes():
     carousel = image_folder('carousel'))
 
 
-@app.route('/recipes/brownie')
-def brownie():
-    return render_template("brownie.html", recipes=mongo.db.recipes_information.find())
-
-
-@app.route('/account')
-def account():
-    return render_template('account.html',
+@app.route('/signup')
+def signup():
+    return render_template('signup.html',
     Page_name = 'Sign up')
- 
     
 @app.route('/insert_user_account', methods=['POST'])
 def insert_user_account():
@@ -50,6 +44,17 @@ def insert_user_account():
     return "Thanks for signing up!"
 
 
+@app.route('/login')
+def login():
+    return render_template('login.html',
+    Page_name = 'Log In')
+    
+
+@app.route('/recipes/brownie')
+def brownie():
+    return render_template("brownie.html", recipes=mongo.db.recipes_information.find())
+
+ 
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
