@@ -27,6 +27,11 @@
 
         <header>
             <nav class="white nav-sizing" role="navigation">
+                <!-- Dropdown Structure -->
+                <!--<ul id="dropdown1" class="dropdown-content">-->
+                <!--    <li><a href="#!">SIGN UP</a></li>-->
+                <!--    <li><a href="#!">LOG IN</a></li>-->
+                <!--</ul>-->
                 <div class="nav-wrapper container">
                     <a id="logo-container" href="{{url_for('home')}}" class="brand-logo"><img class="nav-sizing" src="{{url_for('static', filename='img/logo.jpg')}}" alt="The Pâtisserie"></a>
                     <ul class="valign-wrapper nav-sizing right hide-on-med-and-down">
@@ -34,7 +39,10 @@
                         <li><a href="{{url_for('recipes')}}">RECIPES</a></li>
                         <li><a href="">COOKBOOK</a></li>
                         <li><a href="">ABOUT</a></li>
-                        <li><a href="{{url_for('account')}}">MY ACCOUNT</a></li>
+                        <li><a href="">SIGN UP</a></li>
+                        <li><a href="">LOG IN</a></li>
+                        <!-- Dropdown Trigger -->
+                        <!--<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">ACCOUNT<i class="material-icons right">arrow_drop_down</i></a></li>-->
                     </ul>
 
                     <ul id="nav-mobile" class="side-nav">
@@ -42,7 +50,8 @@
                         <li><a href="{{url_for('recipes')}}">RECIPES</a></li>
                         <li><a href="">COOKBOOK</a></li>
                         <li><a href="">ABOUT</a></li>
-                        <li><a href="{{url_for('account')}}">MY ACCOUNT</a></li>
+                        <li><a href="">SIGN UP</a></li>
+                        <li><a href="">LOG IN</a></li>
                     </ul>
                     <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
                 </div>
@@ -89,6 +98,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $(".button-collapse").sideNav();
+            $(".dropdown-trigger").dropdown();
             $('.parallax').parallax();
             $('.carousel').carousel();
             $('.carousel').carousel({ fullWidth: true });
