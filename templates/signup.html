@@ -7,40 +7,129 @@
 
     <div class="row">
         <form action="{{ url_for('insert_user_account') }}" method="POST" class="col s12">
+            
+            <!-- This tag is to secure our form -->
             {{ form.hidden_tag() }}
+            
             <div class="row">
                 <div class="input-field col s12">
+                    
                     {{ form.first_name.label() }}
-                    {{ form.first_name(class="validate") }}
+                    
+                    <!-- Display feedback to the user if this field is missing -->
+                    {% if form.first_name.errors %}
+                    
+                        {{ form.first_name(class="validate") }}
+                        
+                        <div>
+                            {% for error in form.first_name.errors %}
+                                <span> {{ error }} </span>
+                            {% endfor %}
+                        </div>
+                        
+                    {% else %}
+                        {{ form.first_name(class="validate") }}
+                    {% endif %}
+                    
                 </div>
             </div>
+            
             <div class="row">
                 <div class="input-field col s12">
+                    
                     {{ form.last_name.label() }}
-                    {{ form.last_name(class="validate") }}
+                    
+                    <!-- Display feedback to the user if this field is missing -->
+                    {% if form.last_name.errors %}
+                    
+                        {{ form.last_name(class="validate") }}
+                        
+                        <div>
+                            {% for error in form.last_name.errors %}
+                                <span> {{ error }} </span>
+                            {% endfor %}
+                        </div>
+                        
+                    {% else %}
+                        {{ form.last_name(class="validate") }}
+                    {% endif %}
+                    
                 </div>
             </div>
+            
             <div class="row">
                 <div class="input-field col s12">
+                    
                     {{ form.email.label() }}
-                    {{ form.email(class="validate") }}
+                    
+                    <!-- Display feedback to the user if email is wrongly formatted -->
+                    {% if form.email.errors %}
+                    
+                        {{ form.email(class="validate") }}
+                        
+                        <div>
+                            {% for error in form.email.errors %}
+                                <span> {{ error }} </span>
+                            {% endfor %}
+                        </div>
+                        
+                    {% else %}
+                        {{ form.email(class="validate") }}
+                    {% endif %}
+                    
                 </div>
             </div>
+            
             <div class="row">
                 <div class="input-field col s12">
+                    
                     {{ form.password.label() }}
-                    {{ form.password(class="validate") }}
+                    
+                    <!-- Display feedback to the user if this field is missing -->
+                    {% if form.password.errors %}
+                    
+                        {{ form.password(class="validate") }}
+                        
+                        <div>
+                            {% for error in form.password.errors %}
+                                <span> {{ error }} </span>
+                            {% endfor %}
+                        </div>
+                        
+                    {% else %}
+                        {{ form.password(class="validate") }}
+                    {% endif %}
+                    
                 </div>
             </div>
-            <div class="row">
+            
+             <div class="row">
                 <div class="input-field col s12">
+                    
                     {{ form.confirm_password.label() }}
-                    {{ form.confirm_password(class="validate") }}
+                    
+                    <!-- Display feedback to the user if passwords do not match -->
+                    {% if form.confirm_password.errors %}
+                    
+                        {{ form.confirm_password(class="validate") }}
+                        
+                        <div>
+                            {% for error in form.confirm_password.errors %}
+                                <span> {{ error }} </span>
+                            {% endfor %}
+                        </div>
+                        
+                    {% else %}
+                        {{ form.confirm_password(class="validate") }}
+                    {% endif %}
+                    
                 </div>
             </div>
+            
             <div class="row">
                 {{ form.submit(class="btn waves-effect waves-light") }}
             </div>
+            
         </form>
     </div>
 
