@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from helpers import *
@@ -42,12 +42,15 @@ def signup():
     Page_name = 'Sign up',
     Welcome_image = "../static/img/sign-up.jpg",
     form=form)
-    
-@app.route('/insert_user_account', methods=['POST'])
+
+
+@app.route('/insert_user_account', methods=['GET','POST'])
 def insert_user_account():
+    form = SignupForm()
     user_accounts = mongo.db.user_accounts
     user_accounts.insert_one(request.form.to_dict())
-    return "Thanks for signing up!"
+    flash(f'Account created for {form.email.data}!', 'green darken-1')
+    return redirect(url_for('home'))
 
 
 @app.route('/login')
