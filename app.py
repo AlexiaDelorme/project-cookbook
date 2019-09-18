@@ -40,6 +40,7 @@ def signup():
     form = SignupForm()
     return render_template('signup.html',
     Page_name = 'Sign up',
+    Welcome_image = "../static/img/sign-up.jpg",
     form=form)
     
 @app.route('/insert_user_account', methods=['POST'])
@@ -54,6 +55,7 @@ def login():
     form = LoginForm()
     return render_template('login.html',
     Page_name = 'Log In',
+    Welcome_image = "../static/img/sign-up.jpg",
     form=form)
     
 

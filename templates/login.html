@@ -3,21 +3,19 @@
 
 <div class="container center-align">
 
-    <h2>Log in!</h2>
+    <h4>Log in here</h4>
 
     <div class="row">
         <form action="" method="POST" class="col s12">
             {{ form.hidden_tag() }}
             <div class="row">
                 <div class="input-field col s12">
-                    {{ form.email.label() }}
-                    {{ form.email(class="validate") }}
+                    {{ form.email.label() }} {{ form.email(class="validate") }}
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    {{ form.password.label() }}
-                    {{ form.password(class="validate") }}
+                    {{ form.password.label() }} {{ form.password(class="validate") }}
                 </div>
             </div>
             <div class="row">
@@ -28,7 +26,7 @@
 
     <div class="">
         <small>
-            Do not have an account yet? <a class="ml-2" href="{{ url_for('signup') }}">Sign Up</a>
+            Do You Need An Account? <a class="ml-2" href="{{ url_for('signup') }}">Sign Up</a>
         </small>
     </div>
 
