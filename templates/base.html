@@ -59,10 +59,14 @@
         </header>
 
         <!-- WELCOME SECTION -->
+        {% if Page_title %} 
+            <div class="container">
+                <h1 class="header center text-lighten-2">{{ Page_title }}</h1>
+            </div>
+        {% else %}
+            
+        {% endif %}
 
-        <div class="container">
-            <h1 class="header center text-lighten-2">{{ Page_title }}</h1>
-        </div>
         <div id="index-banner" class="parallax-container">
             <div class="parallax"><img class="parallax-img-size" src="{{ Welcome_image }}" alt="{{ Welcome_image }}"></div>
         </div>
