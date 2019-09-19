@@ -49,18 +49,24 @@ def insert_user_account():
     form = SignupForm()
     user_accounts = mongo.db.user_accounts
     user_accounts.insert_one(request.form.to_dict())
-    flash(f'Account created for {form.email.data}!', 'green darken-1')
+    flash(f'Account created for {form.email.data}!', 'white-text green darken-1')
     return redirect(url_for('home'))
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        if form.email.data == 'alexia.delorme@gmail.com' and form.password.data == 'hola':
+            flash('Login successful!', 'white-text green darken-1')
+            return redirect(url_for('home'))
+        else:
+            flash('Login unsuccessful! Email and/or password incorrect.', 'white-text red')
     return render_template('login.html',
     Page_name = 'Log In',
     Welcome_image = "../static/img/sign-up.jpg",
     form=form)
-    
+
 
 @app.route('/recipes/brownie')
 def brownie():
