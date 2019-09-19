@@ -19,48 +19,46 @@
     <link href="https://fonts.googleapis.com/css?family=Signika:300,400,600,700&display=swap" rel="stylesheet">
 
     <!-- CSS FILE -->
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
+    <link rel="stylesheet" href="{{url_for("static", filename="css/style.css")}}" type="text/css" />
 
 </head>
 
 <body>
-    <div class="">
-
+    
         <!-- HEADER -->
 
         <header>
             <nav class="white nav-sizing" role="navigation">
                 <!-- Dropdown Structure -->
                 <!--<ul id="dropdown1" class="dropdown-content">-->
-                <!--    <li><a href="#!">SIGN UP</a></li>-->
-                <!--    <li><a href="#!">LOG IN</a></li>-->
+                <!--    <li><a href="{{url_for("signup")}}">SIGN UP</a></li>-->
+                <!--    <li><a href="{{url_for("login")}}">LOG IN</a></li>-->
                 <!--</ul>-->
                 <div class="nav-wrapper container">
-                    <a id="logo-container" href="{{url_for('home')}}" class="brand-logo"><img class="nav-sizing" src="{{url_for('static', filename='img/logo.jpg')}}" alt="The Pâtisserie"></a>
+                    <a id="logo-container" href="{{url_for("home")}}" class="brand-logo"><img class="nav-sizing" src="{{url_for("static", filename="img/logo.jpg")}}" alt="The Pâtisserie"></a>
                     <ul class="valign-wrapper nav-sizing right hide-on-med-and-down">
                         <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
-                        <li><a href="{{url_for('recipes')}}">RECIPES</a></li>
+                        <li><a href="{{url_for("recipes")}}">RECIPES</a></li>
                         <li><a href="">COOKBOOK</a></li>
-                        <li><a href="">ABOUT</a></li>
-                        <li><a href="{{url_for('signup')}}">SIGN UP</a></li>
-                        <li><a href="{{url_for('login')}}">LOG IN</a></li>
+                        <li><a href="{{url_for("about")}}">ABOUT</a></li>
+                        <li><a href="{{url_for("signup")}}">SIGN UP</a></li>
+                        <li><a href="{{url_for("login")}}">LOG IN</a></li>
                         <!-- Dropdown Trigger -->
                         <!--<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">ACCOUNT<i class="material-icons right">arrow_drop_down</i></a></li>-->
                     </ul>
 
                     <ul id="nav-mobile" class="side-nav">
                         <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
-                        <li><a href="{{url_for('recipes')}}">RECIPES</a></li>
+                        <li><a href="{{url_for("recipes")}}">RECIPES</a></li>
                         <li><a href="">COOKBOOK</a></li>
                         <li><a href="">ABOUT</a></li>
-                        <li><a href="{{url_for('signup')}}">SIGN UP</a></li>
-                        <li><a href="{{url_for('login')}}">LOG IN</a></li>
+                        <li><a href="{{url_for("signup")}}">SIGN UP</a></li>
+                        <li><a href="{{url_for("login")}}">LOG IN</a></li>
                     </ul>
                     <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
                 </div>
             </nav>
         </header>
-        
         
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -72,41 +70,41 @@
             {% endif %}
         {% endwith %}
        
+       <div class="container">
+       
+           <!-- WELCOME SECTION -->
+           {% if Page_title %}
+           <div class="container">
+               <h1 class="header center text-lighten-2">{{ Page_title }}</h1>
+           </div>
+           {% else %} 
+           {% endif %}
+       
+           <div id="index-banner" class="parallax-container">
+               <div class="parallax"><img class="parallax-img-size" src="{{ Welcome_image }}" alt="{{ Welcome_image }}"></div>
+           </div>
+       
+           {% block content %} 
+           {% endblock %}
+       
+       </div>
 
-        <!-- WELCOME SECTION -->
-        {% if Page_title %} 
-            <div class="container">
-                <h1 class="header center text-lighten-2">{{ Page_title }}</h1>
-            </div>
-        {% else %}
-            
-        {% endif %}
-
-        <div id="index-banner" class="parallax-container">
-            <div class="parallax"><img class="parallax-img-size" src="{{ Welcome_image }}" alt="{{ Welcome_image }}"></div>
+    <footer class="white page-footer center-align">
+        <div class="container">
+            <ul>
+                <li><a href=""><i class="fa fa-facebook icon-style" aria-hidden="true"></i></a></li>
+                <li><a href=""><i class="fa fa-instagram icon-style" aria-hidden="true"></i></a></li>
+                <li><a href=""><i class="fa fa-youtube-play icon-style" aria-hidden="true"></i></a></li>
+                <li><a href=""><i class="fa fa-pinterest-p icon-style" aria-hidden="true"></i></a></li>
+                <li><a href=""><i class="fa fa-twitter icon-style" aria-hidden="true"></i></a></li>
+            </ul>
         </div>
-        
-        {% block content %} 
-        {% endblock %}
-
-        <footer class="white page-footer center-align">
-            <div class="container">
-                <ul>
-                    <li><a href=""><i class="fa fa-facebook icon-style" aria-hidden="true"></i></a></li>
-                    <li><a href=""><i class="fa fa-instagram icon-style" aria-hidden="true"></i></a></li>
-                    <li><a href=""><i class="fa fa-youtube-play icon-style" aria-hidden="true"></i></a></li>
-                    <li><a href=""><i class="fa fa-pinterest-p icon-style" aria-hidden="true"></i></a></li>
-                    <li><a href=""><i class="fa fa-twitter icon-style" aria-hidden="true"></i></a></li>
-                </ul>
+        <div class="footer-copyright">
+            <div class="container" id="copyright-color">
+                &copy; 2019 ALL RIGHTS RESERVED - TERMS AND CONDITIONS
             </div>
-            <div class="footer-copyright">
-                <div class="container" id="copyright-color">
-                    &copy; 2019 ALL RIGHTS RESERVED - TERMS AND CONDITIONS
-                </div>
-            </div>
-        </footer>
-
-    </div>
+        </div>
+    </footer>
 
     <!-- jQUERY -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -119,9 +117,9 @@
         $(document).ready(function() {
             $(".button-collapse").sideNav();
             $(".dropdown-trigger").dropdown();
-            $('.parallax').parallax();
-            $('.carousel').carousel();
-            $('.carousel').carousel({ fullWidth: true });
+            $(".parallax").parallax();
+            $(".carousel").carousel();
+            $(".carousel").carousel({ fullWidth: true });
         });
     </script>
 
