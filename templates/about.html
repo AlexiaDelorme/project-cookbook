@@ -1,15 +1,34 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block content %}
 
 <div class="container-section amber lighten-4">
-    <!--<div class="container">-->
 
-        <p> The pâtisserie journal is an open-free recipes ressource created by two French sisters that were very passionate about pâtisserie and wanted to extend their recipes to any kind of diet!</p>
+    <p> The pâtisserie journal is an open-free recipes ressource created by two French sisters that were very passionate about pâtisserie and wanted to extend their recipes to any kind of diet!</p>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint dolorem cumque corporis, perspiciatis neque quo dolor blanditiis, doloribus deleniti non, ad tenetur ab fugit doloremque laborum qui nemo quos quisquam.</p>
-        <p>Cupiditate laudantium excepturi nisi doloremque, nihil perspiciatis ea distinctio, esse, mollitia qui a recusandae earum labore, culpa dolorum ipsam veritatis. Officiis magni commodi corrupti soluta unde fuga asperiores eum numquam.</p>
-        <p>Quam beatae architecto numquam odit alias eius non excepturi iure? Totam excepturi facere eius at est tempore deserunt reiciendis eligendi officiis laboriosam nostrum officia doloremque repudiandae vitae, sint asperiores accusamus!</p>
-        <p>Totam nulla, dignissimos atque corporis sit unde accusantium minima asperiores autem dolorem velit est explicabo repudiandae impedit facilis. Deleniti impedit nam eaque provident est reprehenderit labore tenetur dignissimos sed, nihil.</p>
-    <!--</div>-->
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint dolorem cumque corporis, perspiciatis neque quo dolor blanditiis, doloribus deleniti non, ad tenetur ab fugit doloremque laborum qui nemo quos quisquam.</p>
+    <p>Cupiditate laudantium excepturi nisi doloremque, nihil perspiciatis ea distinctio, esse, mollitia qui a recusandae earum labore, culpa dolorum ipsam veritatis. Officiis magni commodi corrupti soluta unde fuga asperiores eum numquam.</p>
+    <p>Quam beatae architecto numquam odit alias eius non excepturi iure? Totam excepturi facere eius at est tempore deserunt reiciendis eligendi officiis laboriosam nostrum officia doloremque repudiandae vitae, sint asperiores accusamus!</p>
+    <p>Totam nulla, dignissimos atque corporis sit unde accusantium minima asperiores autem dolorem velit est explicabo repudiandae impedit facilis. Deleniti impedit nam eaque provident est reprehenderit labore tenetur dignissimos sed, nihil.</p>
+
+</div>
+
+<div class="row center">
+
+    <div class="col s4 category-box">
+        <h5 class="center">Recipes</h5>
+        <a href="{{ url_for('recipes')}}"><img class="card-img" src="{{url_for('static', filename='img/about/recipes.jpg')}}" alt="Recipes"></img></a>
+    </div>
+
+    <div class="col s4 category-box">
+        <h5 class="center">Cookbook</h5>
+        <a href=""><img class="card-img" src="{{url_for('static', filename='img/about/cookbook.jpg')}}" alt="Cookbook"></img></a>
+    </div>
+
+    <div class="col s4 category-box">
+        <h5 class="center">Join us</h5>
+        <a href="{{ url_for('signup')}}"><img class="card-img" src="{{url_for('static', filename='img/about/sign-up.jpg')}}" alt="Join us"></img></a>
+    </div>
+
 </div>
 
 {% endblock %}
