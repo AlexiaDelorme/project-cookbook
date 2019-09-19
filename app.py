@@ -48,7 +48,14 @@ def signup():
 def insert_user_account():
     form = SignupForm()
     user_accounts = mongo.db.user_accounts
-    user_accounts.insert_one(request.form.to_dict())
+    user_accounts.insert_one({
+        'first_name': form.first_name.data,
+        'last_name': form.last_name.data,
+        'email': form.email.data,
+        'password': form.password.data,
+        'my_recipes': '',
+        'favorite_recipes': ''
+    })
     flash(f'Account created for {form.email.data}!', 'white-text green darken-1')
     return redirect(url_for('home'))
 
