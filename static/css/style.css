@@ -82,6 +82,13 @@ img.parallax-img-size {
     margin-top: -50px;
 }
 
+/* ------------------------------------------------------------- ABOUT ------ */
+
+.container-section {
+    padding: 20px 30px;
+    margin: 50px auto;
+}
+
 
 /* -------------------------------DEFAULT SETTINGS / MATERIALIZE THEME ------ */
 
