@@ -1,13 +1,15 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
+from flask_bcrypt import Bcrypt
 from bson.objectid import ObjectId
 from helpers import *
 from forms import *
 
 
-
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
+
 app.config["MONGO_DBNAME"] = "cookbook"
 app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost")
 app.config["SECRET_KEY"] = "366eff16939348b3153b7dff1b2fc2e1æ"
@@ -56,16 +58,17 @@ def signup():
 def insert_user_account():
     form = SignupForm()
     user_accounts = mongo.db.user_accounts
+    hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
     user_accounts.insert_one({
         "first_name": form.first_name.data,
         "last_name": form.last_name.data,
         "email": form.email.data,
-        "password": form.password.data,
+        "password": hashed_password,
         "my_recipes": "",
         "favorite_recipes": ""
     })
-    flash(f"Account created for {form.email.data}!", "white-text green darken-1")
-    return redirect(url_for("home"))
+    flash(f"{form.first_name.data.capitalize()}, your account has been created, you can now log in!", "white-text green darken-1")
+    return redirect(url_for("login"))
 
 
 @app.route("/login", methods=["GET", "POST"])
