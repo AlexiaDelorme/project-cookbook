@@ -56,19 +56,34 @@ def signup():
 
 @app.route("/insert_user_account", methods=["GET","POST"])
 def insert_user_account():
+    
     form = SignupForm()
+    
     user_accounts = mongo.db.user_accounts
-    hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-    user_accounts.insert_one({
-        "first_name": form.first_name.data,
-        "last_name": form.last_name.data,
-        "email": form.email.data,
-        "password": hashed_password,
-        "my_recipes": "",
-        "favorite_recipes": ""
-    })
-    flash(f"{form.first_name.data.capitalize()}, your account has been created, you can now log in!", "white-text green darken-1")
-    return redirect(url_for("login"))
+    
+    # Create a query to get all emails stored in the user_accounts collection
+    user = user_accounts.find( { "email": form.email.data })
+    
+    # Check if email provided is not already linked to an existing account
+    if user:
+        flash(f"An account has already been created for {form.email.data}", "white-text red")
+        redirect(url_for("signup"))
+    
+    # If no existing account was found, then we add this new user
+    else:
+        # Encrypt password to send it to MongoDB for storage
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        # Insert user information account to MongoDB
+        user_accounts.insert_one({
+            "first_name": form.first_name.data,
+            "last_name": form.last_name.data,
+            "email": form.email.data,
+            "password": hashed_password,
+            "my_recipes": "",
+            "favorite_recipes": ""
+        })
+        flash(f"{form.first_name.data.capitalize()}, your account has been created, you can now log in!", "white-text green darken-1")
+        return redirect(url_for("login"))
 
 
 @app.route("/login", methods=["GET", "POST"])
