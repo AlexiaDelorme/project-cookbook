@@ -5,6 +5,11 @@ from flask_bcrypt import Bcrypt
 from bson.objectid import ObjectId
 from helpers import *
 from forms import *
+import logging
+
+
+logging.basicConfig(level=logging.WARNING)
+logging.warning('TESTING STUFF')
 
 
 app = Flask(__name__)
