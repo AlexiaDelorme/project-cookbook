@@ -1,0 +1,40 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<div class="container section-container">
+    <div class="row center">
+
+        {% for item in category.list %}
+
+        <div class="col s6 category-box">
+            
+            <h5 class="center"> {{ item.name }} </h5>
+            
+            <img class="card-img" src="{{ item.image_path }}" alt="{{ item.name }}"></img>
+            
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <h5 class="center">See all recipes</h5>
+</div>
+
+
+<div class="container section-container">
+    
+    <div class="row center">
+        
+        <h5 class="center">Our favourite recipes</h5>
+        <div class="carousel">
+            {% for image in carousel %}
+            <a class="carousel-item" href="#"><img src="{{ image }}"></a>
+            {% endfor %}
+        </div>
+
+    </div>
+    
+</div>
+
+{% endblock %}

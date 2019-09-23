@@ -42,6 +42,18 @@ def recipes():
     carousel = image_folder("carousel"))
 
 
+@app.route('/recipes/<category_id>')
+def recipes_categories(category_id):
+    the_category =  mongo.db.recipes_categories.find_one({"_id": ObjectId(category_id)})
+    
+    return render_template("recipes_categories.html", 
+    Page_name = "",
+    Page_title = "Discover recipes by...", 
+    Welcome_image = "../static/img/recipes-bg.jpg", 
+    category=the_category, 
+    carousel = image_folder("carousel"))
+
+
 @app.route("/about")
 def about():
     return render_template("about.html", 
@@ -72,7 +84,7 @@ def insert_user_account():
     # Check if email provided is not already linked to an existing account
     if user:
         flash(f"An account has already been created for {form.email.data}", "white-text red")
-        redirect(url_for("signup"))
+        return redirect(url_for("signup"))
     
     # If no existing account was found, then we add this new user
     else:
