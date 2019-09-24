@@ -7,10 +7,9 @@ from helpers import *
 from forms import *
 import logging
 
-
-logging.basicConfig(level=logging.WARNING)
-logging.warning('TESTING STUFF')
-
+# Create a log file
+logging.basicConfig(filename='test.log', level=logging.INFO,
+                    format='%(levelname)s:%(message)s')
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
