@@ -70,7 +70,7 @@ def signup():
     form=form)
 
 
-@app.route("/insert_user_account", methods=["GET","POST"])
+@app.route("/insert_user_account", methods=["GET", "POST"])
 def insert_user_account():
     
     form = SignupForm()
@@ -78,11 +78,14 @@ def insert_user_account():
     user_accounts = mongo.db.user_accounts
     
     # Create a query to get all emails stored in the user_accounts collection
-    user = user_accounts.find( { "email": form.email.data })
+    user = user_accounts.find_one( { "email": form.email.data })
+    
+    #Log the query
+    logging.info('Email found in MongoDB: {} match the email provided by the user in the form'.format(user))
     
     # Check if email provided is not already linked to an existing account
     if user:
-        flash(f"An account has already been created for {form.email.data}", "white-text red")
+        flash(f"An account already exists for {form.email.data}", "white-text red")
         return redirect(url_for("signup"))
     
     # If no existing account was found, then we add this new user

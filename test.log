@@ -170,3 +170,150 @@ INFO:127.0.0.1 - - [24/Sep/2019 10:46:31] "GET /recipes/static/img/carousel/img1
 INFO:127.0.0.1 - - [24/Sep/2019 10:46:31] "GET /recipes/static/img/carousel/img2.jpg HTTP/1.1" 404 -
 INFO:127.0.0.1 - - [24/Sep/2019 10:46:31] "GET /recipes/static/img/carousel/img4.jpg HTTP/1.1" 404 -
 INFO:127.0.0.1 - - [24/Sep/2019 10:46:31] "GET /recipes/static/img/carousel/img5.jpg HTTP/1.1" 404 -
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:12] "GET /recipes/5d77b6c21c9d440000b2033c HTTP/1.1" 500 -
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:12] "GET /recipes/5d77b6c21c9d440000b2033c?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:12] "GET /recipes/5d77b6c21c9d440000b2033c?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:12] "GET /recipes/5d77b6c21c9d440000b2033c?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:13] "GET /recipes/5d77b6c21c9d440000b2033c?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:13] "GET /recipes/5d77b6c21c9d440000b2033c?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:13] "GET /recipes/5d77b6c21c9d440000b2033c?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:57] "GET /recipes/5d77b6c21c9d440000b2033c HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:58] "GET /recipes/static/img/categories/meals/dessert.jpg HTTP/1.1" 404 -
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:58] "GET /recipes/static/img/categories/meals/snack.jpg HTTP/1.1" 404 -
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:58] "GET /recipes/static/img/categories/meals/drink.jpg HTTP/1.1" 404 -
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:58] "GET /recipes/static/img/carousel/img1.jpg HTTP/1.1" 404 -
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:58] "GET /recipes/static/img/categories/meal/breakfast.jpg HTTP/1.1" 404 -
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:58] "GET /recipes/static/img/carousel/img3.jpg HTTP/1.1" 404 -
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:58] "GET /recipes/static/img/carousel/img2.jpg HTTP/1.1" 404 -
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:58] "GET /recipes/static/img/carousel/img4.jpg HTTP/1.1" 404 -
+INFO:127.0.0.1 - - [24/Sep/2019 10:51:58] "GET /recipes/static/img/carousel/img5.jpg HTTP/1.1" 404 -
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO:127.0.0.1 - - [24/Sep/2019 14:14:36] "GET / HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:14:38] "GET / HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:14:50] "GET /signup HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:15:03] "POST /insert_user_account HTTP/1.1" 500 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:15:03] "GET /insert_user_account?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:15:03] "GET /insert_user_account?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:15:03] "GET /insert_user_account?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:15:04] "GET /insert_user_account?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:15:04] "GET /insert_user_account?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO:127.0.0.1 - - [24/Sep/2019 14:15:38] "GET /signup HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:15:44] "POST /insert_user_account HTTP/1.1" 500 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:15:45] "GET /insert_user_account?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:15:45] "GET /insert_user_account?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:15:45] "GET /insert_user_account?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:15:45] "GET /insert_user_account?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:15:45] "GET /insert_user_account?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO:127.0.0.1 - - [24/Sep/2019 14:17:20] "GET /signup HTTP/1.1" 200 -
+INFO:Email found in MongoDB: <pymongo.cursor.Cursor object at 0x7fa03c60bb70> match the email provided by the user in the form
+INFO:127.0.0.1 - - [24/Sep/2019 14:17:27] "POST /insert_user_account HTTP/1.1" 302 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:17:27] "GET /signup HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:17:28] "GET /static/css/style.css HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:17:28] "GET /static/img/logo.jpg HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:17:28] "GET /static/img/sign-up.jpg HTTP/1.1" 200 -
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO:127.0.0.1 - - [24/Sep/2019 14:20:50] "GET /signup HTTP/1.1" 200 -
+INFO:Email found in MongoDB: {'_id': ObjectId('5d5527c21c9d44000004beee'), 'first_name': 'Alexia', 'last_name': 'Delorme', 'email': 'alexia.delorme@gmail.com', 'password': 'coucoupassword', 'my_recipes': [ObjectId('5d6d26951c9d440000de118f')], 'favorite_recipes': [ObjectId('5d6d26951c9d440000de118f')]} match the email provided by the user in the form
+INFO:127.0.0.1 - - [24/Sep/2019 14:21:01] "POST /insert_user_account HTTP/1.1" 302 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:21:01] "GET /signup HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:21:46] "GET /signup HTTP/1.1" 200 -
+INFO:Email found in MongoDB: None match the email provided by the user in the form
+INFO:127.0.0.1 - - [24/Sep/2019 14:22:10] "POST /insert_user_account HTTP/1.1" 302 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:22:11] "GET /login HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:23:42] "POST /login HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:25:00] "GET /signup HTTP/1.1" 200 -
+INFO:Email found in MongoDB: {'_id': ObjectId('5d8a269268f7d484359807d6'), 'first_name': 'Philippe', 'last_name': 'Delorme', 'email': 'todavia@gmail.com', 'password': '$2b$12$Pm7IMQ6JjyTWOsBB/R7gyeD9tXtdZSHuWASINUuw37g4cmU6Iflja', 'my_recipes': '', 'favorite_recipes': ''} match the email provided by the user in the form
+INFO:127.0.0.1 - - [24/Sep/2019 14:25:15] "POST /insert_user_account HTTP/1.1" 302 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:25:15] "GET /signup HTTP/1.1" 200 -
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO:Email found in MongoDB: None match the email provided by the user in the form
+INFO:127.0.0.1 - - [24/Sep/2019 14:28:57] "POST /insert_user_account HTTP/1.1" 302 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:28:57] "GET /login HTTP/1.1" 405 -
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO:127.0.0.1 - - [24/Sep/2019 14:29:33] "GET /signup HTTP/1.1" 200 -
+INFO:Email found in MongoDB: {'_id': ObjectId('5d8a2829a196987b2a7378bd'), 'first_name': 'eugenie', 'last_name': 'delorme', 'email': 'eugenie.delorme1@gmail.com', 'password': '$2b$12$MTzk3P560/Oprkncw/A2Z.GgE4fdHkcwWKbyYjwQJKyqWZX63mYsO', 'my_recipes': '', 'favorite_recipes': ''} match the email provided by the user in the form
+INFO:127.0.0.1 - - [24/Sep/2019 14:29:45] "POST /insert_user_account HTTP/1.1" 302 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:29:45] "GET /signup HTTP/1.1" 200 -
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
+INFO:127.0.0.1 - - [24/Sep/2019 14:53:32] "GET /recipes HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:53:32] "GET /static/img/recipes-bg.jpg HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:53:32] "GET /static/img/categories/diet.jpg HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:53:32] "GET /static/img/categories/geography.jpg HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:53:32] "GET /static/img/categories/occasion.jpg HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:53:33] "GET /static/img/categories/meal.jpg HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:53:34] "GET /static/img/carousel/img1.jpg HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:53:50] "GET /recipes/5d77b6dc1c9d440000b2033e HTTP/1.1" 200 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:53:50] "GET /static/img/recipes-bg.jpg HTTP/1.1" 206 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:53:50] "GET /recipes/static/img/carousel/img1.jpg HTTP/1.1" 404 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:53:50] "GET /recipes/static/img/carousel/img3.jpg HTTP/1.1" 404 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:53:50] "GET /recipes/static/img/carousel/img2.jpg HTTP/1.1" 404 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:53:50] "GET /recipes/static/img/carousel/img4.jpg HTTP/1.1" 404 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:53:50] "GET /recipes/static/img/carousel/img5.jpg HTTP/1.1" 404 -
+INFO:127.0.0.1 - - [24/Sep/2019 14:53:50] "GET /static/img/recipes-bg.jpg HTTP/1.1" 206 -
+INFO: * Detected change in '/home/ubuntu/environment/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING: * Debugger is active!
+INFO: * Debugger PIN: 293-268-551
