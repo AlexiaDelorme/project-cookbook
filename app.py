@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager, UserMixin, login_user
+from flask_login import LoginManager, UserMixin, login_user, current_user
 from bson.objectid import ObjectId
 from helpers import *
 from forms import *
@@ -14,7 +14,11 @@ logging.basicConfig(filename='test.log', level=logging.INFO,
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
+
+#Handle user session
 login_manager = LoginManager(app)
+#login_manager.login_view = 'login'
+#login_manager.login_message_category = 'info'
 
 app.config["MONGO_DBNAME"] = "cookbook"
 app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost")
@@ -72,7 +76,12 @@ def about():
 
 @app.route("/signup")
 def signup():
+    
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+        
     form = SignupForm()
+    
     return render_template("signup.html",
                             Page_name = "Sign up",
                             Welcome_image = "../static/img/sign-up.jpg",
@@ -117,6 +126,9 @@ def insert_user_account():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    
     form = LoginForm()
     
     if form.validate_on_submit():
@@ -132,10 +144,15 @@ def login():
         logging.info('User found {}'.format(user))
         
         if user and bcrypt.check_password_hash(user_password, form.password.data):
+            
+            #login_user(user)
             flash("Login successful!", "white-text green darken-1")
+            
             return redirect(url_for("home"))
+        
         else:
             flash("Login unsuccessful! Email and/or password incorrect.", "white-text red")
+    
     return render_template("login.html",
                             Page_name = "Log In",
                             Welcome_image = "../static/img/sign-up.jpg",
