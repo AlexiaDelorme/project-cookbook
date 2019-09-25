@@ -44,18 +44,18 @@ def recipes():
                             carousel = image_folder("carousel"))
 
 
-@app.route("/recipes/<category_id>")
-#Use the_category in the routing
-def recipes_categories(category_id):
-    the_category =  mongo.db.recipes_categories.find_one({"_id": ObjectId(category_id)})
+@app.route("/recipes/<category_name>")
+def recipes_categories(category_name):
     
-    category_name = the_category["category_name"]
-        
+    the_category =  mongo.db.recipes_categories.find_one({"category_name": category_name})
+    
     #Log the_category
-    logging.info('The variable the_category has the following result: {}'.format(category_name))
+    logging.info('The variable the_category has the following result: {}'.format(the_category))
     
+    the_name_category = the_category["category_name"]
+
     return render_template("recipes_categories.html", 
-                            Page_name = category_name,
+                            Page_name = the_name_category,
                             Page_title = "Discover recipes for...", 
                             Welcome_image = "../static/img/recipes-bg.jpg", 
                             category=the_category, 
