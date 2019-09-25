@@ -107,8 +107,8 @@ def insert_user_account():
             "last_name": form.last_name.data,
             "email": form.email.data,
             "password": hashed_password,
-            "my_recipes": "",
-            "favorite_recipes": ""
+            "my_recipes": [],
+            "favorite_recipes": []
         })
         flash(f"{form.first_name.data.capitalize()}, your account has been created, you can now log in!", "white-text green darken-1")
         return redirect(url_for("login"))
@@ -130,7 +130,6 @@ def login():
         
         #Log the query
         logging.info('User found {}'.format(user))
-        logging.info('With password {}'.format(user_password))
         
         if user and bcrypt.check_password_hash(user_password, form.password.data):
             flash("Login successful!", "white-text green darken-1")
