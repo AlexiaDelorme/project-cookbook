@@ -41,7 +41,8 @@ def recipes():
                             carousel = image_folder("carousel"))
 
 
-@app.route("/recipes/<category_id>")
+@app.route("/recipes/<category_name>")
+#Use the_category in the routing
 def recipes_categories(category_id):
     the_category =  mongo.db.recipes_categories.find_one({"_id": ObjectId(category_id)})
     
@@ -135,4 +136,3 @@ if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
-            
