@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager, UserMixin, login_user
 from bson.objectid import ObjectId
 from helpers import *
 from forms import *
@@ -13,12 +14,14 @@ logging.basicConfig(filename='test.log', level=logging.INFO,
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
 
 app.config["MONGO_DBNAME"] = "cookbook"
 app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost")
 app.config["SECRET_KEY"] = "366eff16939348b3153b7dff1b2fc2e1æ"
 
 mongo = PyMongo(app)
+
 
 
 
@@ -41,7 +44,7 @@ def recipes():
                             carousel = image_folder("carousel"))
 
 
-@app.route("/recipes/<category_name>")
+@app.route("/recipes/<category_id>")
 #Use the_category in the routing
 def recipes_categories(category_id):
     the_category =  mongo.db.recipes_categories.find_one({"_id": ObjectId(category_id)})
@@ -83,7 +86,7 @@ def insert_user_account():
     
     user_accounts = mongo.db.user_accounts
     
-    # Create a query to get all emails stored in the user_accounts collection
+    # Create a query to check if a user already registered with this email:
     user = user_accounts.find_one( { "email": form.email.data })
     
     #Log the query
@@ -113,9 +116,23 @@ def insert_user_account():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    
     form = LoginForm()
+    
     if form.validate_on_submit():
-        if form.email.data == "alexia.delorme@gmail.com" and form.password.data == "hola":
+        
+        user_accounts = mongo.db.user_accounts
+    
+        # Create a query to get the user stored in the user variable
+        user = user_accounts.find_one( { "email": form.email.data })
+        
+        user_password = user["password"]
+        
+        #Log the query
+        logging.info('User found {}'.format(user))
+        logging.info('With password {}'.format(user_password))
+        
+        if user and bcrypt.check_password_hash(user_password, form.password.data):
             flash("Login successful!", "white-text green darken-1")
             return redirect(url_for("home"))
         else:
