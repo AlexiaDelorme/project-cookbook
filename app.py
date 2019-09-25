@@ -26,19 +26,19 @@ mongo = PyMongo(app)
 @app.route("/home")
 def home():
     return render_template("home.html", 
-    Page_name = "Home",
-    Page_title = "The Pâtisserie Journal", 
-    Welcome_image = "../static/img/home-bg.jpg")
+                            Page_name = "Home",
+                            Page_title = "The Pâtisserie Journal", 
+                            Welcome_image = "../static/img/home-bg.jpg")
 
   
 @app.route("/recipes")
 def recipes():
     return render_template("recipes.html",
-    Page_name = "Recipes",
-    Page_title = "Discover recipes by...", 
-    Welcome_image = "../static/img/recipes-bg.jpg", 
-    categories = mongo.db.recipes_categories.find(), 
-    carousel = image_folder("carousel"))
+                            Page_name = "Recipes",
+                            Page_title = "Discover recipes by...", 
+                            Welcome_image = "../static/img/recipes-bg.jpg", 
+                            categories = mongo.db.recipes_categories.find(), 
+                            carousel = image_folder("carousel"))
 
 
 @app.route("/recipes/<category_id>")
@@ -51,28 +51,28 @@ def recipes_categories(category_id):
     logging.info('The variable the_category has the following result: {}'.format(category_name))
     
     return render_template("recipes_categories.html", 
-    Page_name = category_name,
-    Page_title = "Discover recipes for...", 
-    Welcome_image = "../static/img/recipes-bg.jpg", 
-    category=the_category, 
-    carousel = image_folder("carousel"))
+                            Page_name = category_name,
+                            Page_title = "Discover recipes for...", 
+                            Welcome_image = "../static/img/recipes-bg.jpg", 
+                            category=the_category, 
+                            carousel = image_folder("carousel"))
 
 
 @app.route("/about")
 def about():
     return render_template("about.html", 
-    Page_name = "About Us",
-    Page_title = "About Us", 
-    Welcome_image = "../static/img/about-bg.jpg")
+                            Page_name = "About Us",
+                            Page_title = "About Us", 
+                            Welcome_image = "../static/img/about-bg.jpg")
 
 
 @app.route("/signup")
 def signup():
     form = SignupForm()
     return render_template("signup.html",
-    Page_name = "Sign up",
-    Welcome_image = "../static/img/sign-up.jpg",
-    form=form)
+                            Page_name = "Sign up",
+                            Welcome_image = "../static/img/sign-up.jpg",
+                            form=form)
 
 
 @app.route("/insert_user_account", methods=["GET", "POST"])
@@ -120,9 +120,9 @@ def login():
         else:
             flash("Login unsuccessful! Email and/or password incorrect.", "white-text red")
     return render_template("login.html",
-    Page_name = "Log In",
-    Welcome_image = "../static/img/sign-up.jpg",
-    form=form)
+                            Page_name = "Log In",
+                            Welcome_image = "../static/img/sign-up.jpg",
+                            form=form)
 
 
 @app.route("/recipes/brownie")
