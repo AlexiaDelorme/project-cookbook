@@ -10,7 +10,7 @@
             
             <h5 class="center"> {{ item.category_name }} </h5>
             
-            <img class="card-img" src="{{ item.image_path }}" alt="{{ item.category_name }}"></img>
+            <img class="card-img" src="../{{ item.image_path }}" alt="{{ item.category_name }}"></img>
             
         </div>
 
@@ -30,7 +30,7 @@
 
         <div class="carousel">
             {% for image in carousel %}
-            <a class="carousel-item" href="#"><img src="{{ image }}"></a> {% endfor %}
+            <a class="carousel-item" href="#"><img src="../{{ image }}"></a> {% endfor %}
         </div>
 
     </div>
