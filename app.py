@@ -1,12 +1,13 @@
 import os
+import logging
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager, UserMixin, login_user, current_user
+from flask_login import LoginManager, UserMixin, current_user, login_user, logout_user, login_required
 from bson.objectid import ObjectId
 from helpers import *
 from forms import *
-import logging
+
 
 # Create a log file
 logging.basicConfig(filename='test.log', level=logging.INFO,
@@ -15,19 +16,53 @@ logging.basicConfig(filename='test.log', level=logging.INFO,
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
 
-#Handle user session
-login_manager = LoginManager(app)
-#login_manager.login_view = 'login'
-#login_manager.login_message_category = 'info'
 
 app.config["MONGO_DBNAME"] = "cookbook"
 app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost")
 app.config["SECRET_KEY"] = "366eff16939348b3153b7dff1b2fc2e1æ"
 
+
 mongo = PyMongo(app)
 
+# Configuring flask login for authentication
+
+login = LoginManager(app)
+login.login_view = 'login'
+
+# Create a user "Class" to manage user sessions
+
+class User:
+    def __init__(self, email):
+        self.email = email
+
+    @staticmethod
+    def is_authenticated():
+        return True
+
+    @staticmethod
+    def is_active():
+        return True
+
+    @staticmethod
+    def is_anonymous():
+        return False
+
+    def get_id(self):
+        return self.email
+
+    # @staticmethod
+    # def check_password(password_hash, password):
+    #     return check_password_hash(password_hash, password)
+
+    @login.user_loader
+    def load_user(self, email):
+        u = mongo.db.user_accounts.find_one({"email": email})
+        if not u:
+            return None
+        return User(email=u["email"])
 
 
+# Routes
 
 @app.route("/")
 @app.route("/home")
@@ -133,19 +168,19 @@ def login():
     
     if form.validate_on_submit():
         
-        user_accounts = mongo.db.user_accounts
-    
         # Create a query to get the user stored in the user variable
-        user = user_accounts.find_one( { "email": form.email.data })
-        
-        user_password = user["password"]
-        
+        user = mongo.db.user_accounts.find_one( { "email": form.email.data })
+
         #Log the query
         logging.info('User found {}'.format(user))
         
+        user_password = user["password"]
+        
         if user and bcrypt.check_password_hash(user_password, form.password.data):
             
-            #login_user(user)
+            user_obj = User(email=user["email"])
+            login_user(user_obj)
+            
             flash("Login successful!", "white-text green darken-1")
             
             return redirect(url_for("home"))
