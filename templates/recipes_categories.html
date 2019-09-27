@@ -5,20 +5,24 @@
     
     <div class="row center">
 
-        {% for item in category.list %}
+        {% if (category.category_name=="Geography" or category.category_name=="Diet" ) %}
+        
+            {% for item in category.list %}
+               <a href=""> <p>{{ item.category_name }}</p> </a>
+            {% endfor %}
+        
+        {% else %}
 
-        <div class="col s6 category-box">
-
-            <h5 class="center">{{ item.category_name }}</h5>
-
-            <a href=""><img class="card-img" src="../{{ item.image_path }}" alt="{{ item.category_name }}"></img></a>
-
-        </div>
-
-        {% endfor %}
+            {% for item in category.list %}
+                <div class="col s6 category-box">
+                    <h5 class="center">{{ item.category_name }}</h5>
+                    <a href=""><img class="card-img" src="../{{ item.image_path }}" alt="{{ item.category_name }}"></img></a>
+                </div>
+            {% endfor %}
+            
+        {% endif %}
 
     </div>
-
 </div>
 
 <div class="container">
