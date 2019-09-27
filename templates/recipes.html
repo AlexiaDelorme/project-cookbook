@@ -8,7 +8,7 @@
 
         <div class="col s6 category-box">
 
-            <h5 class="center">{{ cat.category_name }}</h5>
+            <h5 class="center">{{ cat.category_name.capitalize() }}</h5>
 
             <a href="{{url_for('recipes_categories', category_name = cat.category_name )}}"><img class="card-img" src="{{ cat.image_path }}" alt="{{ cat.category_name }}"></img></a>
 

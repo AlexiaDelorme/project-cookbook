@@ -72,7 +72,7 @@ def recipes_categories(category_name):
     #Log the_category
     logging.info('The variable the_category has the following result: {}'.format(the_category))
     
-    the_name_category = the_category["category_name"]
+    the_name_category = the_category["category_name"].capitalize()
 
     return render_template("recipes_categories.html", 
                             Page_name = the_name_category,
