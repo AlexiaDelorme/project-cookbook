@@ -26,8 +26,8 @@ mongo = PyMongo(app)
 
 # Configuring flask login for authentication
 
-login = LoginManager(app)
-login.login_view = 'login'
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
 
 # Create a user "Class" to manage user sessions
 
@@ -54,7 +54,7 @@ class User:
     # def check_password(password_hash, password):
     #     return check_password_hash(password_hash, password)
 
-    @login.user_loader
+    @login_manager.user_loader
     def load_user(self, email):
         u = mongo.db.user_accounts.find_one({"email": email})
         if not u:
