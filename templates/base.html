@@ -25,71 +25,72 @@
 
 <body>
     
-        <!-- HEADER -->
+    <!-- HEADER -->
 
-        <header>
-            <nav class="white nav-sizing" role="navigation">
-                <!-- Dropdown Structure -->
-                <!--<ul id="dropdown1" class="dropdown-content">-->
-                <!--    <li><a href="{{url_for("signup")}}">SIGN UP</a></li>-->
-                <!--    <li><a href="{{url_for("login")}}">LOG IN</a></li>-->
-                <!--</ul>-->
-                <div class="nav-wrapper container">
-                    <a id="logo-container" href="{{url_for("home")}}" class="brand-logo"><img class="nav-sizing" src="{{url_for("static", filename="img/logo.jpg")}}" alt="The Pâtisserie"></a>
-                    <ul class="valign-wrapper nav-sizing right hide-on-med-and-down">
-                        <li><a href="{{url_for("home")}}">HOME</a></li>
-                        <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
-                        <li><a href="{{url_for("recipes")}}">RECIPES</a></li>
-                        <li><a href="">COOKBOOK</a></li>
-                        <li><a href="{{url_for("about")}}">ABOUT</a></li>
-                        <li><a href="{{url_for("signup")}}">SIGN UP</a></li>
-                        <li><a href="{{url_for("login")}}">LOG IN</a></li>
-                        <!-- Dropdown Trigger -->
-                        <!--<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">ACCOUNT<i class="material-icons right">arrow_drop_down</i></a></li>-->
-                    </ul>
-
-                    <ul id="nav-mobile" class="side-nav">
-                        <li><a href="{{url_for("home")}}">HOME</a></li>
-                        <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
-                        <li><a href="{{url_for("recipes")}}">RECIPES</a></li>
-                        <li><a href="">COOKBOOK</a></li>
-                        <li><a href="">ABOUT</a></li>
-                        <li><a href="{{url_for("signup")}}">SIGN UP</a></li>
-                        <li><a href="{{url_for("login")}}">LOG IN</a></li>
-                    </ul>
-                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-                </div>
-            </nav>
-        </header>
+    <header>
+        <nav class="white nav-sizing" role="navigation">
+            <!-- Dropdown Structure -->
+            <!--<ul id="dropdown1" class="dropdown-content">-->
+            <!--    <li><a href="{{url_for("signup")}}">SIGN UP</a></li>-->
+            <!--    <li><a href="{{url_for("login")}}">LOG IN</a></li>-->
+            <!--</ul>-->
+            <div class="nav-wrapper container">
+                <a id="logo-container" href="{{url_for("home")}}" class="brand-logo"><img class="nav-sizing" src="{{url_for("static", filename="img/logo.jpg")}}" alt="The Pâtisserie"></a>
+                <ul class="valign-wrapper nav-sizing right hide-on-med-and-down">
+                    <li><a href="{{url_for("home")}}">HOME</a></li>
+                    <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
+                    <li><a href="{{url_for("recipes")}}">RECIPES</a></li>
+                    <li><a href="">COOKBOOK</a></li>
+                    <li><a href="{{url_for("about")}}">ABOUT</a></li>
+                    <li><a href="{{url_for("signup")}}">SIGN UP</a></li>
+                    <li><a href="{{url_for("login")}}">LOG IN</a></li>
+                    <!-- Dropdown Trigger -->
+                    <!--<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">ACCOUNT<i class="material-icons right">arrow_drop_down</i></a></li>-->
+                </ul>
+    
+                <ul id="nav-mobile" class="side-nav">
+                    <li><a href="{{url_for("home")}}">HOME</a></li>
+                    <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
+                    <li><a href="{{url_for("recipes")}}">RECIPES</a></li>
+                    <li><a href="">COOKBOOK</a></li>
+                    <li><a href="">ABOUT</a></li>
+                    <li><a href="{{url_for("signup")}}">SIGN UP</a></li>
+                    <li><a href="{{url_for("login")}}">LOG IN</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    </header>
         
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                 {% for category, message in messages %}
-                    <div class="{{ category }} center-align"> 
-                      {{ message }}
-                    </div>
-                 {% endfor %}
-            {% endif %}
-        {% endwith %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="{{ category }} center-align"> 
+                     {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
        
-       <div class="container">
+    <div class="container">
        
-           <!-- WELCOME SECTION -->
-           {% if Page_title %}
-           <div class="container">
-               <h1 class="header center text-lighten-2">{{ Page_title }}</h1>
-           </div>
+        <!-- WELCOME SECTION -->
+        
+         {% if Page_title %}
+            <div class="container">
+                <h1 class="header center text-lighten-2">{{ Page_title }}</h1>
+            </div>
            {% else %} 
-           {% endif %}
+        {% endif %}
        
-           <div id="index-banner" class="parallax-container">
-               <div class="parallax"><img class="parallax-img-size" src="{{ Welcome_image }}" alt="{{ Welcome_image }}"></div>
-           </div>
+        <div id="index-banner" class="parallax-container">
+            <div class="parallax"><img class="parallax-img-size" src="{{ Welcome_image }}" alt="{{ Welcome_image }}"></div>
+        </div>
        
-           {% block content %} 
-           {% endblock %}
+        {% block content %} 
+        {% endblock %}
        
-       </div>
+    </div>
 
     <footer class="white page-footer center-align">
         <div class="container">
