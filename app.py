@@ -25,22 +25,22 @@ app.config["SECRET_KEY"] = "366eff16939348b3153b7dff1b2fc2e1æ"
 mongo = PyMongo(app)
 
 
-# Configuring flask login for authentication
+Configuring flask login for authentication
 
-# login_manager = LoginManager(app)
-# login_manager.init_app(app)
-# login_manager.login_view = 'login'
+login_manager = LoginManager(app)
+login_manager.init_app(app)
+login_manager.login_view = 'login'
 
-# Create a user "Class" to manage user sessions
+Create a user "Class" to manage user sessions
 
-# class User(UserMixin, mongo.db.user_accounts):
-#     meta = {'collection': '<---YOUR_COLLECTION_NAME--->'}
-#     email = mongo.db.user_accounts.StringField()
-#     password = mongo.db.user_accounts.StringField()
+class User(UserMixin, mongo.db.user_accounts):
+    meta = {'collection': '<---YOUR_COLLECTION_NAME--->'}
+    email = mongo.db.user_accounts.StringField()
+    password = mongo.db.user_accounts.StringField()
 
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return User.objects(pk=user_id).first()
+@login_manager.user_loader
+def load_user(user_id):
+    return User.objects(pk=user_id).first()
 
 
 # Routes
@@ -159,8 +159,8 @@ def login():
         
         if user and bcrypt.check_password_hash(user_password, form.password.data):
             
-            # user_obj = User.objects(email=form.email.data).first()
-            # login_user(user_obj)
+            user_obj = User.objects(email=form.email.data).first()
+            login_user(user_obj)
             
             flash("Login successful!", "white-text green darken-1")
             
