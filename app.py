@@ -34,7 +34,7 @@ login_manager.login_view = 'login'
 # Create a user "Class" to manage user sessions
 
 class User(UserMixin, mongo.db.user_accounts):
-    meta = {'collection': '<---YOUR_COLLECTION_NAME--->'}
+    # meta = {'collection': '<---YOUR_COLLECTION_NAME--->'}
     email = mongo.db.user_accounts.StringField()
     password = mongo.db.user_accounts.StringField()
 
@@ -175,6 +175,9 @@ def login():
                             form=form)
 
 
+# Routes (for which login is required)
+
+
 @app.route("/logout")
 def logout():
     logout_user()
@@ -182,6 +185,7 @@ def logout():
 
 
 @app.route("/cookbook")
+@login_required
 def cookbook():
     return render_template("cookbook.html",
                             Page_name = "Cookbook",
@@ -190,12 +194,15 @@ def cookbook():
 
 
 @app.route("/account")
+@login_required
 def account():
     return render_template("account.html",
                             Page_name = "My Account",
                             Page_title = "", 
                             Welcome_image = "TBD")
 
+
+# Route created only as an instance of recipe page
 
 @app.route("/recipes/brownie")
 def brownie():
