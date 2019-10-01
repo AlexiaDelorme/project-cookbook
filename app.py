@@ -25,13 +25,13 @@ app.config["SECRET_KEY"] = "366eff16939348b3153b7dff1b2fc2e1æ"
 mongo = PyMongo(app)
 
 
-Configuring flask login for authentication
+# Configuring flask login for authentication
 
 login_manager = LoginManager(app)
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-Create a user "Class" to manage user sessions
+# Create a user "Class" to manage user sessions
 
 class User(UserMixin, mongo.db.user_accounts):
     meta = {'collection': '<---YOUR_COLLECTION_NAME--->'}
@@ -183,7 +183,7 @@ def logout():
 
 @app.route("/cookbook")
 def cookbook():
-    return render_template("cookbook.html"
+    return render_template("cookbook.html",
                             Page_name = "Cookbook",
                             Page_title = "My Cookbook", 
                             Welcome_image = "TBD")
@@ -191,7 +191,7 @@ def cookbook():
 
 @app.route("/account")
 def account():
-    return render_template("account.html"
+    return render_template("account.html",
                             Page_name = "My Account",
                             Page_title = "", 
                             Welcome_image = "TBD")
