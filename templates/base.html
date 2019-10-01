@@ -40,22 +40,34 @@
                     <li><a href="{{url_for("home")}}">HOME</a></li>
                     <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
                     <li><a href="{{url_for("recipes")}}">RECIPES</a></li>
-                    <li><a href="">COOKBOOK</a></li>
                     <li><a href="{{url_for("about")}}">ABOUT</a></li>
-                    <li><a href="{{url_for("signup")}}">SIGN UP</a></li>
-                    <li><a href="{{url_for("login")}}">LOG IN</a></li>
+                    {% if current_user.is_authenticated %}
+                        <li><a href="{{url_for("cookbook")}}">MY COOKBOOK</a></li>
+                        <li><a href="{{url_for("account")}}">MY ACCOUNT</a></li>
+                        <li><a href="{{url_for("logout")}}">LOG OUT</a></li>
+                    {% else %}
+                        <li><a href="{{url_for("signup")}}">SIGN UP</a></li>
+                        <li><a href="{{url_for("login")}}">LOG IN</a></li>
+                    {% endif %}
                     <!-- Dropdown Trigger -->
                     <!--<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">ACCOUNT<i class="material-icons right">arrow_drop_down</i></a></li>-->
                 </ul>
     
                 <ul id="nav-mobile" class="side-nav">
+                    <ul class="valign-wrapper nav-sizing right hide-on-med-and-down">
                     <li><a href="{{url_for("home")}}">HOME</a></li>
                     <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
                     <li><a href="{{url_for("recipes")}}">RECIPES</a></li>
-                    <li><a href="">COOKBOOK</a></li>
-                    <li><a href="">ABOUT</a></li>
-                    <li><a href="{{url_for("signup")}}">SIGN UP</a></li>
-                    <li><a href="{{url_for("login")}}">LOG IN</a></li>
+                    <li><a href="{{url_for("about")}}">ABOUT</a></li>
+                    {% if current_user.is_authenticated %}
+                        <li><a href="{{url_for("cookbook")}}">MY COOKBOOK</a></li>
+                        <li><a href="{{url_for("account")}}">MY ACCOUNT</a></li>
+                        <li><a href="{{url_for("logout")}}">LOG OUT</a></li>
+                    {% else %}
+                        <li><a href="{{url_for("signup")}}">SIGN UP</a></li>
+                        <li><a href="{{url_for("login")}}">LOG IN</a></li>
+                    {% endif %}
+                </ul>
                 </ul>
                 <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>

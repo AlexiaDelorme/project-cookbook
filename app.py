@@ -175,6 +175,28 @@ def login():
                             form=form)
 
 
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("home"))
+
+
+@app.route("/cookbook")
+def cookbook():
+    return render_template("cookbook.html"
+                            Page_name = "Cookbook",
+                            Page_title = "My Cookbook", 
+                            Welcome_image = "TBD")
+
+
+@app.route("/account")
+def account():
+    return render_template("account.html"
+                            Page_name = "My Account",
+                            Page_title = "", 
+                            Welcome_image = "TBD")
+
+
 @app.route("/recipes/brownie")
 def brownie():
     return render_template("brownie.html", recipes=mongo.db.recipes_information.find())
