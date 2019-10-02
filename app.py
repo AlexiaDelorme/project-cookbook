@@ -33,10 +33,13 @@ login_manager.login_view = 'login'
 
 # Create a user "Class" to manage user sessions
 
-class User(UserMixin, mongo.db.user_accounts):
-    # meta = {'collection': '<---YOUR_COLLECTION_NAME--->'}
-    email = mongo.db.user_accounts.StringField()
-    password = mongo.db.user_accounts.StringField()
+class FinalMeta(type(UserMixin), type(mongo.db)):
+    pass
+
+class User(UserMixin, mongo.db, metaclass=FinalMeta):
+    meta = {'collection': 'user_accounts'}
+    email = mongo.db.StringField()
+    password = mongo.db.StringField()
 
 @login_manager.user_loader
 def load_user(user_id):
