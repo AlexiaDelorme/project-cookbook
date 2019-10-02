@@ -1,9 +1,8 @@
 import os
 import logging
-from flask import Flask, render_template, redirect, request, url_for, flash
+from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager, UserMixin, current_user, login_user, logout_user, login_required
 from bson.objectid import ObjectId
 from helpers import *
 from forms import *
@@ -25,28 +24,7 @@ app.config["SECRET_KEY"] = "366eff16939348b3153b7dff1b2fc2e1æ"
 mongo = PyMongo(app)
 
 
-# Configuring flask login for authentication
-
-login_manager = LoginManager(app)
-login_manager.init_app(app)
-login_manager.login_view = 'login'
-
-# Create a user "Class" to manage user sessions
-
-class FinalMeta(type(UserMixin), type(mongo.db)):
-    pass
-
-class User(UserMixin, mongo.db, metaclass=FinalMeta):
-    meta = {'collection': 'user_accounts'}
-    email = mongo.db.StringField()
-    password = mongo.db.StringField()
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.objects(pk=user_id).first()
-
-
-# Routes
+# ----- Routes ----- #
 
 @app.route("/")
 @app.route("/home")
@@ -96,7 +74,8 @@ def about():
 @app.route("/signup")
 def signup():
     
-    if current_user.is_authenticated:
+    if "email" in session:
+        flash(f"You are logged in as {session['email']}", "white-text green")
         return redirect(url_for('home'))
         
     form = SignupForm()
@@ -110,72 +89,73 @@ def signup():
 @app.route("/insert_user_account", methods=["GET", "POST"])
 def insert_user_account():
     
-    form = SignupForm()
-    
-    user_accounts = mongo.db.user_accounts
-    
-    # Create a query to check if a user already registered with this email:
-    user = user_accounts.find_one( { "email": form.email.data })
-    
-    #Log the query
-    logging.info('Email found in MongoDB: {} match the email provided by the user in the form'.format(user))
-    
-    # Check if email provided is not already linked to an existing account
-    if user:
-        flash(f"An account already exists for {form.email.data}", "white-text red")
-        return redirect(url_for("signup"))
-    
-    # If no existing account was found, then we add this new user
-    else:
-        # Encrypt password to send it to MongoDB for storage
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        # Insert user information account to MongoDB
-        user_accounts.insert_one({
-            "first_name": form.first_name.data,
-            "last_name": form.last_name.data,
-            "email": form.email.data,
-            "password": hashed_password,
-            "my_recipes": [],
-            "favorite_recipes": []
-        })
-        flash(f"{form.first_name.data.capitalize()}, your account has been created, you can now log in!", "white-text green darken-1")
-        return redirect(url_for("login"))
+    if request.method == "POST":
+  
+        form = SignupForm()
+        user_accounts = mongo.db.user_accounts
+        # Create a query to check if a user already registered with this email:
+        user = user_accounts.find_one( { "email": form.email.data })
+        
+        #Log the query
+        logging.info('Email found in MongoDB: {} match the email provided by the user in the form'.format(user))
+        
+        # Check if email provided is not already linked to an existing account
+        if user:
+            flash(f"An account already exists for {form.email.data}.", "white-text red")
+            return redirect(url_for("signup"))
+        
+        # If no existing account was found we can add the user to the db
+        else:
+            # Encrypt password to send it to MongoDB for storage
+            hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+            # Insert user information account to MongoDB
+            user_accounts.insert_one({
+                "first_name": form.first_name.data,
+                "last_name": form.last_name.data,
+                "email": form.email.data,
+                "password": hashed_password,
+                "my_recipes": [],
+                "favorite_recipes": []
+            })
+            flash(f"{form.first_name.data.capitalize()}, your account has been created, you can now log in!", "white-text green darken-1")
+            return redirect(url_for("login"))
+        
+    return redirect(url_for("signup"))
 
 
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/login", methods=["POST"])
 def login():
     
-    if current_user.is_authenticated:
+    if "email" in session:
+        flash(f"You are logged in as {session['email']}", "white-text green")
         return redirect(url_for('home'))
     
     form = LoginForm()
-    
-    if form.validate_on_submit():
         
+    if form.validate_on_submit():
+            
         # Create a query to get the user stored in the user variable
         user = mongo.db.user_accounts.find_one( { "email": form.email.data })
-
+    
         #Log the query
         logging.info('User found {}'.format(user))
-        
+            
         user_password = user["password"]
-        
+            
         if user and bcrypt.check_password_hash(user_password, form.password.data):
-            
-            user_obj = User.objects(email=form.email.data).first()
-            login_user(user_obj)
-            
+                
+            # Add user to session
+            session["email"] = form.email.data
             flash("Login successful!", "white-text green darken-1")
-            
             return redirect(url_for("home"))
-        
+            
         else:
             flash("Login unsuccessful! Email and/or password incorrect.", "white-text red")
-    
+        
     return render_template("login.html",
-                            Page_name = "Log In",
-                            Welcome_image = "../static/img/sign-up.jpg",
-                            form=form)
+                                Page_name = "Log In",
+                                Welcome_image = "../static/img/sign-up.jpg",
+                                form=form)
 
 
 # Routes (for which login is required)
@@ -183,12 +163,11 @@ def login():
 
 @app.route("/logout")
 def logout():
-    logout_user()
+    # logout_user()
     return redirect(url_for("home"))
 
 
 @app.route("/cookbook")
-@login_required
 def cookbook():
     return render_template("cookbook.html",
                             Page_name = "Cookbook",
@@ -197,7 +176,6 @@ def cookbook():
 
 
 @app.route("/account")
-@login_required
 def account():
     return render_template("account.html",
                             Page_name = "My Account",
