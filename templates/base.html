@@ -29,19 +29,15 @@
 
     <header>
         <nav class="white nav-sizing" role="navigation">
-            <!-- Dropdown Structure -->
-            <!--<ul id="dropdown1" class="dropdown-content">-->
-            <!--    <li><a href="{{url_for("signup")}}">SIGN UP</a></li>-->
-            <!--    <li><a href="{{url_for("login")}}">LOG IN</a></li>-->
-            <!--</ul>-->
             <div class="nav-wrapper container">
                 <a id="logo-container" href="{{url_for("home")}}" class="brand-logo"><img class="nav-sizing" src="{{url_for("static", filename="img/logo.jpg")}}" alt="The Pâtisserie"></a>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="valign-wrapper nav-sizing right hide-on-med-and-down">
                     <li><a href="{{url_for("home")}}">HOME</a></li>
                     <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
                     <li><a href="{{url_for("recipes")}}">RECIPES</a></li>
                     <li><a href="{{url_for("about")}}">ABOUT</a></li>
-                    {% if email in session %}
+                    {% if session["email"] %}
                         <li><a href="{{url_for("cookbook")}}">MY COOKBOOK</a></li>
                         <li><a href="{{url_for("account")}}">MY ACCOUNT</a></li>
                         <li><a href="{{url_for("logout")}}">LOG OUT</a></li>
@@ -49,17 +45,13 @@
                         <li><a href="{{url_for("signup")}}">SIGN UP</a></li>
                         <li><a href="{{url_for("login")}}">LOG IN</a></li>
                     {% endif %}
-                    <!-- Dropdown Trigger -->
-                    <!--<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">ACCOUNT<i class="material-icons right">arrow_drop_down</i></a></li>-->
                 </ul>
-    
-                <ul id="nav-mobile" class="side-nav">
-                    <ul class="valign-wrapper nav-sizing right hide-on-med-and-down">
+                <ul class="side-nav" id="mobile-demo">
                     <li><a href="{{url_for("home")}}">HOME</a></li>
                     <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
                     <li><a href="{{url_for("recipes")}}">RECIPES</a></li>
                     <li><a href="{{url_for("about")}}">ABOUT</a></li>
-                    {% if email in session %}
+                    {% if session["email"] %}
                         <li><a href="{{url_for("cookbook")}}">MY COOKBOOK</a></li>
                         <li><a href="{{url_for("account")}}">MY ACCOUNT</a></li>
                         <li><a href="{{url_for("logout")}}">LOG OUT</a></li>
@@ -68,8 +60,6 @@
                         <li><a href="{{url_for("login")}}">LOG IN</a></li>
                     {% endif %}
                 </ul>
-                </ul>
-                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
         </nav>
     </header>

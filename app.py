@@ -123,7 +123,7 @@ def insert_user_account():
     return redirect(url_for("signup"))
 
 
-@app.route("/login", methods=["POST"])
+@app.route("/login", methods=["POST", "GET"])
 def login():
     
     if "email" in session:
@@ -161,10 +161,10 @@ def login():
 # Routes (for which login is required)
 
 
-@app.route("/logout")
+@app.route("/logout", methods=["POST", "GET"])
 def logout():
-    # logout_user()
-    return redirect(url_for("home"))
+    session.pop("email", None)
+    return redirect(url_for("login"))
 
 
 @app.route("/cookbook")
