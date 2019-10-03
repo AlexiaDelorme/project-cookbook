@@ -1,6 +1,41 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-<p> This is where the user cand handle information about his account!</p>
+<div class="container container-section">
+
+    <div class="row center">
+
+        <div class="col s4 category-box">
+            <h5 class="center">Manage account</h5>
+            <a href=""><img class="card-img" src="{{url_for("static", filename="img/account/img1.jpg")}}" alt="Account"></img></a>
+        </div>
+        
+        <div class="col s4 category-box">
+            <h5 class="center">Manage recipes</h5>
+            <a href=""><img class="card-img" src="{{url_for("static", filename="img/account/img2.jpg")}}" alt="My recipes"></img></a>
+        </div>
+        
+        <div class="col s4 category-box">
+            <h5 class="center">Add new recipe</h5>
+            <a href=""><img class="card-img" src="{{url_for("static", filename="img/account/img3.jpg")}}" alt="Add recipe"></img></a>
+        </div>
+
+    </div>
+    
+    <div class="row center">
+
+        <div class="col s4 offset-s2 category-box">
+            <h5 class="center">My cookbook</h5>
+            <a href=""><img class="card-img" src="{{url_for("static", filename="img/account/img4.jpg")}}" alt="Cookbook"></img></a>
+        </div>
+
+        <div class="col s4 category-box">
+            <h5 class="center">Explore recipes</h5>
+            <a href=""><img class="card-img" src="{{url_for("static", filename="img/account/img5.jpg")}}" alt="Explore"></img></a>
+        </div>
+
+    </div>
+
+</div>
 
 {% endblock %}

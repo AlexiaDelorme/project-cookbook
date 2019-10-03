@@ -145,9 +145,11 @@ def login():
         if user and bcrypt.check_password_hash(user_password, form.password.data):
                 
             # Add user to session
-            session["email"] = form.email.data
+            session["email"] = user["email"]
+            session["first_name"] = user["first_name"]
+            session["last_name"] = user["last_name"]
             flash("Login successful!", "white-text green darken-1")
-            return redirect(url_for("home"))
+            return redirect(url_for("account"))
             
         else:
             flash("Login unsuccessful! Email and/or password incorrect.", "white-text red")
@@ -161,10 +163,12 @@ def login():
 # Routes (for which login is required)
 
 
-@app.route("/logout", methods=["POST", "GET"])
-def logout():
-    session.pop("email", None)
-    return redirect(url_for("login"))
+@app.route("/account")
+def account():
+    return render_template("account.html",
+                            Page_name = "My Account",
+                            Page_title = f"Hi {session['first_name'].capitalize()}, welcome!",
+                            Welcome_image = "TBD")
 
 
 @app.route("/cookbook")
@@ -175,12 +179,13 @@ def cookbook():
                             Welcome_image = "TBD")
 
 
-@app.route("/account")
-def account():
-    return render_template("account.html",
-                            Page_name = "My Account",
-                            Page_title = "", 
-                            Welcome_image = "TBD")
+@app.route("/logout", methods=["POST", "GET"])
+def logout():
+    session.pop("email", None)
+    session.pop("first_name", None)
+    session.pop("last_name", None)
+    flash("Thanks for your visit, we hope to see you soon!", "blue-grey lighten-5")
+    return redirect(url_for("login"))
 
 
 # Route created only as an instance of recipe page
