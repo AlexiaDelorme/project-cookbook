@@ -32,7 +32,7 @@ def home():
     return render_template("home.html", 
                             Page_name = "Home",
                             Page_title = "The Pâtisserie Journal", 
-                            Welcome_image = "../static/img/home-bg.jpg")
+                            Welcome_image = "../static/img/home/bg.jpg")
 
   
 @app.route("/recipes")
@@ -40,7 +40,7 @@ def recipes():
     return render_template("recipes.html",
                             Page_name = "Recipes",
                             Page_title = "Discover recipes by...", 
-                            Welcome_image = "../static/img/recipes-bg.jpg", 
+                            Welcome_image = "../static/img/categories/bg.jpg", 
                             categories = mongo.db.recipes_categories.find(), 
                             carousel = image_folder("carousel"))
 
@@ -58,7 +58,7 @@ def recipes_categories(category_name):
     return render_template("recipes_categories.html", 
                             Page_name = the_name_category,
                             Page_title = "Discover recipes for...", 
-                            Welcome_image = "../static/img/recipes-bg.jpg", 
+                            Welcome_image = "../static/img/categories/bg.jpg", 
                             category=the_category, 
                             carousel = image_folder("carousel"))
 
@@ -68,7 +68,7 @@ def about():
     return render_template("about.html", 
                             Page_name = "About Us",
                             Page_title = "About Us", 
-                            Welcome_image = "../static/img/about-bg.jpg")
+                            Welcome_image = "../static/img/about/bg.jpg")
 
 
 @app.route("/signup")
@@ -82,7 +82,7 @@ def signup():
     
     return render_template("signup.html",
                             Page_name = "Sign up",
-                            Welcome_image = "../static/img/sign-up.jpg",
+                            Welcome_image = "../static/img/sign/bg.jpg",
                             form=form)
 
 
@@ -156,7 +156,7 @@ def login():
         
     return render_template("login.html",
                                 Page_name = "Log In",
-                                Welcome_image = "../static/img/sign-up.jpg",
+                                Welcome_image = "../static/img/sign/bg.jpg",
                                 form=form)
 
 
