@@ -1,46 +1,87 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block content %}
 
 
 <!--   SECTION 1   -->
 
 <div class="container">
-  <h3 class="center-align">Our Recipes</h3>
-  <div class="row center">
-    <div class="col s4"> <img class="card-img" src="{{url_for('static', filename='img/brownie.jpg')}}"></img>
-    </div>
-    <div class="col s4"><img class="card-img" src="{{url_for('static', filename='img/pancakes-berries.jpg')}}"></img>
-    </div>
-    <div class="col s4"><img class="card-img" src="{{url_for('static', filename='img/smoothie-berries.jpg')}}"></img>
-    </div>
-  </div>
-  <h5 class="center-align">Explore recipes</h5>
-</div>
 
+  <h3 class="center-align">OUR RECIPES</h3>
+
+  <div class="row center">
+
+    <div class="col s4 category-box">
+      <img class="card-img" src="{{url_for('static', filename='img/home/img1.jpg')}}" alt="Img1"></img>
+    </div>
+
+    <div class="col s4 category-box">
+      <img class="card-img" src="{{url_for('static', filename='img/home/img2.jpg')}}" alt="Img2"></img>
+    </div>
+
+    <div class="col s4 category-box">
+      <img class="card-img" src="{{url_for('static', filename='img/home/img3.jpg')}}" alt="Img3"></img>
+    </div>
+
+  </div>
+  
+  <a href=""><h5 class="center-align">EXPLORE RECIPES</h5></a>
+  
+</div>
 
 <!--   SECTION 2   -->
 
-<div class="container">
-  <h3 class="center-align">Online Cookbook</h3>
+<div class="container container-section">
+  <h3 class="center-align">ONLINE COOKBOOK</h3>
 </div>
+
 <div class="parallax-container valign-wrapper">
-  <div class="parallax"><img class="parallax-img-size" src="{{url_for('static', filename='img/cookbook-bg.jpg')}}" alt="Cookbook Background"></div>
+  
+  <div class="section no-pad-bot">
+    
+    <div class="container">
+      <div class="row center text-parallax">
+        <h5 class="header col s12 light">Store your favorite recipes, add new recipes and contribute to the community!</h5>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="parallax">
+    <img class="parallax-img-size" src="{{url_for('static', filename='img/home/bg2.jpg')}}" alt="Cookbook">
+  </div>
+  
 </div>
-<div class="container section-container">
-  <p class="center-align light">Create your own online cookbook... Store your favorite recipes, add new recipes and contribute to the community!</p>
-  <h6 class="center-align">Register here</h6>
+
+<div class="container container-section">
+  <a href=""><h5 class="center-align">JOIN US</h5></a>
 </div>
 
 <!--   SECTION 3   -->
 
-<div class="container">
-  <h3 class="center-align">About Us</h3>
+<div class="container container-section">
+  <h3 class="center-align">ABOUT US</h3>
 </div>
+
 <div class="parallax-container valign-wrapper">
-  <div class="parallax"><img class="parallax-img-size" src="{{url_for('static', filename='img/carrot-cake.jpg')}}" alt="Carrot Cake Background"></div>
+
+  <div class="section no-pad-bot">
+    
+    <div class="container">
+      <div class="row center text-parallax">
+        <h5 class="header col s12 light">The pâtisserie Journal is an open-free recipes ressource created by two French sisters.</h5>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="parallax">
+    <img class="parallax-img-size" src="{{url_for('static', filename='img/home/bg3.jpg')}}" alt="About">
+  </div>
+
 </div>
-<div class="container section-container">
-  <p class="center-align light">The pâtisserie Journal is an open-free recipes ressource created by two French sisters. <br> They are very passionate about pâtisserie and wanted to extend it to any kind of diet.</p>
-  <h6 class="center-align">More about us</h6>
+
+<div class="container container-section">
+  <a href=""><h5 class="center-align">LEARN MORE</h5></a>
 </div>
 
 {% endblock %}

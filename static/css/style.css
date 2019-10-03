@@ -71,6 +71,11 @@ img.parallax-img-size {
     max-width: 100%;
 }
 
+.text-parallax {
+    background-color: white;
+    color: black;
+}
+
 
 /* ----------------------------------------------------------- RECIPES ------ */
 
