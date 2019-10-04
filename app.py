@@ -190,9 +190,13 @@ def logout():
 
 # Route created only as an instance of recipe page
 
-@app.route("/recipes/brownie")
-def brownie():
-    return render_template("brownie.html", recipes=mongo.db.recipes_information.find())
+@app.route("/results")
+def results():
+    recipes_count=mongo.db.recipes_information.count()
+    return render_template("results.html",
+                            recipes=mongo.db.recipes_information.find(),
+                            Page_name = "All Recipes",
+                            Page_title = f"{recipes_count} Recipes Found")
 
 
 
