@@ -84,10 +84,13 @@
             </div>
            {% else %} 
         {% endif %}
-       
-        <div id="index-banner" class="parallax-container">
-            <div class="parallax"><img class="parallax-img-size" src="{{ Welcome_image }}" alt="{{ Welcome_image }}"></div>
-        </div>
+        
+        {% if Welcome_image %}
+            <div id="index-banner" class="parallax-container">
+                <div class="parallax"><img class="parallax-img-size" src="{{ Welcome_image }}" alt="{{ Welcome_image }}"></div>
+            </div>
+            {% else %}
+        {% endif %}
        
         {% block content %} 
         {% endblock %}
