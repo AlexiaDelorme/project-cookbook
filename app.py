@@ -199,6 +199,22 @@ def results():
                             Page_title = f"{recipes_count} Recipes Found")
 
 
+@app.route("/results/<recipe_id>")
+def recipe_description(recipe_id):
+    
+    the_recipe =  mongo.db.recipes_information.find_one({"_id": ObjectId(recipe_id)})
+    
+    #Log the_category
+    logging.info('The variable the_recipe has the following result: {}'.format(the_recipe))
+    
+    the_recipe_name = the_recipe["recipe_name"].capitalize()
+
+    return render_template("recipe_description.html", 
+                            Page_name = the_recipe_name,
+                            Page_title = f"{the_recipe_name}", 
+                            recipe=the_recipe)
+
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
