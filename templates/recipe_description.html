@@ -1,6 +1,65 @@
 {% extends 'base.html' %} 
 {% block content %}
 
+<div class="container container-section">
 
+    <div class="row center">
+        
+        <div class="col s2 offset-s2">Serves {{ recipe.serving }}</div>
+        
+        <div class="col s2">
+            {% for diet in recipe.diets %}
+                {{ diet.capitalize() }} 
+            {% endfor %}
+        </div>
+        
+        <div class="col s2">Prep time</div>
+        
+        <div class="col s2">{{ recipe.difficulty.capitalize() }}</div>
+    </div>
+
+    <div class="row center">
+        <div class="col s8 offset-s2"><img class="card-img" src="../{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img>
+        </div>
+    </div>
+
+    <div class="row center">
+        <p> {{ recipe.recipe_description.capitalize() }} </p>
+    </div>
+
+    <div class="row center">
+        
+        <div class="col s6">
+            <h5 class="center">Ingredients list</h5>
+            <ul>
+                {% for ingredient in recipe.ingredients %}
+                    <li>{{ ingredient.capitalize() }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="col s6">
+            <h5 class="center">Cooking tools</h5>
+            <ul>
+                {% for tool in recipe.tools %}
+                    <li>{{ tool.capitalize() }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+    </div>
+
+    <div class="row center">
+        <div class="col s12">
+            <h5 class="center">Preparation steps</h5>
+            <ul>
+                {% for instruction in recipe.instructions %}
+                    <li>{{ instruction.capitalize() }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</div>
 
 {% endblock %}
