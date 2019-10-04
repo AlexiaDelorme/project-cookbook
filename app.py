@@ -167,8 +167,7 @@ def login():
 def account():
     return render_template("account.html",
                             Page_name = "My Account",
-                            Page_title = f"Hi {session['first_name'].capitalize()}, welcome!",
-                            Welcome_image = "TBD")
+                            Page_title = f"Hi {session['first_name'].capitalize()}, welcome!")
 
 
 @app.route("/cookbook")
