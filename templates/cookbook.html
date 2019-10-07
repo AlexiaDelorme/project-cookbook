@@ -1,6 +1,35 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-<p> This is the user cookbook with only his/her favorite recipes!</p>
+<!-- RECIPE CARDS FOR USER LOGGED IN -->
+
+<div class="row center">
+    <h4>YOUR FAVOURITE RECIPES</h4>
+</div>
+
+<div class="row center">
+
+    {% for recipe in recipes %}
+
+    <div class="col s4 category-box">
+        <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
+        <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+<!-- URL TO ADD A NEW RECIPE -->
+
+<div class="row center">
+    <a href="{{url_for('add_recipe')}}"><h4>ADD NEW RECIPE</h4></a>
+</div>
+
+<div class="parallax-container valign-wrapper">
+    <div class="parallax">
+        <img class="parallax-img-size" src="{{url_for('static', filename='img/cookbook/img1.jpg')}}" alt="Add recipe">
+    </div>
+</div>
 
 {% endblock %}
