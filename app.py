@@ -178,6 +178,14 @@ def cookbook():
                             Welcome_image = "TBD")
 
 
+@app.route("/add_recipe")
+def add_recipe():
+    return render_template("add_recipe.html",
+                            Page_name = "Add Recipe",
+                            Page_title = "Add Recipe", 
+                            Welcome_image = "TBD")
+
+
 @app.route("/logout", methods=["POST", "GET"])
 def logout():
     session.pop("email", None)
