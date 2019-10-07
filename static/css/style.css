@@ -1,5 +1,7 @@
 body {
-    font-family: 'Signika', sans-serif;
+    font-family: 'Signika', 'calibri';
+    font-size: 17px;
+
 }
 
 /* ------------------------------------------------------------ HEADER ------ */
@@ -89,6 +91,22 @@ img.parallax-img-size {
     padding: 20px 30px;
     margin: 50px auto;
 }
+
+/* ----------------------------------------------- RECIPE DESCRIPTION ------ */
+
+#recipe-indicator {
+    margin-bottom: 40px;
+}
+
+i.fa.fa-shopping-basket {
+    font-size: 25px;
+}
+
+ul.list-styling>li {
+    list-style-type: disc;
+    display: list-item;
+}
+
 
 
 /* -------------------------------DEFAULT SETTINGS / MATERIALIZE THEME ------ */

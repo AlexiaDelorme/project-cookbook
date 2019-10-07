@@ -3,7 +3,7 @@
 
 <div class="container container-section">
 
-    <div class="row center">
+    <div class="row center" id="recipe-indicator">
         
         <div class="col s2 offset-s2">Serves {{ recipe.serving }}</div>
         
@@ -13,9 +13,10 @@
             {% endfor %}
         </div>
         
-        <div class="col s2">Prep time</div>
+        <div class="col s2"><i class="fa fa-clock-o" aria-hidden="true"></i> Prep time</div>
         
-        <div class="col s2">{{ recipe.difficulty.capitalize() }}</div>
+        <div class="col s2"><i class="fa fa-hand-peace-o" aria-hidden="true"></i> {{ recipe.difficulty.capitalize() }}</div>
+    
     </div>
 
     <div class="row center">
@@ -26,12 +27,16 @@
     <div class="row center">
         <p> {{ recipe.recipe_description.capitalize() }} </p>
     </div>
+    
+    <div class="row center">
+        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+    </div>
 
     <div class="row center">
         
         <div class="col s6">
             <h5 class="center">Ingredients list</h5>
-            <ul>
+            <ul class = "list-styling">
                 {% for ingredient in recipe.ingredients %}
                     <li>{{ ingredient.capitalize() }}</li>
                 {% endfor %}
@@ -40,7 +45,7 @@
         
         <div class="col s6">
             <h5 class="center">Cooking tools</h5>
-            <ul>
+            <ul class = "list-styling">
                 {% for tool in recipe.tools %}
                     <li>{{ tool.capitalize() }}</li>
                 {% endfor %}
@@ -50,16 +55,19 @@
     </div>
 
     <div class="row center">
-        <div class="col s12">
-            <h5 class="center">Preparation steps</h5>
-            <ul>
-                {% for instruction in recipe.instructions %}
-                    <li>{{ instruction.capitalize() }}</li>
-                {% endfor %}
-            </ul>
+        
+        <h5 class="center">Preparation steps</h5>
+    
+        <div class="row">
+                <ol>
+                    {% for instruction in recipe.instructions %}
+                        <li>{{ instruction.capitalize() }}</li>
+                    {% endfor %}
+                </ol>
         </div>
+        
     </div>
-
+    
 </div>
 
 {% endblock %}
