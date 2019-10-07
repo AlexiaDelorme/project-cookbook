@@ -169,22 +169,43 @@ def account():
                             Page_name = "My Account",
                             Page_title = f"Hi {session['first_name'].capitalize()}, welcome!")
 
+@app.route("/account_details")
+def account_details():
+    
+    # Check if the user is logged in
+    if "email" in session:
+        
+        # Create a query to get user information
+        user = mongo.db.user_accounts.find_one( { "email": session["email"] })
+    
+        # Log the user
+        logging.info('User found {}'.format(user))
+    
+        return render_template("account_details.html",
+                            Page_name = "Manage Account",
+                            Page_title = "Manage Account", 
+                            Welcome_image = "TBD",
+                            account = user)
+    
+    flash(f"You are required to login to access this page", "white-text red")
+    return redirect(url_for('login'))
 
 @app.route("/cookbook")
 def cookbook():
     
-    #Check if the user is logged in
+    # Check if the user is logged in
     if "email" in session:
+        
         # Create a query to get the user stored in the user variable
         user = mongo.db.user_accounts.find_one( { "email": session["email"] })
     
         #Log the user
         logging.info('User found {}'.format(user))
         
-        #Create a variable to store the favorite recipes linked to this user
+        # Create a variable to store the favorite recipes linked to this user
         favorite_recipes = user["favorite_recipes"]
         
-        #Count the number of recipes stored as favourite by the user
+        # Count the number of recipes stored as favourite by the user
         recipes_number = len(favorite_recipes)
         
         #Iterate through each recipes id and extract information in MongoDB collection "recipes_information"
@@ -193,16 +214,16 @@ def cookbook():
         
         for i in range(recipes_number):
             
-            #Create a query to get recipes information based on user list
+            # Create a query to get recipes information based on user list
             recipe_information_i = mongo.db.recipes_information.find_one( { "_id": ObjectId(favorite_recipes[i]) })
 
-            #Store information in an array
+            # Store information in an array
             recipes_list_information.append(recipe_information_i)
             
-            #Log each recipe_information variable
+            # Log each recipe_information variable
             logging.info('For i={}, the recipes information found is {}'.format(i, recipe_information_i))
             
-        #Log the variable recipes list information
+        # Log the variable recipes list information
         logging.info('Array containing all recipes information {}'.format(recipes_list_information))
     
         return render_template("cookbook.html",
