@@ -241,6 +241,51 @@ def edit_password():
     return redirect(url_for('login'))
 
 
+@app.route("/my_recipes")
+def my_recipes():
+    
+    # Check if the user is logged in
+    if "email" in session:
+        
+        # Create a query to get the user stored in the user variable
+        user = mongo.db.user_accounts.find_one( { "email": session["email"] })
+    
+        #Log the user
+        logging.info('User found {}'.format(user))
+        
+        # Create a variable to store the favorite recipes linked to this user
+        my_recipes = user["my_recipes"]
+        
+        # Count the number of recipes stored as favourite by the user
+        recipes_number = len(my_recipes)
+        
+        #Iterate through each recipes id and extract information in MongoDB collection "recipes_information"
+        
+        recipes_list_information = []
+        
+        for i in range(recipes_number):
+            
+            # Create a query to get recipes information based on user list
+            recipe_information_i = mongo.db.recipes_information.find_one( { "_id": ObjectId(my_recipes[i]) })
+
+            # Store information in an array
+            recipes_list_information.append(recipe_information_i)
+            
+            # Log each recipe_information variable
+            logging.info('For i={}, the recipes information found is {}'.format(i, recipe_information_i))
+            
+        # Log the variable recipes list information
+        logging.info('Array containing all recipes information {}'.format(recipes_list_information))
+    
+        return render_template("my_recipes.html",
+                            Page_name = "My recipes",
+                            Welcome_image = "TBD",
+                            recipes = recipes_list_information )
+    
+    flash(f"You are required to login to access this page", "white-text red")
+    return redirect(url_for('login'))
+
+
 @app.route("/cookbook")
 def cookbook():
     

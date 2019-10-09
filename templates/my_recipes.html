@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<!-- RECIPE CARDS FOR USER LOGGED IN -->
+
+<div class="row center">
+    <h4>MY RECIPES</h4>
+</div>
+
+<div class="row center">
+
+    {% for recipe in recipes %}
+
+    <div class="col s4 category-box">
+        <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
+        <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
