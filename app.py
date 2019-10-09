@@ -274,9 +274,6 @@ def my_recipes():
             # Log each recipe_information variable
             logging.info('For i={}, the recipes information found is {}'.format(i, recipe_information_i))
             
-        # Log the variable recipes list information
-        logging.info('Array containing all recipes information {}'.format(recipes_list_information))
-    
         return render_template("my_recipes.html",
                             Page_name = "My recipes",
                             Welcome_image = "TBD",
