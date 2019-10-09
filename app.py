@@ -152,7 +152,7 @@ def login():
             return redirect(url_for("account"))
             
         else:
-            flash("Login unsuccessful! Email and/or password incorrect.", "white-text red")
+            flash(f"Login unsuccessful! Email and/or password incorrect.", "white-text red")
         
     return render_template("login.html",
                                 Page_name = "Log In",
@@ -169,6 +169,7 @@ def account():
                             Page_name = "My Account",
                             Page_title = f"Hi {session['first_name'].capitalize()}, welcome!")
 
+
 @app.route("/account_details")
 def account_details():
     
@@ -183,12 +184,60 @@ def account_details():
     
         return render_template("account_details.html",
                             Page_name = "Manage Account",
-                            Page_title = "Manage Account", 
-                            Welcome_image = "TBD",
+                            Welcome_image = "../static/img/sign/bg.jpg",
                             account = user)
     
     flash(f"You are required to login to access this page", "white-text red")
     return redirect(url_for('login'))
+
+
+@app.route("/edit_password", methods=["POST", "GET"])
+def edit_password():
+    
+    # Check if the user is logged in
+    if "email" in session:
+    
+        form = PasswordForm()
+        
+        if form.validate_on_submit():
+            
+            # Create a query to get user information
+            user = mongo.db.user_accounts.find_one( { "email": session["email"] })
+
+            current_user_password_db = user["password"]
+            
+            if not bcrypt.check_password_hash(current_user_password_db, form.current_password.data):
+                
+                flash(f"Your current password is incorrect!", "white-text red")
+                
+            if bcrypt.check_password_hash(current_user_password_db, form.new_password.data):
+                
+                flash(f"Your new password is not different from your current password.", "white-text red")
+                 
+            if (form.new_password.data == form.confirm_new_password.data) and bcrypt.check_password_hash(current_user_password_db, form.current_password.data):
+            
+                # Encrypt password to send it to MongoDB for storage
+                hashed_password = bcrypt.generate_password_hash(form.new_password.data).decode('utf-8')
+                
+                # Update new password into MongoDB
+                mongo.db.user_accounts.update({ "email": session["email"]},
+                                              { "$set":
+                                                  { "password": hashed_password         }})
+                
+                flash(f"Thanks your password has been updated!", "white-text green")
+                return redirect(url_for('account_details'))
+                
+            else:
+                flash(f"You have to confirm your password. Please make sure the two fields are identical.", "white-text red")
+        
+        return render_template("edit_password.html",
+                                Page_name = "Edit Password",
+                                Welcome_image = "../static/img/sign/bg.jpg",
+                                form=form)
+                            
+    flash(f"You are required to login to access this page", "white-text red")
+    return redirect(url_for('login'))
+
 
 @app.route("/cookbook")
 def cookbook():
