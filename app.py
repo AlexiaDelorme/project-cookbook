@@ -139,8 +139,10 @@ def login():
     
         #Log the query
         logging.info('User found {}'.format(user))
+        
+        if user:
             
-        user_password = user["password"]
+            user_password = user["password"]
             
         if user and bcrypt.check_password_hash(user_password, form.password.data):
                 
