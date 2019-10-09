@@ -371,7 +371,8 @@ def cookbook():
                             Page_name = "Cookbook",
                             Page_title = "My Cookbook", 
                             Welcome_image = "../static/img/cookbook/bg.jpg",
-                            recipes = recipes_list_information )
+                            recipes = recipes_list_information,
+                            recipes_number = recipes_number)
     
     flash(f"You are required to login to access this page", "white-text red")
     return redirect(url_for('login'))
