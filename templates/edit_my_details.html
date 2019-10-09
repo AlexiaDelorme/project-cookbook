@@ -7,26 +7,26 @@
 
     <div class="row">
         
-        <form>
+        <form action="{{ url_for('update_my_details', account_id=account._id) }}" method="POST" class="col s12">
             
             <div class="row">
                 <div class="input-field col s12">
-                    <input value="{{ account.first_name.capitalize() }}" id="first_name2" type="text" class="validate">
-                    <label class="active" for="first_name2">First Name</label>
+                    <input value="{{ account.first_name.capitalize() }}" id="first_name" name="first_name" type="text" class="validate">
+                    <label class="active" for="first_name">First Name</label>
                 </div>
             </div>
             
             <div class="row">
                 <div class="input-field col s12">
-                    <input value="{{ account.last_name.capitalize() }}" id="first_name2" type="text" class="validate">
-                    <label class="active" for="first_name2">Last Name</label>
+                    <input value="{{ account.last_name.capitalize() }}" id="last_name" name="last_name" type="text" class="validate">
+                    <label class="active" for="last_name">Last Name</label>
                 </div>
             </div>
             
             <div class="row">
                 <div class="input-field col s12">
-                    <input value="{{ account.email }}" id="first_name2" type="email" class="validate">
-                    <label class="active" for="first_name2">Email </label>
+                    <input value="{{ account.email }}" id="email" name= "email" type="email" class="validate">
+                    <label class="active" for="email">Email </label>
                 </div>
             </div>
     

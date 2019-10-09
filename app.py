@@ -241,7 +241,7 @@ def edit_password():
     return redirect(url_for('login'))
 
 
-@app.route("/edit_my_details", methods=["POST", "GET"])
+@app.route("/edit_my_details")
 def edit_my_details():
       
     # Check if the user is logged in
@@ -249,12 +249,6 @@ def edit_my_details():
     
         # Create a query to get user information
         user = mongo.db.user_accounts.find_one( { "email": session["email"] })
-        
-        # if form.validate_on_submit():
-        """ Your
-            Code
-            Here
-        """
         
         return render_template("edit_my_details.html",
                                 Page_name = "Edit Details",
@@ -265,6 +259,36 @@ def edit_my_details():
     return redirect(url_for('login'))
 
 
+@app.route("/update_my_details/<account_id>", methods=["POST"])
+def update_my_details(account_id):
+    
+    # Create a query to check if a user already registered with this email:
+    user = mongo.db.user_accounts.find_one( { "email": request.form.get("email") })
+        
+    # Check if email provided is not already linked to an existing account
+    if user:
+        flash(f"An account already exists for {request.form.get('email')}", "white-text red")
+        return redirect(url_for("edit_my_details"))
+    
+    else:
+        
+        # Update new details into MongoDB
+        mongo.db.user_accounts.update({"_id": ObjectId(account_id)},
+                                      {"$set":
+                                            {"first_name": request.form.get("first_name"),
+                                             "last_name": request.form.get("last_name"),
+                                              "email": request.form.get("email")} 
+                                      })
+        
+        # Update new user details for session variable                             
+        session["email"] = request.form.get("email")
+        session["first_name"] = request.form.get("first_name")
+        session["last_name"] = request.form.get("last_name")
+        flash("Your account details have been updated successfully!", "white-text green darken-1")
+        
+        return redirect(url_for("account_details"))
+
+        
 @app.route("/my_recipes")
 def my_recipes():
     
