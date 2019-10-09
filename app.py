@@ -241,6 +241,30 @@ def edit_password():
     return redirect(url_for('login'))
 
 
+@app.route("/edit_my_details", methods=["POST", "GET"])
+def edit_my_details():
+      
+    # Check if the user is logged in
+    if "email" in session:
+    
+        # Create a query to get user information
+        user = mongo.db.user_accounts.find_one( { "email": session["email"] })
+        
+        # if form.validate_on_submit():
+        """ Your
+            Code
+            Here
+        """
+        
+        return render_template("edit_my_details.html",
+                                Page_name = "Edit Details",
+                                Welcome_image = "../static/img/sign/bg.jpg",
+                                account = user)
+                            
+    flash(f"You are required to login to access this page", "white-text red")
+    return redirect(url_for('login'))
+
+
 @app.route("/my_recipes")
 def my_recipes():
     
