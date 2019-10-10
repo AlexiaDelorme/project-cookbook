@@ -385,6 +385,10 @@ def add_recipe():
                             Page_title = "Add Recipe", 
                             Welcome_image = "TBD")
 
+@app.route("/insert_recipe", methods=["POST"])
+def insert_recipe():
+    # Code to be executed
+    return redirect(url_for("my_recipes"))
 
 @app.route("/logout", methods=["POST", "GET"])
 def logout():
