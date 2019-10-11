@@ -8,7 +8,7 @@
         {% if (category.category_name=="geography" or category.category_name=="diet" ) %}
         
             {% for item in category.list %}
-               <a href=""> <p>{{ item.category_name.capitalize() }}</p> </a>
+               <a href="{{ url_for('recipes_subcategories', category_name = category.category_name, subcategory_name=item.category_name)}}"> <p>{{ item.category_name.capitalize() }}</p> </a>
             {% endfor %}
         
         {% else %}
@@ -16,7 +16,7 @@
             {% for item in category.list %}
                 <div class="col s6 category-box">
                     <h5 class="center">{{ item.category_name.capitalize() }}</h5>
-                    <a href=""><img class="card-img" src="../{{ item.image_path }}" alt="{{ item.category_name }}"></img></a>
+                    <a href="{{ url_for('recipes_subcategories', category_name = category.category_name, subcategory_name=item.category_name)}}"><img class="card-img" src="../{{ item.image_path }}" alt="{{ item.category_name }}"></img></a>
                 </div>
             {% endfor %}
             

@@ -63,6 +63,22 @@ def recipes_categories(category_name):
                             carousel = image_folder("carousel"))
 
 
+@app.route("/recipes/<category_name>/<subcategory_name>")
+def recipes_subcategories(category_name, subcategory_name):
+    
+    recipes_subcategory_results = mongo.db.recipes_information.find({ category_name: { "$all": [subcategory_name] } })
+    
+    #Log the_category
+    logging.info('The variable has the following result: {}'.format(recipes_subcategory_results))
+    
+    recipes_count=recipes_subcategory_results.count()
+    
+    return render_template("recipes_subcategories.html",
+                            Page_name = subcategory_name.capitalize(),
+                            Page_title = f"{recipes_count} {subcategory_name.capitalize()} Recipes",
+                            recipes = recipes_subcategory_results)
+
+
 @app.route("/about")
 def about():
     return render_template("about.html", 
