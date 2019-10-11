@@ -380,10 +380,15 @@ def cookbook():
 
 @app.route("/add_recipe")
 def add_recipe():
+    
+    # Create variables to add recipes
+    meal_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'meal' })
+    diet_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'diet' })
+    
     return render_template("add_recipe.html",
                             Page_name = "Add Recipe",
-                            Page_title = "Add Recipe", 
-                            Welcome_image = "TBD")
+                            meal_categories = meal_categories,
+                            diet_categories = diet_categories)
 
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
