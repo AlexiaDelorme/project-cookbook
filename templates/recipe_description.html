@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-<div class="container container-section">
+<div class="row container-section">
 
     <div class="row center" id="recipe-indicator">
         
@@ -20,7 +20,7 @@
     </div>
 
     <div class="row center">
-        <div class="col s8 offset-s2"><img class="card-img" src="../{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img>
+        <div class="col s6 offset-s3"><img class="card-img" src="../{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img>
         </div>
     </div>
 
@@ -34,8 +34,8 @@
 
     <div class="row center">
         
-        <div class="col s6">
-            <h5 class="center">Ingredients list</h5>
+        <div class="col s4 offset-s3 left-align">
+            <h5>Ingredients list</h5>
             <ul class = "list-styling">
                 {% for ingredient in recipe.ingredients %}
                     <li>{{ ingredient.capitalize() }}</li>
@@ -43,8 +43,8 @@
             </ul>
         </div>
         
-        <div class="col s6">
-            <h5 class="center">Cooking tools</h5>
+        <div class="col s4 left-align">
+            <h5>Cooking tools</h5>
             <ul class = "list-styling">
                 {% for tool in recipe.tools %}
                     <li>{{ tool.capitalize() }}</li>
@@ -56,14 +56,14 @@
 
     <div class="row center">
         
-        <h5 class="center">Preparation steps</h5>
-    
-        <div class="row">
-                <ol>
-                    {% for instruction in recipe.instructions %}
-                        <li>{{ instruction.capitalize() }}</li>
-                    {% endfor %}
-                </ol>
+        <h5>Preparation steps</h5>
+        
+        <div class="col s8 offset-s2 left-align">
+            <ol>
+                {% for instruction in recipe.instructions %}
+                    <li>{{ instruction.capitalize() }}</li>
+                {% endfor %}
+            </ol>
         </div>
         
     </div>
