@@ -400,11 +400,16 @@ def add_recipe():
     # Create variables to add recipes
     meal_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'meal' })
     diet_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'diet' })
+    occasion_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'occasion' })
+    geography_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'geography' })
     
     return render_template("add_recipe.html",
                             Page_name = "Add Recipe",
                             meal_categories = meal_categories,
-                            diet_categories = diet_categories)
+                            diet_categories = diet_categories,
+                            occasion_categories = occasion_categories,
+                            geography_categories = geography_categories)
+
 
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
