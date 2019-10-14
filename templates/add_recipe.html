@@ -58,28 +58,26 @@
             
             <div class="row">
 
-                <div class="input-field col s6">
+                <div class="col s6">
                     <p>Meal Category</p>
                         {% for cat in meal_categories.list %}
                         <div class="col s6 left-align">
-                            <input type="checkbox" id="{{cat.category_name}}" name="meal" value="cat.category_name">
+                            <input type="checkbox" id="{{cat.category_name}}" name="meal" value="{{cat.category_name}}">
                             <label for="{{cat.category_name}}">{{cat.category_name.capitalize()}}</label>
                         </div>
                     {% endfor %}
                  </div> 
-
-                <div class="input-field col s6">
-                    <p> Diets</p>
-                    <div class="row">
-                        {% for cat in diet_categories.list %}
-                        <div class="col s6 left-align">
-                            <input type="checkbox" id="{{cat.category_name}}" name="{{cat.category_name}}" value="">
-                            <label for="{{cat.category_name}}">{{cat.category_name.capitalize()}}</label>
-                        </div>
-                    {% endfor %}
+                 
+                <div class="col s6">
+                    <p>Diets</p>
+                    {% for cat in diet_categories.list %}
+                    <div class="col s6 left-align">
+                        <input type="checkbox" id="{{cat.category_name}}" name="diets" value="{{cat.category_name}}">
+                        <label for="{{cat.category_name}}">{{cat.category_name.capitalize()}}</label>
                     </div>
+                    {% endfor %}
                 </div>
-                
+
             </div>
             
             <div class="row">
@@ -104,6 +102,13 @@
                     <label>Geography</label>
                 </div>
 
+            </div>
+            
+            <div class="row">
+                <div class="input-field col s12">
+                    <legend for="">Preparation steps</legend>
+                    <textarea id="" name="" autocomplete="off" minlength="5" maxlength="500" class="validate materialize-textarea" placeholder="List your preparation steps" required></textarea>
+                </div>
             </div>
             
             <div class="row">
