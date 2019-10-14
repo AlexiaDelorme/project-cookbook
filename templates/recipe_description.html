@@ -8,7 +8,7 @@
         <div class="col s2 offset-s2">Serves {{ recipe.serving }}</div>
         
         <div class="col s2">
-            {% for diet in recipe.diets %}
+            {% for diet in recipe.diet %}
                 {{ diet.capitalize() }} 
             {% endfor %}
         </div>
