@@ -438,7 +438,7 @@ def insert_recipe():
     })
     
     flash(f"Thanks, your recipe was created!", "white-text green")
-    return redirect(url_for("account"))
+    return redirect(url_for("my_recipes"))
 
 @app.route("/logout", methods=["POST", "GET"])
 def logout():
