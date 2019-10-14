@@ -69,10 +69,10 @@
                  </div> 
                  
                 <div class="col s6">
-                    <p>Diets</p>
+                    <p>Diet</p>
                     {% for cat in diet_categories.list %}
                     <div class="col s6 left-align">
-                        <input type="checkbox" id="{{cat.category_name}}" name="diets" value="{{cat.category_name}}">
+                        <input type="checkbox" id="{{cat.category_name}}" name="diet" value="{{cat.category_name}}">
                         <label for="{{cat.category_name}}">{{cat.category_name.capitalize()}}</label>
                     </div>
                     {% endfor %}
@@ -100,6 +100,30 @@
                         {% endfor %}
                     </select>
                     <label>Geography</label>
+                </div>
+
+            </div>
+            
+            <div class="row">
+
+                <div class="input-field col s6">
+                    <select id="allergen" name="allergen" multiple>
+                        <option value="" disabled selected>Choose Allergen(s)</option>
+                        {% for cat in allergen_categories.list %}
+                        <option value="{{cat}}">{{cat.capitalize()}}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Allergens</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <select id="tool" name="tool" multiple>
+                        <option value="" disabled selected>Choose tool(s)</option>
+                        {% for cat in tool_categories.list %}
+                        <option value="{{cat}}">{{cat.capitalize()}}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Kitchen tools</label>
                 </div>
 
             </div>

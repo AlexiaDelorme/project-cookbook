@@ -403,13 +403,17 @@ def add_recipe():
     diet_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'diet' })
     occasion_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'occasion' })
     geography_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'geography' })
+    allergen_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'allergen' })
+    tool_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'tool' })
     
     return render_template("add_recipe.html",
                             Page_name = "Add Recipe",
                             meal_categories = meal_categories,
                             diet_categories = diet_categories,
                             occasion_categories = occasion_categories,
-                            geography_categories = geography_categories)
+                            geography_categories = geography_categories,
+                            allergen_categories = allergen_categories,
+                            tool_categories = tool_categories)
 
 
 @app.route("/insert_recipe", methods=["POST"])
@@ -427,11 +431,12 @@ def insert_recipe():
         "difficulty": request.form.get("difficulty"),
         "occasion": request.form.getlist("occasion"),
         "geography": request.form.getlist("geography"),
-        "diets": request.form.getlist("diets"),
+        "diet": request.form.getlist("diet"),
         "meal": request.form.getlist("meal"),
         "ingredients":[ ],
         "instructions":[ ],
-        "tools":[ ],
+        "tool": request.form.getlist("tool"),
+        "allergen": request.form.getlist("allergen"),
         "recipe_author": author,
         "recipe_date":{ },
         "image_path":"",
