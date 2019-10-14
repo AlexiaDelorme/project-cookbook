@@ -57,28 +57,26 @@
             </div>
             
             <div class="row">
-                <div>
 
                 <div class="input-field col s6">
                     <p>Meal Category</p>
                     <div class="row">
                         {% for cat in meal_categories.list %}
                         <div class="col s6 left-align">
-                            <input type="checkbox" id="meal" name="meal" value="{{cat.category_name}}">
-                            <label for="meal">{{cat.category_name.capitalize()}}</label>
+                            <input type="checkbox" id="{{cat.category_name}}" name="{{cat.category_name}}" value="">
+                            <label for="{{cat.category_name}}">{{cat.category_name.capitalize()}}</label>
                         </div>
                     {% endfor %}
                     </div>
                  </div> 
-
 
                 <div class="input-field col s6">
                     <p> Diets</p>
                     <div class="row">
                         {% for cat in diet_categories.list %}
                         <div class="col s6 left-align">
-                            <input type="checkbox" id="diets" name="diets" value="{{cat.category_name}}">
-                            <label for="diets">{{cat.category_name.capitalize()}}</label>
+                            <input type="checkbox" id="{{cat.category_name}}" name="{{cat.category_name}}" value=""multiple>
+                            <label for="{{cat.category_name}}">{{cat.category_name.capitalize()}}</label>
                         </div>
                     {% endfor %}
                     </div>
@@ -94,7 +92,7 @@
                         {% for cat in occasion_categories.list %}
                         <option value="{{cat.category_name}}">{{cat.category_name.capitalize()}}</option>
                         {% endfor %}
-                        </select>
+                    </select>
                     <label>Suitable for celebration</label>
                 </div>
 
