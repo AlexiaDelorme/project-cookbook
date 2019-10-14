@@ -60,14 +60,12 @@
 
                 <div class="input-field col s6">
                     <p>Meal Category</p>
-                    <div class="row">
                         {% for cat in meal_categories.list %}
                         <div class="col s6 left-align">
-                            <input type="checkbox" id="{{cat.category_name}}" name="{{cat.category_name}}" value="">
+                            <input type="checkbox" id="{{cat.category_name}}" name="meal" value="cat.category_name">
                             <label for="{{cat.category_name}}">{{cat.category_name.capitalize()}}</label>
                         </div>
                     {% endfor %}
-                    </div>
                  </div> 
 
                 <div class="input-field col s6">
@@ -75,7 +73,7 @@
                     <div class="row">
                         {% for cat in diet_categories.list %}
                         <div class="col s6 left-align">
-                            <input type="checkbox" id="{{cat.category_name}}" name="{{cat.category_name}}" value=""multiple>
+                            <input type="checkbox" id="{{cat.category_name}}" name="{{cat.category_name}}" value="">
                             <label for="{{cat.category_name}}">{{cat.category_name.capitalize()}}</label>
                         </div>
                     {% endfor %}
