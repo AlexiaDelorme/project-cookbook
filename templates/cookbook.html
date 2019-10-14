@@ -12,7 +12,7 @@
     {% if recipes_number == 0  %}
     
         <div class="row">
-            <div class="col s12 center">You have no recipes saved yet!</div>
+            <div class="col s12 center">There are no recipes saved in your cookbook yet!</div>
         </div>
         
     {% elif recipes_number == 1  %}
@@ -22,7 +22,7 @@
             <a href="{{url_for('recipe_description', recipe_id=recipes._id)}}"><img class="card-img" src="{{recipes.image_path}}" alt="{{recipes.recipe_name}}"></img></a>
         </div>
 
-    {% elif (recipes_number % 3 == 0) and (recipes_number % 2 == 0) or (recipes_number % 3 == 0)  %}
+    {% elif ( (recipes_number % 3 == 0) and (recipes_number % 2 == 0) ) or (recipes_number % 3 == 0)  %}
     
         {% for recipe in recipes %}
     
@@ -44,17 +44,6 @@
                 <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
             </div>
         
-        </div>
-
-        {% endfor %}
-    
-    {% elif recipes_number % 3 == 0  %}
-    
-        {% for recipe in recipes %}
-    
-        <div class="col s4 category-box">
-            <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
-            <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
         </div>
 
         {% endfor %}

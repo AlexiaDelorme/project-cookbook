@@ -341,7 +341,8 @@ def my_recipes():
         return render_template("my_recipes.html",
                             Page_name = "My recipes",
                             Welcome_image = "TBD",
-                            recipes = recipes_list_information )
+                            recipes = recipes_list_information,
+                            recipes_number = recipes_number)
     
     flash(f"You are required to login to access this page", "white-text red")
     return redirect(url_for('login'))
@@ -453,11 +454,13 @@ def logout():
 
 @app.route("/results")
 def results():
-    recipes_count=mongo.db.recipes_information.count()
+    recipes = mongo.db.recipes_information.find()
+    recipes_number=recipes.count()
     return render_template("results.html",
-                            recipes=mongo.db.recipes_information.find(),
                             Page_name = "All Recipes",
-                            Page_title = f"{recipes_count} Recipes Found")
+                            Page_title = f"{recipes_number} Recipes Found",
+                            recipes=recipes,
+                            recipes_number = recipes_number)
 
 
 @app.route("/results/<recipe_id>")
