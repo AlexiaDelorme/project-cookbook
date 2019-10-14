@@ -59,46 +59,28 @@
 
         {% endfor %}
     
-    {% elif recipes_number % 5 == 0  %}
-        
-        {% for recipe in recipes %}
-        
-            {% if loop.index <!--code to be determined f(x) = 5x + 4 or f(x) = 5x + 5--> %}
-            
-                <div class="col s4 offset-s2 category-box">
-                    <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
-                    <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
-                </div>
-            
-            {% else %}
-    
-                <div class="col s4 category-box">
-                    <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
-                    <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
-                </div>  
-            
-            {% endif %}
-        
-        {% endfor %} 
-    
     {% else %}
-
+        
+        <div class="container">
+            
         {% for recipe in recipes %}
             
-            {% if loop.index <!--code to be determined --> %}
-            
-             <!--code to be determined-->
-            
-            {% else %}
+            {% if loop.index == recipes_number %}
+            <div class="col s6 offset-s3 category-box">
+                <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
+                <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
+            </div>          
     
-                <div class="col s4 category-box">
-                    <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
-                    <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
-                </div>
-            
+            {% else %}
+            <div class="col s6 category-box">
+                <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
+                <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
+            </div>
             {% endif %}
 
-        {% endfor %}      
+        {% endfor %}
+        
+        </div>
         
     {% endif %}
 
