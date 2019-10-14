@@ -39,7 +39,7 @@
                         <option value="medium" id="difficulty" name="difficulty">Medium</option>
                         <option value="difficult" id="difficulty" name="difficulty">Difficult</option>
                     </select>
-                    <label>Recipe Difficulty</label>
+                    <label for="difficulty">Recipe Difficulty</label>
                 </div> 
                 
                 <div class="input-field col s3">
@@ -75,8 +75,8 @@
                     <div class="row">
                         {% for cat in diet_categories.list %}
                         <div class="col s6 left-align">
-                            <input type="checkbox" id="diet" name="diet" value="">
-                            <label for="diet">{{cat.category_name.capitalize()}}</label>
+                            <input type="checkbox" id="diets" name="diets" value="">
+                            <label for="diets">{{cat.category_name.capitalize()}}</label>
                         </div>
                     {% endfor %}
                     </div>

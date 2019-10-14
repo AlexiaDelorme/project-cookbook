@@ -133,7 +133,7 @@ def insert_user_account():
                 "my_recipes": [],
                 "favorite_recipes": []
             })
-            flash(f"{form.first_name.data.capitalize()}, your account has been created, you can now log in!", "white-text green darken-1")
+            flash(f"{form.first_name.data.capitalize()}, your account has been created, you can now log in!", "white-text green")
             return redirect(url_for("login"))
         
     return redirect(url_for("signup"))
@@ -413,8 +413,32 @@ def add_recipe():
 
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
-    # Code to be executed
-    return redirect(url_for("my_recipes"))
+    # get logged user information
+    author = mongo.db.user_accounts.find_one({ "email": session["email"] })["_id"]
+    logging.info('Author ID {}'.format(author))
+    
+    mongo.db.recipes_information.insert_one({
+        "recipe_name": request.form.get("recipe_name"),
+        "recipe_description": request.form.get("recipe_description"),
+        "rates_list":[ ],
+        "serving":request.form.get("serving"),
+        "prep_time":"tbd",
+        "difficulty":request.form.get("difficulty"),
+        "occasion":request.form.getlist("occasion"),
+        "geography":[request.form.getlist("geography")],
+        "diets":request.form.getlist("diets"),
+        "meal":request.form.getlist("meal"),
+        "ingredients":[ ],
+        "instructions":[ ],
+        "tools":[ ],
+        "recipe_author": author,
+        "recipe_date":{ },
+        "image_path":"",
+        "comments_list":[ ]
+    })
+    
+    flash(f"Thanks, your recipe was created!", "white-text green")
+    return redirect(url_for("account"))
 
 @app.route("/logout", methods=["POST", "GET"])
 def logout():
