@@ -370,7 +370,6 @@ def my_recipes():
 # ----- 3. ADD / NEW RECIPE ----- #  
 @app.route("/add_recipe")
 def add_recipe():
-    
     # Create variables to add recipes
     meal_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'meal' })
     diet_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'diet' })
@@ -391,16 +390,17 @@ def add_recipe():
 # ----- 3.1. INSERT / NEW RECIPE ----- # 
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
-    # get logged user information
+    # Get logged user information
     author = mongo.db.user_accounts.find_one({ "email": session["email"] })["_id"]
-    logging.info('Author ID {}'.format(author))
-    
+    # Insert recipes information in the db
     mongo.db.recipes_information.insert_one({
-        "recipe_name": request.form.get("recipe_name"),
-        "recipe_description": request.form.get("recipe_description"),
+        "recipe_name": request.form.get("recipe_name").lower(),
+        "recipe_description": request.form.get("recipe_description").lower(),
         "rates_list":[ ],
-        "serving":request.form.get("serving"),
-        "prep_time":"tbd",
+        "serving": request.form.get("serving"),
+        "prep_time":{   "hours": request.form.get("hours"),
+                        "minutes": request.form.get("minutes")
+                    },
         "difficulty": request.form.get("difficulty"),
         "occasion": request.form.getlist("occasion"),
         "geography": request.form.getlist("geography"),
