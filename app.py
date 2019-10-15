@@ -4,6 +4,7 @@ from flask import Flask, render_template, redirect, request, url_for, flash, ses
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
 from bson.objectid import ObjectId
+from datetime import datetime
 from helpers import *
 from forms import *
 
@@ -231,7 +232,7 @@ def account_details():
     flash(f"You are required to login to access this page", "white-text red")
     return redirect(url_for('login'))
 
-# ----- 1.1. EDIT / USER ACCOUNT DETAILS ----- #
+# ----- 1.1. EDIT / ACCOUNT DETAILS ----- #
 @app.route("/edit_my_details")
 def edit_my_details():
     """
@@ -249,7 +250,7 @@ def edit_my_details():
     flash(f"You are required to login to access this page", "white-text red")
     return redirect(url_for('login'))
 
-# ----- 1.1.1 UPDATE / NEW ACCOUNT DETAILS ----- #
+# ----- 1.1.1 UPDATE / ACCOUNT DETAILS ----- #
 @app.route("/update_my_details/<account_id>", methods=["POST"])
 def update_my_details(account_id):
     """
@@ -390,10 +391,12 @@ def add_recipe():
 # ----- 3.1. INSERT / NEW RECIPE ----- # 
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
-    # Get logged user information
-    author = mongo.db.user_accounts.find_one({ "email": session["email"] })["_id"]
-    # Insert recipes information in the db
-    mongo.db.recipes_information.insert_one({
+    # Get user's ID to link recipe to the logged user
+    logged_user = mongo.db.user_accounts.find_one({ "email": session["email"] })["_id"]
+    # Get today's date for recipe
+    today = datetime.now().strftime("%Y-%m-%d")
+    # Create a new recipe object with form's input
+    new_recipe = {
         "recipe_name": request.form.get("recipe_name").lower(),
         "recipe_description": request.form.get("recipe_description").lower(),
         "rates_list":[ ],
@@ -410,12 +413,19 @@ def insert_recipe():
         "instructions":[ ],
         "tool": request.form.getlist("tool"),
         "allergen": request.form.getlist("allergen"),
-        "recipe_author": author,
-        "recipe_date":{ },
+        "recipe_author": logged_user,
+        "recipe_date": today,
         "image_path":"",
         "comments_list":[ ]
-    })
-    
+    }
+    # Insert recipe information into the db
+    mongo.db.recipes_information.insert_one(new_recipe)
+     # Get the ID of the newly created recipe
+    new_recipe_ID = new_recipe["_id"]
+    # Add this recipe to the user's collection "my_recipes"
+    mongo.db.user_accounts.update_one(
+        {"_id": ObjectId(logged_user)},
+            {"$push": {"my_recipes": new_recipe_ID }})
     flash(f"Thanks, your recipe was created!", "white-text green")
     return redirect(url_for("my_recipes"))
 
