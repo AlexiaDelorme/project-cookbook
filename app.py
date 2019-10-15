@@ -7,20 +7,16 @@ from bson.objectid import ObjectId
 from helpers import *
 from forms import *
 
-
 # Create a log file
 logging.basicConfig(filename='test.log', level=logging.INFO,
                     format='%(levelname)s:%(message)s')
 
-
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
-
 
 app.config["MONGO_DBNAME"] = "cookbook"
 app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost")
 app.config["SECRET_KEY"] = "366eff16939348b3153b7dff1b2fc2e1æ"
-
 
 mongo = PyMongo(app)
 
@@ -57,7 +53,7 @@ def recipes():
                             categories = mongo.db.recipes_categories.find(), 
                             carousel = image_folder("carousel"))
 
-# ----- 3.1 RECIPES BY CATEGORY ----- #
+# ----- 3.1. RECIPES BY CATEGORY ----- #
 @app.route("/recipes/<category_name>")
 def recipes_categories(category_name):
     """
@@ -74,7 +70,7 @@ def recipes_categories(category_name):
                             category=the_category, 
                             carousel = image_folder("carousel"))
 
-# ----- 3.2 RECIPES BY SUBCATEGORY ----- #
+# ----- 3.2. RECIPES BY SUBCATEGORY ----- #
 @app.route("/recipes/<category_name>/<subcategory_name>")
 def recipes_subcategories(category_name, subcategory_name):
     """
@@ -113,7 +109,7 @@ def signup():
                             Welcome_image = "../static/img/sign/bg.jpg",
                             form=form)
 
-# ----- 5.1 POST / SIGN UP FORM ----- #
+# ----- 5.1. POST / SIGN UP FORM ----- #
 @app.route("/insert_user_account", methods=["GET", "POST"])
 def insert_user_account():
     """
@@ -152,6 +148,10 @@ def insert_user_account():
 # ----- 6. LOG IN ----- #
 @app.route("/login", methods=["POST", "GET"])
 def login():
+    """
+    Display a log in form to enable user to log to his/her account.
+    User is required to log in with email and password. 
+    """ 
     
     # Check if a user is not already logged in to the session
     if "email" in session:
@@ -169,9 +169,9 @@ def login():
             user_password = user["password"]
         if user and bcrypt.check_password_hash(user_password, form.password.data):
             # Add user to the session
-            session["email"] = user["email"]
-            session["first_name"] = user["first_name"]
-            session["last_name"] = user["last_name"]
+            session["email"] = user["email"].lower()
+            session["first_name"] = user["first_name"].lower()
+            session["last_name"] = user["last_name"].lower()
             flash("Login successful!", "white-text green darken-1")
             return redirect(url_for("account"))
         else:
@@ -189,9 +189,19 @@ def login():
 # ----- ACCOUNT / USER DASHBOARD ----- #
 @app.route("/account")
 def account():
-    return render_template("account.html",
-                            Page_name = "My Account",
-                            Page_title = f"Hi {session['first_name'].capitalize()}, welcome!")
+    """
+    Display a personalized user dashboard with different menu options. 
+    User can manage his account details, manage his own recipes, create new recipe,
+    access his cookbook (with his/her recipes stored as favorites) and finally search
+    for more recipes. 
+    """
+    # Check if the user is logged before rendering the template
+    if "email" in session:    
+        return render_template("account.html",
+                                Page_name = "My Account",
+                                Page_title = f"Hi {session['first_name'].capitalize()}, welcome!")
+    flash(f"You are required to login to access this page", "white-text red")
+    return redirect(url_for('login'))    
 
 # ----- LOG OUT ----- #
 @app.route("/logout", methods=["POST", "GET"])
@@ -206,73 +216,67 @@ def logout():
 # ----- 1. VIEW / USER ACCOUNT DETAILS ----- #
 @app.route("/account_details")
 def account_details():
-    
-    # Check if the user is logged in
+    """
+    Display a recap of the user account details (First Name, Last Name and Email).
+    The user has the option to click a button to edit his/her details and/or password. 
+    """
+    # Check if the user is logged before rendering the template
     if "email" in session:
-        
         # Create a query to get user information
         user = mongo.db.user_accounts.find_one( { "email": session["email"] })
-    
-        # Log the user
-        logging.info('User found {}'.format(user))
-    
         return render_template("account_details.html",
-                            Page_name = "Manage Account",
-                            Welcome_image = "../static/img/sign/bg.jpg",
-                            account = user)
-    
+                                Page_name = "Manage Account",
+                                Welcome_image = "../static/img/sign/bg.jpg",
+                                account = user)
     flash(f"You are required to login to access this page", "white-text red")
     return redirect(url_for('login'))
 
-# ----- 1.1 VIEW / EDIT DETAILS ----- #
+# ----- 1.1. EDIT / USER ACCOUNT DETAILS ----- #
 @app.route("/edit_my_details")
 def edit_my_details():
-      
-    # Check if the user is logged in
+    """
+    Display an editable form for the user to amend his/her account details.
+    The user can then post a request to update his/her new details by clicking the button form.
+    """    
+    # Check if the user is logged before rendering the template
     if "email" in session:
-    
         # Create a query to get user information
         user = mongo.db.user_accounts.find_one( { "email": session["email"] })
-        
         return render_template("edit_my_details.html",
                                 Page_name = "Edit Details",
                                 Welcome_image = "../static/img/sign/bg.jpg",
                                 account = user)
-                            
     flash(f"You are required to login to access this page", "white-text red")
     return redirect(url_for('login'))
 
-
+# ----- 1.1.1 UPDATE / NEW ACCOUNT DETAILS ----- #
 @app.route("/update_my_details/<account_id>", methods=["POST"])
 def update_my_details(account_id):
-    
-    # Create a query to check if a user already registered with this email:
-    user = mongo.db.user_accounts.find_one( { "email": request.form.get("email") })
-        
-    # Check if email provided is not already linked to an existing account
+    """
+    Once user have submitted the previous form, it gets redirected to this function.
+    The user details will only be updated if the newly provided email is not already linked to an existing account.
+    """      
+     # Check if email provided is not already linked to an existing account
+    user = mongo.db.user_accounts.find_one( { "email": request.form.get("email").lower() })
     if user:
         flash(f"An account already exists for {request.form.get('email')}", "white-text red")
         return redirect(url_for("edit_my_details"))
-    
     else:
-        
-        # Update new details into MongoDB
+        # Update new account details into the db
         mongo.db.user_accounts.update({"_id": ObjectId(account_id)},
                                       {"$set":
-                                            {"first_name": request.form.get("first_name"),
-                                             "last_name": request.form.get("last_name"),
-                                              "email": request.form.get("email")} 
+                                            {"first_name": request.form.get("first_name").lower(),
+                                             "last_name": request.form.get("last_name").lower(),
+                                              "email": request.form.get("email").lower()} 
                                       })
-        
-        # Update new user details for session variable                             
-        session["email"] = request.form.get("email")
-        session["first_name"] = request.form.get("first_name")
-        session["last_name"] = request.form.get("last_name")
+        # Update session variable with new account details                             
+        session["email"] = request.form.get("email").lower()
+        session["first_name"] = request.form.get("first_name").lower()
+        session["last_name"] = request.form.get("last_name").lower()
         flash("Your account details have been updated successfully!", "white-text green darken-1")
-        
         return redirect(url_for("account_details"))
 
-# ----- 1.2 EDIT PASSWORD ----- #
+# ----- 1.2. EDIT/ USER PASSWORD ----- #
 @app.route("/edit_password", methods=["POST", "GET"])
 def edit_password():
     
@@ -384,7 +388,7 @@ def add_recipe():
                             allergen_categories = allergen_categories,
                             tool_categories = tool_categories)
 
-
+# ----- 3.1. INSERT / NEW RECIPE ----- # 
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
     # get logged user information
@@ -462,11 +466,16 @@ def cookbook():
     flash(f"You are required to login to access this page", "white-text red")
     return redirect(url_for('login'))
 
+# ------------------------------------------- #
+#              RECIPES RESULTS                #
+# ------------------------------------------- #
 
-# Route created only as an instance of recipe page
-
+# ----- ALL RECIPES PAGE ----- #
 @app.route("/results")
 def results():
+    """
+    Display all the recipes stored in the db.
+    """
     recipes = mongo.db.recipes_information.find()
     recipes_number=recipes.count()
     return render_template("results.html",
@@ -475,17 +484,15 @@ def results():
                             recipes=recipes,
                             recipes_number = recipes_number)
 
-
-@app.route("/results/<recipe_id>")
+# ----- VIEW / RECIPE DESCRIPTION ----- #
+@app.route("/recipe/<recipe_id>")
 def recipe_description(recipe_id):
-    
+    """
+    Display recipes information after user clicked on the image card from the results page.
+    """
+    # Get recipe object based on id of the recipe clicked by the user
     the_recipe =  mongo.db.recipes_information.find_one({"_id": ObjectId(recipe_id)})
-    
-    #Log the_category
-    logging.info('The variable the_recipe has the following result: {}'.format(the_recipe))
-    
     the_recipe_name = the_recipe["recipe_name"].capitalize()
-
     return render_template("recipe_description.html", 
                             Page_name = the_recipe_name,
                             Page_title = f"{the_recipe_name}", 
