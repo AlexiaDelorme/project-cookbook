@@ -12,6 +12,7 @@ from forms import *
 logging.basicConfig(filename='test.log', level=logging.INFO,
                     format='%(levelname)s:%(message)s')
 
+
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
 
@@ -23,9 +24,15 @@ app.config["SECRET_KEY"] = "366eff16939348b3153b7dff1b2fc2e1æ"
 
 mongo = PyMongo(app)
 
+# ---------------- #
+#      ROUTES      #
+# ---------------- #
 
-# ----- Routes ----- #
+# ------------------------------------------- #
+#           LOG IN | NOT REQUIRED             #
+# ------------------------------------------- #
 
+# ----- 1. HOME ----- #
 @app.route("/")
 @app.route("/home")
 def home():
@@ -34,9 +41,15 @@ def home():
                             Page_title = "The Pâtisserie Journal", 
                             Welcome_image = "../static/img/home/bg.jpg")
 
-  
+# ----- 2. EXPLORE ----- #
+
+# ----- 3. RECIPES ----- #
 @app.route("/recipes")
 def recipes():
+    """
+    Display categories from which the user will be able to filter recipes.
+    Search recipes according a specific category by clicking on this category. 
+    """
     return render_template("recipes.html",
                             Page_name = "Recipes",
                             Page_title = "Discover recipes by...", 
@@ -44,17 +57,16 @@ def recipes():
                             categories = mongo.db.recipes_categories.find(), 
                             carousel = image_folder("carousel"))
 
-
+# ----- 3.1 RECIPES BY CATEGORY ----- #
 @app.route("/recipes/<category_name>")
 def recipes_categories(category_name):
-    
+    """
+    Display sub-categories from the category selected previously in the "recipes.html" page
+    Search recipes according to a specific sub-category by clicking on this sub-category. 
+    """
+    # Store the category clicked by the user in a variable
     the_category =  mongo.db.recipes_categories.find_one({"category_name": category_name})
-    
-    #Log the_category
-    logging.info('The variable the_category has the following result: {}'.format(the_category))
-    
     the_name_category = the_category["category_name"].capitalize()
-
     return render_template("recipes_categories.html", 
                             Page_name = the_name_category,
                             Page_title = "Discover recipes for...", 
@@ -62,23 +74,21 @@ def recipes_categories(category_name):
                             category=the_category, 
                             carousel = image_folder("carousel"))
 
-
+# ----- 3.2 RECIPES BY SUBCATEGORY ----- #
 @app.route("/recipes/<category_name>/<subcategory_name>")
 def recipes_subcategories(category_name, subcategory_name):
-    
+    """
+    Display recipes results according to category and sub-category selected by the user. 
+    """
+    # Get recipes filtered by the sub-category
     recipes_subcategory_results = mongo.db.recipes_information.find({ category_name: { "$all": [subcategory_name] } })
-    
-    #Log the_category
-    logging.info('The variable has the following result: {}'.format(recipes_subcategory_results))
-    
     recipes_count=recipes_subcategory_results.count()
-    
     return render_template("recipes_subcategories.html",
                             Page_name = subcategory_name.capitalize(),
                             Page_title = f"{recipes_count} {subcategory_name.capitalize()} Recipes",
                             recipes = recipes_subcategory_results)
 
-
+# ----- 4. ABOUT ----- #
 @app.route("/about")
 def about():
     return render_template("about.html", 
@@ -86,108 +96,114 @@ def about():
                             Page_title = "About Us", 
                             Welcome_image = "../static/img/about/bg.jpg")
 
-
+# ----- 5. SIGN UP ----- #
 @app.route("/signup")
 def signup():
-    
+    """
+    Display a sign up form to create a new user account.
+    User can add details and submit the form.
+    """  
+    # Check if a user is not already logged in to the session
     if "email" in session:
         flash(f"You are logged in as {session['email']}", "white-text green")
         return redirect(url_for('home'))
-        
     form = SignupForm()
-    
     return render_template("signup.html",
                             Page_name = "Sign up",
                             Welcome_image = "../static/img/sign/bg.jpg",
                             form=form)
 
-
+# ----- 5.1 POST / SIGN UP FORM ----- #
 @app.route("/insert_user_account", methods=["GET", "POST"])
 def insert_user_account():
+    """
+    Once user have submitted the form, it gets redirected to this function.
+    The user details will only be posted to the db as a new account if the email provided is not already linked to an existing account.
+    """
     
     if request.method == "POST":
-  
         form = SignupForm()
+        # Create a query to the db to filter user accounts with email provided 
         user_accounts = mongo.db.user_accounts
-        # Create a query to check if a user already registered with this email:
-        user = user_accounts.find_one( { "email": form.email.data })
-        
-        #Log the query
-        logging.info('Email found in MongoDB: {} match the email provided by the user in the form'.format(user))
-        
+        user = user_accounts.find_one( { "email": form.email.data.lower() })
+        logging.info('User account found in MongoDB: {} match the email provided by the user in the form'.format(user))
         # Check if email provided is not already linked to an existing account
         if user:
             flash(f"An account already exists for {form.email.data}.", "white-text red")
             return redirect(url_for("signup"))
-        
-        # If no existing account was found we can add the user to the db
+        # If no existing account was found user account can be created
         else:
-            # Encrypt password to send it to MongoDB for storage
+            # Encrypt password
             hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-            # Insert user information account to MongoDB
+            # Insert new user account details to the db
             user_accounts.insert_one({
-                "first_name": form.first_name.data,
-                "last_name": form.last_name.data,
-                "email": form.email.data,
+                "first_name": form.first_name.data.lower(),
+                "last_name": form.last_name.data.lower(),
+                "email": form.email.data.lower(),
                 "password": hashed_password,
                 "my_recipes": [],
                 "favorite_recipes": []
             })
             flash(f"{form.first_name.data.capitalize()}, your account has been created, you can now log in!", "white-text green")
             return redirect(url_for("login"))
-        
+    
     return redirect(url_for("signup"))
 
-
+# ----- 6. LOG IN ----- #
 @app.route("/login", methods=["POST", "GET"])
 def login():
     
+    # Check if a user is not already logged in to the session
     if "email" in session:
         flash(f"You are logged in as {session['email']}", "white-text green")
         return redirect(url_for('home'))
     
     form = LoginForm()
-        
-    if form.validate_on_submit():
-            
-        # Create a query to get the user stored in the user variable
-        user = mongo.db.user_accounts.find_one( { "email": form.email.data })
     
-        #Log the query
+    if form.validate_on_submit():
+        # Create a query to get the user stored in the user variable
+        user = mongo.db.user_accounts.find_one( { "email": form.email.data.lower() })
         logging.info('User found {}'.format(user))
-        
+        # Creat user password var only if user object is not empty
         if user:
-            
             user_password = user["password"]
-            
         if user and bcrypt.check_password_hash(user_password, form.password.data):
-                
-            # Add user to session
+            # Add user to the session
             session["email"] = user["email"]
             session["first_name"] = user["first_name"]
             session["last_name"] = user["last_name"]
             flash("Login successful!", "white-text green darken-1")
             return redirect(url_for("account"))
-            
         else:
             flash(f"Login unsuccessful! Email and/or password incorrect.", "white-text red")
         
     return render_template("login.html",
-                                Page_name = "Log In",
-                                Welcome_image = "../static/img/sign/bg.jpg",
-                                form=form)
+                            Page_name = "Log In",
+                            Welcome_image = "../static/img/sign/bg.jpg",
+                            form=form)
 
+# ------------------------------------------- #
+#              LOG IN | REQUIRED              #
+# ------------------------------------------- #
 
-# Routes (for which login is required)
-
-
+# ----- ACCOUNT / USER DASHBOARD ----- #
 @app.route("/account")
 def account():
     return render_template("account.html",
                             Page_name = "My Account",
                             Page_title = f"Hi {session['first_name'].capitalize()}, welcome!")
 
+# ----- LOG OUT ----- #
+@app.route("/logout", methods=["POST", "GET"])
+def logout():
+    session.pop("email", None)
+    session.pop("first_name", None)
+    session.pop("last_name", None)
+    flash("Thanks for your visit, we hope to see you soon!", "blue-grey lighten-5")
+    return redirect(url_for("login"))
 
+
+# ----- 1. VIEW / USER ACCOUNT DETAILS ----- #
 @app.route("/account_details")
 def account_details():
     
@@ -208,55 +224,7 @@ def account_details():
     flash(f"You are required to login to access this page", "white-text red")
     return redirect(url_for('login'))
 
-
-@app.route("/edit_password", methods=["POST", "GET"])
-def edit_password():
-    
-    # Check if the user is logged in
-    if "email" in session:
-    
-        form = PasswordForm()
-        
-        if form.validate_on_submit():
-            
-            # Create a query to get user information
-            user = mongo.db.user_accounts.find_one( { "email": session["email"] })
-
-            current_user_password_db = user["password"]
-            
-            if not bcrypt.check_password_hash(current_user_password_db, form.current_password.data):
-                
-                flash(f"Your current password is incorrect!", "white-text red")
-                
-            if bcrypt.check_password_hash(current_user_password_db, form.new_password.data):
-                
-                flash(f"Your new password is not different from your current password.", "white-text red")
-                 
-            if (form.new_password.data == form.confirm_new_password.data) and bcrypt.check_password_hash(current_user_password_db, form.current_password.data):
-            
-                # Encrypt password to send it to MongoDB for storage
-                hashed_password = bcrypt.generate_password_hash(form.new_password.data).decode('utf-8')
-                
-                # Update new password into MongoDB
-                mongo.db.user_accounts.update({ "email": session["email"]},
-                                              { "$set":
-                                                  { "password": hashed_password         }})
-                
-                flash(f"Thanks your password has been updated!", "white-text green")
-                return redirect(url_for('account_details'))
-                
-            else:
-                flash(f"You have to confirm your password. Please make sure the two fields are identical.", "white-text red")
-        
-        return render_template("edit_password.html",
-                                Page_name = "Edit Password",
-                                Welcome_image = "../static/img/sign/bg.jpg",
-                                form=form)
-                            
-    flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('login'))
-
-
+# ----- 1.1 VIEW / EDIT DETAILS ----- #
 @app.route("/edit_my_details")
 def edit_my_details():
       
@@ -304,7 +272,55 @@ def update_my_details(account_id):
         
         return redirect(url_for("account_details"))
 
+# ----- 1.2 EDIT PASSWORD ----- #
+@app.route("/edit_password", methods=["POST", "GET"])
+def edit_password():
+    
+    # Check if the user is logged in
+    if "email" in session:
+    
+        form = PasswordForm()
         
+        if form.validate_on_submit():
+            
+            # Create a query to get user information
+            user = mongo.db.user_accounts.find_one( { "email": session["email"] })
+
+            current_user_password_db = user["password"]
+            
+            if not bcrypt.check_password_hash(current_user_password_db, form.current_password.data):
+                
+                flash(f"Your current password is incorrect!", "white-text red")
+                
+            if bcrypt.check_password_hash(current_user_password_db, form.new_password.data):
+                
+                flash(f"Your new password is not different from your current password.", "white-text red")
+                 
+            if (form.new_password.data == form.confirm_new_password.data) and bcrypt.check_password_hash(current_user_password_db, form.current_password.data):
+            
+                # Encrypt password to send it to MongoDB for storage
+                hashed_password = bcrypt.generate_password_hash(form.new_password.data).decode('utf-8')
+                
+                # Update new password into MongoDB
+                mongo.db.user_accounts.update({ "email": session["email"]},
+                                              { "$set":
+                                                  { "password": hashed_password         }})
+                
+                flash(f"Thanks your password has been updated!", "white-text green")
+                return redirect(url_for('account_details'))
+                
+            else:
+                flash(f"You have to confirm your password. Please make sure the two fields are identical.", "white-text red")
+        
+        return render_template("edit_password.html",
+                                Page_name = "Edit Password",
+                                Welcome_image = "../static/img/sign/bg.jpg",
+                                form=form)
+                            
+    flash(f"You are required to login to access this page", "white-text red")
+    return redirect(url_for('login'))
+
+# ----- 2. VIEW / MY RECIPES ----- #       
 @app.route("/my_recipes")
 def my_recipes():
     
@@ -347,54 +363,7 @@ def my_recipes():
     flash(f"You are required to login to access this page", "white-text red")
     return redirect(url_for('login'))
 
-
-@app.route("/cookbook")
-def cookbook():
-    
-    # Check if the user is logged in
-    if "email" in session:
-        
-        # Create a query to get the user stored in the user variable
-        user = mongo.db.user_accounts.find_one( { "email": session["email"] })
-    
-        #Log the user
-        logging.info('User found {}'.format(user))
-        
-        # Create a variable to store the favorite recipes linked to this user
-        favorite_recipes = user["favorite_recipes"]
-        
-        # Count the number of recipes stored as favourite by the user
-        recipes_number = len(favorite_recipes)
-        
-        #Iterate through each recipes id and extract information in MongoDB collection "recipes_information"
-        
-        recipes_list_information = []
-        
-        for i in range(recipes_number):
-            
-            # Create a query to get recipes information based on user list
-            recipe_information_i = mongo.db.recipes_information.find_one( { "_id": ObjectId(favorite_recipes[i]) })
-
-            # Store information in an array
-            recipes_list_information.append(recipe_information_i)
-            
-            # Log each recipe_information variable
-            logging.info('For i={}, the recipes information found is {}'.format(i, recipe_information_i))
-            
-        # Log the variable recipes list information
-        logging.info('Array containing all recipes information {}'.format(recipes_list_information))
-    
-        return render_template("cookbook.html",
-                            Page_name = "Cookbook",
-                            Page_title = "My Cookbook", 
-                            Welcome_image = "../static/img/cookbook/bg.jpg",
-                            recipes = recipes_list_information,
-                            recipes_number = recipes_number)
-    
-    flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('login'))
-
-
+# ----- 3. ADD / NEW RECIPE ----- #  
 @app.route("/add_recipe")
 def add_recipe():
     
@@ -446,13 +415,52 @@ def insert_recipe():
     flash(f"Thanks, your recipe was created!", "white-text green")
     return redirect(url_for("my_recipes"))
 
-@app.route("/logout", methods=["POST", "GET"])
-def logout():
-    session.pop("email", None)
-    session.pop("first_name", None)
-    session.pop("last_name", None)
-    flash("Thanks for your visit, we hope to see you soon!", "blue-grey lighten-5")
-    return redirect(url_for("login"))
+# ----- 4. VIEW / MY COOKBOOK ----- #  
+@app.route("/cookbook")
+def cookbook():
+    
+    # Check if the user is logged in
+    if "email" in session:
+        
+        # Create a query to get the user stored in the user variable
+        user = mongo.db.user_accounts.find_one( { "email": session["email"] })
+    
+        #Log the user
+        logging.info('User found {}'.format(user))
+        
+        # Create a variable to store the favorite recipes linked to this user
+        favorite_recipes = user["favorite_recipes"]
+        
+        # Count the number of recipes stored as favourite by the user
+        recipes_number = len(favorite_recipes)
+        
+        #Iterate through each recipes id and extract information in MongoDB collection "recipes_information"
+        
+        recipes_list_information = []
+        
+        for i in range(recipes_number):
+            
+            # Create a query to get recipes information based on user list
+            recipe_information_i = mongo.db.recipes_information.find_one( { "_id": ObjectId(favorite_recipes[i]) })
+
+            # Store information in an array
+            recipes_list_information.append(recipe_information_i)
+            
+            # Log each recipe_information variable
+            logging.info('For i={}, the recipes information found is {}'.format(i, recipe_information_i))
+            
+        # Log the variable recipes list information
+        logging.info('Array containing all recipes information {}'.format(recipes_list_information))
+    
+        return render_template("cookbook.html",
+                            Page_name = "Cookbook",
+                            Page_title = "My Cookbook", 
+                            Welcome_image = "../static/img/cookbook/bg.jpg",
+                            recipes = recipes_list_information,
+                            recipes_number = recipes_number)
+    
+    flash(f"You are required to login to access this page", "white-text red")
+    return redirect(url_for('login'))
 
 
 # Route created only as an instance of recipe page
@@ -483,7 +491,9 @@ def recipe_description(recipe_id):
                             Page_title = f"{the_recipe_name}", 
                             recipe=the_recipe)
 
-
+# ---------------- #
+#      RUN APP     #
+# ---------------- #
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
