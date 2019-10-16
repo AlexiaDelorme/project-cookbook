@@ -123,6 +123,9 @@ ul.list-styling>li {
     padding: 0px 25px;
 }
 
+input.add {
+    float:right;
+}
 
 /* -------------------------------DEFAULT SETTINGS / MATERIALIZE THEME ------ */
 
