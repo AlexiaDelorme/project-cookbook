@@ -82,6 +82,11 @@ img.parallax-img-size {
 
 /* ----------------------------------------------------------- RECIPES ------ */
 
+.headline-carousel {
+    margin-bottom: 100px;
+}
+
+
 .carousel.initialized {
     margin-top: -50px;
 }
