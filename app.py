@@ -410,7 +410,7 @@ def insert_recipe():
         "diet": request.form.getlist("diet"),
         "meal": request.form.getlist("meal"),
         "ingredients":[ ],
-        "instructions":[ ],
+        "instructions": request.form.getlist("instructions"),
         "tool": request.form.getlist("tool"),
         "allergen": request.form.getlist("allergen"),
         "recipe_author": logged_user,
