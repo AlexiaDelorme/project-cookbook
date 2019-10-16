@@ -22,19 +22,19 @@
 
 </div>
 
-<div class="container">
-    
-    <div class="row center">
+{% endblock %}
 
-        <h5 class="center">Our favourite recipes</h5>
+{% block carousel %}
+
+   
+<h5 class="center headline-carousel">Our favourite recipes</h5>
         
-        <div class="carousel">
-            {% for image in carousel %}
-            <a class="carousel-item" href="#"><img src="{{ image }}"></a> {% endfor %}
-        </div>
-
-    </div>
-    
+<div class="carousel">
+    {% for image in carousel %}
+    <a class="carousel-item" href="#"><img src="{{ image }}"></a> 
+    {% endfor %}
 </div>
 
 {% endblock %}
+
+
