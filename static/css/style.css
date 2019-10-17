@@ -1,7 +1,10 @@
 body {
     font-family: 'Signika', 'calibri';
     font-size: 17px;
+}
 
+h1, h2, h3 {
+    color: #ee6e73;
 }
 
 /* ------------------------------------------------------------ HEADER ------ */
