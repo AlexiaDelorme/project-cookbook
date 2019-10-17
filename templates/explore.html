@@ -28,33 +28,52 @@
             
             <div class="row">
                 
-                <!-- Difficulty -->
-                <div class="input-field col s3">
-                    <select id="difficulty" name="difficulty" required>
-                        <option value="" disabled selected>Choose Difficulty</option>
-                        <option value="easy" >Easy</option>
-                        <option value="medium">Medium</option>
-                        <option value="difficult">Difficult</option>
-                    </select>
-                    <label for="difficulty">Recipe Difficulty</label>
-                </div> 
-                
-                <!-- Servings -->
-                <div class="input-field col s3">
-                    <input id="serving" name="serving" type="number" min="1" max="15" class="validate" autocomplete="off" required>
-                    <label for="serving">Serves</label>
+                <div class="col s4">
+                    
+                    <!-- Difficulty -->
+                    <div class="input-field col s12">
+                        <select id="difficulty" name="difficulty" required>
+                            <option value="" disabled selected>Choose Difficulty</option>
+                            <option value="easy" >Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="difficult">Difficult</option>
+                        </select>
+                        <label for="difficulty">Recipe Difficulty</label>
+                    </div> 
+                    
+                    <!-- Servings -->
+                    <div class="input-field col s12">
+                        <input id="serving" name="serving" type="number" min="1" max="15" class="validate" autocomplete="off" required>
+                        <label for="serving">Max Serves</label>
+                    </div>
+                    
                 </div>
                 
                 <!-- Preparation time -->
-                
-                <!-- Hours -->
-                <div class="input-field col s2">
-                    <input id="hours" name="hours" type="number" min="0" max="12" placeholder="Hour(s)" autocomplete="off" class="validate">
-                </div>
-                <!-- Minutes -->
-                <div class="input-field col s2">
-                    <input id="minutes" name="minutes" type="number" min="0" max="59" placeholder="Minutes" autocomplete="off" class="validate" required>
-                </div>
+                <div class="col s6 offset-s2">
+                    <p>Preparation time</p>
+                        
+                        <div class="col s6 left-align">
+                            <input class="with-gap" name="any" type="radio" checked />
+                            <label for="any">Any</label>                            
+                        </div>
+
+                        <div class="col s6 left-align">
+                            <input class="with-gap" name="30_min" type="radio" />
+                            <label for="30_min">< 30 min</label>
+                        </div>
+                        
+                        <div class="col s6 left-align">
+                            <input class="with-gap" name="1_hour" type="radio" />
+                            <label for="1_hour">< 30 min</label>
+                        </div>
+                        
+                        <div class="col s6 left-align">
+                            <input class="with-gap" name="2_hours" type="radio" />
+                            <label for="2_hours">< 30 min</label>
+                        </div>
+                        
+                 </div> 
                 
             </div>
             
@@ -89,7 +108,7 @@
                 <!-- Allergens -->
                 <div class="input-field col s6">
                     <select id="allergen" name="allergen" multiple>
-                        <option value="" disabled selected>Choose Allergen(s)</option>
+                        <option value="" disabled selected>Exclude Allergen(s)</option>
                         {% for cat in allergen_categories.list %}
                         <option value="{{cat}}">{{cat.capitalize()}}</option>
                         {% endfor %}
