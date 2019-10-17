@@ -39,6 +39,24 @@ def home():
                             Welcome_image = "../static/img/home/bg.jpg")
 
 # ----- 2. EXPLORE ----- #
+@app.route("/explore")
+def explore():
+    # Create variables to filter recipes
+    meal_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'meal' })
+    diet_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'diet' })
+    occasion_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'occasion' })
+    geography_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'geography' })
+    allergen_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'allergen' })
+    tool_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'tool' })
+    
+    return render_template("explore.html",
+                            Page_name = "Explore Recipe",
+                            meal_categories = meal_categories,
+                            diet_categories = diet_categories,
+                            occasion_categories = occasion_categories,
+                            geography_categories = geography_categories,
+                            allergen_categories = allergen_categories,
+                            tool_categories = tool_categories)
 
 # ----- 3. RECIPES ----- #
 @app.route("/recipes")
