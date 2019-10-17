@@ -138,11 +138,23 @@
 
             </div>
             
+            <!-- Recipe ingredients -->
+            <div class="row">
+                <legend for="ingredients">Ingredients</legend>
+                <div class="input-field col s12" id="ingredientsform">
+                    <textarea id="ingredients" name="ingredients" autocomplete="off" minlength="5" maxlength="500" class="validate materialize-textarea col s12" placeholder="Example: Milk, Eggs, Chocolat" required></textarea>
+                </div>
+                <!-- Add new ingredient -->
+                <button class="btn" class="add" id="add-ingredients"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            </div>
+                        
+            <!-- Recipe instructions -->
             <div class="row">
                 <legend for="instructions">Preparation steps</legend>
                 <div class="input-field col s12" id="instructionsform">
                     <textarea id="instructions" name="instructions" autocomplete="off" minlength="5" maxlength="500" class="validate materialize-textarea col s12" placeholder="Example: In a large bowl, mix all the wet ingregients" required></textarea>
                 </div>
+                <!-- Add new instruction -->
                 <button class="btn" class="add" id="add-instructions"><i class="fa fa-plus" aria-hidden="true"></i></button>
             </div>
             

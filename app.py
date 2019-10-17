@@ -409,7 +409,7 @@ def insert_recipe():
         "geography": request.form.getlist("geography"),
         "diet": request.form.getlist("diet"),
         "meal": request.form.getlist("meal"),
-        "ingredients":[ ],
+        "ingredients": request.form.getlist("ingredients"),
         "instructions": request.form.getlist("instructions"),
         "tool": request.form.getlist("tool"),
         "allergen": request.form.getlist("allergen"),
