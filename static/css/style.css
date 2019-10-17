@@ -123,8 +123,17 @@ ul.list-styling>li {
     padding: 0px 25px;
 }
 
-input.add {
+button#add {
     float:right;
+}
+
+.btn, .btn-large {
+
+    background-color: #ee6e73cc;
+}
+
+.btn:hover, .btn-large:hover {
+    background-color: #ee6e73;
 }
 
 /* -------------------------------DEFAULT SETTINGS / MATERIALIZE THEME ------ */
