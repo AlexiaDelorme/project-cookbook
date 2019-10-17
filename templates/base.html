@@ -143,8 +143,8 @@
             $('select').material_select();
     
             // Dynamically add ingredients and preparations steps for add_recipe
-            $("#add").click(function() {
-                var lastField = $("#buildyourform div:last");
+            $("#add-instructions").click(function() {
+                var lastField = $("#instructionsform div:last");
                 var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
                 var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
                 fieldWrapper.data("idx", intId);
@@ -155,7 +155,7 @@
                 });
                 fieldWrapper.append(fName);
                 fieldWrapper.append(removeButton);
-                $("#buildyourform").append(fieldWrapper);
+                $("#instructionsform").append(fieldWrapper);
             });
     
         });
