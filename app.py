@@ -41,6 +41,9 @@ def home():
 # ----- 2. EXPLORE ----- #
 @app.route("/explore")
 def explore():
+    """
+    Display a form with fields from which the user will be able to filter recipes.
+    """
     # Create variables to filter recipes
     meal_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'meal' })
     diet_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'diet' })
@@ -48,7 +51,6 @@ def explore():
     geography_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'geography' })
     allergen_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'allergen' })
     tool_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'tool' })
-    
     return render_template("explore.html",
                             Page_name = "Explore Recipe",
                             meal_categories = meal_categories,
