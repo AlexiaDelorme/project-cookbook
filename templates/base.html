@@ -37,7 +37,7 @@
                     {% else %}
                         <li><a href="{{url_for("home")}}">HOME</a></li>
                     {% endif %}
-                    <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
+                    <li><a href="{{url_for("explore")}}"><i class="material-icons left">search</i>EXPLORE</a></li>
                     <li><a href="{{url_for("recipes")}}">RECIPES</a></li>
                     <li><a href="{{url_for("about")}}">ABOUT</a></li>
                     {% if session["email"] %}
@@ -54,7 +54,7 @@
                     {% else %}
                         <li><a href="{{url_for("home")}}">HOME</a></li>
                     {% endif %}
-                    <li><a href=""><i class="material-icons left">search</i>EXPLORE</a></li>
+                    <li><a href="{{url_for("explore")}}"><i class="material-icons left">search</i>EXPLORE</a></li>
                     <li><a href="{{url_for("recipes")}}">RECIPES</a></li>
                     <li><a href="{{url_for("about")}}">ABOUT</a></li>
                     {% if session["email"] %}
