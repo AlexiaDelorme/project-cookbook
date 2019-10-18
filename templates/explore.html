@@ -51,26 +51,27 @@
                 
                 <!-- Preparation time -->
                 <div class="col s6 offset-s2">
+                    
                     <p>Preparation time</p>
                         
                         <div class="col s6 left-align">
-                            <input class="with-gap" name="any" type="radio" checked />
+                            <input class="with-gap" id="any" name="prep_time" type="radio" value="" checked />
                             <label for="any">Any</label>                            
                         </div>
 
                         <div class="col s6 left-align">
-                            <input class="with-gap" name="30_min" type="radio" />
+                            <input class="with-gap" id="1_hour" name="prep_time" type="radio" value="1" />
+                            <label for="1_hour">< 1 hour</label>
+                        </div>
+                        
+                        <div class="col s6 left-align">
+                            <input class="with-gap" id="30_min" name="prep_time" type="radio" value="30" />
                             <label for="30_min">< 30 min</label>
-                        </div>
+                        </div>                        
                         
                         <div class="col s6 left-align">
-                            <input class="with-gap" name="1_hour" type="radio" />
-                            <label for="1_hour">< 30 min</label>
-                        </div>
-                        
-                        <div class="col s6 left-align">
-                            <input class="with-gap" name="2_hours" type="radio" />
-                            <label for="2_hours">< 30 min</label>
+                            <input class="with-gap" id="2_hours" name="prep_time" type="radio" value="2" />
+                            <label for="2_hours">< 2 hours</label>
                         </div>
                         
                  </div> 
