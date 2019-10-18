@@ -52,7 +52,7 @@ def explore():
     allergen_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'allergen' })
     tool_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'tool' })
     return render_template("explore.html",
-                            Page_name = "Explore Recipe",
+                            Page_name = "Explore Recipes",
                             meal_categories = meal_categories,
                             diet_categories = diet_categories,
                             occasion_categories = occasion_categories,
