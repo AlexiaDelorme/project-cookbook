@@ -43,6 +43,7 @@ def home():
 def explore():
     """
     Display a form with fields from which the user will be able to filter recipes.
+    The user can then click a search button and be redirected to the results page with recipes matching the criteria.
     """
     # Create variables to filter recipes
     meal_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'meal' })
@@ -59,6 +60,22 @@ def explore():
                             geography_categories = geography_categories,
                             allergen_categories = allergen_categories,
                             tool_categories = tool_categories)
+
+# ----- 2.1 EXPLORE / RECIPES RESULTS ----- #
+@app.route("/explore/results", methods=["POST"])
+def explore_results():
+    """
+    Display all the recipes matching the criteria selected in the form from the explore page.
+    """
+    recipes = mongo.db.recipes_information.find({
+                                                "difficulty": request.form.get("difficulty")
+                                                })
+    recipes_number=recipes.count()
+    return render_template("results.html",
+                            Page_name = "All Recipes",
+                            Page_title = f"{recipes_number} Recipes Found",
+                            recipes=recipes,
+                            recipes_number = recipes_number)
 
 # ----- 3. RECIPES ----- #
 @app.route("/recipes")
