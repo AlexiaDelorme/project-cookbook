@@ -120,7 +120,7 @@
                 <!-- Tools -->
                 <div class="input-field col s6">
                     <select id="tool" name="tool" multiple>
-                        <option value="" disabled selected>Choose tool(s)</option>
+                        <option value="" disabled selected>Exclude tool(s)</option>
                         {% for cat in tool_categories.list %}
                         <option value="{{cat}}">{{cat.capitalize()}}</option>
                         {% endfor %}

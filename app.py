@@ -68,19 +68,19 @@ def explore_results():
     Display all the recipes matching the criteria selected in the form from the explore page.
     """
     recipes = mongo.db.recipes_information.find({
-                                                "difficulty": request.form.get("difficulty"),
-                                                "serving": { "$lte": request.form.get("serving") },
+                                                # "difficulty": request.form.get("difficulty"),
+                                                # "serving": { "$lte": request.form.get("serving") },
                                                 # "prep_time": { TBD },
-                                                "meal": { "$in": request.form.getlist("meal") },
-                                                "diet": { "$in": request.form.getlist("diet") },
-                                                "allergen": { "$nin": request.form.getlist("allergen") },
-                                                "tool": { "$in": request.form.getlist("tool") },
-                                                "occasion": { "$in": request.form.getlist("occasion") },
+                                                # "meal": { "$in": request.form.getlist("meal") },
+                                                # "diet": { "$in": request.form.getlist("diet") },
+                                                # "allergen": { "$nin": request.form.getlist("allergen") },
+                                                # "tool": { "$nin": request.form.getlist("tool") },
+                                                # "occasion": { "$in": request.form.getlist("occasion") },
                                                 "geography": { "$in": request.form.getlist("geography") }
                                                 })
     recipes_number=recipes.count()
     return render_template("results.html",
-                            Page_name = "All Recipes",
+                            Page_name = "Recipes Results",
                             Page_title = f"{recipes_number} Recipes Found",
                             recipes=recipes,
                             recipes_number = recipes_number)
