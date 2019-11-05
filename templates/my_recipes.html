@@ -1,115 +1,32 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-<!-- RECIPE CARDS FOR USER LOGGED IN -->
+<!-- RECIPE CARDS -->
 
-<div class="row center">
-    <h4>MY RECIPES</h4>
-</div>
+{% if recipes_number == 0 %}
 
-<div class="row center">
-    
-    {% if recipes_number == 0  %}
-    
-        <div class="row">
-            <div class="col s12 center">You have not created any recipes yet!</div>
-        </div>
-        
-    {% elif recipes_number == 1  %}
+    <div class="row">
+        <div class="col s12 center-align">You have not created any recipes yet!</div>
+    </div>
+
+{% else %}
+
+    <div class="row flexbox">
     
         {% for recipe in recipes %}
-    
-        <div class="col s4 offset-s4 category-box">
+        <div class="col s12 m6 l4 category-box center-align">
             <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
-        
             <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
-        
             <a href="#">
-                    <button href = "" class="btn waves-effect waves-light" type="submit" name="action">Edit
-                        <i class="material-icons right">create</i>
-                    </button>
-                </a>
+                <button href = "" class="btn waves-effect waves-light" type="submit" name="action">Edit
+                    <i class="material-icons right">create</i>
+                </button>
+            </a>
         </div>
-        
-        {% endfor %}
-
-    {% elif ( (recipes_number % 3 == 0) and (recipes_number % 2 == 0) ) or (recipes_number % 3 == 0)  %}
-    
-        {% for recipe in recipes %}
-    
-        <div class="col s4 category-box">
-            <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
-        
-            <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
-        
-            <a href="#">
-                    <button href = "" class="btn waves-effect waves-light" type="submit" name="action">Edit
-                        <i class="material-icons right">create</i>
-                    </button>
-                </a>
-        </div>
-
         {% endfor %}
     
-    {% elif recipes_number % 2 == 0  %}
-        
-        {% for recipe in recipes %}
-        
-        <div class="container">
-            <div class="col s6 category-box">
-                <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
-            
-                <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
-            
-                <a href="#">
-                        <button href = "" class="btn waves-effect waves-light" type="submit" name="action">Edit
-                            <i class="material-icons right">create</i>
-                        </button>
-                    </a>
-            </div>
-        </div>
+    </div>
 
-        {% endfor %}
-
-    {% else %}
-        
-        <div class="container">
-            
-        {% for recipe in recipes %}
-            
-            {% if loop.index == recipes_number %}
-             <div class="col s6 offset-s3 category-box">
-                <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
-            
-                <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
-            
-                <a href="#">
-                        <button href = "" class="btn waves-effect waves-light" type="submit" name="action">Edit
-                            <i class="material-icons right">create</i>
-                        </button>
-                    </a>
-            </div>        
-    
-            {% else %}
-            <div class="col s6 category-box">
-                <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
-            
-                <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
-            
-                <a href="#">
-                        <button href = "" class="btn waves-effect waves-light" type="submit" name="action">Edit
-                            <i class="material-icons right">create</i>
-                        </button>
-                </a>
-            </div>
-            {% endif %}
-
-        {% endfor %}
-        
-        </div>
-        
-    {% endif %}
-
-</div> 
+{% endif %}
 
 {% endblock %}
