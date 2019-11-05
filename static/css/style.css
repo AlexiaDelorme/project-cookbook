@@ -7,6 +7,13 @@ h1, h2, h3 {
     color: #ee6e73;
 }
 
+.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
 /* ------------------------------------------------------------ HEADER ------ */
 
 nav ul a,

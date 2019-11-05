@@ -3,8 +3,6 @@
 
 <!-- RECIPE CARDS -->
 
-<div class="row center-align">
-    
     {% if recipes_number == 0 %}
     
         <div class="row">
@@ -13,7 +11,7 @@
         
     {% else %}
     
-        <div class="row center-align">
+        <div class="row flexbox">
             
             {% for recipe in recipes %}
             
@@ -27,7 +25,5 @@
         </div>
         
     {% endif %}
-
-</div> 
-
+    
 {% endblock %}
