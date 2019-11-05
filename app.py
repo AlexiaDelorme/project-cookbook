@@ -17,7 +17,7 @@ bcrypt = Bcrypt(app)
 
 app.config["MONGO_DBNAME"] = "cookbook"
 app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost")
-app.config["SECRET_KEY"] = "366eff16939348b3153b7dff1b2fc2e1æ"
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 
 mongo = PyMongo(app)
 
