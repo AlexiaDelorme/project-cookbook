@@ -79,9 +79,9 @@ def explore_results():
                                                 "geography": { "$in": request.form.getlist("geography") }
                                                 })
     recipes_number=recipes.count()
-    return render_template("results.html",
+    return render_template("explore_results.html",
                             Page_name = "Recipes Results",
-                            Page_title = f"{recipes_number} Recipes Found",
+                            Page_title = f"{recipes_number} Recipe(s) Found",
                             recipes=recipes,
                             recipes_number = recipes_number)
 
