@@ -1,20 +1,29 @@
 {% extends 'base.html' %} 
-
 {% block content %}
 
 <!-- RECIPE CARDS -->
 
-<div class="row center">
-
-    {% for recipe in recipes %}
-
-    <div class="col s4 category-box">
-        <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
-        <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="../../{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
-    </div>
-
-    {% endfor %}
-
-</div>
-
+    {% if recipes_number == 0 %}
+    
+        <div class="row">
+            <div class="col s12 center-align">Sorry, we have not found any recipes matching your criteria!</div>
+        </div>
+        
+    {% else %}
+    
+        <div class="row flexbox">
+            
+            {% for recipe in recipes %}
+            
+            <div class="col s12 m6 l4 category-box">
+                <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
+                <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="../../{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
+            </div>
+            
+            {% endfor %}
+            
+        </div>
+        
+    {% endif %}
+    
 {% endblock %}
