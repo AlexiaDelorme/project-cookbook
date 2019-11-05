@@ -67,17 +67,16 @@ def explore_results():
     """
     Display all the recipes matching the criteria selected in the form from the explore page.
     """
-    recipes = mongo.db.recipes_information.find({
-                                                "difficulty": request.form.get("difficulty"),
-                                                # "serving": { "$lte": request.form.get("serving") },
-                                                # "prep_time": { TBD },
-                                                "meal": { "$in": request.form.getlist("meal") },
-                                                "diet": { "$in": request.form.getlist("diet") },
-                                                "allergen": { "$nin": request.form.getlist("allergen") },
-                                                "tool": { "$nin": request.form.getlist("tool") },
-                                                "occasion": { "$in": request.form.getlist("occasion") },
-                                                "geography": { "$in": request.form.getlist("geography") }
-                                                })
+    recipes = mongo.db.recipes_information.find({ "$and": [ { "difficulty": request.form.get("difficulty") },
+                                                            # { "serving": { "$lte": request.form.get("serving") } },
+                                                            # { "prep_time": { TBD } },
+                                                            { "meal": {"$in": request.form.getlist("meal")} },
+                                                            { "diet": {"$in": request.form.getlist("diet")} },
+                                                            { "allergen": {"$nin": request.form.getlist("allergen")} },
+                                                            { "tool": {"$nin": request.form.getlist("tool")} },
+                                                            { "occasion": {"$in": request.form.getlist("occasion")} },
+                                                            { "geography": {"$in": request.form.getlist("geography")} }
+                                                            ]})
     recipes_number=recipes.count()
     return render_template("explore_results.html",
                             Page_name = "Recipes Results",
