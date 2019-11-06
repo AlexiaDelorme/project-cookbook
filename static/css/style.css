@@ -101,6 +101,10 @@ img.parallax-img-size {
     margin-top: -50px;
 }
 
+.category-box {
+    margin: auto !important;
+}
+
 /* ------------------------------------------------------------- ABOUT ------ */
 
 .container-section {
