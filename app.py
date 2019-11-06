@@ -67,16 +67,45 @@ def explore_results():
     """
     Display all the recipes matching the criteria selected in the form from the explore page.
     """
-    recipes = mongo.db.recipes_information.find({ "$and": [{ "difficulty": {"$eq": request.form.get("difficulty"), "$exists": "true"}},
-                                                            {"serving": {"$lte": int(request.form.get("serving")), "$exists": "true"}},
-                                                            # {"prep_time": { TBD } },
-                                                            {"meal": {"$in": request.form.getlist("meal"), "$exists": "true"}},
-                                                            {"diet": {"$in": request.form.getlist("diet"), "$exists": "true"}},
-                                                            {"allergen": {"$nin": request.form.getlist("allergen"), "$exists": "true"}},
-                                                            {"tool": {"$nin": request.form.getlist("tool"), "$exists": "true"}},
-                                                            {"occasion": {"$in": request.form.getlist("occasion"), "$exists": "true"}},
-                                                            {"geography": {"$in": request.form.getlist("geography"), "$exists": "true"}}
-                                                            ]})
+    # Create variable for each form fields
+    difficulty = request.form.get("difficulty")
+    serving = int(request.form.get("serving"))
+    # prep_time = TBD
+    meal = request.form.getlist("meal")
+    diet = request.form.getlist("diet")
+    allergen = request.form.getlist("allergen")
+    tool = request.form.getlist("tool")
+    occasion = request.form.getlist("occasion")
+    geography = request.form.getlist("geography")
+    # Create a list with each form fields
+    fields = [  difficulty,
+                serving,
+                #prep_time,
+                meal,
+                diet,
+                allergen,
+                tool,
+                occasion,
+                geography]
+    # Check if the fields are empty
+    conditions = []
+    for field in fields:
+        if field != None:
+            condition = field
+            conditions.append({ condition: { "$in": condition }})
+    # Specific formatting I should have for each field
+    formatted_conditions = [
+                    {"difficulty": {"$eq": difficulty }},
+                    {"serving": {"$lte": serving }},
+                    # {"prep_time": { TBD } },
+                    {"meal": {"$in": meal }},
+                    {"diet": {"$in": diet }},
+                    {"allergen": {"$nin": allergen}},
+                    {"tool": {"$nin": tool }},
+                    {"occasion": {"$in": occasion }},
+                    {"geography": {"$in": geography }}
+                ]
+    recipes = mongo.db.recipes_information.find({ "$and": conditions })
     recipes_number=recipes.count()
     return render_template("explore_results.html",
                             Page_name = "Recipes Results",
