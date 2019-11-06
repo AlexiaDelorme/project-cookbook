@@ -1,34 +1,30 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-<div class="row center">
+<div class="row flexbox">
 
-    <div class="col s4 category-box">
-        <h5 class="center">Manage account</h5>
+    <div class="col s12 m6 l4 category-box">
+        <h5 class="center-align">Manage account</h5>
         <a href="{{url_for('account_details')}}"><img class="card-img" src="{{url_for("static", filename="img/account/img1.jpg")}}" alt="Account"></img></a>
     </div>
 
-    <div class="col s4 category-box">
-        <h5 class="center">Manage recipes</h5>
+    <div class="col s12 m6 l4 category-box">
+        <h5 class="center-align">Manage recipes</h5>
         <a href="{{url_for('my_recipes')}}"><img class="card-img" src="{{url_for("static", filename="img/account/img2.jpg")}}" alt="My recipes"></img></a>
     </div>
 
-    <div class="col s4 category-box">
-        <h5 class="center">Add new recipe</h5>
+    <div class="col s12 m6 l4 category-box">
+        <h5 class="center-align">Add new recipe</h5>
         <a href="{{url_for('add_recipe')}}"><img class="card-img" src="{{url_for("static", filename="img/account/img3.jpg")}}" alt="Add recipe"></img></a>
     </div>
 
-</div>
-
-<div class="row center">
-
-    <div class="col s4 offset-s2 category-box">
-        <h5 class="center">My cookbook</h5>
+    <div class="col s12 m6 l4 category-box">
+        <h5 class="center-align">My cookbook</h5>
         <a href="{{url_for('cookbook')}}"><img class="card-img" src="{{url_for("static", filename="img/account/img4.jpg")}}" alt="Cookbook"></img></a>
     </div>
 
-    <div class="col s4 category-box">
-        <h5 class="center">Explore recipes</h5>
+    <div class="col s12 m6 l4 category-box">
+        <h5 class="center-align">Explore recipes</h5>
         <a href="{{url_for('explore')}}"><img class="card-img" src="{{url_for("static", filename="img/account/img5.jpg")}}" alt="Explore"></img></a>
     </div>
 
