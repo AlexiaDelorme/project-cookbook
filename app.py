@@ -67,46 +67,37 @@ def explore_results():
     """
     Display all the recipes matching the criteria selected in the form from the explore page.
     """
-    # Create variable for each form fields
-    difficulty = request.form.get("difficulty")
-    serving = int(request.form.get("serving"))
-    # prep_time = TBD
-    meal = request.form.getlist("meal")
-    diet = request.form.getlist("diet")
-    allergen = request.form.getlist("allergen")
-    tool = request.form.getlist("tool")
-    occasion = request.form.getlist("occasion")
-    geography = request.form.getlist("geography")
-    # Create a list with each form fields
-    fields = [  difficulty,
-                serving,
-                #prep_time,
-                meal,
-                diet,
-                allergen,
-                tool,
-                occasion,
-                geography]
-    # Check if the fields are empty
-    conditions = []
-    for field in fields:
-        if field != None:
-            condition = field
-            conditions.append({ condition: { "$in": condition }})
-    # Specific formatting I should have for each field
-    formatted_conditions = [
-                    {"difficulty": {"$eq": difficulty }},
-                    {"serving": {"$lte": serving }},
-                    # {"prep_time": { TBD } },
-                    {"meal": {"$in": meal }},
-                    {"diet": {"$in": diet }},
-                    {"allergen": {"$nin": allergen}},
-                    {"tool": {"$nin": tool }},
-                    {"occasion": {"$in": occasion }},
-                    {"geography": {"$in": geography }}
-                ]
-    recipes = mongo.db.recipes_information.find({ "$and": conditions })
+    
+    ## The following code block was implemented thanks to the Code Institute Tutor Team
+    
+    # Create a dictionary to store the form fields
+    form_dictionary = request.form
+    
+    # Format the condition according to the fields
+    map_condition = {
+        "difficulty": "$eq",
+        "serving": "$lte",
+        # "prep_time": TBD,
+        "meal": "$in",
+        "diet": "$in",
+        "allergen": "$nin",
+        "tool": "$nin",
+        "occasion": "$in",
+        "geography": "$in"
+    }
+    
+    query = []
+    
+    # Remove empty fields from being passed to the query
+    for field_name, field_value in form_dictionary.items():
+        if field_value != "":
+            condition = { field_name: { map_condition["field_name"]: field_value }}
+            query.append(condition)
+    
+    # Pass the formatted dictionary into mongoDB query
+    recipes = mongo.db.recipes_information.find({ "$and": query })
     recipes_number=recipes.count()
+    
     return render_template("explore_results.html",
                             Page_name = "Recipes Results",
                             Page_title = f"{recipes_number} Recipe(s) Found",
