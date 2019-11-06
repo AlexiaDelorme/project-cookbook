@@ -68,11 +68,9 @@ def explore_results():
     Display all the recipes matching the criteria selected in the form from the explore page.
     """
     
-    ## The following code block was implemented thanks to the Code Institute Tutor Team
-    
+    ## The following code block (from line 73 to 93) was implemented thanks to the Code Institute Tutor Team
     # Create a dictionary to store the form fields
     form_dictionary = request.form
-    
     # Format the condition according to the fields
     map_condition = {
         "difficulty": "$eq",
@@ -85,15 +83,12 @@ def explore_results():
         "occasion": "$in",
         "geography": "$in"
     }
-    
     query = []
-    
     # Remove empty fields from being passed to the query
     for field_name, field_value in form_dictionary.items():
         if field_value != "":
             condition = { field_name: { map_condition["field_name"]: field_value }}
             query.append(condition)
-    
     # Pass the formatted dictionary into mongoDB query
     recipes = mongo.db.recipes_information.find({ "$and": query })
     recipes_number=recipes.count()
