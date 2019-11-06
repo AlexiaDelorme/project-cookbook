@@ -70,7 +70,8 @@ def explore_results():
     
     ## The following code block (from line 73 to 93) was implemented thanks to the Code Institute Tutor Team
     # Create a dictionary to store the form fields
-    form_dictionary = request.form
+    form_dictionary = request.form.to_dict()
+    logging.info('form_dictionary is {}'.format(form_dictionary))
     # Format the condition according to the fields
     map_condition = {
         "difficulty": "$eq",
@@ -86,8 +87,8 @@ def explore_results():
     query = []
     # Remove empty fields from being passed to the query
     for field_name, field_value in form_dictionary.items():
-        if field_value != "":
-            condition = { field_name: { map_condition["field_name"]: field_value }}
+        if field_value != None:
+            condition = { field_name: { map_condition[field_name]: field_value }}
             query.append(condition)
     # Pass the formatted dictionary into mongoDB query
     recipes = mongo.db.recipes_information.find({ "$and": query })
