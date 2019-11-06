@@ -68,7 +68,7 @@ def explore_results():
     Display all the recipes matching the criteria selected in the form from the explore page.
     """
     recipes = mongo.db.recipes_information.find({ "$and": [{ "difficulty": {"$eq": request.form.get("difficulty"), "$exists": "true"}},
-                                                            # {"serving": {"$lte": request.form.get("serving")}},
+                                                            {"serving": {"$lte": int(request.form.get("serving")), "$exists": "true"}},
                                                             # {"prep_time": { TBD } },
                                                             {"meal": {"$in": request.form.getlist("meal"), "$exists": "true"}},
                                                             {"diet": {"$in": request.form.getlist("diet"), "$exists": "true"}},
@@ -444,7 +444,7 @@ def insert_recipe():
         "recipe_name": request.form.get("recipe_name").lower(),
         "recipe_description": request.form.get("recipe_description").lower(),
         "rates_list":[ ],
-        "serving": request.form.get("serving"),
+        "serving": int(request.form.get("serving")),
         "prep_time":{   "hours": request.form.get("hours"),
                         "minutes": request.form.get("minutes")
                     },
