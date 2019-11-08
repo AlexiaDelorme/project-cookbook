@@ -68,10 +68,19 @@ def explore_results():
     Display all the recipes matching the criteria selected in the form from the explore page.
     """
     
-    ## The following code block (from line 73 to 93) was implemented thanks to the Code Institute Tutor Team
+    ## The following code block (from line 86 to 113) was implemented thanks to the Code Institute Tutor Team
     # Create a dictionary to store the form fields
-    form_dictionary = request.form.to_dict()
-    logging.info('form_dictionary is {}'.format(form_dictionary))
+    form_dictionary = {
+        "difficulty": request.form.get("difficulty"),
+        "serving": int(request.form.get("serving")),
+        # "prep_time": TBD,
+        "meal": request.form.getlist("meal"),
+        "diet": request.form.getlist("diet"),
+        "allergen": request.form.getlist("allergen"),
+        "tool": request.form.getlist("tool"),
+        "occasion": request.form.getlist("occasion"),
+        "geography": request.form.getlist("geography")
+    }
     # Format the condition according to the fields
     map_condition = {
         "difficulty": "$eq",
@@ -85,13 +94,23 @@ def explore_results():
         "geography": "$in"
     }
     query = []
-    # Remove empty fields from being passed to the query
+    # Prevent empty fields from being passed to the query
     for field_name, field_value in form_dictionary.items():
-        if field_value != None:
+        if (field_value != None) and (field_value != "") and (field_value != []):
             condition = { field_name: { map_condition[field_name]: field_value }}
             query.append(condition)
-    # Pass the formatted dictionary into mongoDB query
-    recipes = mongo.db.recipes_information.find({ "$and": query })
+    # logging.info('Query is {}'.format(query))
+    if query != []:
+        # Pass the formatted dictionary into mongoDB query
+        if len(query) == 1:
+            recipes = mongo.db.recipes_information.find(condition)
+        # Use the "$and" keyword to pass multiple conditions to mongoDB query
+        else:
+            recipes = mongo.db.recipes_information.find({ "$and": query })
+    # Pass all the recipes if user did not input any filters
+    else:
+        recipes = mongo.db.recipes_information.find()
+    
     recipes_number=recipes.count()
     
     return render_template("explore_results.html",
