@@ -49,24 +49,24 @@
                         <li><a href="{{url_for("login")}}">LOG IN</a></li>
                     {% endif %}
                 </ul>
-                <ul class="side-nav" id="mobile-demo">
-                    {% if session["email"] %}
-                    {% else %}
-                        <li><a href="{{url_for("home")}}">HOME</a></li>
-                    {% endif %}
-                    <li><a href="{{url_for("explore")}}"><i class="material-icons left">search</i>EXPLORE</a></li>
-                    <li><a href="{{url_for("recipes")}}">RECIPES</a></li>
-                    <li><a href="{{url_for("about")}}">ABOUT</a></li>
-                    {% if session["email"] %}
-                        <li><a href="{{url_for("cookbook")}}">COOKBOOK</a></li>
-                        <li><a href="{{url_for("account")}}">ACCOUNT</a></li>
-                        <li><a href="{{url_for("logout")}}">LOG OUT</a></li>
-                    {% else %}
-                        <li><a href="{{url_for("signup")}}">SIGN UP</a></li>
-                        <li><a href="{{url_for("login")}}">LOG IN</a></li>
-                    {% endif %}
-                </ul>
             </div>
+            <ul class="side-nav" id="mobile-demo">
+                {% if session["email"] %} 
+                {% else %}
+                    <li><a href="{{url_for("home")}}">HOME</a></li>
+                {% endif %}
+                <li><a href="{{url_for("explore")}}"><i class="material-icons left">search</i>EXPLORE</a></li>
+                <li><a href="{{url_for("recipes")}}">RECIPES</a></li>
+                <li><a href="{{url_for("about")}}">ABOUT</a></li>
+                {% if session["email"] %}
+                    <li><a href="{{url_for("cookbook")}}">COOKBOOK</a></li>
+                    <li><a href="{{url_for("account")}}">ACCOUNT</a></li>
+                    <li><a href="{{url_for("logout")}}">LOG OUT</a></li>
+                {% else %}
+                    <li><a href="{{url_for("signup")}}">SIGN UP</a></li>
+                    <li><a href="{{url_for("login")}}">LOG IN</a></li>
+                {% endif %}
+            </ul>
         </nav>
     </header>
         
