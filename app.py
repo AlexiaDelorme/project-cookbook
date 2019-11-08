@@ -68,12 +68,20 @@ def explore_results():
     Display all the recipes matching the criteria selected in the form from the explore page.
     """
     
+    # Prepare serving data
+    serving = int(request.form.get("serving")) if request.form.get("serving") else ""
+    # Prepare prep_time data
+    if (request.form.get("prep_time") != ""):
+        prep_time = int(request.form.get("prep_time"))
+    else:
+        prep_time = ""
+    
     ## The following code block (from line 86 to 113) was implemented thanks to the Code Institute Tutor Team
     # Create a dictionary to store the form fields
     form_dictionary = {
         "difficulty": request.form.get("difficulty"),
-        "serving": int(request.form.get("serving")),
-        # "prep_time": TBD,
+        "serving": serving,
+        "prep_time": prep_time,
         "meal": request.form.getlist("meal"),
         "diet": request.form.getlist("diet"),
         "allergen": request.form.getlist("allergen"),
@@ -85,7 +93,7 @@ def explore_results():
     map_condition = {
         "difficulty": "$eq",
         "serving": "$lte",
-        # "prep_time": TBD,
+        "prep_time": "$lte",
         "meal": "$in",
         "diet": "$in",
         "allergen": "$nin",
@@ -474,20 +482,15 @@ def insert_recipe():
     logged_user = mongo.db.user_accounts.find_one({ "email": session["email"] })["_id"]
     # Get today's date for recipe
     today = datetime.now().strftime("%Y-%m-%d")
-    # Convert preparation time
-    hours = int(request.form.get("hours")) if request.form.get("hours") else ""
-    minutes = int(request.form.get("minutes"))
-    if hours != "":
-        converted_prep_time = hours*60 + minutes
-    else:
-        converted_prep_time = minutes
     # Create a new recipe object with form's input
     new_recipe = {
         "recipe_name": request.form.get("recipe_name").lower(),
         "recipe_description": request.form.get("recipe_description").lower(),
         "rates_list":[ ],
         "serving": int(request.form.get("serving")),
-        "prep_time": converted_prep_time,
+        "prep_time":{   "hours": request.form.get("hours"),
+                        "minutes": request.form.get("minutes")
+                    },
         "difficulty": request.form.get("difficulty"),
         "occasion": request.form.getlist("occasion"),
         "geography": request.form.getlist("geography"),
