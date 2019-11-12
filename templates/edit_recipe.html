@@ -30,14 +30,14 @@
                 
                 <!-- Recipe name -->
                 <div class="input-field col s6">
-                    <input value="" id="recipe_name" name="recipe_name" type="text" class="validate">
-                    <label class="active" for="recipe_name">{{ recipe.recipe_name.capitalize() }}</label>
+                    <input value="{{ recipe.recipe_name.capitalize() }}" id="recipe_name" name="recipe_name" type="text" class="validate" required>
+                    <label class="active" for="recipe_name">Recipe Name</label>
                 </div>
                 
                 <!-- Difficulty -->
                 <div class="input-field col s3">
                     <select id="difficulty" name="difficulty">
-                        <option value="" disabled selected>{{ recipe.description.capitalize() }}</option>
+                        <option value="" disabled selected> Choose Difficulty</option>
                         <option value="easy" >Easy</option>
                         <option value="medium">Medium</option>
                         <option value="difficult">Difficult</option>
@@ -47,7 +47,7 @@
                 
                 <!-- Servings -->
                 <div class="input-field col s3">
-                    <input id="serving" name="serving" type="number" min="1" max="15" class="validate" autocomplete="off" required>
+                    <input value="{{ recipe.serving }}" id="serving" name="serving" type="number" min="1" max="15" class="validate" autocomplete="off" required>
                     <label for="serving">Serves</label>
                 </div>
                 
@@ -57,7 +57,7 @@
                 
                 <!-- Description -->
                 <div class="input-field col s8">
-                    <input value="" id="recipe_description" name="recipe_description" type="text" class="validate">
+                    <input value="{{ recipe.recipe_description.capitalize() }}" id="recipe_description" name="recipe_description" type="text" class="validate" required>
                     <label class="active" for="recipe_description">Recipe description</label>
                 </div>
                 
@@ -66,10 +66,12 @@
                 <!-- Hours -->
                 <div class="input-field col s2">
                     <input id="hours" name="hours" type="number" min="0" max="12" placeholder="Hour(s)" autocomplete="off" class="validate">
+                    <label for="hours">Hour(s)</label>
                 </div>
                 <!-- Minutes -->
                 <div class="input-field col s2">
-                    <input id="minutes" name="minutes" type="number" min="0" max="59" placeholder="Minutes" autocomplete="off" class="validate" required>
+                    <input value="{{ recipe.prep_time }}" id="minutes" name="minutes" type="number" min="0" max="59" autocomplete="off" class="validate" required>
+                    <label for="hours">Minutes</label>
                 </div>
                 
             </div>
@@ -156,7 +158,9 @@
             <div class="row">
                 <legend for="ingredients">Ingredients</legend>
                 <div class="input-field col s12" id="ingredientsform">
-                    <textarea id="ingredients" name="ingredients" autocomplete="off" minlength="5" maxlength="500" class="validate materialize-textarea col s12" placeholder="Example: Milk, Eggs, Chocolat" required></textarea>
+                    {% for ingredient in recipe.ingredients %}
+                    <textarea id="ingredients" name="ingredients" autocomplete="off" minlength="1" maxlength="500" class="validate materialize-textarea col s12" required>{{ ingredient }}</textarea>
+                    {% endfor %}
                 </div>
                 <!-- Add new ingredient -->
                 <button class="btn" class="add" id="add-ingredients"><i class="fa fa-plus" aria-hidden="true"></i></button>
@@ -166,14 +170,16 @@
             <div class="row">
                 <legend for="instructions">Preparation steps</legend>
                 <div class="input-field col s12" id="instructionsform">
-                    <textarea id="instructions" name="instructions" autocomplete="off" minlength="5" maxlength="500" class="validate materialize-textarea col s12" placeholder="Example: In a large bowl, mix all the wet ingregients" required></textarea>
+                    {% for instruction in recipe.instructions %}
+                    <textarea id="instructions" name="instructions" autocomplete="off" minlength="1" maxlength="500" class="validate materialize-textarea col s12" placeholder="Example: In a large bowl, mix all the wet ingregients" required>{{ instruction }}</textarea>
+                    {% endfor %}
                 </div>
                 <!-- Add new instruction -->
                 <button class="btn" class="add" id="add-instructions"><i class="fa fa-plus" aria-hidden="true"></i></button>
             </div>
             
             <div class="row">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add recipe</button>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Edit recipe</button>
             </div>
 
         </form>
