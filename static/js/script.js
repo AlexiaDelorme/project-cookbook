@@ -8,7 +8,7 @@ $(document).ready(function() {
     $(".parallax").parallax();
     $(".carousel").carousel();
     $(".carousel").carousel({ fullWidth: true });
-    $('select').material_select();
+    $('select').formSelect();
 
     // Dynamically add ingredients for add_recipe
     $("#add-ingredients").click(function() {
