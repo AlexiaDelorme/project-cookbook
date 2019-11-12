@@ -1,0 +1,185 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<!-- Image cards -->
+<div class="row center add-spacing">
+
+  <div class="col s4 category-box">
+    <img class="card-img" src="{{url_for('static', filename='img/home/img1.jpg')}}" alt="Img1"></img>
+  </div>
+
+  <div class="col s4 category-box">
+    <img class="card-img" src="{{url_for('static', filename='img/home/img2.jpg')}}" alt="Img2"></img>
+  </div>
+
+  <div class="col s4 category-box">
+    <img class="card-img" src="{{url_for('static', filename='img/home/img3.jpg')}}" alt="Img3"></img>
+  </div>
+
+</div>
+
+<div class="row center-align recipe-elements">
+
+    <h4 class="add-spacing">EDIT RECIPE</h4>
+
+    <div class="row">
+        
+        <form action="" method="POST" class="col s12">
+            
+            <div class="row">
+                
+                <!-- Recipe name -->
+                <div class="input-field col s6">
+                    <input value="" id="recipe_name" name="recipe_name" type="text" class="validate">
+                    <label class="active" for="recipe_name">{{ recipe.recipe_name.capitalize() }}</label>
+                </div>
+                
+                <!-- Difficulty -->
+                <div class="input-field col s3">
+                    <select id="difficulty" name="difficulty">
+                        <option value="" disabled selected>{{ recipe.description.capitalize() }}</option>
+                        <option value="easy" >Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="difficult">Difficult</option>
+                    </select>
+                    <label for="difficulty">Recipe Difficulty</label>
+                </div> 
+                
+                <!-- Servings -->
+                <div class="input-field col s3">
+                    <input id="serving" name="serving" type="number" min="1" max="15" class="validate" autocomplete="off" required>
+                    <label for="serving">Serves</label>
+                </div>
+                
+            </div>
+            
+            <div class="row">
+                
+                <!-- Description -->
+                <div class="input-field col s8">
+                    <input value="" id="recipe_description" name="recipe_description" type="text" class="validate">
+                    <label class="active" for="recipe_description">Recipe description</label>
+                </div>
+                
+                <!-- Preparation time -->
+                
+                <!-- Hours -->
+                <div class="input-field col s2">
+                    <input id="hours" name="hours" type="number" min="0" max="12" placeholder="Hour(s)" autocomplete="off" class="validate">
+                </div>
+                <!-- Minutes -->
+                <div class="input-field col s2">
+                    <input id="minutes" name="minutes" type="number" min="0" max="59" placeholder="Minutes" autocomplete="off" class="validate" required>
+                </div>
+                
+            </div>
+            
+            <div class="row">
+                
+                <!-- Meal Category -->
+                <div class="col s6">
+                    <p>Meal Category</p>
+                        {% for cat in meal_categories.list %}
+                        <div class="col s6 left-align">
+                            <input type="checkbox" id="{{cat.category_name}}" name="meal" value="{{cat.category_name}}">
+                            <label for="{{cat.category_name}}">{{cat.category_name.capitalize()}}</label>
+                        </div>
+                    {% endfor %}
+                 </div> 
+                 
+                 <!-- Diet -->
+                <div class="col s6">
+                    <p>Diet</p>
+                    {% for cat in diet_categories.list %}
+                    <div class="col s6 left-align">
+                        <input type="checkbox" id="{{cat.category_name}}" name="diet" value="{{cat.category_name}}">
+                        <label for="{{cat.category_name}}">{{cat.category_name.capitalize()}}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+            
+            <div class="row">
+                
+                <!-- Occasion -->
+                <div class="input-field col s6">
+                    <select id="occasion" name="occasion" multiple>
+                        <option value="" disabled selected>Choose Occasion</option>
+                        {% for cat in occasion_categories.list %}
+                        <option value="{{cat.category_name}}">{{cat.category_name.capitalize()}}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Suitable for celebration</label>
+                </div>
+                
+                <!-- Geography -->
+                <div class="input-field col s6">
+                    <select id="geography" name="geography" multiple>
+                        <option value="" disabled selected>Choose Geography</option>
+                        {% for cat in geography_categories.list %}
+                        <option value="{{cat.category_name}}" >{{cat.category_name.capitalize()}}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Geography</label>
+                </div>
+
+            </div>
+            
+            <div class="row">
+                
+                <!-- Allergens -->
+                <div class="input-field col s6">
+                    <select id="allergen" name="allergen" multiple>
+                        <option value="" disabled selected>Choose Allergen(s)</option>
+                        {% for cat in allergen_categories.list %}
+                        <option value="{{cat}}">{{cat.capitalize()}}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Allergens</label>
+                </div>
+                
+                <!-- Tools -->
+                <div class="input-field col s6">
+                    <select id="tool" name="tool" multiple>
+                        <option value="" disabled selected>Choose tool(s)</option>
+                        {% for cat in tool_categories.list %}
+                        <option value="{{cat}}">{{cat.capitalize()}}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Kitchen tools</label>
+                </div>
+
+            </div>
+            
+            <!-- Recipe ingredients -->
+            <div class="row">
+                <legend for="ingredients">Ingredients</legend>
+                <div class="input-field col s12" id="ingredientsform">
+                    <textarea id="ingredients" name="ingredients" autocomplete="off" minlength="5" maxlength="500" class="validate materialize-textarea col s12" placeholder="Example: Milk, Eggs, Chocolat" required></textarea>
+                </div>
+                <!-- Add new ingredient -->
+                <button class="btn" class="add" id="add-ingredients"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            </div>
+                        
+            <!-- Recipe instructions -->
+            <div class="row">
+                <legend for="instructions">Preparation steps</legend>
+                <div class="input-field col s12" id="instructionsform">
+                    <textarea id="instructions" name="instructions" autocomplete="off" minlength="5" maxlength="500" class="validate materialize-textarea col s12" placeholder="Example: In a large bowl, mix all the wet ingregients" required></textarea>
+                </div>
+                <!-- Add new instruction -->
+                <button class="btn" class="add" id="add-instructions"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            </div>
+            
+            <div class="row">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Add recipe</button>
+            </div>
+
+        </form>
+        
+    </div>
+
+</div>
+
+{% endblock %}

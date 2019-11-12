@@ -455,6 +455,32 @@ def my_recipes():
     flash(f"You are required to login to access this page", "white-text red")
     return redirect(url_for('login'))
 
+# ----- 2.1. EDIT RECIPE ----- #  
+@app.route("/edit_recipe/<recipe_id>")
+def edit_recipe(recipe_id):
+    """
+    Edit recipe selected by the user from the previous menu.
+    """
+    # Get recipe object based on id of the recipe clicked by the user
+    the_recipe =  mongo.db.recipes_information.find_one({"_id": ObjectId(recipe_id)})
+    # Create variables to edit recipes
+    meal_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'meal' })
+    diet_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'diet' })
+    occasion_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'occasion' })
+    geography_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'geography' })
+    allergen_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'allergen' })
+    tool_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'tool' })
+    
+    return render_template("edit_recipe.html",
+                            Page_name = "Edit Recipe",
+                            meal_categories = meal_categories,
+                            diet_categories = diet_categories,
+                            occasion_categories = occasion_categories,
+                            geography_categories = geography_categories,
+                            allergen_categories = allergen_categories,
+                            tool_categories = tool_categories,
+                            recipe = the_recipe)
+
 # ----- 3. ADD / NEW RECIPE ----- #  
 @app.route("/add_recipe")
 def add_recipe():
