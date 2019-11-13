@@ -3,13 +3,11 @@ $(document).ready(function() {
     // jQuery for materialize components
     $('.collapsible').collapsible();
     $(".button-collapse").sideNav();
-    $(".dropdown-trigger").dropdown();
     $(".parallax").parallax();
     $(".carousel").carousel();
-    $(".carousel").carousel({ fullWidth: true });
-    $('select').formSelect();
+    $('select').material_select();
 
-    // Dynamically add ingredients for add_recipe
+    // Dynamically add new ingredients for add_recipe and edit_recipe
     $("#add-ingredients").click(function() {
         var lastField = $("#ingredientsform div:last");
         var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
@@ -25,7 +23,7 @@ $(document).ready(function() {
         $("#ingredientsform").append(fieldWrapper);
     });
 
-    // Dynamically add preparations steps for add_recipe
+    // Dynamically add preparations steps for add_recipe and edit_recipe
     $("#add-instructions").click(function() {
         var lastField = $("#instructionsform div:last");
         var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
