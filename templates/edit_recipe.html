@@ -29,13 +29,13 @@
             <div class="row">
                 
                 <!-- Recipe name -->
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <input value="{{ recipe.recipe_name.capitalize() }}" id="recipe_name" name="recipe_name" type="text" class="validate" required>
                     <label class="active" for="recipe_name">Recipe Name</label>
                 </div>
                 
                 <!-- Difficulty -->
-                <div class="input-field col s3">
+                <div class="input-field col s6 m3">
                     <select id="difficulty" name="difficulty">
                         <option value="" disabled selected> Choose Difficulty</option>
                         {% for cat in difficulty %}
@@ -50,7 +50,7 @@
                 </div> 
                 
                 <!-- Servings -->
-                <div class="input-field col s3">
+                <div class="input-field col s6 m3">
                     <input value="{{ recipe.serving }}" id="serving" name="serving" type="number" min="1" max="15" class="validate" autocomplete="off" required>
                     <label for="serving">Serves</label>
                 </div>
@@ -60,7 +60,7 @@
             <div class="row">
                 
                 <!-- Description -->
-                <div class="input-field col s8">
+                <div class="input-field col s12 m8">
                     <input value="{{ recipe.recipe_description.capitalize() }}" id="recipe_description" name="recipe_description" type="text" class="validate" required>
                     <label class="active" for="recipe_description">Recipe description</label>
                 </div>
@@ -68,12 +68,12 @@
                 <!-- Preparation time -->
                 
                 <!-- Hours -->
-                <div class="input-field col s2">
+                <div class="input-field col s6 m2">
                     <input id="hours" name="hours" type="number" min="0" max="12" placeholder="Hour(s)" autocomplete="off" class="validate">
                     <label for="hours">Hour(s)</label>
                 </div>
                 <!-- Minutes -->
-                <div class="input-field col s2">
+                <div class="input-field col s6 m2">
                     <input value="{{ recipe.prep_time }}" id="minutes" name="minutes" type="number" min="0" max="59" autocomplete="off" class="validate" required>
                     <label for="hours">Minutes</label>
                 </div>
@@ -83,7 +83,7 @@
             <div class="row">
                 
                 <!-- Meal Category -->
-                <div class="col s6">
+                <div class="col s12 l6">
                     <p>Meal Category</p>
                         {% for cat in meal_categories.list %}
                         <div class="col s6 left-align">
@@ -98,7 +98,7 @@
                  </div> 
                  
                  <!-- Diet -->
-                <div class="col s6">
+                <div class="col s12 l6">
                     <p>Diet</p>
                     {% for cat in diet_categories.list %}
                     <div class="col s6 left-align">
@@ -117,7 +117,7 @@
             <div class="row">
                 
                 <!-- Occasion -->
-                <div class="input-field col s6">
+                <div class="input-field col s12 l6">
                     <select id="occasion" name="occasion" multiple>
                         <option value="" disabled selected>Choose Occasion</option>
                         {% for cat in occasion_categories.list %}
@@ -132,7 +132,7 @@
                 </div>
                 
                 <!-- Geography -->
-                <div class="input-field col s6">
+                <div class="input-field col s12 l6">
                     <select id="geography" name="geography" multiple>
                         <option value="" disabled selected>Choose Geography</option>
                         {% for cat in geography_categories.list %}
@@ -151,7 +151,7 @@
             <div class="row">
                 
                 <!-- Allergens -->
-                <div class="input-field col s6">
+                <div class="input-field col s12 l6">
                     <select id="allergen" name="allergen" multiple>
                         <option value="" disabled selected>Choose Allergen(s)</option>
                         {% for cat in allergen_categories.list %}
@@ -166,7 +166,7 @@
                 </div>
                 
                 <!-- Tools -->
-                <div class="input-field col s6">
+                <div class="input-field col s12 l6">
                     <select id="tool" name="tool" multiple>
                         <option value="" disabled selected>Choose tool(s)</option>
                         {% for cat in tool_categories.list %}
