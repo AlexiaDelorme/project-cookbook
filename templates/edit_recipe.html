@@ -83,7 +83,11 @@
                     <p>Meal Category</p>
                         {% for cat in meal_categories.list %}
                         <div class="col s6 left-align">
+                            {% if cat.category_name in recipe.meal %}
+                            <input type="checkbox" id="{{cat.category_name}}" name="meal" value="{{cat.category_name}}" checked="checked" >
+                            {% else %}
                             <input type="checkbox" id="{{cat.category_name}}" name="meal" value="{{cat.category_name}}">
+                            {% endif %}
                             <label for="{{cat.category_name}}">{{cat.category_name.capitalize()}}</label>
                         </div>
                     {% endfor %}
@@ -94,7 +98,11 @@
                     <p>Diet</p>
                     {% for cat in diet_categories.list %}
                     <div class="col s6 left-align">
+                        {% if cat.category_name in recipe.diet %}
+                        <input type="checkbox" id="{{cat.category_name}}" name="diet" value="{{cat.category_name}}" checked="checked" >
+                        {% else %}
                         <input type="checkbox" id="{{cat.category_name}}" name="diet" value="{{cat.category_name}}">
+                        {% endif %}
                         <label for="{{cat.category_name}}">{{cat.category_name.capitalize()}}</label>
                     </div>
                     {% endfor %}
@@ -109,7 +117,11 @@
                     <select id="occasion" name="occasion" multiple>
                         <option value="" disabled selected>Choose Occasion</option>
                         {% for cat in occasion_categories.list %}
-                        <option value="{{cat.category_name}}">{{cat.category_name.capitalize()}}</option>
+                            {% if cat.category_name in recipe.occasion %}
+                            <option value="{{cat.category_name}}" selected >{{cat.category_name.capitalize()}}</option>
+                            {% else %}
+                            <option value="{{cat.category_name}}">{{cat.category_name.capitalize()}}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                     <label>Suitable for celebration</label>
@@ -120,7 +132,11 @@
                     <select id="geography" name="geography" multiple>
                         <option value="" disabled selected>Choose Geography</option>
                         {% for cat in geography_categories.list %}
-                        <option value="{{cat.category_name}}" >{{cat.category_name.capitalize()}}</option>
+                            {% if cat.category_name in recipe.geography %}
+                            <option value="{{cat.category_name}}" selected >{{cat.category_name.capitalize()}}</option>
+                            {% else %}
+                            <option value="{{cat.category_name}}">{{cat.category_name.capitalize()}}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                     <label>Geography</label>
@@ -135,7 +151,11 @@
                     <select id="allergen" name="allergen" multiple>
                         <option value="" disabled selected>Choose Allergen(s)</option>
                         {% for cat in allergen_categories.list %}
-                        <option value="{{cat}}">{{cat.capitalize()}}</option>
+                            {% if cat in recipe.allergen %}
+                            <option value="{{cat}}" selected >{{cat.capitalize()}}</option>
+                            {% else %}
+                            <option value="{{cat}}">{{cat.capitalize()}}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                     <label>Allergens</label>
@@ -146,7 +166,11 @@
                     <select id="tool" name="tool" multiple>
                         <option value="" disabled selected>Choose tool(s)</option>
                         {% for cat in tool_categories.list %}
-                        <option value="{{cat}}">{{cat.capitalize()}}</option>
+                            {% if cat in recipe.tool %}
+                            <option value="{{cat}}" selected >{{cat.capitalize()}}</option>
+                            {% else %}
+                            <option value="{{cat}}">{{cat.capitalize()}}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                     <label>Kitchen tools</label>
