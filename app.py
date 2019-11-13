@@ -548,11 +548,15 @@ def insert_recipe():
     mongo.db.recipes_information.insert_one(new_recipe)
      # Get the ID of the newly created recipe
     new_recipe_ID = new_recipe["_id"]
+    # Add this recipe to the user's collection "favorite_recipes"
+    if request.form.get("is_favorite"):
+        mongo.db.user_accounts.update_one({"_id": ObjectId(logged_user)},
+                                          {"$push": {"favorite_recipes": new_recipe_ID}})
     # Add this recipe to the user's collection "my_recipes"
-    mongo.db.user_accounts.update_one(
-        {"_id": ObjectId(logged_user)},
-            {"$push": {"my_recipes": new_recipe_ID }})
+    mongo.db.user_accounts.update_one({"_id": ObjectId(logged_user)},
+                                      {"$push": {"my_recipes": new_recipe_ID }})
     flash(f"Thanks, your recipe was created!", "white-text green")
+
     return redirect(url_for("my_recipes"))
 
 # ----- 4. VIEW / MY COOKBOOK ----- #  
