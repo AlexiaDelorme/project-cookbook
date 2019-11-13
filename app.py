@@ -470,6 +470,8 @@ def edit_recipe(recipe_id):
     geography_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'geography' })
     allergen_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'allergen' })
     tool_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'tool' })
+    #
+    prep_time = the_recipe["prep_time"]
     
     return render_template("edit_recipe.html",
                             Page_name = "Edit Recipe",
@@ -509,15 +511,17 @@ def insert_recipe():
     logged_user = mongo.db.user_accounts.find_one({ "email": session["email"] })["_id"]
     # Get today's date for recipe
     today = datetime.now().strftime("%Y-%m-%d")
-    # Create a new recipe object with form's input
+    # Convert prep_time into minutes
+    hours = int(request.form.get("hours"))*60 if request.form.get("hours") else ""
+    minutes = int(request.form.get("minutes"))
+    prep_time = minutes + hours if hours else minutes
+    
     new_recipe = {
         "recipe_name": request.form.get("recipe_name").lower(),
         "recipe_description": request.form.get("recipe_description").lower(),
         "rates_list":[ ],
         "serving": int(request.form.get("serving")),
-        "prep_time":{   "hours": request.form.get("hours"),
-                        "minutes": request.form.get("minutes")
-                    },
+        "prep_time": prep_time,
         "difficulty": request.form.get("difficulty"),
         "occasion": request.form.getlist("occasion"),
         "geography": request.form.getlist("geography"),
