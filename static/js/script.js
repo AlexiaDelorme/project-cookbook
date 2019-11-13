@@ -3,7 +3,6 @@ $(document).ready(function() {
     // jQuery for materialize components
     $('.collapsible').collapsible();
     $(".button-collapse").sideNav();
-    $('.sidenav').sidenav();
     $(".dropdown-trigger").dropdown();
     $(".parallax").parallax();
     $(".carousel").carousel();
