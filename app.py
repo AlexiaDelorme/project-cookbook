@@ -470,8 +470,14 @@ def edit_recipe(recipe_id):
     geography_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'geography' })
     allergen_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'allergen' })
     tool_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'tool' })
-    #
+    # Format prep_time into hours and minutes
     prep_time = the_recipe["prep_time"]
+    if prep_time < 60:
+        hours = ""
+        minutes = prep_time
+    else:
+        hours = prep_time // 60
+        minutes = prep_time % 60
     
     return render_template("edit_recipe.html",
                             Page_name = "Edit Recipe",
@@ -482,6 +488,8 @@ def edit_recipe(recipe_id):
                             allergen_categories = allergen_categories,
                             tool_categories = tool_categories,
                             recipe = the_recipe,
+                            hours = hours,
+                            minutes = minutes,
                             difficulty = ["easy", "medium", "difficult"])
 
 # ----- 3. ADD / NEW RECIPE ----- #  

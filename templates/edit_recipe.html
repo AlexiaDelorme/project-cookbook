@@ -69,13 +69,13 @@
                 
                 <!-- Hours -->
                 <div class="input-field col s6 m2">
-                    <input id="hours" name="hours" type="number" min="0" max="12" placeholder="Hour(s)" autocomplete="off" class="validate">
+                    <input value="{{ hours }}" id="hours" name="hours" type="number" min="0" max="12" autocomplete="off" class="validate">
                     <label for="hours">Hour(s)</label>
                 </div>
                 <!-- Minutes -->
                 <div class="input-field col s6 m2">
-                    <input value="{{ recipe.prep_time }}" id="minutes" name="minutes" type="number" min="0" max="59" autocomplete="off" class="validate" required>
-                    <label for="hours">Minutes</label>
+                    <input value="{{ minutes }}" id="minutes" name="minutes" type="number" min="0" max="59" autocomplete="off" class="validate" required>
+                    <label for="hours">Minute(s)</label>
                 </div>
                 
             </div>
