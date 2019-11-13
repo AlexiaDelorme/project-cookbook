@@ -479,7 +479,8 @@ def edit_recipe(recipe_id):
                             geography_categories = geography_categories,
                             allergen_categories = allergen_categories,
                             tool_categories = tool_categories,
-                            recipe = the_recipe)
+                            recipe = the_recipe,
+                            difficulty = ["easy", "medium", "difficult"])
 
 # ----- 3. ADD / NEW RECIPE ----- #  
 @app.route("/add_recipe")

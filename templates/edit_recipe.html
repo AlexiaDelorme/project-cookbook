@@ -38,9 +38,13 @@
                 <div class="input-field col s3">
                     <select id="difficulty" name="difficulty">
                         <option value="" disabled selected> Choose Difficulty</option>
-                        <option value="easy" >Easy</option>
-                        <option value="medium">Medium</option>
-                        <option value="difficult">Difficult</option>
+                        {% for cat in difficulty %}
+                            {% if cat == recipe.difficulty %}
+                            <option value="{{cat}}" selected >{{ cat.capitalize() }}</option>
+                            {% else %}
+                            <option value="{{cat}}">{{ cat.capitalize() }}</option>
+                            {% endif %}
+                        {% endfor %}
                     </select>
                     <label for="difficulty">Recipe Difficulty</label>
                 </div> 
