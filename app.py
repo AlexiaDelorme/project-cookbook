@@ -492,6 +492,38 @@ def edit_recipe(recipe_id):
                             minutes = minutes,
                             difficulty = ["easy", "medium", "difficult"])
 
+# ----- 2.2. UPDATE RECIPE ----- # 
+@app.route("/update_recipe/<recipe_id>", methods=["POST"])
+def update_recipe(recipe_id):
+    
+    recipes = mongo.db.recipes_information
+    
+    # Convert prep_time into minutes
+    hours = int(request.form.get("hours"))*60 if request.form.get("hours") else ""
+    minutes = int(request.form.get("minutes"))
+    prep_time = minutes + hours if hours else minutes
+    
+    recipes.update(
+        {'_id': ObjectId(recipe_id) },
+        { "$set": { "recipe_name": request.form.get("recipe_name").lower(),
+                    "recipe_description": request.form.get("recipe_description").lower(),
+                    "serving": int(request.form.get("serving")),
+                    "prep_time": prep_time,
+                    "difficulty": request.form.get("difficulty"),
+                    "occasion": request.form.getlist("occasion"),
+                    "geography": request.form.getlist("geography"),
+                    "diet": request.form.getlist("diet"),
+                    "meal": request.form.getlist("meal"),
+                    "ingredients": request.form.getlist("ingredients"),
+                    "instructions": request.form.getlist("instructions"),
+                    "tool": request.form.getlist("tool"),
+                    "allergen": request.form.getlist("allergen")
+                    }
+        })
+                
+    flash(f"Thanks, the recipe has been updated!", "white-text green")
+    return redirect(url_for('recipe_description', recipe_id = recipe_id))
+
 # ----- 3. ADD / NEW RECIPE ----- #  
 @app.route("/add_recipe")
 def add_recipe():
@@ -524,25 +556,24 @@ def insert_recipe():
     minutes = int(request.form.get("minutes"))
     prep_time = minutes + hours if hours else minutes
     
-    new_recipe = {
-        "recipe_name": request.form.get("recipe_name").lower(),
-        "recipe_description": request.form.get("recipe_description").lower(),
-        "rates_list":[ ],
-        "serving": int(request.form.get("serving")),
-        "prep_time": prep_time,
-        "difficulty": request.form.get("difficulty"),
-        "occasion": request.form.getlist("occasion"),
-        "geography": request.form.getlist("geography"),
-        "diet": request.form.getlist("diet"),
-        "meal": request.form.getlist("meal"),
-        "ingredients": request.form.getlist("ingredients"),
-        "instructions": request.form.getlist("instructions"),
-        "tool": request.form.getlist("tool"),
-        "allergen": request.form.getlist("allergen"),
-        "recipe_author": logged_user,
-        "recipe_date": today,
-        "image_path":"",
-        "comments_list":[ ]
+    new_recipe = {  "recipe_name": request.form.get("recipe_name").lower(),
+                    "recipe_description": request.form.get("recipe_description").lower(),
+                    "rates_list":[ ],
+                    "serving": int(request.form.get("serving")),
+                    "prep_time": prep_time,
+                    "difficulty": request.form.get("difficulty"),
+                    "occasion": request.form.getlist("occasion"),
+                    "geography": request.form.getlist("geography"),
+                    "diet": request.form.getlist("diet"),
+                    "meal": request.form.getlist("meal"),
+                    "ingredients": request.form.getlist("ingredients"),
+                    "instructions": request.form.getlist("instructions"),
+                    "tool": request.form.getlist("tool"),
+                    "allergen": request.form.getlist("allergen"),
+                    "recipe_author": logged_user,
+                    "recipe_date": today,
+                    "image_path":"",
+                    "comments_list":[ ]
     }
     # Insert recipe information into the db
     mongo.db.recipes_information.insert_one(new_recipe)
