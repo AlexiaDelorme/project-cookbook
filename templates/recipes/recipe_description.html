@@ -9,11 +9,19 @@
         
         <div class="col s2">
             {% for diet in recipe.diet %}
-                {{ diet.capitalize() }} 
+                {{ diet.capitalize() }} <br>
             {% endfor %}
         </div>
         
-        <div class="col s2"><i class="fa fa-clock-o" aria-hidden="true"></i> Prep time</div>
+        <div class="col s2"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+        {% if hours == "" %}
+            {{minutes}} min
+        {% elif minutes == 0 %}
+            {{hours}}h
+        {% else %}
+            {{hours}}h{{minutes}} 
+        {% endif %}
+        </div>
         
         <div class="col s2"><i class="fa fa-hand-peace-o" aria-hidden="true"></i> {{ recipe.difficulty.capitalize() }}</div>
     
@@ -68,6 +76,18 @@
         
     </div>
     
+</div>
+
+{% endblock %}
+
+{% block carousel %}
+
+<h5 class="center headline-carousel">Try out our favourite recipes!</h5>
+        
+<div class="carousel">
+    {% for image in carousel %}
+    <a class="carousel-item" href="#"><img src="../{{ image }}"></a>  
+    {% endfor %}
 </div>
 
 {% endblock %}

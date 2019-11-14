@@ -665,10 +665,22 @@ def recipe_description(recipe_id):
     # Get recipe object based on id of the recipe clicked by the user
     the_recipe =  mongo.db.recipes_information.find_one({"_id": ObjectId(recipe_id)})
     the_recipe_name = the_recipe["recipe_name"].capitalize()
+    # Format prep_time into hours and minutes
+    prep_time = the_recipe["prep_time"]
+    if prep_time < 60:
+        hours = ""
+        minutes = prep_time
+    else:
+        hours = prep_time // 60
+        minutes = prep_time % 60
+    
     return render_template("recipes/recipe_description.html", 
                             Page_name = the_recipe_name,
                             Page_title = f"{the_recipe_name}", 
-                            recipe=the_recipe)
+                            recipe = the_recipe,
+                            hours = hours,
+                            minutes = minutes,
+                            carousel = image_folder("carousel"))
 
 # ---------------- #
 #      RUN APP     #
