@@ -33,7 +33,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template("home.html", 
+    return render_template("general/home.html", 
                             Page_name = "Home",
                             Page_title = "The Pâtisserie Journal", 
                             Welcome_image = "../static/img/home/bg.jpg")
@@ -52,7 +52,7 @@ def explore():
     geography_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'geography' })
     allergen_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'allergen' })
     tool_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'tool' })
-    return render_template("explore.html",
+    return render_template("recipes/explore.html",
                             Page_name = "Explore Recipes",
                             meal_categories = meal_categories,
                             diet_categories = diet_categories,
@@ -121,7 +121,7 @@ def explore_results():
     
     recipes_number=recipes.count()
     
-    return render_template("explore_results.html",
+    return render_template("recipes/explore_results.html",
                             Page_name = "Recipes Results",
                             Page_title = f"{recipes_number} Recipe(s) Found",
                             recipes=recipes,
@@ -134,7 +134,7 @@ def recipes():
     Display categories from which the user will be able to filter recipes.
     Search recipes according a specific category by clicking on this category. 
     """
-    return render_template("recipes.html",
+    return render_template("recipes/recipes.html",
                             Page_name = "Recipes",
                             Page_title = "Discover recipes by...", 
                             Welcome_image = "../static/img/categories/bg.jpg", 
@@ -151,7 +151,7 @@ def recipes_categories(category_name):
     # Store the category clicked by the user in a variable
     the_category =  mongo.db.recipes_categories.find_one({"category_name": category_name})
     the_name_category = the_category["category_name"].capitalize()
-    return render_template("recipes_categories.html", 
+    return render_template("recipes/recipes_categories.html", 
                             Page_name = the_name_category,
                             Page_title = "Discover recipes for...", 
                             Welcome_image = "../static/img/categories/bg.jpg", 
@@ -167,7 +167,7 @@ def recipes_subcategories(category_name, subcategory_name):
     # Get recipes filtered by the sub-category
     recipes_subcategory_results = mongo.db.recipes_information.find({ category_name: { "$all": [subcategory_name] } })
     recipes_count=recipes_subcategory_results.count()
-    return render_template("recipes_subcategories.html",
+    return render_template("recipes/recipes_subcategories.html",
                             Page_name = subcategory_name.capitalize(),
                             Page_title = f"{recipes_count} {subcategory_name.capitalize()} Recipes",
                             recipes = recipes_subcategory_results)
@@ -175,7 +175,7 @@ def recipes_subcategories(category_name, subcategory_name):
 # ----- 4. ABOUT ----- #
 @app.route("/about")
 def about():
-    return render_template("about.html", 
+    return render_template("general/about.html", 
                             Page_name = "About Us",
                             Page_title = "About Us", 
                             Welcome_image = "../static/img/about/bg.jpg")
@@ -190,9 +190,9 @@ def signup():
     # Check if a user is not already logged in to the session
     if "email" in session:
         flash(f"You are logged in as {session['email']}", "white-text green")
-        return redirect(url_for('home'))
+        return redirect(url_for('general/home'))
     form = SignupForm()
-    return render_template("signup.html",
+    return render_template("general/signup.html",
                             Page_name = "Sign up",
                             Welcome_image = "../static/img/sign/bg.jpg",
                             form=form)
@@ -214,7 +214,7 @@ def insert_user_account():
         # Check if email provided is not already linked to an existing account
         if user:
             flash(f"An account already exists for {form.email.data}.", "white-text red")
-            return redirect(url_for("signup"))
+            return redirect(url_for("general/signup"))
         # If no existing account was found user account can be created
         else:
             # Encrypt password
@@ -229,9 +229,9 @@ def insert_user_account():
                 "favorite_recipes": []
             })
             flash(f"{form.first_name.data.capitalize()}, your account has been created, you can now log in!", "white-text green")
-            return redirect(url_for("login"))
+            return redirect(url_for("general/login"))
     
-    return redirect(url_for("signup"))
+    return redirect(url_for("general/signup"))
 
 # ----- 6. LOG IN ----- #
 @app.route("/login", methods=["POST", "GET"])
@@ -244,7 +244,7 @@ def login():
     # Check if a user is not already logged in to the session
     if "email" in session:
         flash(f"You are logged in as {session['email']}", "white-text green")
-        return redirect(url_for('home'))
+        return redirect(url_for('general/home'))
     
     form = LoginForm()
     
@@ -261,11 +261,11 @@ def login():
             session["first_name"] = user["first_name"].lower()
             session["last_name"] = user["last_name"].lower()
             flash("Login successful!", "white-text green darken-1")
-            return redirect(url_for("account"))
+            return redirect(url_for("users/account"))
         else:
             flash(f"Login unsuccessful! Email and/or password incorrect.", "white-text red")
         
-    return render_template("login.html",
+    return render_template("general/login.html",
                             Page_name = "Log In",
                             Welcome_image = "../static/img/sign/bg.jpg",
                             form=form)
@@ -285,11 +285,11 @@ def account():
     """
     # Check if the user is logged before rendering the template
     if "email" in session:    
-        return render_template("account.html",
+        return render_template("users/account.html",
                                 Page_name = "My Account",
                                 Page_title = f"Hi {session['first_name'].capitalize()}, welcome!")
     flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('login'))    
+    return redirect(url_for('general/login'))    
 
 # ----- LOG OUT ----- #
 @app.route("/logout", methods=["POST", "GET"])
@@ -298,7 +298,7 @@ def logout():
     session.pop("first_name", None)
     session.pop("last_name", None)
     flash("Thanks for your visit, we hope to see you soon!", "blue-grey lighten-5")
-    return redirect(url_for("login"))
+    return redirect(url_for("general/login"))
 
 
 # ----- 1. VIEW / USER ACCOUNT DETAILS ----- #
@@ -312,12 +312,12 @@ def account_details():
     if "email" in session:
         # Create a query to get user information
         user = mongo.db.user_accounts.find_one( { "email": session["email"] })
-        return render_template("account_details.html",
+        return render_template("users/account_details.html",
                                 Page_name = "Manage Account",
                                 Welcome_image = "../static/img/sign/bg.jpg",
                                 account = user)
     flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('login'))
+    return redirect(url_for('general/login'))
 
 # ----- 1.1. EDIT / ACCOUNT DETAILS ----- #
 @app.route("/edit_my_details")
@@ -330,12 +330,12 @@ def edit_my_details():
     if "email" in session:
         # Create a query to get user information
         user = mongo.db.user_accounts.find_one( { "email": session["email"] })
-        return render_template("edit_my_details.html",
+        return render_template("users/edit_my_details.html",
                                 Page_name = "Edit Details",
                                 Welcome_image = "../static/img/sign/bg.jpg",
                                 account = user)
     flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('login'))
+    return redirect(url_for('general/login'))
 
 # ----- 1.1.1 UPDATE / ACCOUNT DETAILS ----- #
 @app.route("/update_my_details/<account_id>", methods=["POST"])
@@ -348,7 +348,7 @@ def update_my_details(account_id):
     user = mongo.db.user_accounts.find_one( { "email": request.form.get("email").lower() })
     if user:
         flash(f"An account already exists for {request.form.get('email')}", "white-text red")
-        return redirect(url_for("edit_my_details"))
+        return redirect(url_for("users/edit_my_details"))
     else:
         # Update new account details into the db
         mongo.db.user_accounts.update({"_id": ObjectId(account_id)},
@@ -362,7 +362,7 @@ def update_my_details(account_id):
         session["first_name"] = request.form.get("first_name").lower()
         session["last_name"] = request.form.get("last_name").lower()
         flash("Your account details have been updated successfully!", "white-text green darken-1")
-        return redirect(url_for("account_details"))
+        return redirect(url_for("users/account_details"))
 
 # ----- 1.2. EDIT/ USER PASSWORD ----- #
 @app.route("/edit_password", methods=["POST", "GET"])
@@ -396,21 +396,22 @@ def edit_password():
                 # Update new password into MongoDB
                 mongo.db.user_accounts.update({ "email": session["email"]},
                                               { "$set":
-                                                  { "password": hashed_password         }})
+                                                  { "password": hashed_password }
+                                              })
                 
                 flash(f"Thanks your password has been updated!", "white-text green")
-                return redirect(url_for('account_details'))
+                return redirect(url_for('users/account_details'))
                 
             else:
                 flash(f"You have to confirm your password. Please make sure the two fields are identical.", "white-text red")
         
-        return render_template("edit_password.html",
+        return render_template("users/edit_password.html",
                                 Page_name = "Edit Password",
                                 Welcome_image = "../static/img/sign/bg.jpg",
                                 form=form)
                             
     flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('login'))
+    return redirect(url_for('general/login'))
 
 # ----- 2. VIEW / MY RECIPES ----- #       
 @app.route("/my_recipes")
@@ -446,14 +447,14 @@ def my_recipes():
             # Log each recipe_information variable
             logging.info('For i={}, the recipes information found is {}'.format(i, recipe_information_i))
             
-        return render_template("my_recipes.html",
+        return render_template("users/my_recipes.html",
                             Page_name = "My recipes",
                             Welcome_image = "TBD",
                             recipes = recipes_list_information,
                             recipes_number = recipes_number)
     
     flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('login'))
+    return redirect(url_for('general/login'))
 
 # ----- 2.1. EDIT RECIPE ----- #  
 @app.route("/edit_recipe/<recipe_id>")
@@ -479,7 +480,7 @@ def edit_recipe(recipe_id):
         hours = prep_time // 60
         minutes = prep_time % 60
     
-    return render_template("edit_recipe.html",
+    return render_template("recipes/edit_recipe.html",
                             Page_name = "Edit Recipe",
                             meal_categories = meal_categories,
                             diet_categories = diet_categories,
@@ -522,7 +523,7 @@ def update_recipe(recipe_id):
         })
                 
     flash(f"Thanks, the recipe has been updated!", "white-text green")
-    return redirect(url_for('recipe_description', recipe_id = recipe_id))
+    return redirect(url_for('recipes/recipe_description', recipe_id = recipe_id))
 
 # ----- 3. ADD / NEW RECIPE ----- #  
 @app.route("/add_recipe")
@@ -535,7 +536,7 @@ def add_recipe():
     allergen_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'allergen' })
     tool_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'tool' })
     
-    return render_template("add_recipe.html",
+    return render_template("recipes/add_recipe.html",
                             Page_name = "Add Recipe",
                             meal_categories = meal_categories,
                             diet_categories = diet_categories,
@@ -588,7 +589,7 @@ def insert_recipe():
                                       {"$push": {"my_recipes": new_recipe_ID }})
     flash(f"Thanks, your recipe was created!", "white-text green")
 
-    return redirect(url_for("my_recipes"))
+    return redirect(url_for("users/my_recipes"))
 
 # ----- 4. VIEW / MY COOKBOOK ----- #  
 @app.route("/cookbook")
@@ -627,7 +628,7 @@ def cookbook():
         # Log the variable recipes list information
         logging.info('Array containing all recipes information {}'.format(recipes_list_information))
     
-        return render_template("cookbook.html",
+        return render_template("users/cookbook.html",
                             Page_name = "Cookbook",
                             Page_title = "My Cookbook", 
                             Welcome_image = "../static/img/cookbook/bg.jpg",
@@ -635,7 +636,7 @@ def cookbook():
                             recipes_number = recipes_number)
     
     flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('login'))
+    return redirect(url_for('general/login'))
 
 # ------------------------------------------- #
 #              RECIPES RESULTS                #
@@ -649,7 +650,7 @@ def results():
     """
     recipes = mongo.db.recipes_information.find()
     recipes_number=recipes.count()
-    return render_template("results.html",
+    return render_template("recipes/results.html",
                             Page_name = "All Recipes",
                             Page_title = f"{recipes_number} Recipes Found",
                             recipes=recipes,
@@ -664,7 +665,7 @@ def recipe_description(recipe_id):
     # Get recipe object based on id of the recipe clicked by the user
     the_recipe =  mongo.db.recipes_information.find_one({"_id": ObjectId(recipe_id)})
     the_recipe_name = the_recipe["recipe_name"].capitalize()
-    return render_template("recipe_description.html", 
+    return render_template("recipes/recipe_description.html", 
                             Page_name = the_recipe_name,
                             Page_title = f"{the_recipe_name}", 
                             recipe=the_recipe)
