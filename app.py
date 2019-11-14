@@ -190,7 +190,7 @@ def signup():
     # Check if a user is not already logged in to the session
     if "email" in session:
         flash(f"You are logged in as {session['email']}", "white-text green")
-        return redirect(url_for('general/home'))
+        return redirect(url_for('home'))
     form = SignupForm()
     return render_template("general/signup.html",
                             Page_name = "Sign up",
@@ -214,7 +214,7 @@ def insert_user_account():
         # Check if email provided is not already linked to an existing account
         if user:
             flash(f"An account already exists for {form.email.data}.", "white-text red")
-            return redirect(url_for("general/signup"))
+            return redirect(url_for("signup"))
         # If no existing account was found user account can be created
         else:
             # Encrypt password
@@ -229,9 +229,9 @@ def insert_user_account():
                 "favorite_recipes": []
             })
             flash(f"{form.first_name.data.capitalize()}, your account has been created, you can now log in!", "white-text green")
-            return redirect(url_for("general/login"))
+            return redirect(url_for("login"))
     
-    return redirect(url_for("general/signup"))
+    return redirect(url_for("signup"))
 
 # ----- 6. LOG IN ----- #
 @app.route("/login", methods=["POST", "GET"])
@@ -244,7 +244,7 @@ def login():
     # Check if a user is not already logged in to the session
     if "email" in session:
         flash(f"You are logged in as {session['email']}", "white-text green")
-        return redirect(url_for('general/home'))
+        return redirect(url_for('home'))
     
     form = LoginForm()
     
@@ -261,7 +261,7 @@ def login():
             session["first_name"] = user["first_name"].lower()
             session["last_name"] = user["last_name"].lower()
             flash("Login successful!", "white-text green darken-1")
-            return redirect(url_for("users/account"))
+            return redirect(url_for("account"))
         else:
             flash(f"Login unsuccessful! Email and/or password incorrect.", "white-text red")
         
@@ -289,7 +289,7 @@ def account():
                                 Page_name = "My Account",
                                 Page_title = f"Hi {session['first_name'].capitalize()}, welcome!")
     flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('general/login'))    
+    return redirect(url_for('login'))    
 
 # ----- LOG OUT ----- #
 @app.route("/logout", methods=["POST", "GET"])
@@ -298,7 +298,7 @@ def logout():
     session.pop("first_name", None)
     session.pop("last_name", None)
     flash("Thanks for your visit, we hope to see you soon!", "blue-grey lighten-5")
-    return redirect(url_for("general/login"))
+    return redirect(url_for("login"))
 
 
 # ----- 1. VIEW / USER ACCOUNT DETAILS ----- #
@@ -317,7 +317,7 @@ def account_details():
                                 Welcome_image = "../static/img/sign/bg.jpg",
                                 account = user)
     flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('general/login'))
+    return redirect(url_for('login'))
 
 # ----- 1.1. EDIT / ACCOUNT DETAILS ----- #
 @app.route("/edit_my_details")
@@ -335,7 +335,7 @@ def edit_my_details():
                                 Welcome_image = "../static/img/sign/bg.jpg",
                                 account = user)
     flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('general/login'))
+    return redirect(url_for('login'))
 
 # ----- 1.1.1 UPDATE / ACCOUNT DETAILS ----- #
 @app.route("/update_my_details/<account_id>", methods=["POST"])
@@ -348,7 +348,7 @@ def update_my_details(account_id):
     user = mongo.db.user_accounts.find_one( { "email": request.form.get("email").lower() })
     if user:
         flash(f"An account already exists for {request.form.get('email')}", "white-text red")
-        return redirect(url_for("users/edit_my_details"))
+        return redirect(url_for("edit_my_details"))
     else:
         # Update new account details into the db
         mongo.db.user_accounts.update({"_id": ObjectId(account_id)},
@@ -362,7 +362,7 @@ def update_my_details(account_id):
         session["first_name"] = request.form.get("first_name").lower()
         session["last_name"] = request.form.get("last_name").lower()
         flash("Your account details have been updated successfully!", "white-text green darken-1")
-        return redirect(url_for("users/account_details"))
+        return redirect(url_for("account_details"))
 
 # ----- 1.2. EDIT/ USER PASSWORD ----- #
 @app.route("/edit_password", methods=["POST", "GET"])
@@ -400,7 +400,7 @@ def edit_password():
                                               })
                 
                 flash(f"Thanks your password has been updated!", "white-text green")
-                return redirect(url_for('users/account_details'))
+                return redirect(url_for('account_details'))
                 
             else:
                 flash(f"You have to confirm your password. Please make sure the two fields are identical.", "white-text red")
@@ -411,7 +411,7 @@ def edit_password():
                                 form=form)
                             
     flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('general/login'))
+    return redirect(url_for('login'))
 
 # ----- 2. VIEW / MY RECIPES ----- #       
 @app.route("/my_recipes")
@@ -454,7 +454,7 @@ def my_recipes():
                             recipes_number = recipes_number)
     
     flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('general/login'))
+    return redirect(url_for('login'))
 
 # ----- 2.1. EDIT RECIPE ----- #  
 @app.route("/edit_recipe/<recipe_id>")
@@ -523,7 +523,7 @@ def update_recipe(recipe_id):
         })
                 
     flash(f"Thanks, the recipe has been updated!", "white-text green")
-    return redirect(url_for('recipes/recipe_description', recipe_id = recipe_id))
+    return redirect(url_for('recipe_description', recipe_id = recipe_id))
 
 # ----- 3. ADD / NEW RECIPE ----- #  
 @app.route("/add_recipe")
@@ -589,7 +589,7 @@ def insert_recipe():
                                       {"$push": {"my_recipes": new_recipe_ID }})
     flash(f"Thanks, your recipe was created!", "white-text green")
 
-    return redirect(url_for("users/my_recipes"))
+    return redirect(url_for("my_recipes"))
 
 # ----- 4. VIEW / MY COOKBOOK ----- #  
 @app.route("/cookbook")
@@ -636,7 +636,7 @@ def cookbook():
                             recipes_number = recipes_number)
     
     flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('general/login'))
+    return redirect(url_for('login'))
 
 # ------------------------------------------- #
 #              RECIPES RESULTS                #
