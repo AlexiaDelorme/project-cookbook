@@ -3,77 +3,84 @@
 
 <div class="row container-section">
 
-    <div class="row center" id="recipe-indicator">
+    <div class="row center-align" id="recipe-indicator">
         
-        <div class="col s2 offset-s2">Serves {{ recipe.serving }}</div>
+        <!-- Serving -->
+        <div class="col s12 m3 l2 offset-l2">Serves {{ recipe.serving }}</div>
         
-        <div class="col s2">
+        <!-- Diets -->
+        <div class="col s12 m3 l2">
             {% for diet in recipe.diet %}
                 {{ diet.capitalize() }} <br>
             {% endfor %}
         </div>
         
-        <div class="col s2"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-        {% if hours == "" %}
-            {{minutes}} min
-        {% elif minutes == 0 %}
-            {{hours}}h
-        {% else %}
-            {{hours}}h{{minutes}} 
-        {% endif %}
+        <!-- Preparation time -->
+        <div class="col s12 m3 l2"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+            {% if hours == "" %}
+                {{minutes}} min
+            {% elif minutes == 0 %}
+                {{hours}}h
+            {% else %}
+                {{hours}}h{{minutes}} 
+            {% endif %}
         </div>
         
-        <div class="col s2"><i class="fa fa-hand-peace-o" aria-hidden="true"></i> {{ recipe.difficulty.capitalize() }}</div>
+        <!-- Difficulty -->
+        <div class="col s12 m3 l2"><i class="fa fa-hand-peace-o" aria-hidden="true"></i> {{ recipe.difficulty.capitalize() }}</div>
     
     </div>
-
-    <div class="row center">
-        <div class="col s6 offset-s3"><img class="card-img" src="../{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img>
+    
+    <!-- Recipe image -->
+    <div class="row center-align">
+        <div class="col s12 m8 offset-m2 l6 offset-l3"><img class="card-img" src="../{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img>
         </div>
     </div>
-
-    <div class="row center">
+    
+    <!-- Recipe description -->
+    <div class="row center-align">
         <p> {{ recipe.recipe_description.capitalize() }} </p>
     </div>
     
-    <div class="row center">
-        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+    <!-- Shopping cart icon -->
+    <div class="row center-align">
+        <i class="fa fa-shopping-basket " aria-hidden="true"></i>
     </div>
 
-    <div class="row center">
+    <div class="row center-align">
         
-        <div class="col s4 offset-s3 left-align">
+        <!-- Ingredients -->
+        <div class="col s12 m6 l4 offset-l2">
             <h5>Ingredients list</h5>
-            <ul class = "list-styling">
+            <ul class="list-styling">
                 {% for ingredient in recipe.ingredients %}
-                    <li>{{ ingredient.capitalize() }}</li>
+                <li>{{ ingredient.capitalize() }}</li>
                 {% endfor %}
             </ul>
         </div>
-        
-        <div class="col s4 left-align">
+
+        <!-- Tools -->
+        <div class="col s12 m6 l4">
             <h5>Cooking tools</h5>
-            <ul class = "list-styling">
+            <ul class="list-styling">
                 {% for tool in recipe.tools %}
-                    <li>{{ tool.capitalize() }}</li>
+                <li>{{ tool.capitalize() }}</li>
                 {% endfor %}
             </ul>
         </div>
         
     </div>
 
-    <div class="row center">
-        
+    <!-- Instructions-->
+    <div class="row center-align">
         <h5>Preparation steps</h5>
-        
-        <div class="col s8 offset-s2 left-align">
+        <div class="col s12 l8 offset-l2 left-align">
             <ol>
                 {% for instruction in recipe.instructions %}
                     <li>{{ instruction.capitalize() }}</li>
                 {% endfor %}
             </ol>
         </div>
-        
     </div>
     
 </div>
@@ -82,8 +89,8 @@
 
 {% block carousel %}
 
-<h5 class="center headline-carousel">Try out our favourite recipes!</h5>
-        
+<!-- Carousel-->
+<h5 class="center-align headline-carousel">Try out our favourite recipes!</h5>
 <div class="carousel">
     {% for image in carousel %}
     <a class="carousel-item" href="#"><img src="../{{ image }}"></a>  
