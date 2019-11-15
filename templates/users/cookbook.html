@@ -1,13 +1,11 @@
 {% extends 'general/base.html' %} 
 {% block content %}
 
-<!-- RECIPE CARDS FOR USER LOGGED IN -->
-
 <div class="row center">
     <h4>YOUR FAVOURITE RECIPES</h4>
 </div>
 
-<!-- RECIPE CARDS -->
+<!-- Recipe cards -->
 
 {% if recipes_number == 0 %}
 
@@ -30,16 +28,16 @@
 
 {% endif %}
 
-<!-- URL TO ADD A NEW RECIPE -->
-
-<div class="row center">
-    <a href="{{url_for('add_recipe')}}"><h4>ADD NEW RECIPE</h4></a>
-</div>
-
-<div class="parallax-container valign-wrapper">
-    <div class="parallax">
-        <img class="parallax-img-size" src="{{url_for('static', filename='img/cookbook/img1.jpg')}}" alt="Add recipe">
+<!-- Fast-track link to add new recipe -->
+<a href="{{url_for('add_recipe')}}">
+    <div class="row center">
+        <h4>ADD NEW RECIPE</h4>
     </div>
-</div>
+    <div class="parallax-container valign-wrapper">
+        <div class="parallax">
+            <img class="parallax-img-size" src="{{url_for('static', filename='img/cookbook/img1.jpg')}}" alt="Add recipe">
+        </div>
+    </div>
+</a>
 
 {% endblock %}
