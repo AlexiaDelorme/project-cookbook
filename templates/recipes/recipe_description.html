@@ -5,10 +5,10 @@
 
     <div class="row center-align" id="recipe-indicator">
         
-        <!-- Serving -->
+        <!-- Servings -->
         <div class="col s12 m3 l2 offset-l2">Serves {{ recipe.serving }}</div>
         
-        <!-- Diets -->
+        <!-- Diet -->
         <div class="col s12 m3 l2">
             {% for diet in recipe.diet %}
                 {{ diet.capitalize() }} <br>
@@ -54,7 +54,7 @@
             <h5>Ingredients list</h5>
             <ul class="list-styling">
                 {% for ingredient in recipe.ingredients %}
-                <li>{{ ingredient.capitalize() }}</li>
+                    <li>{{ ingredient.capitalize() }}</li>
                 {% endfor %}
             </ul>
         </div>
@@ -64,7 +64,7 @@
             <h5>Cooking tools</h5>
             <ul class="list-styling">
                 {% for tool in recipe.tools %}
-                <li>{{ tool.capitalize() }}</li>
+                    <li>{{ tool.capitalize() }}</li>
                 {% endfor %}
             </ul>
         </div>
@@ -93,7 +93,7 @@
 <h5 class="center-align headline-carousel">Try out our favourite recipes!</h5>
 <div class="carousel">
     {% for image in carousel %}
-    <a class="carousel-item" href="#"><img src="../{{ image }}"></a>  
+        <a class="carousel-item" href="#"><img src="../{{ image }}"></a>  
     {% endfor %}
 </div>
 
