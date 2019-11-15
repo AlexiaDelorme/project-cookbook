@@ -1,6 +1,7 @@
 {% extends 'general/base.html' %} 
 {% block content %}
 
+<!-- Description of the company -->
 <div class="container-section amber lighten-4">
 
     <p> The pâtisserie journal is an open-free recipes ressource created by two French sisters that were very passionate about pâtisserie and wanted to extend their recipes to any kind of diet!</p>
@@ -12,21 +13,25 @@
 
 </div>
 
-<div class="row center">
-
+<!-- Links to other pages -->
+<div class="row">
+    
+    <!-- Recipes -->
     <div class="col s4 category-box">
-        <h5 class="center">Recipes</h5>
-        <a href="{{ url_for('recipes')}}"><img class="card-img" src="{{url_for('static', filename='img/about/recipes.jpg')}}" alt="Recipes"></img></a>
+        <h5 class="center-align">Recipes</h5>
+        <a href="{{url_for('recipes')}}"><img class="card-img" src="{{url_for('static', filename='img/about/recipes.jpg')}}" alt="Recipes"></img></a>
     </div>
-
+    
+    <!-- Cookbook -->
     <div class="col s4 category-box">
-        <h5 class="center">Cookbook</h5>
-        <a href=""><img class="card-img" src="{{url_for('static', filename='img/about/cookbook.jpg')}}" alt="Cookbook"></img></a>
+        <h5 class="center-align">Cookbook</h5>
+        <a href="{{url_for('cookbook')}}"><img class="card-img" src="{{url_for('static', filename='img/about/cookbook.jpg')}}" alt="Cookbook"></img></a>
     </div>
-
+    
+    <!-- Sign up -->
     <div class="col s4 category-box">
-        <h5 class="center">Join us</h5>
-        <a href="{{ url_for('signup')}}"><img class="card-img" src="{{url_for('static', filename='img/about/sign-up.jpg')}}" alt="Join us"></img></a>
+        <h5 class="center-align">Join us</h5>
+        <a href="{{url_for('signup')}}"><img class="card-img" src="{{url_for('static', filename='img/about/sign-up.jpg')}}" alt="Join us"></img></a>
     </div>
 
 </div>
