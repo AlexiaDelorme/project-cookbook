@@ -1,33 +1,24 @@
 {% extends 'general/base.html' %} 
 {% block content %}
 
-<div class="container container-section">
-    <div class="row center">
+<!-- Category cards -->
 
-        {% for cat in categories %}
-
-        <div class="col s6 category-box">
-
-            <h5 class="center">{{ cat.category_name.capitalize() }}</h5>
-
-            <a href="{{url_for('recipes_categories', category_name = cat.category_name )}}"><img class="card-img" src="{{ cat.image_path }}" alt="{{ cat.category_name }}"></img></a>
-
-        </div>
-
-        {% endfor %}
-
+<div class="row flexbox">
+    {% for cat in categories %}
+    <div class="col s12 m6 l4 category-box">
+        <h5 class="center-align">{{ cat.category_name.capitalize() }}</h5>
+        <a href="{{url_for('recipes_categories', category_name = cat.category_name )}}"><img class="card-img" src="{{ cat.image_path }}" alt="{{ cat.category_name }}"></img></a>
     </div>
-
-    <h5 class="center">See all recipes</h5>
-
+    {% endfor %}
 </div>
+
+<h5 class="center-align">See all recipes</h5>
 
 {% endblock %}
 
 {% block carousel %}
 
-<h5 class="center headline-carousel">Our favourite recipes</h5>
-        
+<h5 class="center-align headline-carousel">Our favourite recipes</h5>
 <div class="carousel">
     {% for image in carousel %}
     <a class="carousel-item" href="#"><img src="{{ image }}"></a> 
