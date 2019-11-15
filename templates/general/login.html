@@ -4,24 +4,34 @@
 <div class="container center-align">
 
     <h4>LOG IN HERE</h4>
-
+    
+    <!-- Display form to log in -->
     <div class="row">
+        
         <form action="" method="POST" class="col s12">
+            
+            <!-- Email -->
             {{ form.hidden_tag() }}
             <div class="row">
                 <div class="input-field col s12">
                     {{ form.email.label() }} {{ form.email(class="validate") }}
                 </div>
             </div>
+            
+            <!-- Password -->
             <div class="row">
                 <div class="input-field col s12">
                     {{ form.password.label() }} {{ form.password(class="validate") }}
                 </div>
             </div>
+            
+            <!-- Button -->
             <div class="row">
                 {{ form.submit(class="btn waves-effect waves-light") }}
             </div>
+            
         </form>
+        
     </div>
 
     <div>

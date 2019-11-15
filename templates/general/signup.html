@@ -4,14 +4,16 @@
 <div class="container center-align">
 
     <h4>SIGN UP HERE</h4>
-
+    
+    <!-- Display form to sign up -->
     <div class="row">
         
         <form action="{{ url_for('insert_user_account') }}" method="POST" class="col s12">
 
             <!-- This tag is to secure our form -->
             {{ form.hidden_tag() }}
-
+            
+            <!-- First name -->
             <div class="row">
                 <div class="input-field col s12">
                     {{ form.first_name.label() }}
@@ -28,7 +30,8 @@
                     {% endif %}
                 </div>
             </div>
-
+            
+            <!-- Last name -->
             <div class="row">
                 <div class="input-field col s12">
                     {{ form.last_name.label() }}
@@ -45,7 +48,8 @@
                     {% endif %}
                 </div>
             </div>
-
+            
+            <!-- Email -->
             <div class="row">
                 <div class="input-field col s12">
                     {{ form.email.label() }}
@@ -62,7 +66,8 @@
                     {% endif %}
                 </div>
             </div>
-
+            
+            <!-- Password -->
             <div class="row">
                 <div class="input-field col s12">
                     {{ form.password.label() }}
@@ -79,7 +84,8 @@
                     {% endif %}
                 </div>
             </div>
-
+            
+            <!-- Confirm password -->
             <div class="row">
                 <div class="input-field col s12">
                     {{ form.confirm_password.label() }}
@@ -96,7 +102,8 @@
                     {% endif %}
                 </div>
             </div>
-
+            
+            <!-- Button -->
             <div class="row">
                 {{ form.submit(class="btn waves-effect waves-light") }}
             </div>
