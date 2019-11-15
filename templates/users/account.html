@@ -2,30 +2,35 @@
 {% block content %}
 
 <div class="row flexbox">
-
+    
+    <!-- Manage user account details -->
     <div class="col s12 m6 l4 category-box">
         <h5 class="center-align">Manage account</h5>
-        <a href="{{url_for('account_details')}}"><img class="card-img" src="{{url_for("static", filename="img/account/img1.jpg")}}" alt="Account"></img></a>
+        <a href="{{url_for('account_details')}}"><img class="card-img" src="{{url_for('static', filename='img/account/img1.jpg')}}" alt="Account"></img></a>
     </div>
-
+    
+    <!-- Manage user recipes -->
     <div class="col s12 m6 l4 category-box">
         <h5 class="center-align">Manage recipes</h5>
-        <a href="{{url_for('my_recipes')}}"><img class="card-img" src="{{url_for("static", filename="img/account/img2.jpg")}}" alt="My recipes"></img></a>
+        <a href="{{url_for('my_recipes')}}"><img class="card-img" src="{{url_for('static', filename='img/account/img2.jpg')}}" alt="My recipes"></img></a>
     </div>
-
+    
+    <!-- Add new recipes -->
     <div class="col s12 m6 l4 category-box">
         <h5 class="center-align">Add new recipe</h5>
-        <a href="{{url_for('add_recipe')}}"><img class="card-img" src="{{url_for("static", filename="img/account/img3.jpg")}}" alt="Add recipe"></img></a>
+        <a href="{{url_for('add_recipe')}}"><img class="card-img" src="{{url_for('static', filename='img/account/img3.jpg')}}" alt="Add recipe"></img></a>
     </div>
-
+    
+    <!-- View saved favourites -->
     <div class="col s12 m6 l4 category-box">
         <h5 class="center-align">My cookbook</h5>
-        <a href="{{url_for('cookbook')}}"><img class="card-img" src="{{url_for("static", filename="img/account/img4.jpg")}}" alt="Cookbook"></img></a>
+        <a href="{{url_for('cookbook')}}"><img class="card-img" src="{{url_for('static', filename='img/account/img4.jpg')}}" alt="Cookbook"></img></a>
     </div>
-
+    
+    <!-- Explore recipes -->
     <div class="col s12 m6 l4 category-box">
         <h5 class="center-align">Explore recipes</h5>
-        <a href="{{url_for('explore')}}"><img class="card-img" src="{{url_for("static", filename="img/account/img5.jpg")}}" alt="Explore"></img></a>
+        <a href="{{url_for('explore')}}"><img class="card-img" src="{{url_for('static', filename='img/account/img5.jpg')}}" alt="Explore"></img></a>
     </div>
 
 </div>
