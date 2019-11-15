@@ -4,11 +4,13 @@
 <div class="container center-align">
 
     <h4>UPDATE ACCOUNT DETAILS</h4>
-
+    
+    <!-- Display editable form for account details -->
     <div class="row">
         
         <form action="{{ url_for('update_my_details', account_id=account._id) }}" method="POST" class="col s12">
             
+            <!-- First name -->
             <div class="row">
                 <div class="input-field col s12">
                     <input value="{{ account.first_name.capitalize() }}" id="first_name" name="first_name" type="text" class="validate">
@@ -16,6 +18,7 @@
                 </div>
             </div>
             
+            <!-- Last name -->
             <div class="row">
                 <div class="input-field col s12">
                     <input value="{{ account.last_name.capitalize() }}" id="last_name" name="last_name" type="text" class="validate">
@@ -23,13 +26,15 @@
                 </div>
             </div>
             
+            <!-- Email -->
             <div class="row">
                 <div class="input-field col s12">
                     <input value="{{ account.email }}" id="email" name= "email" type="email" class="validate">
                     <label class="active" for="email">Email </label>
                 </div>
             </div>
-    
+            
+            <!-- Button to update -->
             <div class="row">
                 <button class="btn waves-effect waves-light" type="submit" name="action">Update Account</button>
             </div>
