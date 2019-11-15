@@ -45,7 +45,7 @@
                         <li><a href="{{url_for('logout')}}">LOG OUT</a></li>
                     {% else %}
                         <li><a href="{{url_for('signup')}}">SIGN UP</a></li>
-                        <li><a href="{{url_for('login,)}}">LOG IN</a></li>
+                        <li><a href="{{url_for('login')}}">LOG IN</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -130,7 +130,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     
     <!-- JS FILE -->
-    <script type="text/javascript" src="{{url_for('static,, filename='js/script.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
 
 </body>
 
