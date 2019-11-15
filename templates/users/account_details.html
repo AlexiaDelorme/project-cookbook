@@ -5,23 +5,28 @@
 
     <h4>MY ACCOUNT DETAILS</h4>
 
+    <!-- Display a recap of account details -->
     <div class="row">
-
+        
+        <!-- First name -->
         <div class="input-field col s12">
             <input disabled value="{{ account.first_name.capitalize() }}" id="disabled" type="text" class="validate">
             <label for="disabled">First Name</label>
         </div>
-
+        
+        <!-- Last name -->
         <div class="input-field col s12">
             <input disabled value="{{ account.last_name.capitalize() }}" id="disabled" type="text" class="validate">
             <label for="disabled">Last Name</label>
         </div>
-
+        
+        <!-- Email -->
         <div class="input-field col s12">
             <input disabled value="{{ account.email }}" id="disabled" type="text" class="validate">
             <label for="disabled"> Email address</label>
         </div>
-
+      
+        <!-- Button to edit account details -->
         <div class="row right-align">
             <a href="{{url_for('edit_my_details')}}">
                 <button class="btn waves-effect waves-light" type="submit" name="action">Edit Details
@@ -29,7 +34,8 @@
                 </button>
             </a>
         </div>
-
+    
+        <!-- Button to edit account password -->
         <div class="row right-align">
             <a href="{{url_for('edit_password')}}">
                 <button class="btn waves-effect waves-light" type="submit" name="action">Edit Password
