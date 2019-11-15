@@ -449,7 +449,8 @@ def my_recipes():
             
         return render_template("users/my_recipes.html",
                             Page_name = "My recipes",
-                            Welcome_image = "TBD",
+                            Page_title = "Manage your own recipes",
+                            Welcome_image = "../static/img/cookbook/bg2.jpg",
                             recipes = recipes_list_information,
                             recipes_number = recipes_number)
     
