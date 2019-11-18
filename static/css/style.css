@@ -142,12 +142,25 @@ button#add-instructions, button#add-ingredients {
 }
 
 .btn, .btn-large {
-
     background-color: #ee6e73cc;
 }
 
 .btn:hover, .btn-large:hover {
     background-color: #ee6e73;
+}
+
+/* ---------------------------------------------------------- 404 PAGE ------ */
+
+.not-found-gif {
+    margin-top: 10px;
+}
+
+.not-found-icon {
+    color: #ee6e73;
+}
+
+.not-found-title {
+    font-weight: 800;
 }
 
 /* -------------------------------DEFAULT SETTINGS / MATERIALIZE THEME ------ */

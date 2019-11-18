@@ -2,14 +2,25 @@
 {% block content %}
 
 <div class="container center-align">
-
-    <img class="responsive-img" src="https://cdn.dribbble.com/users/422783/screenshots/3738665/dribfinal.gif"></img>
+    <img class="responsive-img not-found-gif" src="https://cdn.dribbble.com/users/422783/screenshots/3738665/dribfinal.gif"></img>
     <div class="row">
-        <i class="large material-icons">report_problem</i>
-        <h4>PAGE NOT FOUND</h4>
-        <p> Sorry, this page does not exist.</p>
+        <i class="large material-icons not-found-icon">report_problem</i>
+        <h4 class="not-found-title">PAGE NOT FOUND</h4>
+        <p> Sorry, this page does not exist!</p>
+        {% if session["email"] %}
+            <a href="{{url_for('account')}}">
+                <button class="btn waves-effect waves-light" type="submit" name="action">MY ACCOUNT
+                    <i class="material-icons right">autorenew</i>
+                  </button> 
+            </a>
+        {% else %}
+            <a href="{{url_for('home')}}">
+                <button class="btn waves-effect waves-light" type="submit" name="action">GO HOME
+                    <i class="material-icons right">autorenew</i>
+                  </button> 
+            </a>
+        {% endif %}
     </div>
-
 </div>
 
 {% endblock %}
