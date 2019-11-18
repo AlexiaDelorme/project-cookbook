@@ -683,6 +683,22 @@ def recipe_description(recipe_id):
                             minutes = minutes,
                             carousel = image_folder("carousel"))
 
+# ------------------------------------------- #
+#               SPECIAL PAGES                 #
+# ------------------------------------------- #
+
+# ----- 404 PAGE ----- #
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("general/404.html",
+                            Page_name = "404"), 404
+
+# ----- ACCESS DENIED PAGE ----- #
+# @app.route('/access_denied')
+# def access_denied():
+#     return render_template("general/access.html")
+
+
 # ---------------- #
 #      RUN APP     #
 # ---------------- #
