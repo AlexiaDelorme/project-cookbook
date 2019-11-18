@@ -190,7 +190,7 @@ def signup():
     # Check if a user is not already logged in to the session
     if "email" in session:
         flash(f"You are logged in as {session['email']}", "white-text green")
-        return redirect(url_for('home'))
+        return redirect(url_for('account'))
     form = SignupForm()
     return render_template("general/signup.html",
                             Page_name = "Sign up",
@@ -244,7 +244,7 @@ def login():
     # Check if a user is not already logged in to the session
     if "email" in session:
         flash(f"You are logged in as {session['email']}", "white-text green")
-        return redirect(url_for('home'))
+        return redirect(url_for('account'))
     
     form = LoginForm()
     
@@ -288,8 +288,7 @@ def account():
         return render_template("users/account.html",
                                 Page_name = "My Account",
                                 Page_title = f"Hi {session['first_name'].capitalize()}, welcome!")
-    flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('login'))    
+    return redirect(url_for('access_denied'))  
 
 # ----- LOG OUT ----- #
 @app.route("/logout", methods=["POST", "GET"])
@@ -316,8 +315,7 @@ def account_details():
                                 Page_name = "Manage Account",
                                 Welcome_image = "../static/img/sign/bg.jpg",
                                 account = user)
-    flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('login'))
+    return redirect(url_for('access_denied'))
 
 # ----- 1.1. EDIT / ACCOUNT DETAILS ----- #
 @app.route("/edit_my_details")
@@ -334,8 +332,7 @@ def edit_my_details():
                                 Page_name = "Edit Details",
                                 Welcome_image = "../static/img/sign/bg.jpg",
                                 account = user)
-    flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('login'))
+    return redirect(url_for('access_denied'))
 
 # ----- 1.1.1 UPDATE / ACCOUNT DETAILS ----- #
 @app.route("/update_my_details/<account_id>", methods=["POST"])
@@ -410,8 +407,7 @@ def edit_password():
                                 Welcome_image = "../static/img/sign/bg.jpg",
                                 form=form)
                             
-    flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('login'))
+    return redirect(url_for('access_denied'))
 
 # ----- 2. VIEW / MY RECIPES ----- #       
 @app.route("/my_recipes")
@@ -454,8 +450,7 @@ def my_recipes():
                             recipes = recipes_list_information,
                             recipes_number = recipes_number)
     
-    flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('login'))
+    return redirect(url_for('access_denied'))
 
 # ----- 2.1. EDIT RECIPE ----- #  
 @app.route("/edit_recipe/<recipe_id>")
@@ -636,8 +631,7 @@ def cookbook():
                             recipes = recipes_list_information,
                             recipes_number = recipes_number)
     
-    flash(f"You are required to login to access this page", "white-text red")
-    return redirect(url_for('login'))
+    return redirect(url_for('access_denied'))
 
 # ------------------------------------------- #
 #              RECIPES RESULTS                #
