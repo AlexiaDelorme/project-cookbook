@@ -364,41 +364,36 @@ def update_my_details(account_id):
 # ----- 1.2. EDIT/ USER PASSWORD ----- #
 @app.route("/edit_password", methods=["POST", "GET"])
 def edit_password():
-    
+    """
+    Display an editable form for the user to change his/her password.
+    The user is required to provide existing password, new password and a confirmation of the latest.
+    """
     # Check if the user is logged in
     if "email" in session:
-    
+        
         form = PasswordForm()
         
         if form.validate_on_submit():
-            
             # Create a query to get user information
             user = mongo.db.user_accounts.find_one( { "email": session["email"] })
-
             current_user_password_db = user["password"]
-            
+            # Check if current password match password stored in the db
             if not bcrypt.check_password_hash(current_user_password_db, form.current_password.data):
-                
                 flash(f"Your current password is incorrect!", "white-text red")
-                
+            # Check if current password is different from new password 
             if bcrypt.check_password_hash(current_user_password_db, form.new_password.data):
-                
                 flash(f"Your new password is not different from your current password.", "white-text red")
-                 
+            # Check if all conditions to change the password are met   
             if (form.new_password.data == form.confirm_new_password.data) and bcrypt.check_password_hash(current_user_password_db, form.current_password.data):
-            
-                # Encrypt password to send it to MongoDB for storage
+                # Encrypt new password before storing it
                 hashed_password = bcrypt.generate_password_hash(form.new_password.data).decode('utf-8')
-                
                 # Update new password into MongoDB
                 mongo.db.user_accounts.update({ "email": session["email"]},
                                               { "$set":
                                                   { "password": hashed_password }
                                               })
-                
                 flash(f"Thanks your password has been updated!", "white-text green")
                 return redirect(url_for('account_details'))
-                
             else:
                 flash(f"You have to confirm your password. Please make sure the two fields are identical.", "white-text red")
         
@@ -412,35 +407,24 @@ def edit_password():
 # ----- 2. VIEW / MY RECIPES ----- #       
 @app.route("/my_recipes")
 def my_recipes():
-    
+    """
+    Display all the recipes that were added by this user.
+    The user can edit and/or delete the recipe by clicking on the assigned button.
+    """
     # Check if the user is logged in
     if "email" in session:
-        
         # Create a query to get the user stored in the user variable
         user = mongo.db.user_accounts.find_one( { "email": session["email"] })
-    
-        #Log the user
-        logging.info('User found {}'.format(user))
-        
-        # Create a variable to store the favorite recipes linked to this user
+        # Store recipes added by this user
         my_recipes = user["my_recipes"]
-        
-        # Count the number of recipes stored as favourite by the user
         recipes_number = len(my_recipes)
         
-        #Iterate through each recipes id and extract information in MongoDB collection "recipes_information"
-        
+        # Loop through each recipes id and extract information in "recipes_information" collection
         recipes_list_information = []
-        
         for i in range(recipes_number):
-            
             # Create a query to get recipes information based on user list
             recipe_information_i = mongo.db.recipes_information.find_one( { "_id": ObjectId(my_recipes[i]) })
-
-            # Store information in an array
             recipes_list_information.append(recipe_information_i)
-            
-            # Log each recipe_information variable
             logging.info('For i={}, the recipes information found is {}'.format(i, recipe_information_i))
             
         return render_template("users/my_recipes.html",
@@ -489,17 +473,18 @@ def edit_recipe(recipe_id):
                             minutes = minutes,
                             difficulty = ["easy", "medium", "difficult"])
 
-# ----- 2.2. UPDATE RECIPE ----- # 
+# ----- 2.1.1. UPDATE RECIPE ----- # 
 @app.route("/update_recipe/<recipe_id>", methods=["POST"])
 def update_recipe(recipe_id):
-    
+    """
+    Update recipe informations in the db based on form submitted by the user.
+    """
     recipes = mongo.db.recipes_information
-    
     # Convert prep_time into minutes
     hours = int(request.form.get("hours"))*60 if request.form.get("hours") else ""
     minutes = int(request.form.get("minutes"))
     prep_time = minutes + hours if hours else minutes
-    
+    # Update recipe informations
     recipes.update(
         {'_id': ObjectId(recipe_id) },
         { "$set": { "recipe_name": request.form.get("recipe_name").lower(),
@@ -517,7 +502,6 @@ def update_recipe(recipe_id):
                     "allergen": request.form.getlist("allergen")
                     }
         })
-                
     flash(f"Thanks, the recipe has been updated!", "white-text green")
     return redirect(url_for('recipe_description', recipe_id = recipe_id))
 
