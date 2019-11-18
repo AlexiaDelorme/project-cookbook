@@ -694,9 +694,10 @@ def page_not_found(e):
                             Page_name = "404"), 404
 
 # ----- ACCESS DENIED PAGE ----- #
-# @app.route('/access_denied')
-# def access_denied():
-#     return render_template("general/access.html")
+@app.route('/access_denied')
+def access_denied():
+    return render_template("general/access.html",
+                            Page_name = "Access Denied")
 
 
 # ---------------- #

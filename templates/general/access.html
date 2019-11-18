@@ -1,0 +1,18 @@
+{% extends 'general/base.html' %} 
+{% block content %}
+
+<div class="container center-align">
+    <img class="responsive-img not-found-gif" src="https://cdn.dribbble.com/users/107759/screenshots/3756455/cake.gif"></img>
+    <div class="row">
+        <h4 class="not-found-title">ACCESS DENIED!</h4>
+        <p> Sorry, you need to be logged in to access this page!</p>
+        <a href="{{url_for('login')}}">
+            <button class="btn waves-effect waves-light" type="submit" name="action">LOG IN</button>
+        </a>
+        <a href="{{url_for('signup')}}">
+            <button class="btn waves-effect waves-light" type="submit" name="action">SIGN UP</button> 
+        </a>
+    </div>
+</div>
+
+{% endblock %}
