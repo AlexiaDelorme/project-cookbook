@@ -508,26 +508,34 @@ def update_recipe(recipe_id):
 # ----- 3. ADD / NEW RECIPE ----- #  
 @app.route("/add_recipe")
 def add_recipe():
-    # Create variables to add recipes
-    meal_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'meal' })
-    diet_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'diet' })
-    occasion_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'occasion' })
-    geography_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'geography' })
-    allergen_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'allergen' })
-    tool_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'tool' })
-    
-    return render_template("recipes/add_recipe.html",
-                            Page_name = "Add Recipe",
-                            meal_categories = meal_categories,
-                            diet_categories = diet_categories,
-                            occasion_categories = occasion_categories,
-                            geography_categories = geography_categories,
-                            allergen_categories = allergen_categories,
-                            tool_categories = tool_categories)
+    """
+    Display editable form for the user to add new recipe. 
+    """
+    # Check if the user is logged in
+    if "email" in session:
+        # Create all the variables required to add recipes
+        meal_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'meal' })
+        diet_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'diet' })
+        occasion_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'occasion' })
+        geography_categories = mongo.db.recipes_categories.find_one({ 'category_name': 'geography' })
+        allergen_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'allergen' })
+        tool_categories = mongo.db.bakery_helpers.find_one({ 'category_name': 'tool' })
+        return render_template("recipes/add_recipe.html",
+                                Page_name = "Add Recipe",
+                                meal_categories = meal_categories,
+                                diet_categories = diet_categories,
+                                occasion_categories = occasion_categories,
+                                geography_categories = geography_categories,
+                                allergen_categories = allergen_categories,
+                                tool_categories = tool_categories)
+    return redirect(url_for('access_denied'))
 
 # ----- 3.1. INSERT / NEW RECIPE ----- # 
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
+    """
+    Add new recipe after user successfully submitted the form, then redirects to user's own recipes list to display the newly added recipe. 
+    """
     # Get user's ID to link recipe to the logged user
     logged_user = mongo.db.user_accounts.find_one({ "email": session["email"] })["_id"]
     # Get today's date for recipe
@@ -536,7 +544,7 @@ def insert_recipe():
     hours = int(request.form.get("hours"))*60 if request.form.get("hours") else ""
     minutes = int(request.form.get("minutes"))
     prep_time = minutes + hours if hours else minutes
-    
+
     new_recipe = {  "recipe_name": request.form.get("recipe_name").lower(),
                     "recipe_description": request.form.get("recipe_description").lower(),
                     "rates_list":[ ],
@@ -556,6 +564,7 @@ def insert_recipe():
                     "image_path":"",
                     "comments_list":[ ]
     }
+    
     # Insert recipe information into the db
     mongo.db.recipes_information.insert_one(new_recipe)
      # Get the ID of the newly created recipe
@@ -567,47 +576,32 @@ def insert_recipe():
     # Add this recipe to the user's collection "my_recipes"
     mongo.db.user_accounts.update_one({"_id": ObjectId(logged_user)},
                                       {"$push": {"my_recipes": new_recipe_ID }})
+    
     flash(f"Thanks, your recipe was created!", "white-text green")
-
     return redirect(url_for("my_recipes"))
 
 # ----- 4. VIEW / MY COOKBOOK ----- #  
 @app.route("/cookbook")
 def cookbook():
-    
+    """
+    Display all the recipes that were saved as favorites by this user.
+    """
     # Check if the user is logged in
     if "email" in session:
-        
         # Create a query to get the user stored in the user variable
         user = mongo.db.user_accounts.find_one( { "email": session["email"] })
-    
-        #Log the user
-        logging.info('User found {}'.format(user))
-        
-        # Create a variable to store the favorite recipes linked to this user
+        # Store user's favorite recipes 
         favorite_recipes = user["favorite_recipes"]
-        
-        # Count the number of recipes stored as favourite by the user
         recipes_number = len(favorite_recipes)
         
-        #Iterate through each recipes id and extract information in MongoDB collection "recipes_information"
-        
+        # Loop through each recipes id and extract information from "recipes_information" collection
         recipes_list_information = []
-        
         for i in range(recipes_number):
-            
             # Create a query to get recipes information based on user list
             recipe_information_i = mongo.db.recipes_information.find_one( { "_id": ObjectId(favorite_recipes[i]) })
-
-            # Store information in an array
             recipes_list_information.append(recipe_information_i)
-            
-            # Log each recipe_information variable
             logging.info('For i={}, the recipes information found is {}'.format(i, recipe_information_i))
             
-        # Log the variable recipes list information
-        logging.info('Array containing all recipes information {}'.format(recipes_list_information))
-    
         return render_template("users/cookbook.html",
                             Page_name = "Cookbook",
                             Page_title = "My Cookbook", 
@@ -639,7 +633,7 @@ def results():
 @app.route("/recipe/<recipe_id>")
 def recipe_description(recipe_id):
     """
-    Display recipes information after user clicked on the image card from the results page.
+    Display recipe informations after user clicked on the image card from the results page.
     """
     # Get recipe object based on id of the recipe clicked by the user
     the_recipe =  mongo.db.recipes_information.find_one({"_id": ObjectId(recipe_id)})
@@ -652,7 +646,6 @@ def recipe_description(recipe_id):
     else:
         hours = prep_time // 60
         minutes = prep_time % 60
-    
     return render_template("recipes/recipe_description.html", 
                             Page_name = the_recipe_name,
                             Page_title = f"{the_recipe_name}", 
@@ -665,6 +658,10 @@ def recipe_description(recipe_id):
 #               SPECIAL PAGES                 #
 # ------------------------------------------- #
 
+"""
+Display customized pages for 404 error and denied access.
+"""
+
 # ----- 404 PAGE ----- #
 @app.errorhandler(404)
 def page_not_found(e):
@@ -676,7 +673,6 @@ def page_not_found(e):
 def access_denied():
     return render_template("general/access.html",
                             Page_name = "Access Denied")
-
 
 # ---------------- #
 #      RUN APP     #
