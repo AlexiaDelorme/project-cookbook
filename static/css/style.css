@@ -93,7 +93,8 @@ img.parallax-img-size {
 /* ----------------------------------------------------------- RECIPES ------ */
 
 .headline-carousel {
-    margin-bottom: 100px;
+    margin-bottom: 20px;
+    color: #ee6e73;
 }
 
 
@@ -125,6 +126,11 @@ i.fa.fa-shopping-basket {
 ul.list-styling>li {
     list-style-type: disc;
     display: list-item;
+}
+
+i.fa.fa-shopping-basket,
+i.fa.fa-heart {
+    color: #ee6e73;
 }
 
 /* ---------------------------------------------------- ADD NEW RECIPE ------ */
