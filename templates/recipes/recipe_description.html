@@ -71,7 +71,7 @@
         
     </div>
 
-    <!-- Instructions-->
+    <!-- Instructions -->
     <div class="row center-align">
         <h5>Preparation steps</h5>
         <div class="col s12 l8 offset-l2 left-align">
@@ -83,6 +83,19 @@
         </div>
     </div>
     
+    <!-- Save as favourite -->
+    <div class="row center-align">
+        <h5>Save as favourite? <i class="fa fa-heart" aria-hidden="true"></i> </h5>
+        <div class="switch col s12">
+            <label>
+              NO
+              <input type="checkbox">
+              <span class="lever"></span>
+              YES
+            </label>
+        </div>
+    </div>
+    
 </div>
 
 {% endblock %}
@@ -90,7 +103,7 @@
 {% block carousel %}
 
 <!-- Carousel-->
-<h5 class="center-align headline-carousel">Try out our favourite recipes!</h5>
+<h4 class="center-align headline-carousel">TRY OUR FAVOURITE RECIPES!</h4>
 <div class="carousel">
     {% for image in carousel %}
         <a class="carousel-item" href="#"><img src="../{{ image }}"></a>  
