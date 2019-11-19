@@ -17,11 +17,22 @@
         <div class="col s12 m6 l4 category-box center-align">
             <h5 class="center-align">{{ recipe.recipe_name.capitalize() }}</h5>
             <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
-            <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}">
-                <button href="" class="btn waves-effect waves-light" type="submit" name="action">Edit
-                    <i class="material-icons right">create</i>
-                </button>
-            </a>
+            <div class="row">
+                <div class="col s6">
+                    <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}">
+                        <button  class="btn waves-effect waves-light" type="submit" name="action">Edit
+                            <i class="material-icons right">create</i>
+                        </button>  
+                    </a>
+                </div>
+                <div class="col s6">
+                    <a href="">
+                        <button id="button-delete" class="btn waves-effect waves-light" type="submit" name="action">Delete
+                            <i class="material-icons right">delete</i>
+                        </button>
+                    </a>
+                </div>
+            </div>
         </div>
         {% endfor %}
     

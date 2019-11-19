@@ -39,4 +39,24 @@ $(document).ready(function() {
         $("#instructionsform").append(fieldWrapper);
     });
     
+    $("#button-delete").click(function() {
+        swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this recipes!",
+                icon: "warning",
+                buttons: ["Cancel", "Delete"],
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Your recipe has been deleted", {
+                        icon: "success",
+                    });
+                }
+                else {
+                    swal("Your recipe is safe!");
+                }
+            });
+    });
+    
 });
