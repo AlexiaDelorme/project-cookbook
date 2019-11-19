@@ -84,18 +84,22 @@
     </div>
     
     <!-- Save as favourite -->
-    <div class="row center-align">
-        <h5>Save as favourite? <i class="fa fa-heart" aria-hidden="true"></i> </h5>
-        <div class="switch col s12">
-            <label>
-              NO
-              <input type="checkbox">
-              <span class="lever"></span>
-              YES
-            </label>
+    {% if session["email"] %}
+        <div class="row center-align">
+            <!-- If recipe in user_favourties -->
+                <h5>Remove from favourites? <i class="fa fa-trash" aria-hidden="true"></i> </h5> 
+                <a class="btn waves-effect waves-light" id="" href="" > 
+                    YES 
+                </a>            
+            <!-- If recipe not in user_favourites -->
+                <h5>Save as favourite? <i class="fa fa-heart" aria-hidden="true"></i> </h5> 
+                <a class="btn waves-effect waves-light" id="" href="" > 
+                    YES 
+                </a>
+            <!-- endif -->
         </div>
-    </div>
-    
+    {% endif %}
+
 </div>
 
 {% endblock %}
