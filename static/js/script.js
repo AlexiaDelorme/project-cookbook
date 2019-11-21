@@ -39,31 +39,32 @@ $(document).ready(function() {
         $("#instructionsform").append(fieldWrapper);
     });
     
-    // Use Sweet Alert to create 2-tier confirmation before deleting the recipe
-    function deleteRecipeFunction(recipeId) {
-        swal({
-              title: "Are you sure?",
-              text: "Once deleted, you will not be able to recover this recipe",
-              icon: "warning",
-              buttons:  {
-                        cancel: "Cancel!",
-                        catch: {
-                        text: "Delete!",
-                        value: "delete"
-                                },
-                        },
+});
+
+// Use Sweet Alert to create 2-tier confirmation before deleting the recipe
+function deleteRecipeFunction(recipeId) {
+    swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this recipe",
+            icon: "warning",
+            buttons: {
+                cancel: "Cancel!",
+                catch: {
+                    text: "Delete!",
+                    value: "delete"
+                },
+            },
         })
-        .then((value) => { switch (value) {
+        .then((value) => {
+            switch (value) {
                 case "delete":
-                        swal("Your recipe was deleted!", 
-                            { icon: "success"
-                            })
-                        .then((value) => { document.getElementById(recipeId&"Form").submit(); });
-                        break;
-                 default:
-                        swal("Your recipe is safe!");
+                    swal("Your recipe was deleted!", {
+                            icon: "success"
+                        })
+                        .then((value) => { document.getElementById(recipeId & "Form").submit(); });
+                    break;
+                default:
+                    swal("Your recipe is safe!");
             }
         });
-    }
-    
-});
+}
