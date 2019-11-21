@@ -41,22 +41,28 @@ $(document).ready(function() {
     
     $("#button-delete").click(function() {
         swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this recipes!",
-                icon: "warning",
-                buttons: ["Cancel", "Delete"],
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    swal("Your recipe has been deleted", {
-                        icon: "success",
-                    });
-                }
-                else {
-                    swal("Your recipe is safe!");
-                }
-            });
+              title: "Are you sure?",
+              text: "Once deleted, you will not be able to recover this recipe",
+              icon: "warning",
+              buttons:  {
+                        cancel: "Cancel!",
+                        catch: {
+                        text: "Delete!",
+                        value: "delete"
+                                },
+                        },
+        })
+        .then((value) => { switch (value) {
+                case "delete":
+                        swal("Your recipe was deleted!", 
+                            { icon: "success"
+                            })
+                        .then((value) => { document.getElementById('theForm').submit(); });
+                        break;
+                 default:
+                        swal("Your recipe is safe!");
+            }
+        });
     });
     
 });
