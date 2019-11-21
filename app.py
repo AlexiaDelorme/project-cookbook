@@ -505,6 +505,17 @@ def update_recipe(recipe_id):
     flash(f"Thanks, the recipe has been updated!", "white-text green")
     return redirect(url_for('recipe_description', recipe_id = recipe_id))
 
+# ----- 2.2. DELETE RECIPE ----- #  
+@app.route("/delete_recipe/<recipe_id>", methods=["POST"])
+def delete_recipe(recipe_id):
+    """
+    Delete recipe selected by the user from the previous menu.
+    """
+    recipes = mongo.db.recipes_information
+    recipes.deleteOne( {'_id': ObjectId(recipe_id) } )
+    flash(f"Thanks, your recipe has been successfully deleted!", "white-text green")
+    return redirect(url_for('my_recipes'))
+
 # ----- 3. ADD / NEW RECIPE ----- #  
 @app.route("/add_recipe")
 def add_recipe():
