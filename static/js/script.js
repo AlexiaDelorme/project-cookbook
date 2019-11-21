@@ -40,7 +40,7 @@ $(document).ready(function() {
     });
     
     // Use Sweet Alert to create 2-tier confirmation before deleting the recipe
-    $("#{{recipe._id}}-button-delete").click(function() {
+    function deleteRecipeFunction(recipeId) {
         swal({
               title: "Are you sure?",
               text: "Once deleted, you will not be able to recover this recipe",
@@ -58,12 +58,12 @@ $(document).ready(function() {
                         swal("Your recipe was deleted!", 
                             { icon: "success"
                             })
-                        .then((value) => { document.getElementById("{{recipe._id}}-form").submit(); });
+                        .then((value) => { document.getElementById(recipeId&"Form").submit(); });
                         break;
                  default:
                         swal("Your recipe is safe!");
             }
         });
-    });
+    }
     
 });
