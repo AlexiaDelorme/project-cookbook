@@ -510,19 +510,20 @@ def update_recipe(recipe_id):
 def delete_recipe(recipe_id):
     """
     Delete recipe selected by the user from the previous menu.
+    Delete the recipe from the user's recipes list and all users that saved it as a favorite.
     """
     recipes = mongo.db.recipes_information
     user_accounts = mongo.db.user_accounts
     # Get user's ID to link recipe to the logged user
-    logged_user = user_accounts.find_one({ "email": session["email"] })["_id"]
-    # Remove this recipe for all users that saved it as favourite
-    user_accounts.updateMany({},
-                             {"$pull": { "favourite_recipes": ObjectId(recipe_id)}})  
+    logged_user = user_accounts.find_one({"email": session["email"]})["_id"]
     # Delete the recipe from the db
-    recipes.remove( {"_id": ObjectId(recipe_id) } )
+    recipes.remove({"_id": ObjectId(recipe_id) })
     # Remove this recipe from the user's field "my_recipes"
     user_accounts.update({"_id": ObjectId(logged_user)},
                          {"$pull": { "my_recipes": ObjectId(recipe_id)}})
+    # Remove this recipe for all users that saved it as favourite
+    user_accounts.update_many({},
+                             {"$pull": { "favorite_recipes": ObjectId(recipe_id)}})
     flash(f"Thanks, your recipe has been successfully deleted!", "white-text green")
     return redirect(url_for('my_recipes'))
 
