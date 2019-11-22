@@ -48,9 +48,9 @@ function deleteRecipeFunction(recipeId) {
             text: "Once deleted, you will not be able to recover this recipe",
             icon: "warning",
             buttons: {
-                cancel: "Cancel!",
+                cancel: "Cancel",
                 catch: {
-                    text: "Delete!",
+                    text: "Delete",
                     value: "delete"
                 },
             },
@@ -61,7 +61,7 @@ function deleteRecipeFunction(recipeId) {
                     swal("Your recipe was deleted!", {
                             icon: "success"
                         })
-                        .then((value) => { document.getElementById(recipeId & "Form").submit(); });
+                        .then((value) => { document.getElementById(recipeId + "Form").submit(); });
                     break;
                 default:
                     swal("Your recipe is safe!");

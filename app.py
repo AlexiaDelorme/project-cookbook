@@ -512,7 +512,15 @@ def delete_recipe(recipe_id):
     Delete recipe selected by the user from the previous menu.
     """
     recipes = mongo.db.recipes_information
-    recipes.deleteOne( {'_id': ObjectId(recipe_id) } )
+    # Get user's ID to link recipe to the logged user
+    logged_user = mongo.db.user_accounts.find_one({ "email": session["email"] })["_id"]
+    # Delete the recipe from the db
+    recipes.remove( {'_id': ObjectId(recipe_id) } )
+    # Remove this recipe to the user's collection "my_recipes"
+    recipes.update( {"_id": ObjectId(logged_user)},
+                        {"$pull": { "my_recipes": ObjectId(recipe_id),
+                                    "favorite_recipes": ObjectId(recipe_id)
+                        }})
     flash(f"Thanks, your recipe has been successfully deleted!", "white-text green")
     return redirect(url_for('my_recipes'))
 

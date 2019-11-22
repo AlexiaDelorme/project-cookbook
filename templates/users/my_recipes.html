@@ -33,7 +33,7 @@
                 <form method="post" id="{{recipe._id}}Form" action="{{url_for('delete_recipe', recipe_id=recipe._id)}}">
                     <input type="hidden">
                 </form>
-                <button onclick="deleteRecipeFunction({{recipe._id}})" class="btn waves-effect waves-light" type="submit" name="action">Delete
+                <button onclick="deleteRecipeFunction('{{recipe._id}}')" class="btn waves-effect waves-light" type="submit" name="action">Delete
                     <i class="material-icons right">delete</i>
                 </button>
             </div>
