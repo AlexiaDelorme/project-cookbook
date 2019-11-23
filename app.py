@@ -299,7 +299,6 @@ def logout():
     flash("Thanks for your visit, we hope to see you soon!", "blue-grey lighten-5")
     return redirect(url_for("login"))
 
-
 # ----- 1. VIEW / USER ACCOUNT DETAILS ----- #
 @app.route("/account_details")
 def account_details():
@@ -361,7 +360,7 @@ def update_my_details(account_id):
         flash("Your account details have been updated successfully!", "white-text green darken-1")
         return redirect(url_for("account_details"))
 
-# ----- 1.2. EDIT/ USER PASSWORD ----- #
+# ----- 1.2. EDIT / USER PASSWORD ----- #
 @app.route("/edit_password", methods=["POST", "GET"])
 def edit_password():
     """
@@ -404,7 +403,50 @@ def edit_password():
                             
     return redirect(url_for('access_denied'))
 
-# ----- 1.2. DELETE / USER ACCOUNT ----- #
+# ----- 1.2. DELETE (CONFIRM FORM) / USER ACCOUNT ----- #
+@app.route("/delete_account")
+def delete_account():
+    """
+    Display a form for the user to confirm his/her password before account deletion.
+    The user is then asked to confirm his/her decision by a 2-tier confirmation modal.
+    """    
+    # Check if the user is logged before rendering the template
+    if "email" in session:
+        # Create a query to get user information
+        user = mongo.db.user_accounts.find_one({"email": session["email"]})
+        return render_template("users/delete_account.html",
+                                Page_name = "Delete Account",
+                                Welcome_image = "../static/img/sign/bg.jpg",
+                                account = user)
+    return redirect(url_for('access_denied'))
+
+# ----- 1.2.1. PERMANENTLY DELETE / USER ACCOUNT ----- #  
+@app.route("/perm_delete_account/<account_id>", methods=["POST"])
+def perm_delete_account(account_id):
+    """
+    Permanently delete user account after decision by the user confirmed.
+    Check if password provided by the user is correct. 
+    """
+    user_accounts = mongo.db.user_accounts
+    user = user_accounts.find_one({"email": session["email"]})
+    current_user_password_db = user["password"]
+    # Check if password provided by the user is incorrect
+    if not bcrypt.check_password_hash(current_user_password_db, request.form.get("password")):
+        flash(f"The account has not been deleted because the password provided is incorrect!", "white-text red")
+        return redirect(url_for('delete_account'))
+    # Check if password provided by the user is correct
+    if bcrypt.check_password_hash(current_user_password_db, request.form.get("password")):
+        # Delete user account from the db
+        user_accounts.remove({"_id": ObjectId(account_id)})
+        # Remove user from the session
+        session.pop("email", None)
+        session.pop("first_name", None)
+        session.pop("last_name", None)
+        flash("Thanks for your visit but we will miss you :(", "blue-grey lighten-5")
+        return redirect(url_for('home'))
+    else:
+        flash(f"Ooops somthing went wrong. Your account has not been deleted.", "white-text red")
+        return redirect(url_for('delete_account'))
 
 # ----- 2. VIEW / MY RECIPES ----- #       
 @app.route("/my_recipes")

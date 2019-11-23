@@ -68,3 +68,30 @@ function deleteRecipeFunction(recipeId) {
             }
         });
 }
+
+function deleteAccountFunction() {
+    swal({
+            title: "Are you sure?",
+            text: "Your account will be permanently deleted.",
+            icon: "warning",
+            buttons: {
+                cancel: "Cancel",
+                catch: {
+                    text: "Delete",
+                    value: "delete"
+                },
+            },
+        })
+        .then((value) => {
+            switch (value) {
+                case "delete":
+                    swal("Your account was deleted!", {
+                            icon: "success"
+                        })
+                        .then((value) => { document.getElementById("deleteAccountForm").submit(); });
+                    break;
+                default:
+                    swal("Your account is still live!");
+            }
+        });
+}
