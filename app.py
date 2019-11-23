@@ -404,6 +404,8 @@ def edit_password():
                             
     return redirect(url_for('access_denied'))
 
+# ----- 1.2. DELETE / USER ACCOUNT ----- #
+
 # ----- 2. VIEW / MY RECIPES ----- #       
 @app.route("/my_recipes")
 def my_recipes():
