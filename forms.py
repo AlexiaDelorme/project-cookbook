@@ -30,8 +30,3 @@ class PasswordForm(FlaskForm):
     confirm_new_password = PasswordField("Confirm New Password",
                                      validators=[DataRequired(), EqualTo("new_password")])
     submit = SubmitField("Update Password")     
-
-class DeleteAccountForm(FlaskForm):
-    password = PasswordField("Password", validators=[DataRequired()])
-    confirm_password = PasswordField("Confirm Password",
-                                     validators=[DataRequired(), EqualTo("password")])
