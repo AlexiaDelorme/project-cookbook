@@ -428,9 +428,10 @@ def perm_delete_account(account_id):
     Check if password provided by the user is correct. 
     """
     user_accounts = mongo.db.user_accounts
-    user = user_accounts.find_one({"email": session["email"]})
+    user = user_accounts.find_one({"_id": ObjectId(account_id)})
     current_user_password_db = user["password"]
     # Check if password provided by the user is incorrect
+    logging.info('Form is {}'.format(request.form))
     if not bcrypt.check_password_hash(current_user_password_db, request.form.get("password")):
         flash(f"The account has not been deleted because the password provided is incorrect!", "white-text red")
         return redirect(url_for('delete_account'))

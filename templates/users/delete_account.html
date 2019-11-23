@@ -8,7 +8,7 @@
     <div class="row">
         
         <!-- Form to confirm password before deletion-->
-        <form method="POST" id="deleteAccountForm" action="{{url_for('perm_delete_account', account_id=account._id)}}">
+        <form method="POST" id="deleteAccountForm" action="{{url_for('perm_delete_account', account_id=account._id}}">
             
             <!-- Email -->
             <div class="input-field col s12">
@@ -21,13 +21,13 @@
                 <input id="password" type="password" class="validate">
                 <label for="password">Confirm Password</label>
             </div>
-        
+            
         </form>
         
         <!-- Button to delete account -->
         <button onclick="deleteAccountFunction()" class="btn waves-effect waves-light" type="submit" name="action">Delete Account <i class="material-icons right">delete_forever</i>
         </button>
-
+        
     </div>
 
 </div>
