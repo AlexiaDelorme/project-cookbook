@@ -6,6 +6,10 @@ body {
 
 /* ------------------------------------------------------ SHARED STYLE ------ */
 
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: .1em;
+}
+
 h1, h2, h3 {
     color: #ee6e73;
     margin: 5rem 0 3rem 0;
