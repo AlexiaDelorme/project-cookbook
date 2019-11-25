@@ -1,6 +1,7 @@
 body {
     font-family: 'Signika', 'calibri';
-    font-size: 20px;
+    font-size: 18px;
+    color: #444;
 }
 
 /* ------------------------------------------------------ SHARED STYLE ------ */
@@ -151,9 +152,7 @@ ul.list-styling>li {
     display: list-item;
 }
 
-i.fa.fa-shopping-basket,
-i.fa.fa-trash,
-i.fa.fa-heart {
+i.fa.fa-shopping-basket {
     color: #ee6e73;
 }
 
