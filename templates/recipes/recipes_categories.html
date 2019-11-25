@@ -5,10 +5,10 @@
  
 {% if (category.category_name=="geography" or category.category_name=="diet" ) %} 
     
-    <div class="center-align">
+    <div class="container-section center-align">
         
         {% for item in category.list %}
-            <a href="{{ url_for('recipes_subcategories', category_name = category.category_name, subcategory_name=item.category_name)}}">
+            <a class="anchor-title" href="{{ url_for('recipes_subcategories', category_name = category.category_name, subcategory_name=item.category_name)}}">
                 <p>{{ item.category_name.capitalize() }}</p>
             </a>
         {% endfor %}

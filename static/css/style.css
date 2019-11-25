@@ -106,6 +106,14 @@ img.parallax-img-size {
     color: black;
 }
 
+a.anchor-title {
+    color: #444;
+}
+
+a.anchor-title:hover {
+    color: #ee6e73;
+}
+
 /* ----------------------------------------------------------- RECIPES ------ */
 
 .headline-carousel {
