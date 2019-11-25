@@ -83,15 +83,15 @@
         </div>
     </div>
     
-    <!-- Save as favourite -->
+    <!-- Save as favorite -->
     {% if session["email"] %}
         <div class="row center-align">
-            {% if recipe._id in user_favourites %}
-                <h5>Remove from favourites?</h5> 
-                <a class="btn btn-floating pulse" id="" href="{{url_for('delete_favourite', recipe_id=recipe._id)}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            {% if recipe._id in user_favorites %}
+                <h5>Remove from favorites?</h5> 
+                <a class="btn btn-floating pulse" id="" href="{{url_for('delete_favorite', recipe_id=recipe._id)}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
             {% else %}
-                <h5>Save as favourite?</h5> 
-                <a class="btn btn-floating pulse" id="" href="{{url_for('add_favourite', recipe_id=recipe._id)}}"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                <h5>Save as favorite?</h5> 
+                <a class="btn btn-floating pulse" id="" href="{{url_for('add_favorite', recipe_id=recipe._id)}}"><i class="fa fa-heart" aria-hidden="true"></i></a>
             {% endif %}
         </div>
     {% endif %}
@@ -103,7 +103,7 @@
 {% block carousel %}
 
 <!-- Carousel-->
-<h4 class="center-align headline-carousel">TRY OUR FAVOURITE RECIPES!</h4>
+<h4 class="center-align headline-carousel">TRY OUR FAVORITE RECIPES!</h4>
 <div class="carousel">
     {% for image in carousel %}
         <a class="carousel-item" href="#"><img src="../{{ image }}"></a>  

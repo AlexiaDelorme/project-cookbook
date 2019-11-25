@@ -686,7 +686,6 @@ def add_favourite(recipe_id):
     """
     Add recipe to user's favourites and redirect to recipe description page.
     """
-    recipes = mongo.db.recipes_information
     user_accounts = mongo.db.user_accounts
     # Get user's ID to link recipe to the logged user
     logged_user = user_accounts.find_one({"email": session["email"]})["_id"]
@@ -702,7 +701,6 @@ def delete_favourite(recipe_id):
     """
     Remove recipe from user's favourites and redirect to recipe description page.
     """
-    recipes = mongo.db.recipes_information
     user_accounts = mongo.db.user_accounts
     # Get user's ID to link recipe to the logged user
     logged_user = user_accounts.find_one({"email": session["email"]})["_id"]
