@@ -678,6 +678,40 @@ def cookbook():
     
     return redirect(url_for('access_denied'))
 
+# ----- 5. ADD/REMOVE FAVOURITES ----- #
+
+# ----- 5.1. ADD FAVOURITES ----- #
+@app.route("/recipe/<recipe_id>/add_favourite")
+def add_favourite(recipe_id):
+    """
+    Add recipe to user's favourites and redirect to recipe description page.
+    """
+    recipes = mongo.db.recipes_information
+    user_accounts = mongo.db.user_accounts
+    # Get user's ID to link recipe to the logged user
+    logged_user = user_accounts.find_one({"email": session["email"]})["_id"]
+    # Remove this recipe from the user's field "favorite_recipes"
+    user_accounts.update({"_id": ObjectId(logged_user)},
+                         {"$push": { "favorite_recipes": ObjectId(recipe_id)}})
+    flash(f"Thanks, this recipe was added to your favourites!", "white-text green")
+    return redirect(request.referrer)
+
+# ----- 5.2. REMOVE FAVOURITES ----- #
+@app.route("/recipe/<recipe_id>/delete_favourite")
+def delete_favourite(recipe_id):
+    """
+    Remove recipe from user's favourites and redirect to recipe description page.
+    """
+    recipes = mongo.db.recipes_information
+    user_accounts = mongo.db.user_accounts
+    # Get user's ID to link recipe to the logged user
+    logged_user = user_accounts.find_one({"email": session["email"]})["_id"]
+    # Remove this recipe from the user's field "favorite_recipes"
+    user_accounts.update({"_id": ObjectId(logged_user)},
+                         {"$pull": { "favorite_recipes": ObjectId(recipe_id)}})
+    flash(f"Thanks, this recipe was removed from your favourites!", "white-text green")
+    return redirect(request.referrer)
+
 # ------------------------------------------- #
 #              RECIPES RESULTS                #
 # ------------------------------------------- #
@@ -702,6 +736,12 @@ def recipe_description(recipe_id):
     """
     Display recipe informations after user clicked on the image card from the results page.
     """
+    # Check if the user is logged in
+    if "email" in session:
+        # Create a query to get the user stored in the user variable
+        user = mongo.db.user_accounts.find_one( { "email": session["email"] })
+        # Store user's favorite recipes 
+        favorite_recipes = user["favorite_recipes"]
     # Get recipe object based on id of the recipe clicked by the user
     the_recipe =  mongo.db.recipes_information.find_one({"_id": ObjectId(recipe_id)})
     the_recipe_name = the_recipe["recipe_name"].capitalize()
@@ -717,6 +757,7 @@ def recipe_description(recipe_id):
                             Page_name = the_recipe_name,
                             Page_title = f"{the_recipe_name}", 
                             recipe = the_recipe,
+                            user_favourites = favorite_recipes if favorite_recipes else "",
                             hours = hours,
                             minutes = minutes,
                             carousel = image_folder("carousel"))
