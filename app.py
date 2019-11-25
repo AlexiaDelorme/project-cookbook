@@ -136,7 +136,7 @@ def recipes():
     """
     return render_template("recipes/recipes.html",
                             Page_name = "Recipes",
-                            Page_title = "Discover recipes by...", 
+                            Page_title = "RECIPES BY...", 
                             Welcome_image = "../static/img/categories/bg.jpg", 
                             categories = mongo.db.recipes_categories.find(), 
                             carousel = image_folder("carousel"))
@@ -153,7 +153,7 @@ def recipes_categories(category_name):
     the_name_category = the_category["category_name"].capitalize()
     return render_template("recipes/recipes_categories.html", 
                             Page_name = the_name_category,
-                            Page_title = "Discover recipes for...", 
+                            Page_title = "RECIPES BY..", 
                             Welcome_image = "../static/img/categories/bg.jpg", 
                             category=the_category, 
                             carousel = image_folder("carousel"))
@@ -177,7 +177,7 @@ def recipes_subcategories(category_name, subcategory_name):
 def about():
     return render_template("general/about.html", 
                             Page_name = "About Us",
-                            Page_title = "About Us", 
+                            Page_title = "ABOUT US", 
                             Welcome_image = "../static/img/about/bg.jpg")
 
 # ----- 5. SIGN UP ----- #
@@ -474,7 +474,7 @@ def my_recipes():
             
         return render_template("users/my_recipes.html",
                             Page_name = "My recipes",
-                            Page_title = "Manage your own recipes",
+                            Page_title = "MANAGE YOUR RECIPES",
                             Welcome_image = "../static/img/cookbook/bg2.jpg",
                             recipes = recipes_list_information,
                             recipes_number = recipes_number)
@@ -566,7 +566,7 @@ def delete_recipe(recipe_id):
     # Remove this recipe from the user's field "my_recipes"
     user_accounts.update({"_id": ObjectId(logged_user)},
                          {"$pull": { "my_recipes": ObjectId(recipe_id)}})
-    # Remove this recipe for all users that saved it as favourite
+    # Remove this recipe for all users that saved it as favorite
     user_accounts.update_many({},
                              {"$pull": { "favorite_recipes": ObjectId(recipe_id)}})
     flash(f"Thanks, your recipe has been successfully deleted!", "white-text green")
@@ -671,20 +671,20 @@ def cookbook():
             
         return render_template("users/cookbook.html",
                             Page_name = "Cookbook",
-                            Page_title = "My Cookbook", 
+                            Page_title = "MY COOKBOOK", 
                             Welcome_image = "../static/img/cookbook/bg.jpg",
                             recipes = recipes_list_information,
                             recipes_number = recipes_number)
     
     return redirect(url_for('access_denied'))
 
-# ----- 5. ADD/REMOVE FAVOURITES ----- #
+# ----- 5. ADD/REMOVE FAVORITES ----- #
 
-# ----- 5.1. ADD FAVOURITES ----- #
-@app.route("/recipe/<recipe_id>/add_favourite")
-def add_favourite(recipe_id):
+# ----- 5.1. ADD FAVORITES ----- #
+@app.route("/recipe/<recipe_id>/add_favorite")
+def add_favorite(recipe_id):
     """
-    Add recipe to user's favourites and redirect to recipe description page.
+    Add recipe to user's favorites and redirect to recipe description page.
     """
     user_accounts = mongo.db.user_accounts
     # Get user's ID to link recipe to the logged user
@@ -692,14 +692,14 @@ def add_favourite(recipe_id):
     # Remove this recipe from the user's field "favorite_recipes"
     user_accounts.update({"_id": ObjectId(logged_user)},
                          {"$push": { "favorite_recipes": ObjectId(recipe_id)}})
-    flash(f"Thanks, this recipe was added to your favourites!", "white-text green")
+    flash(f"Thanks, this recipe was added to your favorites!", "white-text green")
     return redirect(request.referrer)
 
-# ----- 5.2. REMOVE FAVOURITES ----- #
-@app.route("/recipe/<recipe_id>/delete_favourite")
-def delete_favourite(recipe_id):
+# ----- 5.2. REMOVE FAVORITES ----- #
+@app.route("/recipe/<recipe_id>/delete_favorite")
+def delete_favorite(recipe_id):
     """
-    Remove recipe from user's favourites and redirect to recipe description page.
+    Remove recipe from user's favorites and redirect to recipe description page.
     """
     user_accounts = mongo.db.user_accounts
     # Get user's ID to link recipe to the logged user
@@ -707,7 +707,7 @@ def delete_favourite(recipe_id):
     # Remove this recipe from the user's field "favorite_recipes"
     user_accounts.update({"_id": ObjectId(logged_user)},
                          {"$pull": { "favorite_recipes": ObjectId(recipe_id)}})
-    flash(f"Thanks, this recipe was removed from your favourites!", "white-text green")
+    flash(f"Thanks, this recipe was removed from your favorites!", "white-text green")
     return redirect(request.referrer)
 
 # ------------------------------------------- #
@@ -724,7 +724,7 @@ def results():
     recipes_number=recipes.count()
     return render_template("recipes/results.html",
                             Page_name = "All Recipes",
-                            Page_title = f"{recipes_number} Recipes Found",
+                            Page_title = f"{recipes_number} RECIPES",
                             recipes=recipes,
                             recipes_number = recipes_number)
 
@@ -755,7 +755,7 @@ def recipe_description(recipe_id):
                             Page_name = the_recipe_name,
                             Page_title = f"{the_recipe_name}", 
                             recipe = the_recipe,
-                            user_favourites = favorite_recipes if favorite_recipes else "",
+                            user_favorites = favorite_recipes if favorite_recipes else "",
                             hours = hours,
                             minutes = minutes,
                             carousel = image_folder("carousel"))
