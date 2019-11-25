@@ -3,8 +3,15 @@ body {
     font-size: 17px;
 }
 
+/* ------------------------------------------------------ SHARED STYLE ------ */
+
 h1, h2, h3 {
     color: #ee6e73;
+    margin: 5rem 0 3rem 0;
+}
+
+h4 {
+    margin: 3rem 0 2rem 0;
 }
 
 .flexbox {
@@ -63,17 +70,27 @@ footer ul {
     color: #444;
 }
 
+i.fa.fa-facebook.icon-style:hover {
+    color: #3b5998;
+}
+
+i.fa.fa-instagram.icon-style:hover {
+    color: #C13584;
+}
+
+i.fa.fa-youtube-play.icon-style:hover {
+    color: #FF0000;
+}
+
+i.fa.fa-pinterest-p.icon-style:hover {
+    color: #c8232c;
+}
+
+i.fa.fa-twitter.icon-style:hover {
+    color: #00acee;
+}
 
 /* -------------------------------------------------------------- HOME ------ */
-
-h1 {
-    margin: 5rem 0 3rem 0;
-}
-
-h2,
-h3 {
-    margin: 6rem 0 3rem 0;
-}
 
 img.parallax-img-size {
     height: 100vh;
@@ -89,14 +106,12 @@ img.parallax-img-size {
     color: black;
 }
 
-
 /* ----------------------------------------------------------- RECIPES ------ */
 
 .headline-carousel {
     margin-bottom: 20px;
     color: #ee6e73;
 }
-
 
 .carousel.initialized {
     margin-top: -50px;
