@@ -87,15 +87,11 @@
     {% if session["email"] %}
         <div class="row center-align">
             <!-- If recipe in user_favourties -->
-                <h5>Remove from favourites? <i class="fa fa-trash" aria-hidden="true"></i> </h5> 
-                <a class="btn waves-effect waves-light" id="" href="" > 
-                    YES 
-                </a>            
+                <h5>Remove from favourites?</h5> 
+                <a class="btn btn-floating pulse" id="" href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
             <!-- If recipe not in user_favourites -->
-                <h5>Save as favourite? <i class="fa fa-heart" aria-hidden="true"></i> </h5> 
-                <a class="btn waves-effect waves-light" id="" href="" > 
-                    YES 
-                </a>
+                <h5>Save as favourite?</h5> 
+                <a class="btn btn-floating pulse" id="" href=""><i class="fa fa-heart" aria-hidden="true"></i></a>
             <!-- endif -->
         </div>
     {% endif %}
