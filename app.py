@@ -424,7 +424,7 @@ def delete_account():
 @app.route("/perm_delete_account/<account_id>", methods=["POST"])
 def perm_delete_account(account_id):
     """
-    Permanently delete user account after decision by the user confirmed.
+    Permanently delete user account after user confirmed his/her decision.
     Check if password provided by the user is correct. 
     """
     user_accounts = mongo.db.user_accounts
@@ -446,7 +446,7 @@ def perm_delete_account(account_id):
         flash("Thanks for your visit but we will miss you :(", "blue-grey lighten-5")
         return redirect(url_for('home'))
     else:
-        flash(f"Ooops somthing went wrong. Your account has not been deleted.", "white-text red")
+        flash(f"Ooops somthing went wrong! Your account has not been deleted.", "white-text red")
         return redirect(url_for('delete_account'))
 
 # ----- 2. VIEW / MY RECIPES ----- #       
