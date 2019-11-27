@@ -31,6 +31,17 @@
     
     </div>
     
+    <div class="row center-align">
+    
+        <h6>Share this recipe!</h6>
+    
+        <!-- Modal Trigger for share recipe -->
+        <a class="btn btn-floating pulse modal-trigger" href="#modal1"><i class="material-icons">share</i></a>
+        <!-- Print recipe -->
+        <a class="btn btn-floating pulse" href="#"><i class="material-icons">print</i></a>
+        
+    </div>
+    
     <!-- Recipe image -->
     <div class="row center-align">
         <div class="col s12 m8 offset-m2 l6 offset-l3"><img class="card-img" src="../{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img>
@@ -87,10 +98,10 @@
     {% if session["email"] %}
         <div class="row center-align">
             {% if recipe._id in user_favorites %}
-                <h5>Remove from favorites?</h5> 
+                <h6>Remove from favorites?</h6> 
                 <a class="btn btn-floating pulse" id="" href="{{url_for('delete_favorite', recipe_id=recipe._id)}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
             {% else %}
-                <h5>Save as favorite?</h5> 
+                <h6>Save as favorite?</h6> 
                 <a class="btn btn-floating pulse" id="" href="{{url_for('add_favorite', recipe_id=recipe._id)}}"><i class="fa fa-heart" aria-hidden="true"></i></a>
             {% endif %}
         </div>
@@ -108,6 +119,17 @@
     {% for image in carousel %}
         <a class="carousel-item" href="#"><img src="../{{ image }}"></a>  
     {% endfor %}
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h5>Share this recipe on any social media!</h5>
+        <p>Please click on the below icons to share this recipe.</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
 </div>
 
 {% endblock %}

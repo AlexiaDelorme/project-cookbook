@@ -6,11 +6,18 @@ body {
 
 /* ------------------------------------------------------ SHARED STYLE ------ */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     letter-spacing: .1em;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     color: #ee6e73;
     margin: 5rem 0 3rem 0;
 }
@@ -20,10 +27,10 @@ h4 {
 }
 
 .flexbox {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ------------------------------------------------------------ HEADER ------ */
@@ -160,6 +167,10 @@ i.fa.fa-shopping-basket {
     color: #ee6e73;
 }
 
+a.btn.btn-floating.pulse.modal-trigger {
+    margin-right: 20px;
+}
+
 /* ---------------------------------------------------- ADD NEW RECIPE ------ */
 
 .add-spacing {
@@ -170,15 +181,18 @@ i.fa.fa-shopping-basket {
     padding: 0px 25px;
 }
 
-button#add-instructions, button#add-ingredients {
-    float:right;
+button#add-instructions,
+button#add-ingredients {
+    float: right;
 }
 
-.btn, .btn-large {
+.btn,
+.btn-large {
     background-color: #ee6e73cc;
 }
 
-.btn:hover, .btn-large:hover {
+.btn:hover,
+.btn-large:hover {
     background-color: #ee6e73;
 }
 

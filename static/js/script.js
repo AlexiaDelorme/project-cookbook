@@ -6,6 +6,7 @@ $(document).ready(function() {
     $(".parallax").parallax();
     $(".carousel").carousel();
     $('select').material_select();
+    $('.modal').modal();
 
     // Dynamically add new ingredients for add_recipe and edit_recipe
     $("#add-ingredients").click(function() {
