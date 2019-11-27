@@ -47,41 +47,48 @@ By creating a community that can share their own recipes, it enables to naturall
 
 ## User Stories
 
-In this project, we can identify the following stakeholders:
--	External users (inside/outside the community)
+For this project, I identified the following stakeholders:
+-	External users
+-	Community members
 -	The site owners
 
 ### External users
 
 ###### User story 1
  
-As a general user, I want to make use of the site to share my own data with the community and benefit from having convenient access to the data provided by all other members.
+As an external user, I want to make use of the site to share my own data with the community and benefit from having convenient access to the data provided by all other members.
 
 ###### User story 2
 
-As a general user, I want to be able to research patisserie recipes based on specific criteria and have a visually appealing and interactive interface while I am cooking. 
+As an external user, I want to be able to research patisserie recipes based on specific criteria and have a visually appealing and interactive interface while I am cooking. 
 
 ###### User story 3
 
-As a user with specific constraints (food allergies, specific diets or ingredients constraints…), I want to be able to find recipes that address my needs and be advertised similar recipes based on fields inputs.
+As a user with specific constraints (food allergies, specific diets or simply missing a cooking tool…), I want to be able to find recipes that address my needs and be presented recipes based on my inputs.
 
 ###### User story 5
 
-Again as a user with specific constraints, I want the site to feature recommendations based on my specific needs (Ex: vegan-friendly, sugar-free…)
+Again as a user with specific constraints, I want the site to feature recommendations based on my specific needs (Ex: vegan-friendly, sugar-free…) - TO BE DONE ??
 
 ###### User story 6
 
 As a user looking for a specific category of patisserie, I want to be able to look for recipes based on the category of food. 
 
-###### User story 7
+### Community members
 
-As a member of the community, I want to be able to perform CRUD operations for any recipes that I have shared with the community.
+###### User story 1
 
-###### User story 8
+As a community member, I want to be able to create a free account with minimal steps and then be able to edit my information details, password and delete my account permanently if necessary.
 
-As a member of the community, I want to be able to comment and make reviews on recipes that I have tried. I want to be able to share recipes and add some favorites to personalize my intranet and create my own online cooking book. 
+###### User story 2
 
-###### User story 9
+As a community member, I want to be able to perform CRUD operations for any recipes that I have shared with the community.
+
+###### User story 3
+
+As a community member, I want to be able to share recipes and add some favorites to personalize my intranet and create my own online cooking book. 
+
+###### User story 4
 
 Food lovers, wannabe cooks or anyone passionate about patisserie who wants to try out the success of their recipes.
 
@@ -97,7 +104,7 @@ Be the first member of this community to share her own patisserie recipes!
 
 ###### User story 3
 
-Myself: building a full stack website using Python and mini-framework Flask that allows me to apply my skills in databases handling and interactive design. 
+Building a full-stack website using Python and mini-framework Flask that allows me to apply my skills in databases handling and interactive design. 
 
 ## Design
 
@@ -111,18 +118,65 @@ Myself: building a full stack website using Python and mini-framework Flask that
 
 ## Current Features
 
-###### Feature 1 - description here
+1.	Log in and sign up page
+2.	Home section with  (carousel)
+3.	
+3.1.	Logo
+
+4.	Footer with social links
+5.	Search bar in navigation bar
+6.	Multi filter search in “Search recipes” section
+7.	Pagination for multiple results
+8.	Social share/print buttons on recipes
+9.	Possibility to rate and comment recipes
+10.	For users only:
+10.1.	User data (possibility to modify)
+10.2.	CRUD for Recipes
+10.3.	CRUD for Comments
+
+#### All users
+
+###### Feature 1 - Home page
+- Navigation bar with sections (logo, all menu items)
+- Recipes teaser
+- xxx
+
+###### Feature 2 - Search recipes
 - xxx
 - xxx
 - xxx
 
-###### Feature 2 - description here
-- xxx
+###### Feature 3 - Recipes categories
 - xxx
 - xxx
 
-###### Feature 3 - description here
+###### Feature 4 - About Us Page
 - xxx
+- xxx
+
+###### Feature 4 - Sign Up Page
+- xxx
+- xxx
+
+###### Feature 4 - Log In Page
+- xxx
+- xxx
+
+#### (Additional) Features for community members
+
+###### Feature 5 - Account Dashboard
+- xxx
+- xxx
+
+###### Feature 6 - Online Cookbook
+- xxx
+- xxx
+
+###### Feature 7 - CRUD for Recipes
+- xxx
+- xxx
+
+###### Feature 7 - Add/Remove Favorites
 - xxx
 - xxx
 
