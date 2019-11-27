@@ -1,30 +1,115 @@
-# The Pâtisserie Cookbook
+<div align="center">
+    <img src="https://i.ibb.co/qMDnM0y/logo.jpg" href="https://patisserie-cookbook.herokuapp.com" target="_blank" alt="The Pâtisserie Journal Logo" />
+</div> 
 
-The current deployed version can be found at [here](https://patisserie-cookbook.herokuapp.com).
+# [The Pâtisserie Journal](https://patisserie-cookbook.herokuapp.com)
 
-## UX
+Welcome!
 
-### User Stories
- 
+[The Pâtisserie Journal](https://patisserie-cookbook.herokuapp.com) is an intuitive online cookbook tool to help you find new recipes and implement them interactively while cooking. You can also share your own recipes by creating your own account and join our onlince community!
+
+The purpose of this project is to make patisserie inclusive meaning that anyone with any food allergies, specific types of diet or simply missing an ingredient or a cooking tool would be able to find a suitable recipe. 
+
+By creating a community that can share their own recipes, it enables to naturally expand the database but also promotes “wannabe” cooks and provide them with visibility. 
+
+## Table of Contents
+1. [UX](#ux)
+    - [User Stories](#)
+        - [External Users](#)
+        - [Site Owners](#)
+    - [Design](#)
+    - [Wireframes](#)
+    - [Flowchart](#)
+
+2. [Features](#)
+    - [Current Features](#)
+    - [Future Features](#)
+
+3. [Database](#)
+    - [Database choice](#)
+    - [Data Structure](#)
+
+4. [Technologies Used](#)
+
+5. [Testing](#)
+
+6. [Deployment](#)
+    - [Heroku Deployment](#)
+    - [Local Deployment](#)
+
+7. [Credits](#)
+    - [Content](#)
+    - [Media](#)
+    - [Code](#)
+    - [Acknowledgements](#)
+
+# UX
+
+## User Stories
+
+In this project, we can identify the following stakeholders:
+-	External users (inside/outside the community)
+-	The site owners
+
+### External users
+
 ###### User story 1
  
- - xxx
- - xxx
- - xxx
+As a general user, I want to make use of the site to share my own data with the community and benefit from having convenient access to the data provided by all other members.
 
 ###### User story 2
 
- - xxx
- - xxx
- - xxx
+As a general user, I want to be able to research patisserie recipes based on specific criteria and have a visually appealing and interactive interface while I am cooking. 
 
-### Wireframes
+###### User story 3
+
+As a user with specific constraints (food allergies, specific diets or ingredients constraints…), I want to be able to find recipes that address my needs and be advertised similar recipes based on fields inputs.
+
+###### User story 5
+
+Again as a user with specific constraints, I want the site to feature recommendations based on my specific needs (Ex: vegan-friendly, sugar-free…)
+
+###### User story 6
+
+As a user looking for a specific category of patisserie, I want to be able to look for recipes based on the category of food. 
+
+###### User story 7
+
+As a member of the community, I want to be able to perform CRUD operations for any recipes that I have shared with the community.
+
+###### User story 8
+
+As a member of the community, I want to be able to comment and make reviews on recipes that I have tried. I want to be able to share recipes and add some favorites to personalize my intranet and create my own online cooking book. 
+
+###### User story 9
+
+Food lovers, wannabe cooks or anyone passionate about patisserie who wants to try out the success of their recipes.
+
+### Site owners
+
+###### User story 1
+
+Generally speaking we promote a cooking tool and benefit from the collection of the dataset as whole. 
+
+###### User story 2
+
+Be the first member of this community to share her own patisserie recipes!
+
+###### User story 3
+
+Myself: building a full stack website using Python and mini-framework Flask that allows me to apply my skills in databases handling and interactive design. 
+
+## Design
+
+## Wireframes
 
 - Balsamiq wireframe
 
-## Features
+## Flowchart
 
-### Current Features
+# Features
+
+## Current Features
 
 ###### Feature 1 - description here
 - xxx
@@ -41,7 +126,7 @@ The current deployed version can be found at [here](https://patisserie-cookbook.
 - xxx
 - xxx
 
-### Future Features
+## Future Features
 
 Please find below the list of improvements I would like to add to this project:
 
@@ -55,7 +140,7 @@ Please find below the list of improvements I would like to add to this project:
 - xxx
 - xxx
 
-## Technologies Used
+# Technologies Used
 
 ##### [Balsamiq](https://balsamiq.com/) 
 - I used Balsamiq to design my wireframes after drawing them manually.
@@ -91,87 +176,17 @@ Please find below the list of improvements I would like to add to this project:
 - I used Git for version control. 
 - I used GitHub to store my code in a remote repository, deploy and host my website.
 
-## Testing 
+# Testing 
 
-#### User stories
+All the documentation regarding the testing of this project can be found in this [TESTING.md](testing/TESTING.md) file.
 
-This project has been tested multiple times against each user stories previously listed in the UX section. 
+# Deployment
 
-###### Testing user story 1 
+## Heroku
 
-*User story: The user has easy access to aggregated data in a simple and clean fashion.*
+## Local Deployment
 
-<u> Hypothesis: </u> For this scenario, the user does not filter using the “start here” modal form. This is simply to test the general purpose of the project.
-
-<u> Test scenario: </u>
--	Go to the home page
--	Scroll down to navigate the dashboard, or,
--	Directly click on the “Exoplanets Dashboard” menu item in the navigation bar to be redirected
--	You should be provided with the source of the data, definition of an exoplanet…
--	You should be able to identify general information regarding the sample: total number of planets in the sample, average stellar year…
--	You should be able to identify through the different graphs relevant information regarding the sample. 
-
-<u> Test result: </u> **Successful**
-
-###### Testing user story 2
-
-#### Code quality
-
-##### HTML5
-
-HTML files succesfully passed this [HTML code validator](https://validator.w3.org/) by direct input as per screenshot provided down below.
-
-![HTML5 Code Validator](link)
-
-##### CSS3
-
-style.css file succesfully passed this [CSS code validator](https://jigsaw.w3.org/css-validator/) by direct input as per screenshot provided down below.
-
-![CSS Code Validator](link)
-
-##### JS
-
-Details about code validation.... 
-
-#### Compatibility & Responsiveness
-
-A cross browser testing was performed for each user stories scenario to ensure that all functionalities render well in different browsers:
-- Safari
-- Google Chrome
-- Mozilla Firefox
-- Internet Explorer
-- Opera 
-
-The responsiveness of the webiste was tested thanks to Google Chrome developer tool, the following devices size were tested and all elements were displayed without issued:
-- Galaxy S5 
-- Pixel 2 / Pixel 2 XL 
-- iPhone 5/SE / iPhone X 
-- iPhone 6/7/8 and Plus
-- iPad / iPad Pro 
-
-#### JS Testing
-
-There is an entire section dedicated to the testing of JS files [here](testing/js/JSTEST.md). 
-
-### Known Issues
-
-* xxx
-* xxx
-* xxx
-
-
-## Deployment
-
-I used the Cloud 9 IDE to develop my project and used git for version control. I used GitHub as a remote repository to store my code, deploy and host my website.
-- This is where you can access my [deployed website](link).
-- This is where you can access my [repository](link).
-
-**Steps to deploy my website using GitHub:**
-1. 
-2. 
-3.
-
-## Credits
+# Credits
 
 ### Content
 - xxx
@@ -183,7 +198,12 @@ I used the Cloud 9 IDE to develop my project and used git for version control. I
 - xxx
 - xxx
 
-### Acknowledgements ####
+### Code
+- xxx
+- xxx
+- xxx
+
+### Acknowledgements
 - xxx
 - xxx
 - xxx
