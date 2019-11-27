@@ -42,6 +42,11 @@ $(document).ready(function() {
     
 });
 
+// Print function to print recipes
+function myPrintFunction() {
+  window.print();
+}
+
 // Use Sweet Alert to create 2-tier confirmation before deleting the recipe
 function deleteRecipeFunction(recipeId) {
     swal({
