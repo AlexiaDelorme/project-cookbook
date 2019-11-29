@@ -1,5 +1,6 @@
 import os
 
+# print(image_folder('carousel'))
 def image_folder(folder):
     list_of_image = []
     for filename in os.listdir('static/img/'+folder):
@@ -9,5 +10,5 @@ def image_folder(folder):
             continue
     return list_of_image
 
-# print(image_folder('carousel'))
+
 
