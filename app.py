@@ -737,9 +737,13 @@ def recipe_description(recipe_id):
     # Check if the user is logged in
     if "email" in session:
         # Create a query to get the user stored in the user variable
-        user = mongo.db.user_accounts.find_one( { "email": session["email"] })
-        # Store user's favorite recipes 
+        user = mongo.db.user_accounts.find_one( { "email": session["email"] })    
+    if user:
+        # Store user's favorite recipes
         favorite_recipes = user["favorite_recipes"]
+    else:
+        favorite_recipes = ""
+
     # Get recipe object based on id of the recipe clicked by the user
     the_recipe =  mongo.db.recipes_information.find_one({"_id": ObjectId(recipe_id)})
     the_recipe_name = the_recipe["recipe_name"].capitalize()
@@ -755,7 +759,7 @@ def recipe_description(recipe_id):
                             Page_name = the_recipe_name,
                             Page_title = f"{the_recipe_name}", 
                             recipe = the_recipe,
-                            user_favorites = favorite_recipes if favorite_recipes else "",
+                            user_favorites = favorite_recipes,
                             hours = hours,
                             minutes = minutes,
                             carousel = image_folder("carousel"))
@@ -786,5 +790,5 @@ def access_denied():
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
-            port=int(os.environ.get("PORT")),
+            port=os.environ.get("PORT"),
             debug=True)
