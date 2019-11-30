@@ -647,7 +647,7 @@ def insert_recipe():
     flash(f"Thanks, your recipe was created!", "white-text green")
     return redirect(url_for("my_recipes"))
 
-# ----- 4. VIEW / MY COOKBOOK ----- #  
+# ----- 4. VIEW / COOKBOOK ----- #  
 @app.route("/cookbook")
 def cookbook():
     """
@@ -671,7 +671,7 @@ def cookbook():
             
         return render_template("users/cookbook.html",
                             Page_name = "Cookbook",
-                            Page_title = "MY COOKBOOK", 
+                            Page_title = "COOKBOOK", 
                             Welcome_image = "../static/img/cookbook/bg.jpg",
                             recipes = recipes_list_information,
                             recipes_number = recipes_number)
