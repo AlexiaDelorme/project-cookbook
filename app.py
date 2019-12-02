@@ -628,7 +628,7 @@ def insert_recipe():
                     "allergen": request.form.getlist("allergen"),
                     "recipe_author": logged_user,
                     "recipe_date": today,
-                    "image_path":"",
+                    "image_path": request.form.get("image_path"),
                     "comments_list":[ ]
     }
     
