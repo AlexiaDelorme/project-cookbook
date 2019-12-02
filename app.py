@@ -738,7 +738,6 @@ def recipe_description(recipe_id):
     if "email" in session:
         # Create a query to get the user stored in the user variable
         user = mongo.db.user_accounts.find_one( { "email": session["email"] })    
-    if user:
         # Store user's favorite recipes
         favorite_recipes = user["favorite_recipes"]
     else:

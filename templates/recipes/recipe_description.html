@@ -121,15 +121,18 @@
     {% endfor %}
 </div>
 
-<!-- Modal Structure -->
+<!-- Modal to share on social media -->
 <div id="modal1" class="modal bottom-sheet">
     <div class="modal-content">
         <h5>Share this recipe on any social media!</h5>
         <p>Please click on the below icons to share this recipe.</p>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank">
-        Share on Facebook
-        </a>
-    </div>
+        <!-- Facebook share button -->
+        <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fpatisserie-cookbook.herokuapp.com%2Frecipe%2F%7B%7Brecipe._id%7D%7D&layout=button&size=large&width=77&height=28&appId" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
+        <!-- Pinterest share button -->
+
+        <!-- Twitter share button -->
+
     <div class="modal-footer">
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
