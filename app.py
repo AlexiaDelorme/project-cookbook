@@ -474,7 +474,7 @@ def my_recipes():
             
         return render_template("users/my_recipes.html",
                             Page_name = "My recipes",
-                            Page_title = "MANAGE YOUR RECIPES",
+                            Page_title = "MANAGE RECIPES",
                             Welcome_image = "../static/img/cookbook/bg2.jpg",
                             recipes = recipes_list_information,
                             recipes_number = recipes_number)
