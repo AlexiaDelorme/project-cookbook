@@ -149,6 +149,10 @@ a.anchor-title:hover {
     margin: auto !important;
 }
 
+.button-margins {
+    margin-bottom: 10px;
+}
+
 /* ------------------------------------------------------------- ABOUT ------ */
 
 .container-section {
