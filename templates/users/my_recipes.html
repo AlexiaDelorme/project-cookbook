@@ -1,21 +1,17 @@
 {% extends 'general/base.html' %} 
 {% block content %}
 
-<div class="row center">
-    <h4>MANAGE THE RECIPES YOU ADDED</h4>
-</div>
-
 <!-- Recipe cards -->
 
 {% if recipes_number == 0 %}
 
-<div class="row">
+<div class="row add-spacing">
     <div class="col s12 center-align">You have not created any recipes yet!</div>
 </div>
 
 {% else %}
 
-<div class="row flexbox">
+<div class="row flexbox add-spacing">
 
     {% for recipe in recipes %}
         <div class="col s12 m6 l4 category-box center-align">
