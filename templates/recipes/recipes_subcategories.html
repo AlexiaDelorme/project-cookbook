@@ -13,7 +13,7 @@
 
     <div class="row flexbox">
         {% for recipe in recipes %}
-            <div class="col s12 m6 l4 category-box">
+            <div class="col s12 m6 l4 category-box center-align">
                 <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
                 <a href="{{url_for('recipe_description', recipe_id=recipe._id)}}"><img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img></a>
             </div>
