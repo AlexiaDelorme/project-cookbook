@@ -108,12 +108,9 @@ img.parallax-img-size {
     height: 100vh;
 }
 
-.card-img {
+.header-img {
     max-width: 100%;
     padding: 25px;
-    height: 250px;
-    width: 250px;
-    object-fit: cover;
 }
 
 .text-parallax {
@@ -130,6 +127,14 @@ a.anchor-title:hover {
 }
 
 /* ----------------------------------------------------------- RECIPES ------ */
+
+.card-img {
+    max-width: 100%;
+    padding: 25px;
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+}
 
 .headline-carousel {
     margin-bottom: 20px;
