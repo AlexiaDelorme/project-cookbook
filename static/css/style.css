@@ -183,6 +183,10 @@ a.btn.btn-floating.pulse.modal-trigger {
     margin-right: 20px;
 }
 
+a.icon-margin {
+    margin-right: 10px;
+}
+
 /* ---------------------------------------------------- ADD NEW RECIPE ------ */
 
 .add-spacing {

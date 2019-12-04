@@ -131,6 +131,10 @@
     
     <!-- SWEET ALERT CDN -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- BLOCK FOR SCRIPTS -->
+    {% block script %}
+    {% endblock %}
     
     <!-- JS FILE -->
     <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>

@@ -35,8 +35,9 @@
     
         <h6>Share this recipe!</h6>
     
-        <!-- Modal Trigger for share recipe -->
+        <!-- Modal trigger to share recipe on social media -->
         <a class="btn btn-floating pulse modal-trigger" href="#modal1"><i class="material-icons">share</i></a>
+
         <!-- Print recipe -->
         <a class="btn btn-floating pulse" onclick="myPrintFunction()"><i class="material-icons">print</i></a>
 
@@ -110,6 +111,28 @@
 
 </div>
 
+<!-- Modal content -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Share this recipe on social media!</h4>
+        <p>Click on the below icons to share this recipe.</p>
+		<!-- Social media share buttons -->
+		<!-- Code snippet from: https://www.addtoany.com/buttons/for/website -->
+		<div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://patisserie-cookbook.herokuapp.com/recipe/{{ recipe._id }}" data-a2a-title="recipe.recipe_name"> 
+            <a class="a2a_button_facebook icon-margin"></a>
+            <a class="a2a_button_twitter icon-margin"></a>
+            <a class="a2a_button_pinterest icon-margin"></a>
+            <a class="a2a_button_tumblr icon-margin"></a>
+            <a class="a2a_button_reddit icon-margin"></a>
+            <a class="a2a_button_email icon-margin"></a>
+            <a class="a2a_button_whatsapp icon-margin"></a>
+		</div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+        </div> 
+    </div>
+</div>
+
 {% endblock %}
 
 {% block carousel %}
@@ -122,21 +145,11 @@
     {% endfor %}
 </div>
 
-<!-- Modal to share on social media -->
-<div id="modal1" class="modal bottom-sheet">
-    <div class="modal-content">
-        <h5>Share this recipe on any social media!</h5>
-        <p>Please click on the below icons to share this recipe.</p>
-        <!-- Facebook share button -->
-        <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fpatisserie-cookbook.herokuapp.com%2Frecipe%2F%7B%7Brecipe._id%7D%7D&layout=button&size=large&width=77&height=28&appId" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+{% endblock %}
 
-        <!-- Pinterest share button -->
+{% block script %}
 
-        <!-- Twitter share button -->
-
-    <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-    </div>
-</div>
+<!-- Script for social media share buttons -->
+<script async src="https://static.addtoany.com/menu/page.js"></script>
 
 {% endblock %}
