@@ -756,7 +756,6 @@ def recipe_description(recipe_id):
         minutes = prep_time % 60
     return render_template("recipes/recipe_description.html", 
                             Page_name = the_recipe_name,
-                            Page_title = f"{the_recipe_name}", 
                             recipe = the_recipe,
                             user_favorites = favorite_recipes,
                             hours = hours,
