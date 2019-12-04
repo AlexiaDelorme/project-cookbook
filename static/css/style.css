@@ -262,3 +262,33 @@ button#add-ingredients {
 .icon-block .material-icons {
     font-size: inherit;
 }
+
+/* -------------------------------------------------------- PRINT AREA ------ */
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #section-to-print img {
+        width: 250px;
+        height: auto;
+    }
+    #section-to-print h3,
+    #section-to-print h5 {
+        font-weight: 600;
+    }
+    #section-to-print, #section-to-print * {
+        font-size: 13px !important;
+        visibility: visible;
+    }
+    #section-to-print {
+        position: absolute;
+        margin-top: 0px;
+        left: 0;
+        top: 0;
+        right: 0;
+    }   
+    .dont-print {
+        display: none;
+    }
+}

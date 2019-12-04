@@ -1,9 +1,11 @@
 {% extends 'general/base.html' %} 
 {% block content %}
 
-<div class="row container-section">
+<div id="section-to-print" class="row container-section">
 
     <div class="row center-align" id="recipe-indicator">
+
+        <h3 class="add-spacing">{{recipe.recipe_name.upper()}}</h3>
         
         <!-- Servings -->
         <div class="col s12 m3 l2 offset-l2">Serves {{ recipe.serving }}</div>
@@ -31,7 +33,7 @@
     
     </div>
     
-    <div class="row center-align">
+    <div class="row center-align dont-print">
     
         <h6>Share this recipe!</h6>
     
@@ -98,7 +100,7 @@
     
     <!-- Save as favorite -->
     {% if session["email"] %}
-        <div class="row center-align">
+        <div class="row center-align dont-print">
             {% if recipe._id in user_favorites %}
                 <h6>Remove from favorites?</h6> 
                 <a class="btn btn-floating pulse" id="" href="{{url_for('delete_favorite', recipe_id=recipe._id)}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
