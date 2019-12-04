@@ -160,6 +160,14 @@ a.anchor-title:hover {
     margin: 50px auto;
 }
 
+.grey-bg {
+    background-color: rgba(51,51,51,0.08);
+}
+
+p.small {
+    font-size: 14px;
+}
+
 /* ------------------------------------------------ RECIPE DESCRIPTION ------ */
 
 #recipe-indicator {
