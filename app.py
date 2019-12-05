@@ -544,7 +544,8 @@ def update_recipe(recipe_id):
                     "ingredients": request.form.getlist("ingredients"),
                     "instructions": request.form.getlist("instructions"),
                     "tool": request.form.getlist("tool"),
-                    "allergen": request.form.getlist("allergen")
+                    "allergen": request.form.getlist("allergen"),
+                    "image_path": request.form.get("image_path")
                     }
         })
     flash(f"Thanks, the recipe has been updated!", "white-text green")

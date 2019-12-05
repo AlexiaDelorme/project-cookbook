@@ -29,13 +29,13 @@
             <div class="row">
                 
                 <!-- Recipe name -->
-                <div class="input-field col s12 m6">
-                    <input value="{{ recipe.recipe_name.capitalize() }}" id="recipe_name" name="recipe_name" type="text" class="validate" required>
-                    <label class="active" for="recipe_name">Recipe Name</label>
+                <div class="input-field col s12 m12 l6">
+                    <textarea id="recipe_name" name="recipe_name" class="validate materialize-textarea" minlength="1" maxlength="50" data-length="50" required>{{ recipe.recipe_name.capitalize() }}</textarea>
+                    <label class="active" for="recipe_name" data-error="*required" data-success="validated">Recipe Name<span class="red-text">*</span></label>
                 </div>
                 
                 <!-- Difficulty -->
-                <div class="input-field col s6 m3">
+                <div class="input-field col s12 m6 l3">
                     <select id="difficulty" name="difficulty">
                         <option value="" disabled selected> Choose Difficulty</option>
                         {% for cat in difficulty %}
@@ -46,13 +46,13 @@
                             {% endif %}
                         {% endfor %}
                     </select>
-                    <label for="difficulty">Recipe Difficulty</label>
+                    <label for="difficulty" data-error="*required" data-success="validated">Recipe Difficulty<span class="red-text">*</span></label>
                 </div> 
                 
                 <!-- Servings -->
-                <div class="input-field col s6 m3">
-                    <input value="{{ recipe.serving }}" id="serving" name="serving" type="number" min="1" max="15" class="validate" autocomplete="off" required>
-                    <label for="serving">Serves</label>
+                <div class="input-field col s12 m6 l3">
+                    <input value="{{ recipe.serving }}" id="serving" name="serving" type="number" min="1" max="15" class="validate" required>
+                    <label for="serving" data-error="*required & serving > 0" data-success="validated">Serves<span class="red-text">*</span></label>
                 </div>
                 
             </div>
@@ -61,21 +61,21 @@
                 
                 <!-- Description -->
                 <div class="input-field col s12 m8">
-                    <input value="{{ recipe.recipe_description.capitalize() }}" id="recipe_description" name="recipe_description" type="text" class="validate" required>
-                    <label class="active" for="recipe_description">Recipe description</label>
+                    <textarea id="recipe_description" name="recipe_description" autocomplete="off" class="validate materialize-textarea" minlength="1" maxlength="100" data-length="100">{{ recipe.recipe_description.capitalize() }}</textarea>
+                    <label class="active" for="recipe_description">Recipe Description - <em>optional</em></label>
                 </div>
                 
                 <!-- Preparation time -->
-                
+
                 <!-- Hours -->
                 <div class="input-field col s6 m2">
                     <input value="{{ hours }}" id="hours" name="hours" type="number" min="0" max="12" autocomplete="off" class="validate">
-                    <label for="hours">Hour(s)</label>
+                    <label for="hours">Hour(s) - <em>optional</em></label>
                 </div>
                 <!-- Minutes -->
                 <div class="input-field col s6 m2">
                     <input value="{{ minutes }}" id="minutes" name="minutes" type="number" min="0" max="59" autocomplete="off" class="validate" required>
-                    <label for="hours">Minute(s)</label>
+                    <label for="minutes" data-error="*required" data-success="validated">Minutes<span class="red-text">*</span></label>
                 </div>
                 
             </div>
@@ -84,7 +84,7 @@
                 
                 <!-- Meal Category -->
                 <div class="col s12 l6">
-                    <p>Meal Category</p>
+                    <p>Meal Category - <em>optional</em></p>
                         {% for cat in meal_categories.list %}
                         <div class="col s6 left-align">
                             {% if cat.category_name in recipe.meal %}
@@ -99,7 +99,7 @@
                  
                  <!-- Diet -->
                 <div class="col s12 l6">
-                    <p>Diet</p>
+                    <p>Diet - <em>optional</em></p>
                     {% for cat in diet_categories.list %}
                     <div class="col s6 left-align">
                         {% if cat.category_name in recipe.diet %}
@@ -128,7 +128,7 @@
                             {% endif %}
                         {% endfor %}
                     </select>
-                    <label>Suitable for celebration</label>
+                    <label>Occasion - <em>optional</em></label>
                 </div>
                 
                 <!-- Geography -->
@@ -143,7 +143,7 @@
                             {% endif %}
                         {% endfor %}
                     </select>
-                    <label>Geography</label>
+                    <label>Geography - <em>optional</em></label>
                 </div>
 
             </div>
@@ -162,7 +162,7 @@
                             {% endif %}
                         {% endfor %}
                     </select>
-                    <label>Allergens</label>
+                    <label>Allergens - <em>optional</em></label>
                 </div>
                 
                 <!-- Tools -->
@@ -177,17 +177,18 @@
                             {% endif %}
                         {% endfor %}
                     </select>
-                    <label>Kitchen tools</label>
+                    <label>Kitchen tools - <em>optional</em></label>
                 </div>
 
             </div>
             
             <!-- Recipe ingredients -->
             <div class="row">
-                <legend for="ingredients">Ingredients</legend>
+                <legend for="ingredients">List of Ingredients<span class="red-text">*</span></legend>
                 <div class="input-field col s12" id="ingredientsform">
                     {% for ingredient in recipe.ingredients %}
-                    <textarea id="ingredients" name="ingredients" autocomplete="off" minlength="1" maxlength="500" class="validate materialize-textarea col s12" required>{{ ingredient }}</textarea>
+                    <textarea id="ingredients" name="ingredients" autocomplete="off" minlength="1" maxlength="100" data-length="100" class="validate materialize-textarea col s12" required>{{ ingredient }}</textarea>
+                    <label class="active" for="ingredients" data-error="*required" data-success="validated"></label>
                     {% endfor %}
                 </div>
                 <!-- Add new ingredient -->
@@ -196,16 +197,30 @@
                         
             <!-- Recipe instructions -->
             <div class="row">
-                <legend for="instructions">Preparation steps</legend>
+                <legend for="instructions">Preparation Steps<span class="red-text">*</span></legend>
                 <div class="input-field col s12" id="instructionsform">
                     {% for instruction in recipe.instructions %}
-                    <textarea id="instructions" name="instructions" autocomplete="off" minlength="1" maxlength="500" class="validate materialize-textarea col s12" placeholder="Example: In a large bowl, mix all the wet ingregients" required>{{ instruction }}</textarea>
+                    <textarea id="instructions" name="instructions" autocomplete="off" minlength="5" maxlength="500" data-length="500" class="validate materialize-textarea col s12" required>{{ instruction }}</textarea>
+                    <label class="active" for="instructions" data-error="*required" data-success="validated"></label>
                     {% endfor %}
                 </div>
                 <!-- Add new instruction -->
                 <button class="btn" class="add" id="add-instructions"><i class="fa fa-plus" aria-hidden="true"></i></button>
             </div>
             
+            <!-- Recipe Image -->
+            <div class="row">
+                <div class="file-field input-field col s12">
+                    <div class="btn">
+                        <span>Change Image</span>
+                        
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path" id="image_path" name="image_path" type="text" value="{{recipe.image_path}}">
+                    </div>
+                </div> 
+            </div>
+
             <div class="row">
                 <button class="btn waves-effect waves-light" type="submit" name="action">Edit recipe</button>
             </div>
