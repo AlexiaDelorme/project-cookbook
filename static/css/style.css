@@ -220,6 +220,15 @@ button#add-ingredients {
     background-color: #ee6e73;
 }
 
+textarea.materialize-textarea.validate+label::after {
+    top: calc(100% - 12px);
+    margin-top: 10px;
+}
+
+textarea.materialize-textarea {
+    padding: 0;
+}
+
 /* ---------------------------------------------------------- 404 PAGE ------ */
 
 .not-found-gif {

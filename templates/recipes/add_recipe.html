@@ -27,28 +27,28 @@
         <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12">
             
             <div class="row">
-                
+                  
                 <!-- Recipe name -->
-                <div class="input-field col s12 m6">
-                    <input value="" id="recipe_name" name="recipe_name" type="text" class="validate" required>
-                    <label class="active" for="recipe_name">Recipe Name</label>
+                <div class="input-field col s12 m12 l6">
+                    <textarea id="recipe_name" name="recipe_name" autocomplete="off" class="validate materialize-textarea" minlength="1" maxlength="50" data-length="50" placeholder="Example: Vegan Cookies" required></textarea>
+                    <label class="active" for="recipe_name" data-error="*required" data-success="validated">Recipe Name<span class="red-text">*</span></label>
                 </div>
                 
                 <!-- Difficulty -->
-                <div class="input-field col s6 m3">
+                <div class="input-field col s12 m6 l3">
                     <select id="difficulty" name="difficulty" required>
                         <option value="" disabled selected>Choose Difficulty</option>
                         <option value="easy" >Easy</option>
                         <option value="medium">Medium</option>
                         <option value="difficult">Difficult</option>
                     </select>
-                    <label for="difficulty">Recipe Difficulty</label>
+                    <label for="difficulty" data-error="*required" data-success="validated">Recipe Difficulty<span class="red-text">*</span></label>
                 </div> 
                 
                 <!-- Servings -->
-                <div class="input-field col s6 m3">
-                    <input id="serving" name="serving" type="number" min="1" max="15" class="validate" autocomplete="off" required>
-                    <label for="serving">Serves</label>
+                <div class="input-field col s12 m6 l3">
+                    <input id="serving" name="serving" type="number" min="1" max="15" class="validate" autocomplete="off" placeholder="Example: 6" required>
+                    <label for="serving" data-error="*required & serving > 0" data-success="validated">Serves<span class="red-text">*</span></label>
                 </div>
                 
             </div>
@@ -57,8 +57,8 @@
                 
                 <!-- Description -->
                 <div class="input-field col s12 m8">
-                    <input value="" id="recipe_description" name="recipe_description" type="text" class="validate">
-                    <label class="active" for="recipe_description">Recipe Description</label>
+                    <textarea id="recipe_description" name="recipe_description" autocomplete="off" class="validate materialize-textarea" minlength="1" maxlength="100" data-length="100" placeholder="Example: Delicious easy vegan cookies!"></textarea>
+                    <label class="active" for="recipe_description">Recipe Description - <em>optional</em></label>
                 </div>
                 
                 <!-- Preparation time -->
@@ -66,10 +66,12 @@
                 <!-- Hours -->
                 <div class="input-field col s6 m2">
                     <input id="hours" name="hours" type="number" min="0" max="12" placeholder="Hour(s)" autocomplete="off" class="validate">
+                    <label for="hours">Hour(s) - <em>optional</em></label>
                 </div>
                 <!-- Minutes -->
                 <div class="input-field col s6 m2">
-                    <input id="minutes" name="minutes" type="number" min="0" max="59" placeholder="Minutes" autocomplete="off" class="validate" required>
+                    <input id="minutes" name="minutes" type="number" min="0" max="59" placeholder="30" autocomplete="off" class="validate" required>
+                    <label for="minutes" data-error="*required" data-success="validated">Minutes<span class="red-text">*</span></label>
                 </div>
                 
             </div>
@@ -78,7 +80,7 @@
                 
                 <!-- Meal Category -->
                 <div class="col s12 l6">
-                    <p>Meal Category</p>
+                    <p>Meal Category - <em>optional</em></p>
                         {% for cat in meal_categories.list %}
                         <div class="col s6 left-align">
                             <input type="checkbox" id="{{cat.category_name}}" name="meal" value="{{cat.category_name}}">
@@ -89,7 +91,7 @@
                  
                  <!-- Diet -->
                 <div class="col s12 l6">
-                    <p>Diet</p>
+                    <p>Diet - <em>optional</em></p>
                     {% for cat in diet_categories.list %}
                     <div class="col s6 left-align">
                         <input type="checkbox" id="{{cat.category_name}}" name="diet" value="{{cat.category_name}}">
@@ -110,7 +112,7 @@
                         <option value="{{cat.category_name}}">{{cat.category_name.capitalize()}}</option>
                         {% endfor %}
                     </select>
-                    <label>Suitable for celebration</label>
+                    <label>Occasion - <em>optional</em></label>
                 </div>
                 
                 <!-- Geography -->
@@ -121,7 +123,7 @@
                         <option value="{{cat.category_name}}" >{{cat.category_name.capitalize()}}</option>
                         {% endfor %}
                     </select>
-                    <label>Geography</label>
+                    <label>Geography - <em>optional</em></label>
                 </div>
 
             </div>
@@ -136,7 +138,7 @@
                         <option value="{{cat}}">{{cat.capitalize()}}</option>
                         {% endfor %}
                     </select>
-                    <label>Allergens</label>
+                    <label>Allergens - <em>optional</em></label>
                 </div>
                 
                 <!-- Tools -->
@@ -147,16 +149,17 @@
                         <option value="{{cat}}">{{cat.capitalize()}}</option>
                         {% endfor %}
                     </select>
-                    <label>Kitchen tools</label>
+                    <label>Kitchen tools - <em>optional</em></label>
                 </div>
 
             </div>
             
             <!-- Recipe ingredients -->
             <div class="row">
-                <legend for="ingredients">Ingredients</legend>
+                <legend for="ingredients">List of Ingredients<span class="red-text">*</span></legend>
                 <div class="input-field col s12" id="ingredientsform">
-                    <textarea id="ingredients" name="ingredients" autocomplete="off" minlength="5" maxlength="500" class="validate materialize-textarea col s12" placeholder="Example: Milk, Eggs, Chocolat" required></textarea>
+                    <textarea id="ingredients" name="ingredients" autocomplete="off" minlength="1" maxlength="100" data-length="100" class="validate materialize-textarea col s12" placeholder="Example: Milk, Eggs, Chocolate, Flour" required></textarea>
+                    <label class="active" for="ingredients" data-error="*required" data-success="validated"></label>
                 </div>
                 <!-- Add new ingredient -->
                 <button class="btn" class="add" id="add-ingredients"><i class="fa fa-plus" aria-hidden="true"></i></button>
@@ -164,9 +167,10 @@
                         
             <!-- Recipe instructions -->
             <div class="row">
-                <legend for="instructions">Preparation Steps</legend>
+                <legend for="instructions">Preparation Steps<span class="red-text">*</span></legend>
                 <div class="input-field col s12" id="instructionsform">
-                    <textarea id="instructions" name="instructions" autocomplete="off" minlength="5" maxlength="500" class="validate materialize-textarea col s12" placeholder="Example: In a large bowl, mix all the wet ingregients" required></textarea>
+                    <textarea id="instructions" name="instructions" autocomplete="off" minlength="5" maxlength="500" data-length="500" class="validate materialize-textarea col s12" placeholder="Example: In a large bowl, mix all the wet ingregients" required></textarea>
+                    <label class="active" for="instructions" data-error="*required" data-success="validated"></label>
                 </div>
                 <!-- Add new instruction -->
                 <button class="btn" class="add" id="add-instructions"><i class="fa fa-plus" aria-hidden="true"></i></button>
