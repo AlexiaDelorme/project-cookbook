@@ -340,11 +340,14 @@ def update_my_details(account_id):
     Once user have submitted the previous form, it gets redirected to this function.
     The user details will only be updated if the newly provided email is not already linked to an existing account.
     """      
-     # Check if email provided is not already linked to an existing account
-    user = mongo.db.user_accounts.find_one( { "email": request.form.get("email").lower() })
-    if user:
-        flash(f"An account already exists for {request.form.get('email')}", "white-text red")
-        return redirect(url_for("edit_my_details"))
+    # Check if email provided is not already linked to an existing account
+    user = mongo.db.user_accounts.find_one({ "email": request.form.get("email").lower()})
+    if user != None:
+        user_email = user["email"]
+        # Exclude the case where the email found is the user logged
+        if user_email != session["email"]:
+            flash(f"An account already exists for {request.form.get('email')}", "white-text red")
+            return redirect(url_for("edit_my_details"))
     else:
         # Update new account details into the db
         mongo.db.user_accounts.update({"_id": ObjectId(account_id)},
