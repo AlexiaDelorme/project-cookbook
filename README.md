@@ -130,44 +130,78 @@ Building a full-stack website using Python and mini-framework Flask that allows 
 
 ## Current Features
 
-#### All users
+#### Features for all users
 
 ###### Feature 1 - Home page
-- Navigation bar with sections (logo, all menu items)
-- Recipes teaser
-- Footer with social links
+Any external user landing to the home page of this website will be presented with a general welcome page with the following features:
+- Navigation bar with a logo and links to the different pages: Home, Explore, Recipes, About, Sign Up and Log In.
+- Recipes teaser and a direct link to explore recipes directly by clicking on the headline.
+- Short presentation of the online cookbook and a direct link to register by clicking on the "Join Us" headline.
+- A direct link to the "About Us" section of the website.
+- A footer with icon links to the following social media: Facebook, Instagram, YouTube, Pinterest, and Twitter (no actual account created as this is for education purpose only). 
 
 ###### Feature 2 - Search recipes
-- Multi filter search in “Search recipes” section
-- xxx
-- xxx
+- The user can search for recipes by filtering on any criteria provided within the form.
+- The user can filter recipes based on the following criteria:
+    - recipe difficulty
+    - preparation time (selection)
+    - max serving (direct input or increment arrow)
+    - meal category (multiple selection allowed)
+    - diet category (multiple selection allowed)
+    - exclude allergens (multiple selection allowed)
+    - exclude specific tools (multiple selection allowed)
+    - occasion (multiple selection allowed)
+    - geography (multiple selection allowed)
+- The user has the possibility to leave some fields blank, this will not prevent the form from being submitted. The criteria for which the field was left blank will simply be disregarded. 
+- Once the form is succesfully submitted, the user is presented with a list of the recipes matching his criteria. The user is provided with the number of recipes matching his search, and can click any recipe cards (with recipe name and a small picture) and will be redirected to the recipe description. 
 
 ###### Feature 3 - Recipes categories
-- xxx
-- xxx
+- Users who are looking for inspiration or would like to search for recipes based on specific categories can actually do so.
+- After clicking on the "Recipes" menu item in the navigation bar, the user is first presented with 4 general categories to "sort" recipes:
+    - occasion
+    - geography
+    - diet
+    - meal
+- After selecting one of the previous categories, the user can then choose to sort the recipes by sub-categories as follow:
+    - occassion: Christmas, New Year's, Weddings...
+    - geography: North America, Asia...
+    - diet: Vegan, Vegeterian...
+    - meal:Breakfast, Snacks...
+- Once the user clicked the desired sub-category, he is then presented with a list of all the recipes matching his category and sub-category selection. The user can click on any recipe cards (with recipe name and a small picture) and will be redirected to the recipe description. 
 
 ###### Feature 4 - About Us Page
-- xxx
-- xxx
+- The user can learn more about the purpose of this website.
+- The user is provided with "fast-track" links to recipes, cookbook and sign in pages. 
 
 ###### Feature 4 - Sign Up Page
-- xxx
-- xxx
+- Any external user can join the community by creating a new account with us.
+- The user is provided with a simple sign up form requiring only basic information: First Name, Last Name, Email and Password (and confirmation).
+- Before any account is created, the email provided by the user will be checked to ensure that an existing account is not already link to this email. 
+- The user is provided with relevant feedback (flashed messages at the top of the page) if any field is missing or if any information provided is incorrect.
+- The user password is hashed for security purposes.
+- Once the user succesfully created his account, he is then redirected to the log in page for authentication. 
 
 ###### Feature 4 - Log In Page
-- xxx
-- xxx
+- The user will only need to enter his email and password for authentication and authorization.
+- The hashed version of the password provided by the user will be checked with the password saved in the database. 
+- The user is provided with a feedback "login unsuccessful..." (red flashed message at the top of the page) if the email and/or password provided are incorrect. 
+- Once the user succesfully logged in to his account, he gets a green flashed message saying "login successful!" and is redirected to his account dashboard.
 
 ###### Feature 5 - Recipe Page Description
+[C**R**UD] - **R**ead
+Be it as a result of the "explore" recipes form or of the "recipes" categories section, the user will be able to view the following information:
 - recipe name and description (if any)
 - serving size
 - diet compatibility
 - difficulty
 - preparation time
-- social share/print buttons
 - ingredients list
 - cooking tools
 - preparation setps
+The user will also have the following additional options:
+- button to share the recipe on a wide range of social media
+- button to print the recipe
+- option to check out the website creators' favorite recipes
 
 #### (Additional) Features for community members
 
