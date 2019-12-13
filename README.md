@@ -6,14 +6,14 @@
 
 Welcome!
 
-[The Pâtisserie Journal](https://patisserie-cookbook.herokuapp.com) is an intuitive online cookbook tool to help you find new recipes and implement them interactively while cooking. You can also share your own recipes by creating your own account and join our onlince community!
+[The Pâtisserie Journal](https://patisserie-cookbook.herokuapp.com) is an intuitive online cookbook tool to help you find new recipes and implement them interactively while cooking. You can also share your own recipes by creating an account and join our onlince community!
 
-The purpose of this project is to make patisserie inclusive meaning that anyone with any food allergies, specific types of diet or simply missing an ingredient or a cooking tool would be able to find a suitable recipe. 
+The purpose of this project is to make patisserie inclusive meaning that anyone with food allergies, specific diet or simply missing an ingredient or a cooking tool would be able to find a suitable recipe. 
 
-By creating a community that can share their own recipes, it enables to naturally expand the database but also promotes “wannabe” cooks and provide them with visibility. 
+By creating a community that can share their own recipes, it will enable us to naturally expand our database but also promote new "chefs" by providing them with visibility. 
 
 ## Table of Contents
-1. [UX](#ux)
+1. [UX](#UX)
     - [User Stories](#)
         - [External Users](#)
         - [Site Owners](#)
@@ -56,43 +56,55 @@ For this project, I identified the following stakeholders:
 
 ###### User story 1
  
-As an external user, I want to make use of the site to share my own data with the community and benefit from having convenient access to the data provided by all other members.
+As an external user, I want to make use of the site and benefit from having convenient access to the data provided by all community members.
 
 ###### User story 2
 
-As an external user, I want to be able to research patisserie recipes based on specific criteria and have a visually appealing and interactive interface while I am cooking. 
+As an external user, I want to be able to research recipes based on specific criteria and have a visually appealing and interactive interface while I am cooking. 
 
 ###### User story 3
+
+As an external user, I also want to be able to browse recipes by category types (meal, diet, occasion or geography) and then have a list of all the recipes available for the category I selected. 
+
+###### User story 4
 
 As a user with specific constraints (food allergies, specific diets or simply missing a cooking tool…), I want to be able to find recipes that address my needs and be presented recipes based on my inputs.
 
 ###### User story 5
 
-Again as a user with specific constraints, I want the site to feature recommendations based on my specific needs (Ex: vegan-friendly, sugar-free…) - TO BE DONE ??
+As an external user, I want to be able to view the recipe instructions for all the recipes available in the database with the same level of details as a community member. I also want to be recommended some of the website creators' favorite recipes. 
 
 ###### User story 6
 
-As a user looking for a specific category of patisserie, I want to be able to look for recipes based on the category of food. 
+As an external user, I want to be able to share recipes on different social platforms as well as be able to print them. 
+
+###### User story 7
+
+As an external user, I want to be able to create a free account with minimal steps.
 
 ### Community members
 
 ###### User story 1
 
-As a community member, I want to be able to create a free account with minimal steps and then be able to edit my information details, password and delete my account permanently if necessary.
+As a community member, I want to be able to log in with minimal steps by only using my email and password for authentication. I also want to be able to log out easily.
 
 ###### User story 2
 
-As a community member, I want to be able to perform CRUD operations for any recipes that I have shared with the community.
+As a community member, I want to be able to edit my information details, password and delete my account permanently if necessary.
 
 ###### User story 3
 
-As a community member, I want to be able to share recipes and add some favorites to personalize my intranet and create my own online cooking book. 
+As a community member, I want to be able to create new recipes and then have the possibility to edit and/or to delete any of recipes that I have shared with the community.
 
 ###### User story 4
 
+As a community member, I want to be able to add/remove a recipe to my favourites so I can create my own online cookbook. 
+
+###### User story 5
+
 Food lovers, wannabe cooks or anyone passionate about patisserie who wants to try out the success of their recipes.
 
-### Site owners
+### Site's owner
 
 ###### User story 1
 
@@ -100,7 +112,7 @@ Generally speaking we promote a cooking tool and benefit from the collection of 
 
 ###### User story 2
 
-Be the first member of this community to share her own patisserie recipes!
+Be the first member of this community to share my own patisserie recipes!
 
 ###### User story 3
 
@@ -118,31 +130,15 @@ Building a full-stack website using Python and mini-framework Flask that allows 
 
 ## Current Features
 
-1.	Log in and sign up page
-2.	Home section with  (carousel)
-3.	
-3.1.	Logo
-
-4.	Footer with social links
-5.	Search bar in navigation bar
-6.	Multi filter search in “Search recipes” section
-7.	Pagination for multiple results
-8.	Social share/print buttons on recipes
-9.	Possibility to rate and comment recipes
-10.	For users only:
-10.1.	User data (possibility to modify)
-10.2.	CRUD for Recipes
-10.3.	CRUD for Comments
-
 #### All users
 
 ###### Feature 1 - Home page
 - Navigation bar with sections (logo, all menu items)
 - Recipes teaser
-- xxx
+- Footer with social links
 
 ###### Feature 2 - Search recipes
-- xxx
+- Multi filter search in “Search recipes” section
 - xxx
 - xxx
 
@@ -161,6 +157,17 @@ Building a full-stack website using Python and mini-framework Flask that allows 
 ###### Feature 4 - Log In Page
 - xxx
 - xxx
+
+###### Feature 5 - Recipe Page Description
+- recipe name and description (if any)
+- serving size
+- diet compatibility
+- difficulty
+- preparation time
+- social share/print buttons
+- ingredients list
+- cooking tools
+- preparation setps
 
 #### (Additional) Features for community members
 
