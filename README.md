@@ -122,9 +122,15 @@ Building a full-stack website using Python and mini-framework Flask that allows 
 
 ## Wireframes
 
-- Balsamiq wireframe
+I have used Balsamiq to create my wireframes. I first brainstormed on the structure and then created the site map. There are of course some differences with the final project as these wireframes were created during the preparation phase. 
+
+You can find all my wireframes by clicking [here](static/wireframes/).
 
 ## Flowchart
+
+<div align="center">
+    <img src="static/flowchart/flowchart.png" alt="Flowchart">
+</div>
 
 # Features
 
