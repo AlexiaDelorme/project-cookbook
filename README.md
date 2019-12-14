@@ -140,9 +140,9 @@ Any external user landing to the home page of this website will be presented wit
 - A direct link to the "About Us" section of the website.
 - A footer with icon links to the following social media: Facebook, Instagram, YouTube, Pinterest, and Twitter (no actual account created as this is for education purpose only). 
 
-###### Feature 2 - Search recipes
-- The user can search for recipes by filtering on any criteria provided within the form.
-- The user can filter recipes based on the following criteria:
+###### Feature 2 - Search recipes using a form
+- Users can search for recipes by filtering on any criteria provided within the form.
+- Users can filter recipes based on the following criteria:
     - recipe difficulty
     - preparation time (selection)
     - max serving (direct input or increment arrow)
@@ -152,44 +152,38 @@ Any external user landing to the home page of this website will be presented wit
     - exclude specific tools (multiple selection allowed)
     - occasion (multiple selection allowed)
     - geography (multiple selection allowed)
-- The user has the possibility to leave some fields blank, this will not prevent the form from being submitted. The criteria for which the field was left blank will simply be disregarded. 
-- Once the form is succesfully submitted, the user is presented with a list of the recipes matching his criteria. The user is provided with the number of recipes matching his search, and can click any recipe cards (with recipe name and a small picture) and will be redirected to the recipe description. 
+- Users have the possibility to leave some fields blank, this will not prevent the form from being submitted. The criteria for which the field was left blank will simply be disregarded. 
+- Once the form is succesfully submitted, users will be presented with a list of the recipes matching his criteria. Users are provided with the number of recipes matching their search, and can click any recipe cards (with recipe name and a small picture) and will be redirected to the recipe description. 
 
-###### Feature 3 - Recipes categories
+###### Feature 3 - Browse recipes by categories type
 - Users who are looking for inspiration or would like to search for recipes based on specific categories can actually do so.
-- After clicking on the "Recipes" menu item in the navigation bar, the user is first presented with 4 general categories to "sort" recipes:
+- After clicking on the "Recipes" menu item in the navigation bar, users will be first presented with 4 general categories to "sort" recipes:
     - occasion
     - geography
     - diet
     - meal
-- After selecting one of the previous categories, the user can then choose to sort the recipes by sub-categories as follow:
+- After selecting one of the previous categories, users can then choose to sort the recipes by sub-categories as follow:
     - occassion: Christmas, New Year's, Weddings...
     - geography: North America, Asia...
     - diet: Vegan, Vegeterian...
-    - meal:Breakfast, Snacks...
-- Once the user clicked the desired sub-category, he is then presented with a list of all the recipes matching his category and sub-category selection. The user can click on any recipe cards (with recipe name and a small picture) and will be redirected to the recipe description. 
+    - meal: Breakfast, Snacks...
+- Once users have clicked the desired sub-category, they are then presented with a list of all the recipes matching their category and sub-category selection. Users can click on any recipe cards (with recipe name and a small picture) and will be redirected to the recipe description. 
 
-###### Feature 4 - About Us Page
-- The user can learn more about the purpose of this website.
-- The user is provided with "fast-track" links to recipes, cookbook and sign in pages. 
+###### Feature 4 - About us page
+- Users can learn more about the purpose of this website.
+- Users are provided with "fast-track" links to recipes, cookbook and sign in pages. 
 
-###### Feature 4 - Sign Up Page
+###### Feature 5 - Sign up for an account
 - Any external user can join the community by creating a new account with us.
-- The user is provided with a simple sign up form requiring only basic information: First Name, Last Name, Email and Password (and confirmation).
+- Users are provided with a simple sign up form requiring only basic information: First Name, Last Name, Email and Password (and confirmation).
 - Before any account is created, the email provided by the user will be checked to ensure that an existing account is not already link to this email. 
-- The user is provided with relevant feedback (flashed messages at the top of the page) if any field is missing or if any information provided is incorrect.
-- The user password is hashed for security purposes.
-- Once the user succesfully created his account, he is then redirected to the log in page for authentication. 
+- Users are provided with relevant feedback (flashed messages at the top of the page) if any field is missing or if any information provided is incorrect.
+- User's password is hashed for security purposes.
+- Once their account has been succesfully created, users are redirected to the log in page for authentication. 
 
-###### Feature 4 - Log In Page
-- The user will only need to enter his email and password for authentication and authorization.
-- The hashed version of the password provided by the user will be checked with the password saved in the database. 
-- The user is provided with a feedback "login unsuccessful..." (red flashed message at the top of the page) if the email and/or password provided are incorrect. 
-- Once the user succesfully logged in to his account, he gets a green flashed message saying "login successful!" and is redirected to his account dashboard.
-
-###### Feature 5 - Recipe Page Description
+###### Feature 6 - View recipe description
 [C**R**UD] - **R**ead
-Be it as a result of the "explore" recipes form or of the "recipes" categories section, the user will be able to view the following information:
+Be it as a result of the "explore" recipes form or of the "recipes" categories section, users will be able to view the following information:
 - recipe name and description (if any)
 - serving size
 - diet compatibility
@@ -198,26 +192,73 @@ Be it as a result of the "explore" recipes form or of the "recipes" categories s
 - ingredients list
 - cooking tools
 - preparation setps
-The user will also have the following additional options:
+Users will also have the following additional options:
 - button to share the recipe on a wide range of social media
 - button to print the recipe
 - option to check out the website creators' favorite recipes
 
 #### (Additional) Features for community members
 
-###### Feature 5 - Account Dashboard
+###### Feature 1 - Log in to their account
+- Users will only need to enter his email and password for authentication and authorization.
+- The hashed version of the password provided by the user will be checked with the password saved in the database. 
+- Users are provided with a feedback "login unsuccessful..." (red flashed message at the top of the page) if the email and/or password provided are incorrect. 
+- Once users succesfully logged in to their account, they get a green flashed message saying "login successful!" and are redirected to their account dashboard.
+
+###### Feature 2 - Log out
+- Users can easilly log out of their account by clicking on the log out button in the navigation bar in the top right corner. 
+
+###### Feature 3 - Account Dashboard
+- Users have a summary of all the functionalities they can perform as being a community member.
+- By clicking on the corresponding menu item in their account dashboard, user can:
+    - manage their account details
+    - manage their own recipes
+    - get access to the form to add new recipe
+    - get access to their own cookbook
+    - explore new recipes
+
+###### Feature 4 - Manage account details
+- Users can review their account details (First Name, Last Name, Email) in total security thanks to a non-editable form.
+- Users can click the "Edit Details" button to get access to the edit account details form. 
+- Users can click the "Edit Password" button to get access to the edit password form. 
+- At the bottom of the page, after a small paragraph displaying "You want to delete your account?", the user can get access to the delete account form by clicking on the anchor tag "Click Here". I intentionnally made it small and not that obvious so the user is not prompted to delete their account. Nonetheless, any user wanting to delete their account will be looking for this functionality in the manage account details.
+
+###### Feature 5 - Edit account details
+- Users are presented with a pre-filled editable form displaying their current account details. 
+- Users can edit the following account details: First Name, Last Name and Email. All fieds are mandatory and referenced as such thanks to a small red asterisk next to the obligatory fields. 
+- Once users are ready to submit their new account details, they can click on the "Edit Account" button.
+- Users are given consistent feedback in the form of flashed messages to let them know if their account details have been succesfully updated or not. 
+
+###### Feature 6 - Edit password
+- Users can update their password by first providing their current password, creat a new password and then confirming it a second time.
+- All fieds are mandatory and referenced as such thanks to a small red asterisk next to the obligatory fields. 
+- Users are given consistent feedback in the form of flashed messages to let them know if:
+    - the current password provided in the form is identical to the one stored in the database
+    - the new password is indeed different than the current password
+    - the two fields "New Password" and "Confirm New Password" are identical 
+- User's password is hashed for security purposes.
+- Once their password has been succesfully updated, users receive feedback in the form of a green flashed message at the top of the page while being redirected to the view account details form page.
+
+###### Feature 7 - Delete account
+
+###### Feature 8 - Online Cookbook
+
+###### Feature 9 - Add a recipe
+[**C**RUD] - **C**reate
 - xxx
 - xxx
 
-###### Feature 6 - Online Cookbook
+###### Feature 10 - Edit a recipe
+[CR**U**D] - **U**pdate
 - xxx
 - xxx
 
-###### Feature 7 - CRUD for Recipes
+###### Feature 11 - Delete a recipe
+[CRU**D**] - **D**elete
 - xxx
 - xxx
 
-###### Feature 7 - Add/Remove Favorites
+###### Feature 12 - Add/Remove Favorites
 - xxx
 - xxx
 
