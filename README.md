@@ -183,19 +183,19 @@ Any external user landing to the home page of this website will be presented wit
 
 ###### Feature 6 - View recipe description
 [C**R**UD] - **R**ead
-Be it as a result of the "explore" recipes form or of the "recipes" categories section, users will be able to view the following information:
-- recipe name and description (if any)
-- serving size
-- diet compatibility
-- difficulty
-- preparation time
-- ingredients list
-- cooking tools
-- preparation setps
-Users will also have the following additional options:
-- button to share the recipe on a wide range of social media
-- button to print the recipe
-- option to check out the website creators' favorite recipes
+- Be it as a result of the "explore" recipes form or of the "recipes" categories section, users will be able to view the following information:
+    - recipe name and description (if any)
+    - serving size
+    - diet compatibility
+    - difficulty
+    - preparation time
+    - ingredients list
+    - cooking tools
+    - preparation setps
+- Users will also have the following additional options:
+    - button to share the recipe on a wide range of social media
+    - button to print the recipe
+    - option to check out the website creators' favorite recipes
 
 #### (Additional) Features for community members
 
@@ -240,27 +240,43 @@ Users will also have the following additional options:
 - Once their password has been succesfully updated, users receive feedback in the form of a green flashed message at the top of the page while being redirected to the view account details form page.
 
 ###### Feature 7 - Delete account
+- Users can permanently delete their account by confirming their password and pressing the "Delete Account" button.
+- To increase security, a "warning" modal form will enable users to confirm their will to delete their account. 
+    - Users who are not sure can click "Cancel" and will be confirmed that their account are still live. 
+    - Users who are sure about deleting their password can click "Delete" and will be confirmed that their account has been deleted.
+- The recipes that were created by a user who deleted their account won't be deleted. This is a preventive choice that I decided to make in order to protect the diversity of recipes in the database.
 
-###### Feature 8 - Online Cookbook
+###### Feature 8 - Online cookbook
+- Users can access their online cookbook where all their favourite recipes are stored either by:
+    - clicking on the link available in their account dashboard
+    - clicking on the "cookbook" menu item in the navigation bar
+- Users can view all the recipes they saved as favourite. The list of recipes are displayed as recipe cards with the recipe name and picture. 
+- Users can click on the recipe card to view the recipe instructions. 
 
 ###### Feature 9 - Add a recipe
 [**C**RUD] - **C**reate
-- xxx
-- xxx
+- Users can create new recipes by filling the form.
+- Mandatory fields are referenced thanks to a small red asterisk. Fields that are optional are referenced as such.
 
 ###### Feature 10 - Edit a recipe
 [CR**U**D] - **U**pdate
-- xxx
-- xxx
+- When users click "Manage recipes" in their account dashboard, they can view all the recipes they have created.
+- Then can click the "Edit" button and be redirected to an editable form pre-filled with the existing recipe details.
+- Users can edit recipe information through the form and submit their changes.
+- Users will be confirmed changes to the recipes were saved and will be redirected to the recipe description. 
 
 ###### Feature 11 - Delete a recipe
 [CRU**D**] - **D**elete
-- xxx
-- xxx
+- From their "Manage recipes" menu, users can also click the "Delete" button to permanently deleted one of their recipes.
+- To increase security, a "warning" modal form will enable users to confirm their will to delete the recipe.
+    - Users who are not sure can click "Cancel" and will be confirmed that the recipe still exists.
+    - Users who are sure about deleting their recipe can click "Delete" and will be confirmed that the recipe was successfully deleted.
+- The now deleted recipe will be removed from the cookbook of any other community memebr who saved it as a favorite.
 
 ###### Feature 12 - Add/Remove Favorites
-- xxx
-- xxx
+- At the bottom of the recipe description page, users can add/remove a recipe from their favorites by clicking on the pulse icon button.
+- Their cookbook will be updated accordingly.
+- While adding a new recipe, users can also directly save it as favorite.
 
 ## Future Features
 
