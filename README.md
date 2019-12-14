@@ -129,7 +129,7 @@ You can find all my wireframes by clicking [here](static/wireframes/).
 ## Flowchart
 
 <div align="center">
-    <img src="static/flowchart/flowchart.png" alt="Flowchart">
+    <img src="static/flowchart/flowchart.png" href="static/flowchart/flowchart.png" target="_blank" alt="Flowchart">
 </div>
 
 # Features
