@@ -306,22 +306,26 @@ Any external user landing to the home page of this website will be presented wit
 
 ## Future Features
 
-Please find below the list of improvements I would like to add to this project:
+As a matter of feasability or scope, I did not implement the below functionalities in my project and would like to add them to improve my project further. 
 
-###### Future Feature 1 - description here
-- xxx
-- xxx
-- xxx
+###### Future Feature 1 - Rate and add comments to recipes
+- Users could add a grade (out of 5 stars) to the recipe and then a mean of all the users' grades would be displayed on the recipe description. 
+- While rating the recipe, users can also add a comment to share their opinions about the recipe.
 
-###### Future Feature 2 - description here
-- xxx
-- xxx
-- xxx
+###### Future Feature 2 - Multiple languages
+- I would like to add the option to switch to other languages (French, English and Spanish).
+- I have noticed that there are very few cooking websites with multiple languages options. Well this is not a surprise as it can be very complicated to implement translation of recipes when the users are adding recipes to the database themselves.
+
+###### Future Feature 3 - Change unit of measures
+- I would like to add a button on the recipe description page so the user can switch units of measures.
+- For that, I would have to normalize commonly used units of measures:
+    - gramms/liters/cups for ingredients
+    - celsius/fahrenheit degrees for baking time
 
 # Technologies Used
 
 ##### [Balsamiq](https://balsamiq.com/) 
-- I used Balsamiq to design my wireframes after drawing them manually.
+- I used Balsamiq to design my wireframes.
 
 ##### [Cloud9](https://c9.io)
 - I used AWS Cloud9 as my code editor for the project.
@@ -334,7 +338,7 @@ Please find below the list of improvements I would like to add to this project:
 - I used CSS to style my webpage and personalize it.  
 - The following [code validator](https://jigsaw.w3.org/css-validator/) was used to test my CSS code.
 
-##### [Materialize](https://bootswatch.com/lux/)
+##### [Materialize]()
 - I used Materialize as the main framework for HTML.
 
 ##### [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
