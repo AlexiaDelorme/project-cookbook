@@ -120,6 +120,12 @@ Building a full-stack website using Python and mini-framework Flask that allows 
 
 ## Design
 
+### Theme
+
+### Color 
+
+### Typography
+
 ## Wireframes
 
 I have used Balsamiq to create my wireframes. I first brainstormed on the structure and then created the site map. There are of course some differences with the final project as these wireframes were created during the preparation phase. 
