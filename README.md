@@ -122,15 +122,29 @@ Building a full-stack website using Python and mini-framework Flask that allows 
 
 ### Theme
 
-### Color 
+In terms of general layout, I wanted a classy style that would remind the user of an elegant French Pâtisserie. Therefore, I have decided to keep it very simple with no extravagant colours but instead use visually impacting images. I have therefore put a lot of efforts on selecting colourful and meaningful pictures for my website. This was very crucial to me as bakery pictures are made to draw user's attention and so combined with a very clogged styled website, it can be very overwhelming for the user. 
+
+### Colors
+
+- White - `#ffffff`
+    - background
+- Grey - `#444`
+    - font color
+- Pink - `#ee6e73`
+    - major headlines
+    - buttons & icons
+- Light grey - `#333333`
+    - footer
 
 ### Typography
+
+In an effort to keep my layout smart but understated, I have decided to select one unique font family from Google Fonts called [Signika](https://fonts.google.com/?query=Signika). 
 
 ## Wireframes
 
 I have used Balsamiq to create my wireframes. I first brainstormed on the structure and then created the site map. There are of course some differences with the final project as these wireframes were created during the preparation phase. 
 
-You can find all my wireframes by clicking [here](static/wireframes/).
+You can find all my wireframes [here](static/wireframes/).
 
 ## Flowchart
 
@@ -285,7 +299,7 @@ Any external user landing to the home page of this website will be presented wit
     - Users who are sure about deleting their recipe can click "Delete" and will be confirmed that the recipe was successfully deleted.
 - The now deleted recipe will be removed from the cookbook of any other community memebr who saved it as a favorite.
 
-###### Feature 12 - Add/Remove Favorites
+###### Feature 12 - Add/Remove favorites
 - At the bottom of the recipe description page, users can add/remove a recipe from their favorites by clicking on the pulse icon button.
 - Their cookbook will be updated accordingly.
 - While adding a new recipe, users can also directly save it as favorite.
