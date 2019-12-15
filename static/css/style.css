@@ -1,6 +1,7 @@
 body {
     font-family: 'Signika', 'calibri';
     font-size: 18px;
+    background-color: #ffffff;
     color: #444;
 }
 
@@ -212,7 +213,7 @@ button#add-ingredients {
 
 .btn,
 .btn-large {
-    background-color: #ee6e73cc;
+    background-color: #ee6e73;
 }
 
 .btn:hover,
@@ -249,7 +250,7 @@ textarea.materialize-textarea {
     min-height: 380px;
     line-height: 0;
     height: auto;
-    color: rgba(255, 255, 255, .9);
+    color:#ffffff;
 }
 
 .parallax-container .section {
