@@ -3,6 +3,10 @@
 
 <div id="section-to-print" class="row container-section">
 
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large" href="{{ url_for('return_previous_page') }}"><i class="large material-icons">skip_previous</i></a>
+    </div>
+
     <div class="row center-align" id="recipe-indicator">
 
         <h3 class="add-spacing">{{recipe.recipe_name.upper()}}</h3>
