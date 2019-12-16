@@ -770,14 +770,6 @@ def recipe_description(recipe_id):
 #               SPECIAL PAGES                 #
 # ------------------------------------------- #
 
-# ----- BACK TO PREV PAGE ----- #
-@app.route('/return_previous_page')
-def return_previous_page():
-    """
-    Function to be invoked so user can return to the previous page.
-    """
-    return redirect(request.referrer)
-
 # ----- 404 PAGE ----- #
 @app.errorhandler(404)
 def page_not_found(e):
