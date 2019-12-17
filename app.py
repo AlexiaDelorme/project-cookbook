@@ -338,10 +338,25 @@ def update_my_details(account_id):
     if user != None:
         user_first_name = user["first_name"]
         user_last_name = user["last_name"]
-        # Exclude the case where the email found is the user logged
+        # User found is not the user that is logged in
         if (user_first_name != session["first_name"]) or (user_last_name != session["last_name"]):
-            flash(f"An account already exists for {request.form.get('email')}", "white-text red")
+            flash(f'An account already exists for {request.form.get("email")}', 'white-text red')
             return redirect(url_for("edit_my_details"))
+        # User found is the user logged in
+        else:
+            # Update new account details into the db
+            mongo.db.user_accounts.update({"_id": ObjectId(account_id)},
+                                          {"$set":
+                                                {"first_name": request.form.get("first_name").lower(),
+                                                "last_name": request.form.get("last_name").lower(),
+                                                "email": request.form.get("email").lower()} 
+                                          })
+            # Update session variable with new account details                             
+            session["email"] = request.form.get("email").lower()
+            session["first_name"] = request.form.get("first_name").lower()
+            session["last_name"] = request.form.get("last_name").lower()
+            flash("Your account details have been updated successfully!", "white-text green darken-1")
+            return redirect(url_for("account_details"))     
     else:
         # Update new account details into the db
         mongo.db.user_accounts.update({"_id": ObjectId(account_id)},
