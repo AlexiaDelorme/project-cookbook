@@ -243,16 +243,14 @@ def login():
         flash(f"You are logged in as {session['email']}", "white-text green")
         return redirect(url_for('account'))
     
-    form = LoginForm()
-    
-    if form.validate_on_submit():
+    if request.method == "POST":
         # Create a query to get the user stored in the user variable
-        user = mongo.db.user_accounts.find_one( { "email": form.email.data.lower() })
+        user = mongo.db.user_accounts.find_one( { "email": request.form.get("email") })
         logging.info('User found {}'.format(user))
         # Creat user password var only if user object is not empty
         if user:
             user_password = user["password"]
-        if user and bcrypt.check_password_hash(user_password, form.password.data):
+        if user and bcrypt.check_password_hash(user_password, request.form.get("password")):
             # Add user to the session
             session["email"] = user["email"].lower()
             session["first_name"] = user["first_name"].lower()
@@ -264,8 +262,7 @@ def login():
         
     return render_template("general/login.html",
                             Page_name = "Log In",
-                            Welcome_image = "../static/img/sign/bg.jpg",
-                            form=form)
+                            Welcome_image = "../static/img/sign/bg.jpg")
 
 # ------------------------------------------- #
 #              LOG IN | REQUIRED              #
