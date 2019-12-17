@@ -343,9 +343,10 @@ def update_my_details(account_id):
     # Check if email provided is not already linked to an existing account
     user = mongo.db.user_accounts.find_one({ "email": request.form.get("email").lower()})
     if user != None:
-        user_email = user["email"]
+        user_first_name = user["first_name"]
+        user_last_name = user["last_name"]
         # Exclude the case where the email found is the user logged
-        if user_email != session["email"]:
+        if (user_first_name != session["first_name"]) or (user_last_name != session["last_name"]):
             flash(f"An account already exists for {request.form.get('email')}", "white-text red")
             return redirect(url_for("edit_my_details"))
     else:
