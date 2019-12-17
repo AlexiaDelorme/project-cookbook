@@ -191,11 +191,9 @@ def signup():
     if "email" in session:
         flash(f"You are logged in as {session['email']}", "white-text green")
         return redirect(url_for('account'))
-    form = SignupForm()
     return render_template("general/signup.html",
                             Page_name = "Sign up",
-                            Welcome_image = "../static/img/sign/bg.jpg",
-                            form=form)
+                            Welcome_image = "../static/img/sign/bg.jpg")
 
 # ----- 5.1. POST / SIGN UP FORM ----- #
 @app.route("/insert_user_account", methods=["GET", "POST"])
@@ -206,29 +204,28 @@ def insert_user_account():
     """
     
     if request.method == "POST":
-        form = SignupForm()
         # Create a query to the db to filter user accounts with email provided 
         user_accounts = mongo.db.user_accounts
-        user = user_accounts.find_one( { "email": form.email.data.lower() })
+        user = user_accounts.find_one( { "email": request.form.get("email") })
         logging.info('User account found in MongoDB: {} match the email provided by the user in the form'.format(user))
         # Check if email provided is not already linked to an existing account
         if user:
-            flash(f"An account already exists for {form.email.data}.", "white-text red")
+            flash(f'An account already exists for { request.form.get("email") }.', 'white-text red')
             return redirect(url_for("signup"))
         # If no existing account was found user account can be created
         else:
             # Encrypt password
-            hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+            hashed_password = bcrypt.generate_password_hash(request.form.get("password")).decode('utf-8')
             # Insert new user account details to the db
             user_accounts.insert_one({
-                "first_name": form.first_name.data.lower(),
-                "last_name": form.last_name.data.lower(),
-                "email": form.email.data.lower(),
+                "first_name": request.form.get("first_name").lower(),
+                "last_name": request.form.get("last_name").lower(),
+                "email": request.form.get("email"),
                 "password": hashed_password,
                 "my_recipes": [],
                 "favorite_recipes": []
             })
-            flash(f"{form.first_name.data.capitalize()}, your account has been created, you can now log in!", "white-text green")
+            flash(f'{ request.form.get("first_name").capitalize() }, your account has been created, you can now log in!', 'white-text green')
             return redirect(url_for("login"))
     
     return redirect(url_for("signup"))

@@ -10,102 +10,43 @@
         
         <form action="{{ url_for('insert_user_account') }}" method="POST" class="col s12">
 
-            <!-- This tag is to secure our form -->
-            {{ form.hidden_tag() }}
-            
-            <!-- First name -->
             <div class="row">
+
+                <!-- First name -->
                 <div class="input-field col s12">
-                    {{ form.first_name.label() }}
-                    <!-- Display feedback to the user if this field is missing -->
-                    {% if form.first_name.errors %} 
-                        {{ form.first_name(class="validate") }}
-                        <div>
-                            {% for error in form.first_name.errors %}
-                                <span> {{ error }} </span> 
-                                {% endfor %}
-                        </div>
-                    {% else %} 
-                        {{ form.first_name(class="validate") }} 
-                    {% endif %}
+                    <input id="first_name" name="first_name" type="text" class="validate" minlength="1" maxlength="50" required>
+                    <label class="active" for="first_name" data-error="*required" data-success="validated">First Name<span class="red-text">*</span></label>
                 </div>
-            </div>
             
-            <!-- Last name -->
-            <div class="row">
+                <!-- Last name -->
                 <div class="input-field col s12">
-                    {{ form.last_name.label() }}
-                    <!-- Display feedback to the user if this field is missing -->
-                    {% if form.last_name.errors %} 
-                        {{ form.last_name(class="validate") }}
-                        <div>
-                            {% for error in form.last_name.errors %}
-                            <span> {{ error }} </span> 
-                            {% endfor %}
-                        </div>
-                    {% else %} 
-                        {{ form.last_name(class="validate") }} 
-                    {% endif %}
+                    <input id="last_name" name="last_name" type="text" class="validate" minlength="1" maxlength="50" required>
+                    <label class="active" for="last_name" data-error="*required" data-success="validated">Last Name<span class="red-text">*</span></label>
                 </div>
-            </div>
             
-            <!-- Email -->
-            <div class="row">
+                <!-- Email -->
                 <div class="input-field col s12">
-                    {{ form.email.label() }}
-                    <!-- Display feedback to the user if email is wrongly formatted -->
-                    {% if form.email.errors %} 
-                        {{ form.email(class="validate") }}
-                    <div>
-                        {% for error in form.email.errors %}
-                        <span> {{ error }} </span> 
-                        {% endfor %}
-                    </div>
-                    {% else %} 
-                        {{ form.email(class="validate") }}
-                    {% endif %}
+                    <input id="email" name="email" type="email" class="validate" required>
+                    <label class="active" for="email" data-error="*required & email format" data-success="validated">Email<span class="red-text">*</span></label>
                 </div>
-            </div>
             
-            <!-- Password -->
-            <div class="row">
+                <!-- Password -->
                 <div class="input-field col s12">
-                    {{ form.password.label() }}
-                    <!-- Display feedback to the user if this field is missing -->
-                    {% if form.password.errors %} 
-                        {{ form.password(class="validate") }}
-                        <div>
-                            {% for error in form.password.errors %}
-                                <span> {{ error }} </span> 
-                            {% endfor %}
-                        </div>
-                    {% else %} 
-                        {{ form.password(class="validate") }} 
-                    {% endif %}
+                    <input id="password" name="password" type="password" class="validate" required>
+                    <label class="active" for="password" data-error="*required" data-success="validated">Password<span class="red-text">*</span></label>
                 </div>
-            </div>
             
-            <!-- Confirm password -->
-            <div class="row">
+                <!-- Confirm password -->
                 <div class="input-field col s12">
-                    {{ form.confirm_password.label() }}
-                    <!-- Display feedback to the user if passwords do not match -->
-                    {% if form.confirm_password.errors %} 
-                        {{ form.confirm_password(class="validate") }}
-                        <div>
-                            {% for error in form.confirm_password.errors %}
-                                <span> {{ error }} </span> 
-                            {% endfor %}
-                        </div>
-                    {% else %} 
-                        {{ form.confirm_password(class="validate") }} 
-                    {% endif %}
-                </div>
-            </div>
+                    <input id="confirm-password" name="confirm-password" type="password" class="validate" required>
+                    <label class="active" for="confirm-password" data-error="*required" data-success="validated">Confirm Password<span class="red-text">*</span></label>
+                </div>               
             
-            <!-- Button -->
-            <div class="row">
-                {{ form.submit(class="btn waves-effect waves-light") }}
+                <!-- Button -->
+                <div class="row">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">SIGN UP</button>
+                </div>
+
             </div>
 
         </form>
