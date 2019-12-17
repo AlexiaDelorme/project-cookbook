@@ -30,7 +30,7 @@
                 
                 <!-- Recipe name -->
                 <div class="input-field col s12 m12 l6">
-                    <textarea id="recipe_name" name="recipe_name" class="validate materialize-textarea" minlength="1" maxlength="50" data-length="50" required>{{ recipe.recipe_name.capitalize() }}</textarea>
+                    <input value="{{ recipe.recipe_name.capitalize() }}" id="recipe_name" name="recipe_name" class="validate" minlength="1" maxlength="50" data-length="50" required>
                     <label class="active" for="recipe_name" data-error="*required" data-success="validated">Recipe Name<span class="red-text">*</span></label>
                 </div>
                 
@@ -61,7 +61,7 @@
                 
                 <!-- Description -->
                 <div class="input-field col s12 m8">
-                    <textarea id="recipe_description" name="recipe_description" autocomplete="off" class="validate materialize-textarea" minlength="1" maxlength="100" data-length="100">{{ recipe.recipe_description.capitalize() }}</textarea>
+                    <input value="{{ recipe.recipe_description.capitalize() }}" id="recipe_description" name="recipe_description" class="validate" minlength="1" maxlength="100" data-length="100">
                     <label class="active" for="recipe_description">Recipe Description - <em>optional</em></label>
                 </div>
                 
@@ -69,12 +69,12 @@
 
                 <!-- Hours -->
                 <div class="input-field col s6 m2">
-                    <input value="{{ hours }}" id="hours" name="hours" type="number" min="0" max="12" autocomplete="off" class="validate">
+                    <input value="{{ hours }}" id="hours" name="hours" type="number" min="0" max="12" class="validate">
                     <label for="hours">Hour(s) - <em>optional</em></label>
                 </div>
                 <!-- Minutes -->
                 <div class="input-field col s6 m2">
-                    <input value="{{ minutes }}" id="minutes" name="minutes" type="number" min="0" max="59" autocomplete="off" class="validate" required>
+                    <input value="{{ minutes }}" id="minutes" name="minutes" type="number" min="0" max="59" class="validate" required>
                     <label for="minutes" data-error="*required" data-success="validated">Minutes<span class="red-text">*</span></label>
                 </div>
                 
@@ -187,7 +187,7 @@
                 <legend for="ingredients">List of Ingredients<span class="red-text">*</span></legend>
                 <div class="input-field col s12" id="ingredientsform">
                     {% for ingredient in recipe.ingredients %}
-                    <textarea id="ingredients" name="ingredients" autocomplete="off" minlength="1" maxlength="100" data-length="100" class="validate materialize-textarea col s12" required>{{ ingredient }}</textarea>
+                    <textarea id="ingredients" name="ingredients" minlength="1" maxlength="100" data-length="100" class="validate materialize-textarea col s12" required>{{ ingredient }}</textarea>
                     <label class="active" for="ingredients" data-error="*required" data-success="validated"></label>
                     {% endfor %}
                 </div>
@@ -200,7 +200,7 @@
                 <legend for="instructions">Preparation Steps<span class="red-text">*</span></legend>
                 <div class="input-field col s12" id="instructionsform">
                     {% for instruction in recipe.instructions %}
-                    <textarea id="instructions" name="instructions" autocomplete="off" minlength="5" maxlength="500" data-length="500" class="validate materialize-textarea col s12" required>{{ instruction }}</textarea>
+                    <textarea id="instructions" name="instructions" minlength="5" maxlength="500" data-length="500" class="validate materialize-textarea col s12" required>{{ instruction }}</textarea>
                     <label class="active" for="instructions" data-error="*required" data-success="validated"></label>
                     {% endfor %}
                 </div>
