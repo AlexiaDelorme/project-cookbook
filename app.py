@@ -6,7 +6,6 @@ from flask_bcrypt import Bcrypt
 from bson.objectid import ObjectId
 from datetime import datetime
 from helpers import *
-from forms import *
 
 # Create a log file
 logging.basicConfig(filename='test.log', level=logging.INFO,
@@ -368,22 +367,20 @@ def edit_password():
     # Check if the user is logged in
     if "email" in session:
         
-        form = PasswordForm()
-        
-        if form.validate_on_submit():
+        if request.method == "POST":
             # Create a query to get user information
             user = mongo.db.user_accounts.find_one( { "email": session["email"] })
             current_user_password_db = user["password"]
             # Check if current password match password stored in the db
-            if not bcrypt.check_password_hash(current_user_password_db, form.current_password.data):
+            if not bcrypt.check_password_hash(current_user_password_db, request.form.get("current_password")):
                 flash(f"Your current password is incorrect!", "white-text red")
             # Check if current password is different from new password 
-            if bcrypt.check_password_hash(current_user_password_db, form.new_password.data):
+            if bcrypt.check_password_hash(current_user_password_db, request.form.get("new_password")):
                 flash(f"Your new password is not different from your current password.", "white-text red")
             # Check if all conditions to change the password are met   
-            if (form.new_password.data == form.confirm_new_password.data) and bcrypt.check_password_hash(current_user_password_db, form.current_password.data):
+            if (request.form.get("new_password") == request.form.get("confirm_new_password")) and (bcrypt.check_password_hash(current_user_password_db, request.form.get("current_password"))):
                 # Encrypt new password before storing it
-                hashed_password = bcrypt.generate_password_hash(form.new_password.data).decode('utf-8')
+                hashed_password = bcrypt.generate_password_hash(request.form.get("new_password")).decode('utf-8')
                 # Update new password into MongoDB
                 mongo.db.user_accounts.update({ "email": session["email"]},
                                               { "$set":
@@ -396,8 +393,7 @@ def edit_password():
         
         return render_template("users/edit_password.html",
                                 Page_name = "Edit Password",
-                                Welcome_image = "../static/img/sign/bg.jpg",
-                                form=form)
+                                Welcome_image = "../static/img/sign/bg.jpg")
                             
     return redirect(url_for('access_denied'))
 
