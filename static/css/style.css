@@ -123,8 +123,19 @@ a.anchor-title {
     color: #444;
 }
 
-a.anchor-title:hover {
+.anchor-title:hover {
     color: #ee6e73;
+}
+
+.border-bottom {
+    width: 60px;
+    transition-property: width;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+.anchor-title:hover .border-bottom {
+    width: 120px;
 }
 
 /* ----------------------------------------------------------- RECIPES ------ */
