@@ -4,14 +4,14 @@
 <!-- Description of the company -->
 <div class="container-section grey-bg">
 
-    <h3 class="left-align"> Open-free Recipes </h3>
+    <h3 class="center-align"> Open-free Recipes </h3>
     <p> The pâtisserie journal is an open-free recipes ressource created by two French sisters that were very passionate about pâtisserie and wanted to extend their recipes to any kind of diet!</p>
 
     <h3 class="center-align"> Personalized Cookbook </h3> 
     <p> Our purpose is to provide patisserie lovers with an intuitive online cookbook tool so that they can easily find new recipes and implement them interactively while cooking. User can share their own recipes by creating/logging to their own account.</p>  
     
-    <h3 class="right-align"> Inclusive Project </h3> 
-    <p class="right-align"> The purpose of this project is to make patisserie inclusive meaning that anyone with any food allergies, specific types of diet or simply missing an ingredient or a cooking tool would be able to find a suitable recipe. </p>  <br><br> 
+    <h3 class="center-align"> Inclusive Project </h3> 
+    <p> The purpose of this project is to make patisserie inclusive meaning that anyone with any food allergies, specific types of diet or simply missing an ingredient or a cooking tool would be able to find a suitable recipe. </p>  <br><br> 
     <p class="small right-align"> <em>"By creating a community that can share their own recipes, it enables to naturally expand the database but also promotes “wannabe” cooks and provide them with visibility." </em> </p>
 
 </div>
@@ -21,20 +21,26 @@
     
     <!-- Recipes -->
     <div class="col s12 m4 category-box center-align">
-        <h5>Recipes</h5>
-        <a href="{{url_for('recipes')}}"><img class="card-img" src="{{url_for('static', filename='img/about/recipes.jpg')}}" alt="Recipes"></img></a>
+        <a class="anchor-title" href="{{url_for('recipes')}}">
+            <h5>Recipes</h5>
+            <img class="card-img" src="{{url_for('static', filename='img/about/recipes.jpg')}}" alt="Recipes"></img>
+        </a>
     </div>
     
     <!-- Cookbook -->
     <div class="col s12 m4 category-box center-align">
-        <h5>Cookbook</h5>
-        <a href="{{url_for('cookbook')}}"><img class="card-img" src="{{url_for('static', filename='img/about/cookbook.jpg')}}" alt="Cookbook"></img></a>
+        <a class="anchor-title" href="{{url_for('cookbook')}}">
+            <h5>Cookbook</h5>
+            <img class="card-img" src="{{url_for('static', filename='img/about/cookbook.jpg')}}" alt="Cookbook"></img>
+        </a>
     </div>
     
     <!-- Sign up -->
     <div class="col s12 m4 category-box center-align">
-        <h5>Join us</h5>
-        <a href="{{url_for('signup')}}"><img class="card-img" src="{{url_for('static', filename='img/about/sign-up.jpg')}}" alt="Join us"></img></a>
+        <a class="anchor-title" href="{{url_for('signup')}}">
+            <h5>Join us</h5>
+            <img class="card-img" src="{{url_for('static', filename='img/about/sign-up.jpg')}}" alt="Join us"></img>
+        </a>
     </div>
 
 </div>
