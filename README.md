@@ -324,39 +324,82 @@ As a matter of feasability or scope, I did not implement the below functionaliti
 
 # Technologies Used
 
-##### [Balsamiq](https://balsamiq.com/) 
-- I used Balsamiq to design my wireframes.
-
-##### [Cloud9](https://c9.io)
-- I used AWS Cloud9 as my code editor for the project.
+## languages
 
 ##### [HTML5](https://www.w3.org/TR/html/)
-- I used HTML for creating the static content of my webpage.
+- I used HTML for creating the static content of my website.
 - The following [code validator](https://validator.w3.org/) was used to test my HTML code.
 
 ##### [CSS3](https://www.w3.org/Style/CSS/)
-- I used CSS to style my webpage and personalize it.  
+- I used CSS to style my website and personalize it.  
 - The following [code validator](https://jigsaw.w3.org/css-validator/) was used to test my CSS code.
 
-##### [Materialize]()
-- I used Materialize as the main framework for HTML.
-
 ##### [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [jQuery](https://jquery.com/) was used to simplify the DOM manipulation based on the user input via the modal form or when the reset button is clicked.
+- I used core JS in coordination with Sweet Alert library.
 - [JSHint](https://jshint.com/) was used to check my JS code quality.
 
-##### [Picasa](https://picasa.google.com/)
-- I used Picasa to resize and change the orientation of my background image.
+##### [Python 3](https://www.python.org/downloads/release/python-374/)
+- I used Python 3 as the back-end programming language for my application.
 
-##### [ImageOptim](https://imageoptim.com/mac)
-- I used ImageOptim to optimize the size of my background image and wireframes. 
+## Libraries
+
+##### [Flask](http://flask.palletsprojects.com/en/1.1.x/)
+- I used microframework flask as my Python framework to build this website. 
+
+##### [Jinja](https://jinja.palletsprojects.com/en/2.10.x/)
+- I used Jinja as the Python templating language in coordination with Flask. 
+
+##### [PyMongo](https://api.mongodb.com/python/current/)
+- I used PyMongo as the main API to communicate with MongoDB using Python.
+
+##### [Materialize](http://archives.materializecss.com/0.100.2/)
+- I used Materialize as the main framework for HTML.
+
+##### [jQuery](https://jquery.com/) 
+- I used jQuery to simplify the DOM manipulation.
+
+##### [Sweet Alert](https://sweetalert.js.org/) 
+- I used Sweet Alert to have a 2-tier validation modal before deletion of data. 
 
 ##### [Font Awesome](https://origin.fontawesome.com/)
-- I used Font Awesome to display icons for the footer of my page.
+- I used Font Awesome to display social media icons for my footer.
+
+##### [Google Fonts](https://fonts.google.com/)
+- I used one of Google Fonts for my website.
+
+## Tools
+
+##### [draw.io](https://www.draw.io#)
+- I used this diagram tool to structure my data flow during the planning phase of this project.
+
+##### [Balsamiq](https://balsamiq.com/) 
+- I used Balsamiq to design my wireframes during the planning phase of this project.
+
+##### [AWS Cloud 9](https://c9.io)
+- I started this project using AWS Cloud9 as my code editor.
+
+##### [Gitpod](https://gitpod.io/)
+- During this project, I migrated to Gitpod as my credentials for AWS Cloud 9 expired.
+- I therefore completed this project using Gitpod IDE. 
+
+##### [MongoDB Atlas](https://cloud.mongodb.com/)
+- I used MongoDB Atlas to store my data for this project. 
 
 ##### [Git & GitHub](https://github.com/)
 - I used Git for version control. 
-- I used GitHub to store my code in a remote repository, deploy and host my website.
+- I used GitHub to store my code in a remote repository.
+
+##### [Heroku](https://dashboard.heroku.com)
+- I used Heroku to deploy and host my application.
+
+##### [Picasa](https://picasa.google.com/)
+- I used Picasa to resize some of the images. 
+
+##### [ImageOptim](https://imageoptim.com/mac) & [TinyPNG](https://tinypng.com)
+- I used ImageOptim and TinyPNG to optimize the size of the images.
+
+##### [Imgbb](https://imgbb.com)
+- For recipes images, I decided to store them externally using Imgbb.
 
 # Testing 
 
