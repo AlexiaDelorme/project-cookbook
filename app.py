@@ -621,7 +621,9 @@ def insert_recipe():
     hours = int(request.form.get("hours"))*60 if request.form.get("hours") else ""
     minutes = int(request.form.get("minutes"))
     prep_time = minutes + hours if hours else minutes
-
+    # Add default picture if no url was provided
+    image_path = request.form.get("image_path") if request.form.get("image_path") else "https://cdn.dribbble.com/users/2921354/screenshots/8956261/media/20d577559d8e99ee0283264f211c7951.jpg"
+    
     new_recipe = {  "recipe_name": request.form.get("recipe_name").lower(),
                     "recipe_description": request.form.get("recipe_description").lower(),
                     "rates_list":[ ],
@@ -638,7 +640,7 @@ def insert_recipe():
                     "allergen": request.form.getlist("allergen"),
                     "recipe_author": logged_user,
                     "recipe_date": today,
-                    "image_path": request.form.get("image_path"),
+                    "image_path": image_path,
                     "comments_list":[ ]
     }
     
