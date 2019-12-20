@@ -1,3 +1,5 @@
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/AlexiaDelorme/project-cookbook) 
+
 <div align="center">
     <img src="https://i.ibb.co/qMDnM0y/logo.jpg" href="https://patisserie-cookbook.herokuapp.com" target="_blank" alt="The Pâtisserie Journal Logo" />
 </div> 
@@ -414,21 +416,24 @@ All the documentation regarding the testing of this project can be found in this
 # Credits
 
 ### Content
-- xxx
-- xxx
-- xxx 
+- My sister for being the first constributor of recipes for this project. 
 
 ### Media
-- xxx
-- xxx
-- xxx
+
+- ALl the images used for this project were found on [Pexels](https://www.pexels.com).
+- I also used [Font Awesome](https://fontawesome.com/v4.7.0/icons/) on some icons when I could not find the proper icon in the Materialize icon library.
+- Gif used in 404 and access_denied pages: [Dribble](https://dribbble.com/search/shots/popular/animation?q=dessert)
+- Colours of footer incons when hovered: [encycolorpedia.fr](https://encycolorpedia.fr/00acee)
 
 ### Code
-- xxx
-- xxx
-- xxx
+- Dynamically add/remove recipe instructions and ingredients to the form: [StackOverflow](https://stackoverflow.com/questions/9173182/add-remove-input-field-dynamically-with-jquery)
+- Buttons to share recipes on social medial: [jsfiddle.net](http://jsfiddle.net/0erh1xv7/)
+- Format print area: [StackOverflow](https://stackoverflow.com/questions/468881/print-div-id-printarea-div-only)
+- Center my image card: [StackOverflow](https://stackoverflow.com/questions/50671682/center-align-items-in-materializecss-row)
+- How to resize an image uploaded by one of the user: [CSS-tricks](https://css-tricks.com/on-object-fit-and-object-position/)
+- Tutors at Code Institute
+    - Xavier for helping the explore function to sort recipes according to user’s inputs in the form. Credits of the code is stated in my app.py. 
+    - Michael and Stephen for helping me setting a sweet alert 2-tier confirmation when the user wants to delete a recipe.
 
 ### Acknowledgements
-- xxx
-- xxx
-- xxx
+- My code institute mentor for his patience. 
