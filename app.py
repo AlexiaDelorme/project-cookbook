@@ -3,7 +3,7 @@ import logging
 from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
-from flask_paginate import Pagination, get_page_args
+from flask_paginate import Pagination, get_page_parameter
 from bson.objectid import ObjectId
 from datetime import datetime
 from helpers import *
@@ -733,13 +733,12 @@ def results():
     """
     Display all the recipes stored in the db.
     """
+    # Set up pagination for recipes results - Code credit: https://pythonhosted.org/Flask-paginate/
     search = False
     q = request.args.get('q')
     if q:
         search = True
     page = request.args.get(get_page_parameter(), type=int, default=1)
-
-    users = User.find(...)
     recipes = mongo.db.recipes_information.find()
     recipes_number=recipes.count()
     pagination = Pagination(page=page, total=recipes_number, search=search, record_name='recipes')

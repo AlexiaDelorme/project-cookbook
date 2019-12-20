@@ -255,6 +255,25 @@ textarea.materialize-textarea {
     font-weight: 800;
 }
 
+/* --------------------------------------------- FLASK PAGINATION STYLE ------ */
+
+.pagination-page-info {
+    padding: .6em;
+    padding-left: 0;
+    width: 40em;
+    margin: .5em;
+    margin-left: 0;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+.pagination-page-info b {
+    color: #444;
+    background: #ee6e73;
+    padding-left: 2px;
+    padding: .1em .25em;
+    font-size: 150%;
+}
+
 /* -------------------------------DEFAULT SETTINGS / MATERIALIZE THEME ------ */
 
 .parallax-container {
