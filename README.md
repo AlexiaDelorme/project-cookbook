@@ -430,6 +430,41 @@ My application was deployed through [heroku](https://dashboard.heroku.com) using
 
 ## Local Deployment (Gitpod)
 
+To deploy this project locally using gitpod you will have to create a gitpod account and use a web browser with a stable internet connection as gitpod is an online IDE. I suggest you use Chrome as web browser so that you can use gitpod chrome extension to speed up the deployment process. 
+
+1. Create a Gitpod account (if not already)
+    - Go to [GitPod](https://www.gitpod.io)
+    - Click on `Go to App` and click on the green `Authorize gitpod.io`
+    - Agree to the terms and then create your free account
+2. Add gitpod browser extension for Chrome:
+    - Go to [GitPod Chrome Browser Extension ](https://chrome.google.com/webstore/detail/gitpod-online-ide/dodmmooeoklaejobgleioelladacbeki)
+    - Search for "gitpod" in chrome web store search bar
+    - Click on `Add to Chrome` then click on `Add to extension`
+3. Clone this project repository from github
+    - Go to my [repository](https://github.com/AlexiaDelorme/project-cookbook) for this project.
+    - If you successfully installed the gitpod browser extension you should view a green `Gitpod` button in the top right corner of the repository (next to `Clone or download` button). Click the `Gitpod` button. 
+    - This will allow to open this repository directly in gitpod for editing.
+4. Set environment variables for the project
+    - In your gitpod dashboard click on your github avatar available in the top right corner.
+    - Click on `Environment variables` and set the following environment variables:
+
+| Environment Variables |
+
+| Name | Value | Organization/Repository |
+| ------------- | ------------- |
+| MONGO_URI | <LINK_TO_MONGO_DB> | username/repository_name |
+| SECRET_KEY | <SECRET_KEY> | username/repository_name |
+
+5. Make sure you have created a database within MongoDB using the same template and structure as my db as per this section [here](TO BE DONE).
+
+6. Download all the dependencies necessary to run this app - these are listed in the **requiredments.txt** file. 
+    - Run the following command `pip3 install -r requirements.txt`
+
+7. Create a development server
+    - In the workspace run the following command `Python3 app.py`.
+    - Click on `Expose` and then `Open Browser`.
+    - You should now have a gitpod link to the deployed app. 
+
 # Credits
 
 ### Content
