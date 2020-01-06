@@ -420,7 +420,7 @@ My application was deployed through [heroku](https://dashboard.heroku.com) using
 3. Create a new Heroku application
     - Sign up to a new account if you do not already have one.
     - Create a new application by clicking on `new` then `create new app`.
-    - Set the name of your application and select the your region and click on `create app` to finalize the creation of your app. 
+    - Set the name of your application and select your region and click on `create app` to finalize the creation of your app. 
 4. Set the following config variables (click `Settings` then `Reveal Config Vars`)
     - **IP**: `0.0.0.0`
     - **PORT**: `5000`
@@ -428,16 +428,17 @@ My application was deployed through [heroku](https://dashboard.heroku.com) using
     - **SECRET_KEY**: `<SECRET_KEY>`
 5. In the `Deploy` tab, choose `Connect Github` as **Deployment Method** and *Enable Automatic Deployment* from the Github master branch so that any new commit will be automatically deployed through your heroku app. 
 
-## Local Deployment
+## Local Deployment (Gitpod)
 
 # Credits
 
 ### Content
 - My sister for being the first constributor of recipes for this project. 
+- Only the granola recipes was taken from the beamingbaker.com blog, the full recipe can be found on her website [here](https://beamingbaker.com/4-ingredient-healthy-homemade-gluten-free-vegan-granola-recipe-dairy-free-v-gf-refined-sugar-free/). Cause I was not able to make a better recipe, I decided to include it in my project anyway!
 
 ### Media
 
-- ALl the images used for this project were found on [Pexels](https://www.pexels.com).
+- All the images used for this project were found on [Pexels](https://www.pexels.com).
 - I also used [Font Awesome](https://fontawesome.com/v4.7.0/icons/) on some icons when I could not find the proper icon in the Materialize icon library.
 - Gif used in 404 and access_denied pages: [Dribble](https://dribbble.com/search/shots/popular/animation?q=dessert)
 - Colours of footer incons when hovered: [encycolorpedia.fr](https://encycolorpedia.fr/00acee)
