@@ -1,6 +1,41 @@
-# Testing 
 
-## User stories
+1. Automated Testing
+    - Code quality
+    - Jasmine
+    - Python Testing
+2. User Stories Testing
+3. Compatibility & Responsiveness
+    - Desktop 
+    - Tablet and mobile devices
+4. Known issues
+    - Solved 
+    - Unsolved
+
+# Automated Testing
+
+## Code quality
+
+##### HTML5
+
+HTML files succesfully passed this [HTML code validator](https://validator.w3.org/) by direct input as per screenshot provided down below.
+
+![HTML5 Code Validator](link)
+
+##### CSS3
+
+style.css file succesfully passed this [CSS code validator](https://jigsaw.w3.org/css-validator/) by direct input as per screenshot provided down below.
+
+![CSS Code Validator](link)
+
+##### JS
+
+Details about code validation.... 
+
+## Jasmine
+
+## Python
+
+# User Stories Testing
 
 This project has been tested multiple times against each user stories previously listed in the UX section. 
 
@@ -22,25 +57,7 @@ This project has been tested multiple times against each user stories previously
 
 ###### Testing user story 2
 
-## Code quality
-
-##### HTML5
-
-HTML files succesfully passed this [HTML code validator](https://validator.w3.org/) by direct input as per screenshot provided down below.
-
-![HTML5 Code Validator](link)
-
-##### CSS3
-
-style.css file succesfully passed this [CSS code validator](https://jigsaw.w3.org/css-validator/) by direct input as per screenshot provided down below.
-
-![CSS Code Validator](link)
-
-##### JS
-
-Details about code validation.... 
-
-## Compatibility & Responsiveness
+# Compatibility & Responsiveness
 
 A cross browser testing was performed for each user stories scenario to ensure that all functionalities render well in different browsers:
 - Safari
@@ -56,7 +73,7 @@ The responsiveness of the webiste was tested thanks to Google Chrome developer t
 - iPhone 6/7/8 and Plus
 - iPad / iPad Pro 
 
-### Known Issues
+# Known Issues
 
 * xxx
 * xxx
