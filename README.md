@@ -411,6 +411,23 @@ All the documentation regarding the testing of this project can be found in this
 
 ## Heroku
 
+My application was deployed through [heroku](https://dashboard.heroku.com) using the master branch of my github repository for this project. The following steps were implemented to deploy this project:
+
+1. Create a **requirements.txt** file
+    - `sudo pip3 freeze --local > requirements.txt`
+2. Create a **Procfile**
+    - `echo web: Python run.py > Procfile`
+3. Create a new Heroku application
+    - Sign up to a new account if you do not already have one.
+    - Create a new application by clicking on `new` then `create new app`.
+    - Set the name of your application and select the your region and click on `create app` to finalize the creation of your app. 
+4. Set the following config variables (click `Settings` then `Reveal Config Vars`)
+    - **IP**: `0.0.0.0`
+    - **PORT**: `5000`
+    - **MONGO_URI**: `<LINK_TO_MONGO_DB>`
+    - **SECRET_KEY**: `<SECRET_KEY>`
+5. In the `Deploy` tab, choose `Connect Github` as **Deployment Method** and *Enable Automatic Deployment* from the Github master branch so that any new commit will be automatically deployed through your heroku app. 
+
 ## Local Deployment
 
 # Credits
