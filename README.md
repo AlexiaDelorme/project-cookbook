@@ -448,19 +448,17 @@ To deploy this project locally using gitpod you will have to create a gitpod acc
     - In your gitpod dashboard click on your github avatar available in the top right corner.
     - Click on `Environment variables` and set the following environment variables:
 
-| Environment Variables |
-
-| Name | Value | Organization/Repository |
-| ------------- | ------------- |
-| MONGO_URI | <LINK_TO_MONGO_DB> | username/repository_name |
-| SECRET_KEY | <SECRET_KEY> | username/repository_name |
+        | Name | Value | Organization/Repository |
+        | ------------- | ------------- | ------------- |
+        | MONGO_URI | <LINK_TO_MONGO_DB> | username/repository_name |
+        | SECRET_KEY | <SECRET_KEY> | username/repository_name |
 
 5. Make sure you have created a database within MongoDB using the same template and structure as my db as per this section [here](TO BE DONE).
 
-6. Download all the dependencies necessary to run this app - these are listed in the **requiredments.txt** file. 
+6. Download all the dependencies necessary to run this project and listed in the **requirements.txt** file. 
     - Run the following command `pip3 install -r requirements.txt`
 
-7. Create a development server
+7. Create a development server:
     - In the workspace run the following command `Python3 app.py`.
     - Click on `Expose` and then `Open Browser`.
     - You should now have a gitpod link to the deployed app. 
