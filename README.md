@@ -154,6 +154,270 @@ You can find all my wireframes [here](static/wireframes/).
     <img src="static/flowchart/flowchart.png" href="static/flowchart/flowchart.png" target="_blank" alt="Flowchart">
 </div>
 
+## Database structure
+
+Please find below the structure I used for my database using MongoDB. 
+
+### Non-static collection
+
+**Collection name:** `user_accounts`
+
+```
+{
+    "_id": <ObjectId>,
+    "first_name": <string>,
+    "last_name": <string>,
+    "email": <string>",
+    "password": <string>,
+    "my_recipes": <array>,
+    "favorite_recipes": <array>
+}
+```
+
+**Collection name:** `recipes_information`
+
+```
+{
+    "_id": <ObjectId>,
+    "recipe_name": <String>,
+    "recipe_description": <String>,
+    "rates_list": <Array>,
+    "serving": <Int32>,
+    "prep_time": <Int32>,
+    "difficulty": <String>,
+    "occasion": <Array>,
+    "geography": <Array>,
+    "diet": <Array>,
+    "meal": <Array>,
+    "ingredients": <Array>,
+    "instructions": <Array>,
+    "tool": <Array>,
+    "allergen": <Array>,
+    "recipe_author": <ObjectId>,
+    "recipe_date": <String>,
+    "image_path": <String>,
+    "comments_list": <Array>
+}
+```
+
+### Static collection
+
+**Collection name:** `recipes_categories`
+
+Document 1
+
+```
+{
+    "_id": <ObjectId>,
+    "category_name":"meal",
+    "image_path":"static/img/categories/meal.jpg",
+    "list":[
+        {
+            "_id": <ObjectId>,
+            "category_name":"breakfast",
+            "image_path":"static/img/categories/meal/breakfast.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"snack",
+            "image_path":"static/img/categories/meal/snack.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"drink",
+            "image_path":"static/img/categories/meal/drink.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"dessert",
+            "image_path":"static/img/categories/meal/dessert.jpg"
+        }
+    ]
+}
+```
+
+Document 2
+
+```
+{
+    "_id": <ObjectId>,
+    "category_name":"occasion",
+    "image_path":"static/img/categories/occasion.jpg",
+    "list":[
+        {
+            "_id": <ObjectId>,
+            "category_name":"christmas",
+            "image_path":"static/img/categories/occasion/christmas.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"new year's",
+            "image_path":"static/img/categories/occasion/newyear.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"hanukkah",
+            "image_path":"static/img/categories/occasion/hanukkah.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"easter",
+            "image_path":"static/img/categories/occasion/easter.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"birthdays",
+            "image_path":"static/img/categories/occasion/birthdays.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"weddings",
+            "image_path":"static/img/categories/occasion/weddings.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"thanksgiving",
+            "image_path":"static/img/categories/occasion/thanksgiving.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"halloween",
+            "image_path":"static/img/categories/occasion/halloween.jpg"
+        }
+    ]
+}
+```
+
+Document 3
+
+```
+{
+    "_id": <ObjectId>,
+    "category_name":"geography",
+    "image_path":"static/img/categories/geography.jpg",
+    "list":[
+        {
+            "_id": <ObjectId>,
+            "category_name":"africa",
+            "image_path":"static/img/categories/geography/africa.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"asia",
+            "image_path":"static/img/categories/geography/asia.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"europe",
+            "image_path":"static/img/categories/geography/europe.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"north america",
+            "image_path":"static/img/categories/geography/north-america.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"south america",
+            "image_path":"static/img/categories/geography/south-america.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"middle east",
+            "image_path":"static/img/categories/geography/middle-east.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"oceania",
+            "image_path":"static/img/categories/geography/oceania.jpg"
+        }
+    ]
+}
+```
+
+Document 4
+
+```
+{
+    "_id": <ObjectId>,
+    "category_name":"diet",
+    "image_path":"static/img/categories/diet.jpg",
+    "list":[
+        {
+            "_id": <ObjectId>,
+            "category_name":"vegan",
+            "image_path":"static/img/categories/diet/vegan.jpg"
+        },
+        {   
+            "_id": <ObjectId>,
+            "category_name":"vegetarian",
+            "image_path":"static/img/categories/diet/vegetarian.jpg"
+        }
+        ,
+        {
+            "_id": <ObjectId>,
+            "category_name":"gluten-free",
+            "image_path":"static/img/categories/diet/gluten-free.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"sugar-free",
+            "image_path":"static/img/categories/diet/sugar-free.jpg"
+        },
+        {
+            "_id": <ObjectId>,
+            "category_name":"lactose-free",
+            "image_path":"static/img/categories/diet/lactose-free.jpg"
+        }
+    ]
+}
+```
+
+**Collection name:** `bakery_helpers`
+
+Document 1
+
+```
+{
+    "_id": <ObjectId>,
+    "category_name":"allergen",
+    "image_path": <String>,
+    "list":[
+        "gluten",
+        "egg",
+        "milk",
+        "soy",
+        "peanuts",
+        "nuts",
+        "fish",
+        "shellfish"
+    ]
+}
+```
+
+Document 2
+
+```
+{
+    "_id": <ObjectId>,
+    "category_name":"tool",
+    "image_path": <String>,
+    "list":[
+        "oven",
+        "microwave",
+        "stove",
+        "toaster",
+        "blender",
+        "frying pan",
+        "pot",
+        "baking tray",
+        "cake pan",
+        "whisk",
+        "rolling pin"
+    ]
+}
+```
+
 # Features
 
 ## Current Features
