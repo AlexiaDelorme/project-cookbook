@@ -22,24 +22,26 @@ By creating a community that can share their own recipes, it will enable us to n
     - [Design](#)
     - [Wireframes](#)
     - [Flowchart](#)
+    - [Database structure](#)
+        - [Non-static collections](#)
+        - [Static collections](#)
 
 2. [Features](#)
     - [Current Features](#)
     - [Future Features](#)
 
-3. [Database](#)
-    - [Database choice](#)
-    - [Data Structure](#)
+3. [Technologies Used](#)
+    - [Languages](#)
+    - [Libraries](#)
+    - [Tools](#)
 
-4. [Technologies Used](#)
+4. [Testing](#)
 
-5. [Testing](#)
-
-6. [Deployment](#)
+5. [Deployment](#)
     - [Heroku Deployment](#)
-    - [Local Deployment](#)
+    - [Local Deployment (GitPod)](#)
 
-7. [Credits](#)
+6. [Credits](#)
     - [Content](#)
     - [Media](#)
     - [Code](#)
@@ -158,7 +160,7 @@ You can find all my wireframes [here](static/wireframes/).
 
 Please find below the structure I used for my database using MongoDB. 
 
-### Non-static collection
+### Non-static collections
 
 **Collection name:** `user_accounts`
 
@@ -200,7 +202,7 @@ Please find below the structure I used for my database using MongoDB.
 }
 ```
 
-### Static collection
+### Static collections
 
 **Collection name:** `recipes_categories`
 
@@ -692,7 +694,7 @@ My application was deployed through [heroku](https://dashboard.heroku.com) using
     - **SECRET_KEY**: `<SECRET_KEY>`
 5. In the `Deploy` tab, choose `Connect Github` as **Deployment Method** and *Enable Automatic Deployment* from the Github master branch so that any new commit will be automatically deployed through your heroku app. 
 
-## Local Deployment (Gitpod)
+## Local Deployment (GitPod)
 
 To deploy this project locally using gitpod you will have to create a gitpod account and use a web browser with a stable internet connection as gitpod is an online IDE. I suggest you use Chrome as web browser so that you can use gitpod chrome extension to speed up the deployment process. 
 
