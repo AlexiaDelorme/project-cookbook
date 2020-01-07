@@ -27,9 +27,11 @@ style.css file succesfully passed this [CSS code validator](https://jigsaw.w3.or
 
 ![CSS Code Validator](link)
 
+##### Python
+
 ##### JS
 
-Details about code validation.... 
+JS hint
 
 ## Jasmine
 
@@ -39,23 +41,37 @@ Details about code validation....
 
 This project has been tested multiple times against each user stories previously listed in the UX section. 
 
+## External users
+
 ###### Testing user story 1 
 
-*User story: The user has easy access to aggregated data in a simple and clean fashion.*
+***User story:** As an external user, I want to make use of the site and benefit from having convenient access to the data provided by all community members.
 
-<u> Hypothesis: </u> For this scenario, the user does not filter using the “start here” modal form. This is simply to test the general purpose of the project.
+**Hypothesis:** The user should logged out to perform this test.
 
-<u> Test scenario: </u>
--	Go to the home page
--	Scroll down to navigate the dashboard, or,
--	Directly click on the “Exoplanets Dashboard” menu item in the navigation bar to be redirected
--	You should be provided with the source of the data, definition of an exoplanet…
--	You should be able to identify general information regarding the sample: total number of planets in the sample, average stellar year…
--	You should be able to identify through the different graphs relevant information regarding the sample. 
+**Test scenario:**
+- [x] Click on the `EXPLORE` menu item in the navigation bar.
+- [x] Leave the explore recipes form blank from any filters and click on the `SEARCH RECIPES`.
+- [x] You should have a total number of "x" recipes.
+- [x] Click on any of the recipes and you should be able to access the recipe description page.
 
-<u> Test result: </u> **Successful**
+**Test result:** Successful :white_check_mark:
 
 ###### Testing user story 2
+
+***User story:** 
+
+**Hypothesis:** The user should logged out to perform this test.
+
+**Test scenario:**
+- [x] Do this 
+- [x] Do that
+
+**Test result:** Successful :white_check_mark:
+
+## Community members
+
+## The site owners
 
 # Compatibility & Responsiveness
 
