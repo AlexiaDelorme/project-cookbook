@@ -14,19 +14,9 @@
     {% endfor %}
 </div>
 
-<h5 class="center-align">See all recipes</h5>
+{% include "partials/carousel.html" %}
 
 {% endblock %}
 
-{% block carousel %}
-
-<h4 class="center-align headline-carousel">TRY OUR FAVORITE RECIPES!</h4>
-<div class="carousel">
-    {% for image in carousel %}
-    <a class="carousel-item" href="#"><img src="{{ image }}"></a> 
-    {% endfor %}
-</div>
-
-{% endblock %}
 
 

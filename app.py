@@ -134,12 +134,14 @@ def recipes():
     Display categories from which the user will be able to filter recipes.
     Search recipes according a specific category by clicking on this category. 
     """
+    # Get recipes to be displayed in the carousel
+    carousel = mongo.db.bakery_helpers.find_one({ 'category_name': 'carousel' })
     return render_template("recipes/recipes.html",
                             Page_name = "Recipes",
                             Page_title = "RECIPES BY...", 
                             Welcome_image = "../static/img/categories/bg.jpg", 
                             categories = mongo.db.recipes_categories.find(), 
-                            carousel = image_folder("carousel"))
+                            carousel = carousel)
 
 # ----- 3.1. RECIPES BY CATEGORY ----- #
 @app.route("/recipes/<category_name>")
@@ -151,12 +153,14 @@ def recipes_categories(category_name):
     # Store the category clicked by the user in a variable
     the_category =  mongo.db.recipes_categories.find_one({"category_name": category_name})
     the_name_category = the_category["category_name"].capitalize()
+    # Get recipes to be displayed in the carousel
+    carousel = mongo.db.bakery_helpers.find_one({ 'category_name': 'carousel' })
     return render_template("recipes/recipes_categories.html", 
                             Page_name = the_name_category,
                             Page_title = "RECIPES BY..", 
                             Welcome_image = "../static/img/categories/bg.jpg", 
                             category=the_category, 
-                            carousel = image_folder("carousel"))
+                            carousel = carousel)
 
 # ----- 3.2. RECIPES BY SUBCATEGORY ----- #
 @app.route("/recipes/<category_name>/<subcategory_name>")
@@ -775,13 +779,15 @@ def recipe_description(recipe_id):
     else:
         hours = prep_time // 60
         minutes = prep_time % 60
+    # Get recipes to be displayed in the carousel
+    carousel = mongo.db.bakery_helpers.find_one({ 'category_name': 'carousel' })
     return render_template("recipes/recipe_description.html", 
                             Page_name = the_recipe_name,
                             recipe = the_recipe,
                             user_favorites = favorite_recipes,
                             hours = hours,
                             minutes = minutes,
-                            carousel = image_folder("carousel"))
+                            carousel = carousel)
 
 # ------------------------------------------- #
 #               SPECIAL PAGES                 #

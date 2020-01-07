@@ -1,0 +1,7 @@
+<!-- Carousel-->
+<h4 class="center-align headline-carousel">TRY OUR FAVORITE RECIPES!</h4>
+<div class="carousel">
+    {% for favorite in carousel.list %}
+        <a class="carousel-item" href="{{url_for('recipe_description', recipe_id=favorite._id)}}"><img src="{{favorite.image_path}}"></a>  
+    {% endfor %}
+</div>

@@ -15,7 +15,7 @@ The purpose of this project is to make patisserie inclusive meaning that anyone 
 By creating a community that can share their own recipes, it will enable us to naturally expand our database but also promote new "chefs" by providing them with visibility.
 
 <div align="center">
-    <img src="https://i.ibb.co/TP0mdjr/readme-welcome.png" href="https://patisserie-cookbook.herokuapp.com" target="_blank" alt="The Pâtisserie Journal Logo" />
+    <img src="https://i.ibb.co/TP0mdjr/readme-welcome.png" href="https://patisserie-cookbook.herokuapp.com" target="_blank" alt="The Pâtisserie Journal" />
 </div> 
 
 ## Table of Contents
