@@ -17,21 +17,40 @@
 
 ##### HTML5
 
-HTML files succesfully passed this [HTML code validator](https://validator.w3.org/) by direct input as per screenshot provided down below.
+HTML files were passed through this [HTML code validator](https://validator.w3.org/) at the exception of errors related to the use of jinja templating language that is currently not recognized by the code validator. You can see below a screenshot of these recurring errors:
 
-![HTML5 Code Validator](link)
+![HTML5 Code Validator Errors](validators/html-errors.png)
 
 ##### CSS3
 
-style.css file succesfully passed this [CSS code validator](https://jigsaw.w3.org/css-validator/) by direct input as per screenshot provided down below.
+My style.css file succesfully passed this [CSS code validator](https://jigsaw.w3.org/css-validator/).
 
-![CSS Code Validator](link)
-
-##### Python
+![CSS Code Validator](validators/css3.png)
 
 ##### JS
 
-JS hint
+My JS file was passed through [JS Hint](https://jshint.com/), please find below the information provided by the code validator. 
+
+**Metrics:**
+- There are 12 functions in this file. 
+- Function with the largest signature take 1 arguments, while the median is 0.
+- Largest function has 10 statements in it, while the median is 1.
+- The most complex function has a cyclomatic complexity value of 2 while the median is 1.
+
+**Warnings:**
+- Arrow function syntax `=>` is only available in ES6 (use 'esversion: 6').
+
+**1 undefined variable:**
+- `swal` (used 4 times for Sweet Alert)
+
+**3 unused variables:**
+- `myPrintFunction` (function is invoked when print button is clicked)
+- `deleteRecipeFunction`(function is invoked when delete recipe button is clicked)
+- `deleteAccountFunction` (function is invoked delete account button is clicked)
+
+![JS Hint](validators/js.png)
+
+##### Python
 
 ## Jasmine
 
@@ -45,7 +64,7 @@ This project has been tested multiple times against each user stories previously
 
 ###### Testing user story 1 
 
-***User story:** As an external user, I want to make use of the site and benefit from having convenient access to the data provided by all community members.
+**User story:** As an external user, I want to make use of the site and benefit from having convenient access to the data provided by all community members.
 
 **Hypothesis:** The user should be logged out to perform this test.
 
@@ -59,7 +78,7 @@ This project has been tested multiple times against each user stories previously
 
 ###### Testing user story 2
 
-***User story:** As an external user, I want to be able to research recipes based on specific criteria and have a visually appealing and interactive interface while I am cooking. 
+**User story:** As an external user, I want to be able to research recipes based on specific criteria and have a visually appealing and interactive interface while I am cooking. 
 
 **Hypothesis:** The user should be logged out to perform this test.
 
@@ -72,7 +91,7 @@ This project has been tested multiple times against each user stories previously
 
 ###### Testing user story 3
 
-***User story:** As an external user, I also want to be able to browse recipes by category types (meal, diet, occasion or geography) and then have a list of all the recipes available for the category I selected. 
+**User story:** As an external user, I also want to be able to browse recipes by category types (meal, diet, occasion or geography) and then have a list of all the recipes available for the category I selected. 
 
 **Hypothesis:** The user should be logged out to perform this test.
 
@@ -95,7 +114,7 @@ This project has been tested multiple times against each user stories previously
 
 ###### Testing user story 4
 
-***User story:** As a user with specific constraints (food allergies, specific diets or simply missing a cooking tool…), I want to be able to find recipes that address my needs and be presented recipes based on my inputs.
+**User story:** As a user with specific constraints (food allergies, specific diets or simply missing a cooking tool…), I want to be able to find recipes that address my needs and be presented recipes based on my inputs.
 
 **Hypothesis:** The user should be logged out to perform this test.
 
@@ -116,7 +135,7 @@ This project has been tested multiple times against each user stories previously
 
 ###### Testing user story 5
 
-***User story:** As an external user, I want to be able to view the recipe instructions for all the recipes available in the database with the same level of details as a community member. I also want to be recommended some of the website creators' favorite recipes.  
+**User story:** As an external user, I want to be able to view the recipe instructions for all the recipes available in the database with the same level of details as a community member. I also want to be recommended some of the website creators' favorite recipes.  
 
 **Hypothesis:** The user should be logged out to perform this test.
 
@@ -141,7 +160,7 @@ This project has been tested multiple times against each user stories previously
 
 ###### Testing user story 6
 
-***User story:** As an external user, I want to be able to share recipes on different social platforms as well as be able to print them. 
+**User story:** As an external user, I want to be able to share recipes on different social platforms as well as be able to print them. 
 
 **Hypothesis:** The user should be logged out to perform this test.
 
@@ -157,14 +176,14 @@ This project has been tested multiple times against each user stories previously
 
 ###### Testing user story 7
 
-***User story:** As an external user, I want to be able to create a free account with minimal steps.
+**User story:** As an external user, I want to be able to create a free account with minimal steps.
 
 **Hypothesis:** The user should be logged out to perform this test.
 
 **Test scenario:**
 - [x] Click on the `SIGN UP` menu item in the navigation bar.
-- [x] Enter all the required information: First Name, Last Name, Email, Password and Confirm Password. Click the `SIGN UP`button. 
-- [x] If you provided a valid email address and succesfully confirmed your password, your account should have been created and you should have been redirected to the log in page. 
+- [x] Fill all the required information: First Name, Last Name, Email, Password and Confirm Password. Click the `SIGN UP`button. 
+- [x] If you provided a valid email address and successfully confirmed your password, your account should have been created and you should have been redirected to the log in page. 
 
 **Test result:** Successful :white_check_mark:
 
