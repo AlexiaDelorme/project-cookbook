@@ -182,12 +182,52 @@ This project has been tested multiple times against each user stories previously
 
 **Test scenario:**
 - [x] Click on the `SIGN UP` menu item in the navigation bar.
-- [x] Fill all the required information: First Name, Last Name, Email, Password and Confirm Password. Click the `SIGN UP`button. 
+- [x] Fill all the required information: First Name, Last Name, Email, Password and Confirm Password. Click the `SIGN UP` button. 
 - [x] If you provided a valid email address and successfully confirmed your password, your account should have been created and you should have been redirected to the log in page. 
 
 **Test result:** Successful :white_check_mark:
 
 ## Community members
+
+###### Testing user story 1
+
+**User story:** As a community member, I want to be able to log in with minimal steps by only using my email and password for authentication. I also want to be able to log out easily.
+
+**Hypothesis:** The user should already have registered to an account. 
+
+**Test scenario:**
+- [x] Click on the `LOG IN` menu item in the navigation bar.
+- [x] Provide your email and password then click the `LOG IN` button. 
+- [x] If you provided a valid email address and a correct password, you should be logged in and redirected to a personalized dashboard.
+- [x] On the right of the navigation bar, you should now view a button to `LOG OUT`. Click this button and you should now be back to the Log In page.
+
+**Test result:** Successful :white_check_mark:
+
+###### Testing user story 2
+
+**User story:** As a community member, I want to be able to edit my information details, password and delete my account permanently if necessary.
+
+**Hypothesis:** The user should be logged in to perform this test. 
+
+**Test scenario:**
+- [x] After being logged in to your account, on your account dashboard, click on `Manage Account`.
+- [x] You should view your account details via an non-editable form (First Name, Last Name, Email address).
+- Edit account details
+    - [x] Click on the `EDIT DETAILS` button. You should now be able to view an editable form.
+    - [x] Amend your First Name, Last Name, Email address and click on the `EDIT ACCOUNT` button.
+    - [x] You should be able to view your new account details. 
+- Edit password
+    - [x] Click on the `EDIT PASSWORD` button. You should now be able to view a form to amend your password. 
+    - [x] Enter your current password, choose a new password and then confirm it, finally click on the `UPDATE PASSWORD` button.
+    - [x] Your password should be updated. Log out and test logging in with this new password. 
+- Delete account
+    - [x] Get back to your account details page. At the bottom of the page below the `EDIT PASSWORD` button and above the footer, there should be a small paragraph saying "You want to delete your account? Click Here". Click on the `Here`anchor tag.
+    - [x] Confirm your password and then press the `DELETE ACCOUNT` button. 
+    - [x] A modal form should appear asking you to confirm your decision. Press the `Delete` button.
+    - [x] You should be logged out and a message should confirm you that your account was deleted. 
+    - [x] Try to log in with the previous credentials to check if your account has indeed been deleted.
+
+**Test result:** Successful :white_check_mark:
 
 ## The site owners
 
