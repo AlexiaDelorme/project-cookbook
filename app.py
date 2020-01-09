@@ -3,6 +3,7 @@ import logging
 from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
+from flask_paginate import Pagination, get_page_parameter, get_page_args
 from bson.objectid import ObjectId
 from datetime import datetime
 from helpers import *
@@ -123,8 +124,7 @@ def explore_results():
                            Page_name="Recipes Results",
                            Page_title=f"{recipes_number} Recipe(s) Found",
                            recipes=recipes,
-                           recipes_number=recipes_number,
-                           pagination=pagination_function(recipes))
+                           recipes_number=recipes_number)
 
 
 # ----- 3. RECIPES ----- #
@@ -176,8 +176,7 @@ def recipes_subcategories(category_name, subcategory_name):
     return render_template("recipes/recipes_subcategories.html",
                            Page_name=subcategory_name.capitalize(),
                            Page_title=f"{recipes_count} {subcategory_name.capitalize()} Recipes",
-                           recipes=recipes_subcategory_results,
-                           pagination=pagination_function(recipes_subcategory_results))
+                           recipes=recipes_subcategory_results)
 
 
 # ----- 4. ABOUT ----- #
@@ -492,8 +491,7 @@ def my_recipes():
                                Page_title="MANAGE RECIPES",
                                Welcome_image="../static/img/cookbook/bg2.jpg",
                                recipes=recipes_list_information,
-                               recipes_number=recipes_number,
-                               pagination=pagination_function(recipes_list_information))
+                               recipes_number=recipes_number)
     return redirect(url_for('access_denied'))
 
 
@@ -691,8 +689,7 @@ def cookbook():
                                Page_title="COOKBOOK",
                                Welcome_image="../static/img/cookbook/bg.jpg",
                                recipes=recipes_list_information,
-                               recipes_number=recipes_number,
-                               pagination=pagination_function(recipes_list_information))
+                               recipes_number=recipes_number)
     return redirect(url_for('access_denied'))
 
 # ----- 5. ADD/REMOVE FAVORITES ----- #
@@ -733,21 +730,30 @@ def delete_favorite(recipe_id):
 #              RECIPES RESULTS                #
 # ------------------------------------------- #
 
+def paginated_recipes(recipes, offset=0, per_page=10):
+    return recipes[offset: offset + per_page]
 
 # ----- ALL RECIPES PAGE ----- #
-@app.route("/results")
+@app.route("/results", methods=["GET"])
 def results():
     """
     Display all the recipes stored in the db.
     """
+    # Set up pagination for recipes results - Code credit: https://pythonhosted.org/Flask-paginate/
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    page = request.args.get(get_page_parameter(), type=int, default=1)
     recipes = mongo.db.recipes_information.find()
     recipes_number = recipes.count()
+    pagination = Pagination(page=page, total=recipes_number, search=search, record_name='recipes')
     return render_template("recipes/results.html",
                            Page_name="All Recipes",
                            Page_title=f"{recipes_number} RECIPES",
-                           recipes=recipes,
+                           recipes=paginated_recipes(recipes),
                            recipes_number=recipes_number,
-                           pagination=pagination_function(recipes))
+                           pagination=pagination)
 
 
 # ----- VIEW / RECIPE DESCRIPTION ----- #
