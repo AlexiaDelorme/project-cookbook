@@ -231,32 +231,54 @@ This project has been tested multiple times against each user stories previously
 
 ###### Testing user story 3
 
-**User story:** As a community member, I want to be able to create new recipes and then have the possibility to edit and/or to delete any of recipes that I have shared with the community.
+**User story:** As a community member, I want to be able to create new recipes and then have the possibility to edit and/or to delete any of the recipes that I have shared with the community.
 
 **Hypothesis:** The user should be logged in to perform this test. 
 
 **Test scenario:**
 - Add new recipe
     - [x] After being logged in to your account, on your account dashboard, click on `Add new recipe`.
-    - [x] You should view a form to add new recipes. Provide information for all required fields. 
-    - [x] 
+    - [x] You should view a form to add a new recipe. Fill in all the madatory fields that are highlighted with a red star and then click on the `ADD RECIPE` button at the bottom of the form.
+    - [x] If you filled in the form correctly, you should see a message confirming that your recipe was added succesfully. 
 - Edit recipe
-    - [x] xxx
-    - [x] xxx
+    - [x] Get back to your account dashboard and click on `Manage recipes`.
+    - [x] You should have a list of recipe cards for all the recipes you have added. Choose the last recipe you just created and click the `EDIT` button. 
+    - [x] You should view an editable form, pre-filled with the information of the recipe. Amend several fields such as the recipe name, recipe difficulty, serving size, add some ingredients etc... Click on the `EDIT RECIPE` button.
+    - [x] Check that the amendments done to the recipe are now reflected in the recipe description.
 - Delete recipe
-    - [x] Get back to 
-    - [x]  `DELETE ACCOUNT` button. 
+    - [x] Get back to your account dashboard and click on `Manage recipes`.
+    - [x] Delete your test recipe by clicking on the `DELETE` button. 
     - [x] A modal form should appear asking you to confirm your decision. Press the `Delete` button.
+    - [x] A message should confirm you that your recipe was deleted. It should no longer be visible in your menu `Manage recipes`. 
 
 **Test result:** Successful :white_check_mark:
 
-###### User story 4
+###### Testing user story 4
 
-As a community member, I want to be able to add/remove a recipe to my favourites so I can create my own online cookbook. 
+**User story:** As a community member, I want to be able to add/remove a recipe to my favorites so I can create my own online cookbook. 
 
-###### User story 5
+**Hypothesis:** The user should be logged in to perform this test. 
 
-Food lovers, wannabe cooks or anyone passionate about patisserie who wants to try out the success of their recipes.
+**Test scenario:**
+- [x] Click on the `EXPLORE` menu item in the navbar, leave the form blank and then click on `SEARCH RECIPES` so you get all the recipes.
+- [x] Pick one recipe that is currently not in your cookbook, click on the recipe to access its description.
+- Add to favorites
+    - [x] At the bottom of the recipe description, just above the carousel, you should see "Save as favorite?" as well as a pulse icon. 
+    - [x] Click on the heart pusle icon to add the recipe as favorite.
+    - [x] You should view a message confirming that the recipe was added to your favorites.
+    - [x] Click on the `COOKBOOK` menu item to access your favorite recipes and double-check that the recipe was added.
+- Remove from favorites
+    - [x] Get back to the previous recipe that is now part of your cookbook.
+    - [x] Go back to the bottom of the recipe description, you should now see "Remove from favorites?" with a pulse icon.
+    - [x] Click on the bin pusle icon to remove the recipe from your favorites.
+    - [x] You should view a message confirming that the recipe was removed from your favorites.
+    - [x] Get back to your cookbook and check that the recipe was indeed removed.
+
+**Test result:** Successful :white_check_mark:
+
+###### Testing user story 5
+
+This user story is out of testing scope.
 
 ## The site owners
 
