@@ -23,7 +23,7 @@
             <div class="col s12 m6 l4 category-box center-align">
                 <a class="anchor-title" href="{{ url_for('recipes_subcategories', category_name = category.category_name, subcategory_name=item.category_name)}}">
                     <h5 class="center">{{ item.category_name.capitalize() }}</h5>
-                    <img class="card-img" src="../{{ item.image_path }}" alt="{{ item.category_name }}"></img>
+                    <img class="card-img" src="../{{ item.image_path }}" alt="{{ item.category_name }}">
                 </a>
             </div>
         {% endfor %} 

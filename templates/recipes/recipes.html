@@ -8,7 +8,7 @@
     <div class="col s12 m6 l4 category-box center-align">
         <a class="anchor-title" href="{{url_for('recipes_categories', category_name = cat.category_name )}}">
             <h5 class="center-align">{{ cat.category_name.capitalize() }}</h5>
-            <img class="card-img" src="{{ cat.image_path }}" alt="{{ cat.category_name }}"></img>
+            <img class="card-img" src="{{ cat.image_path }}" alt="{{ cat.category_name }}">
         </a>
     </div>
     {% endfor %}
@@ -17,6 +17,3 @@
 {% include "partials/carousel.html" %}
 
 {% endblock %}
-
-
-
