@@ -229,7 +229,38 @@ This project has been tested multiple times against each user stories previously
 
 **Test result:** Successful :white_check_mark:
 
+###### Testing user story 3
+
+**User story:** As a community member, I want to be able to create new recipes and then have the possibility to edit and/or to delete any of recipes that I have shared with the community.
+
+**Hypothesis:** The user should be logged in to perform this test. 
+
+**Test scenario:**
+- Add new recipe
+    - [x] After being logged in to your account, on your account dashboard, click on `Add new recipe`.
+    - [x] You should view a form to add new recipes. Provide information for all required fields. 
+    - [x] 
+- Edit recipe
+    - [x] xxx
+    - [x] xxx
+- Delete recipe
+    - [x] Get back to 
+    - [x]  `DELETE ACCOUNT` button. 
+    - [x] A modal form should appear asking you to confirm your decision. Press the `Delete` button.
+
+**Test result:** Successful :white_check_mark:
+
+###### User story 4
+
+As a community member, I want to be able to add/remove a recipe to my favourites so I can create my own online cookbook. 
+
+###### User story 5
+
+Food lovers, wannabe cooks or anyone passionate about patisserie who wants to try out the success of their recipes.
+
 ## The site owners
+
+These user stories are out of testing scope.
 
 # Compatibility & Responsiveness
 
