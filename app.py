@@ -744,15 +744,18 @@ def results():
     q = request.args.get('q')
     if q:
         search = True
-    page = request.args.get(get_page_parameter(), type=int, default=1)
+    page, per_page, offset = get_page_args(page_parameter='page',
+                                           per_page_parameter='per_page')
     recipes = mongo.db.recipes_information.find()
     recipes_number = recipes.count()
     pagination = Pagination(page=page, total=recipes_number, search=search, record_name='recipes')
     return render_template("recipes/results.html",
                            Page_name="All Recipes",
                            Page_title=f"{recipes_number} RECIPES",
-                           recipes=paginated_recipes(recipes),
                            recipes_number=recipes_number,
+                           recipes=paginated_recipes(recipes),
+                           page=page,
+                           per_page=per_page,
                            pagination=pagination)
 
 
@@ -824,3 +827,4 @@ if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),
             debug=True)
+
