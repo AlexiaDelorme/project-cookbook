@@ -22,11 +22,8 @@
         {% endfor %}
     </div>
 
-{% endif %}
+{% include "partials/pagination.html" %} 
 
-<div class="container align-center">
-{{ pagination.info }} 
-{{ pagination.links }}
-</div>
+{% endif %}
 
 {% endblock %}
