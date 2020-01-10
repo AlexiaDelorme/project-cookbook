@@ -3,7 +3,6 @@ import logging
 from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
-from flask_paginate import Pagination, get_page_parameter, get_page_args
 from bson.objectid import ObjectId
 from datetime import datetime
 from helpers import *
@@ -65,10 +64,11 @@ def explore():
 
 
 # ----- 2.1 EXPLORE / RECIPES RESULTS ----- #
-@app.route("/explore/results", methods=["POST"])
+@app.route("/explore/results", methods=["POST", "GET"])
 def explore_results():
     """
     Display all the recipes matching the criteria selected in the form from the explore page.
+    The use of pagination limits the total number of recipes to 10 per page.
     """
     # Prepare serving data
     serving = int(request.form.get("serving")) if request.form.get("serving") else ""
@@ -119,12 +119,18 @@ def explore_results():
     # Pass all the recipes if user did not input any filters
     else:
         recipes = mongo.db.recipes_information.find()
-    recipes_number = recipes.count()
+    # Invoke pagination function to get variables necessary to pagination.
+    pagination_output = pagination_function(recipes)
+    # Get pagination, recipes and recipes_number
+    pagination = pagination_output["pagination"]
+    recipes = pagination_output["recipes"]
+    recipes_number = pagination_output["recipes_number"]
     return render_template("recipes/explore_results.html",
                            Page_name="Recipes Results",
                            Page_title=f"{recipes_number} Recipe(s) Found",
+                           recipes_number=recipes_number,
                            recipes=recipes,
-                           recipes_number=recipes_number)
+                           pagination=pagination)
 
 
 # ----- 3. RECIPES ----- #
@@ -165,18 +171,24 @@ def recipes_categories(category_name):
 
 
 # ----- 3.2. RECIPES BY SUBCATEGORY ----- #
-@app.route("/recipes/<category_name>/<subcategory_name>")
+@app.route("/recipes/<category_name>/<subcategory_name>", methods=["GET"])
 def recipes_subcategories(category_name, subcategory_name):
     """
     Display recipes results according to category and sub-category selected by the user.
     """
     # Get recipes filtered by the sub-category
     recipes_subcategory_results = mongo.db.recipes_information.find({category_name: {"$all": [subcategory_name]}})
-    recipes_count = recipes_subcategory_results.count()
+    # Invoke pagination function to get variables necessary to pagination.
+    pagination_output = pagination_function(recipes_subcategory_results)
+    # Get pagination, recipes and recipes_number
+    pagination = pagination_output["pagination"]
+    recipes = pagination_output["recipes"]
+    recipes_number = pagination_output["recipes_number"]
     return render_template("recipes/recipes_subcategories.html",
                            Page_name=subcategory_name.capitalize(),
-                           Page_title=f"{recipes_count} {subcategory_name.capitalize()} Recipes",
-                           recipes=recipes_subcategory_results)
+                           Page_title=f"{recipes_number} {subcategory_name.capitalize()} Recipes",
+                           recipes=recipes,
+                           pagination=pagination)
 
 
 # ----- 4. ABOUT ----- #
@@ -730,32 +742,27 @@ def delete_favorite(recipe_id):
 #              RECIPES RESULTS                #
 # ------------------------------------------- #
 
-def paginated_recipes(recipes, offset=0, per_page=10):
-    return recipes[offset: offset + per_page]
 
 # ----- ALL RECIPES PAGE ----- #
 @app.route("/results", methods=["GET"])
 def results():
     """
-    Display all the recipes stored in the db.
+    Display all the recipes stored in the db. 
+    The use of pagination limits the total number of recipes to 10 per page.
     """
-    # Set up pagination for recipes results - Code credit: https://pythonhosted.org/Flask-paginate/
-    search = False
-    q = request.args.get('q')
-    if q:
-        search = True
-    page, per_page, offset = get_page_args(page_parameter='page',
-                                           per_page_parameter='per_page')
-    recipes = mongo.db.recipes_information.find()
-    recipes_number = recipes.count()
-    pagination = Pagination(page=page, total=recipes_number, search=search, record_name='recipes')
+    # Query all the recipes in the database
+    query_recipes = mongo.db.recipes_information.find()
+    # Invoke pagination function to get variables necessary to pagination.
+    pagination_output = pagination_function(query_recipes)
+    # Get pagination, recipes and recipes_number
+    pagination = pagination_output["pagination"]
+    recipes = pagination_output["recipes"]
+    recipes_number = pagination_output["recipes_number"]
     return render_template("recipes/results.html",
                            Page_name="All Recipes",
                            Page_title=f"{recipes_number} RECIPES",
                            recipes_number=recipes_number,
-                           recipes=paginated_recipes(recipes),
-                           page=page,
-                           per_page=per_page,
+                           recipes=recipes,
                            pagination=pagination)
 
 
