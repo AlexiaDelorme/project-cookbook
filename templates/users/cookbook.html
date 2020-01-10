@@ -21,7 +21,7 @@
         <div class="col s12 m6 l4 category-box center-align">
             <a class="anchor-title" href="{{url_for('recipe_description', recipe_id=recipe._id)}}">
                 <h5 class="center">{{ recipe.recipe_name.capitalize() }}</h5>
-                <img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}"></img>
+                <img class="card-img" src="{{recipe.image_path}}" alt="{{recipe.recipe_name}}">
             </a>
         </div>
         {% endfor %}
