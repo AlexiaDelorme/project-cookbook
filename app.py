@@ -73,10 +73,7 @@ def explore_results():
     # Prepare serving data
     serving = int(request.form.get("serving")) if request.form.get("serving") else ""
     # Prepare prep_time data
-    if (request.form.get("prep_time") != ""):
-        prep_time = int(request.form.get("prep_time"))
-    else:
-        prep_time = ""
+    prep_time = int(request.form.get("prep_time")) if request.form.get("prep_time") else ""
     # The following code block (from line 86 to 113) was implemented thanks to the Code Institute Tutor Team
     # Create a dictionary to store the form fields
     form_dictionary = {
