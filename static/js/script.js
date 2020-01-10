@@ -39,6 +39,11 @@ $(document).ready(function() {
         fieldWrapper.append(removeButton);
         $("#instructionsform").append(fieldWrapper);
     });
+
+    // Remove existing ingredients/instructions when user edits a recipe
+    $(".remove-btn").click(function() {
+            $(this).parent().remove();
+    });
     
 });
 

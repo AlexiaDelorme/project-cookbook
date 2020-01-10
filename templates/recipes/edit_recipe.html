@@ -187,10 +187,14 @@
                 <legend for="ingredients">List of Ingredients<span class="red-text">*</span></legend>
                 <div class="input-field col s12" id="ingredientsform">
                     {% for ingredient in recipe.ingredients %}
-                    <textarea id="ingredients" name="ingredients" minlength="1" maxlength="100" data-length="100" class="validate materialize-textarea col s12" required>{{ ingredient }}</textarea>
-                    <label class="active" for="ingredients" data-error="*required" data-success="validated"></label>
+                    <div class="fieldwrapper" id="existingIngredientField{{ loop.index }}">
+                        <textarea id="ingredients" name="ingredients" minlength="1" maxlength="100" data-length="100" class="validate materialize-textarea col s11" required>{{ ingredient }}</textarea>
+                        <label class="active" for="ingredients" data-error="*required" data-success="validated"></label>
+                        <button class="btn remove-btn col s1" value="-"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                    </div>
                     {% endfor %}
                 </div>
+
                 <!-- Add new ingredient -->
                 <button class="btn add" id="add-ingredients"><i class="fa fa-plus" aria-hidden="true"></i></button>
             </div>
@@ -200,8 +204,11 @@
                 <legend for="instructions">Preparation Steps<span class="red-text">*</span></legend>
                 <div class="input-field col s12" id="instructionsform">
                     {% for instruction in recipe.instructions %}
-                    <textarea id="instructions" name="instructions" minlength="5" maxlength="500" data-length="500" class="validate materialize-textarea col s12" required>{{ instruction }}</textarea>
-                    <label class="active" for="instructions" data-error="*required" data-success="validated"></label>
+                    <div class="fieldwrapper" id="existingInstructionField{{ loop.index }}">
+                        <textarea id="instructions" name="instructions" minlength="5" maxlength="500" data-length="500" class="validate materialize-textarea col s11" required>{{ instruction }}</textarea>
+                        <label class="active" for="instructions" data-error="*required" data-success="validated"></label>
+                        <button class="btn remove-btn col s1" value="-"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                    </div>
                     {% endfor %}
                 </div>
                 <!-- Add new instruction -->
