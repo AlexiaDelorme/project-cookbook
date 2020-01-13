@@ -25,18 +25,13 @@
 
             <div class="row align-center">
                 <div class="col s12">
-                    <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}">
-                        <button  class="btn waves-effect waves-light button-margins" type="submit" name="action">Edit
-                            <i class="material-icons right">create</i>
-                        </button>  
-                    </a>
+                    <a class="btn waves-effect waves-light button-margins" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}">Edit <i class="material-icons right">create</i></a>
                 </div>
                 <div class="col s12 ">
                     <form method="post" id="{{recipe._id}}Form" action="{{url_for('delete_recipe', recipe_id=recipe._id)}}">
                         <input type="hidden">
                     </form>
-                    <button onclick="deleteRecipeFunction('{{recipe._id}}')" class="btn waves-effect waves-light button-margins" type="submit" name="action">Delete
-                        <i class="material-icons right">delete</i>
+                    <button onclick="deleteRecipeFunction('{{recipe._id}}')" class="btn waves-effect waves-light button-margins" type="submit" name="action">Delete<i class="material-icons right">delete</i>
                     </button>
                 </div>
             </div>
