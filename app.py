@@ -43,8 +43,10 @@ def home():
 @app.route("/explore")
 def explore():
     """
-    Display a form with fields from which the user will be able to filter recipes.
-    The user can then click a search button and be redirected to the results page with recipes matching the criteria.
+    Display a form with fields from which the user will be able to filter
+    recipes.
+    The user can then click a search button and be redirected to the results
+    page with recipes matching the criteria.
     """
     # Create variables to filter recipes
     meal_categories = mongo.db.recipes_categories.find_one({'category_name': 'meal'})
@@ -67,14 +69,18 @@ def explore():
 @app.route("/explore/results", methods=["POST", "GET"])
 def explore_results():
     """
-    Display all the recipes matching the criteria selected in the form from the explore page.
+    Display all the recipes matching the criteria selected in the form from
+    the explore page.
     The use of pagination limits the total number of recipes to 10 per page.
     """
     # Prepare serving data
     serving = int(request.form.get("serving")) if request.form.get("serving") else ""
     # Prepare prep_time data
     prep_time = int(request.form.get("prep_time")) if request.form.get("prep_time") else ""
-    # The following code block (from line 86 to 113) was implemented thanks to the Code Institute Tutor Team
+    """
+    The following code block (from line 86 to 113) was implemented thanks
+    to the Code Institute Tutor Team.
+    """
     # Create a dictionary to store the form fields
     form_dictionary = {
         "difficulty": request.form.get("difficulty"),
@@ -151,8 +157,10 @@ def recipes():
 @app.route("/recipes/<category_name>")
 def recipes_categories(category_name):
     """
-    Display sub-categories from the category selected previously in the "recipes.html" page
-    Search recipes according to a specific sub-category by clicking on this sub-category.
+    Display sub-categories from the category selected previously in the
+    "recipes.html" page.
+    Search recipes according to a specific sub-category by clicking on this
+    sub-category.
     """
     # Store the category clicked by the user in a variable
     the_category = mongo.db.recipes_categories.find_one({"category_name": category_name})
@@ -171,7 +179,8 @@ def recipes_categories(category_name):
 @app.route("/recipes/<category_name>/<subcategory_name>", methods=["GET"])
 def recipes_subcategories(category_name, subcategory_name):
     """
-    Display recipes results according to category and sub-category selected by the user.
+    Display recipes results according to category and sub-category selected by
+    the user.
     """
     # Get recipes filtered by the sub-category
     recipes_subcategory_results = mongo.db.recipes_information.find({category_name: {"$all": [subcategory_name]}})
@@ -218,13 +227,13 @@ def signup():
 def insert_user_account():
     """
     Once user have submitted the form, it gets redirected to this function.
-    The user details will only be posted to the db as a new account if the email provided is not already linked to an existing account.
+    The user details will only be posted to the db as a new account if the
+    email provided is not already linked to an existing account.
     """
     if request.method == "POST":
         # Create a query to the db to filter user accounts with email provided
         user_accounts = mongo.db.user_accounts
         user = user_accounts.find_one({"email": request.form.get("email")})
-        logging.info('User account found in MongoDB: {} match the email provided by the user in the form'.format(user))
         # Check if email provided is not already linked to an existing account
         if user:
             flash(f'An account already exists for { request.form.get("email") }.', 'white-text red')
@@ -288,9 +297,9 @@ def login():
 def account():
     """
     Display a personalized user dashboard with different menu options.
-    User can manage his account details, manage his own recipes, create new recipe,
-    access his cookbook (with his/her recipes stored as favorites) and finally search
-    for more recipes.
+    User can manage his account details, manage his own recipes, create new
+    recipe, access his cookbook (with his/her recipes stored as favorites) and
+    finally search for more recipes.
     """
     # Check if the user is logged before rendering the template
     if "email" in session:
@@ -314,8 +323,9 @@ def logout():
 @app.route("/account_details")
 def account_details():
     """
-    Display a recap of the user account details (First Name, Last Name and Email).
-    The user has the option to click a button to edit his/her details and/or password.
+    Display user account details (First Name, Last Name and Email).
+    The user has the option to click a button to edit his/her details and/or
+    password.
     """
     # Check if the user is logged before rendering the template
     if "email" in session:
@@ -333,7 +343,8 @@ def account_details():
 def edit_my_details():
     """
     Display an editable form for the user to amend his/her account details.
-    The user can then post a request to update his/her new details by clicking the button form.
+    The user can then post a request to update his/her new details by clicking
+    the button form.
     """
     # Check if the user is logged before rendering the template
     if "email" in session:
@@ -350,8 +361,10 @@ def edit_my_details():
 @app.route("/update_my_details/<account_id>", methods=["POST"])
 def update_my_details(account_id):
     """
-    Once user have submitted the previous form, it gets redirected to this function.
-    The user details will only be updated if the newly provided email is not already linked to an existing account.
+    Once user have submitted the previous form, it gets redirected to this
+    function.
+    The user details will only be updated if the newly provided email is not
+    already linked to an existing account.
     """
     # Check if email provided is not already linked to an existing account
     user = mongo.db.user_accounts.find_one({"email": request.form.get("email").lower()})
@@ -394,7 +407,8 @@ def update_my_details(account_id):
 def edit_password():
     """
     Display an editable form for the user to change his/her password.
-    The user is required to provide existing password, new password and a confirmation of the latest.
+    The user is required to provide existing password, new password and a
+    confirmation of the latest.
     """
     # Check if the user is logged in
     if "email" in session:
@@ -430,8 +444,10 @@ def edit_password():
 @app.route("/delete_account")
 def delete_account():
     """
-    Display a form for the user to confirm his/her password before account deletion.
-    The user is then asked to confirm his/her decision by a 2-tier confirmation modal.
+    Display a form for the user to confirm his/her password before account
+    deletion.
+    The user is then asked to confirm his/her decision by a 2-tier confirmation
+    modal.
     """
     # Check if the user is logged before rendering the template
     if "email" in session:
@@ -479,7 +495,7 @@ def perm_delete_account(account_id):
 def my_recipes():
     """
     Display all the recipes that were added by this user.
-    The user can edit and/or delete the recipe by clicking on the assigned button.
+    The user can edit and/or delete recipes by clicking on the assigned button.
     """
     # Check if the user is logged in
     if "email" in session:
@@ -580,7 +596,8 @@ def update_recipe(recipe_id):
 def delete_recipe(recipe_id):
     """
     Delete recipe selected by the user from the previous menu.
-    Delete the recipe from the user's recipes list and all users that saved it as a favorite.
+    Delete the recipe from the user's recipes list and all users that saved it
+    as a favorite.
     """
     recipes = mongo.db.recipes_information
     user_accounts = mongo.db.user_accounts
@@ -628,7 +645,8 @@ def add_recipe():
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
     """
-    Add new recipe after user successfully submitted the form, then redirects to user's own recipes list to display the newly added recipe.
+    Add new recipe after user successfully submitted the form, then redirects
+    to user's own recipes list to display the newly added recipe.
     """
     # Get user's ID to link recipe to the logged user
     logged_user = mongo.db.user_accounts.find_one({"email": session["email"]})["_id"]
@@ -744,7 +762,7 @@ def delete_favorite(recipe_id):
 @app.route("/results", methods=["GET"])
 def results():
     """
-    Display all the recipes stored in the db. 
+    Display all the recipes stored in the db.
     The use of pagination limits the total number of recipes to 10 per page.
     """
     # Query all the recipes in the database
@@ -767,7 +785,8 @@ def results():
 @app.route("/recipe/<recipe_id>")
 def recipe_description(recipe_id):
     """
-    Display recipe informations after user clicked on the image card from the results page.
+    Display recipe informations after user clicked on the image card from the
+    results page.
     """
     # Check if the user is logged in
     if "email" in session:
@@ -818,7 +837,8 @@ def page_not_found(e):
 @app.route('/access_denied')
 def access_denied():
     """
-    Display a customized denied access page for pages that require to be logged in.
+    Display a customized denied access page for pages that require to be logged
+    in.
     """
     return render_template("general/access.html",
                            Page_name="Access Denied")
@@ -831,4 +851,3 @@ if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),
             debug=True)
-
