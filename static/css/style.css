@@ -195,6 +195,10 @@ ul.list-styling>li {
     display: list-item;
 }
 
+ul:not(.browser-default) {
+    padding-left: 6rem;
+}
+
 i.fa.fa-shopping-basket {
     color: #ee6e73;
 }
