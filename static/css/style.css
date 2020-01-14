@@ -195,7 +195,7 @@ ul.list-styling>li {
     display: list-item;
 }
 
-ul:not(.browser-default) {
+ul.list-styling {
     padding-left: 6rem;
 }
 
