@@ -284,16 +284,119 @@ This user story is out of testing scope.
 
 These user stories are out of testing scope.
 
+# Testing Features
+
+## Features for all users
+
+###### Features on every pages
+
+1. Navbar
+
+**Test scenario:**
+- [x] Check that each following menu items display correctly when the user is not logged in (and following this order): The Pâtisserie Logo, Home, Explore, Recipes, About, Sign Up and Log In. 
+- [x] Hover over each menu items and confirm that the background colour changes from white to grey. 
+- [x] Click on `The Pâtisserie` logo, it should take the user back to the home page.
+- [x] Click on `Home`, it should take the user back to the home page.
+- [x] Click on `Explore`, it should take the user to the explore recipes page.
+- [x] Click on `Recipes`, it should take the user to the recipes by categories page.
+- [x] Click on `About`, it should take the user to the about page.
+- [x] Click on `Sign Up`, it should take the user to the sign up page.
+- [x] Click on `Log In`, it should take the user to the log in page.
+
+**Test result:** Successful :white_check_mark:
+
+2. Footer 
+
+**Test scenario:**
+- [x] Confirm that the icons in the footer display correctly in the following order: Facebook, Instagram, Youtube, Pinterest and Twitter.
+- [x] Hover over each icons and confirm that their colours change to the social media "referenced" colour. Example: Facebook icon should turn dark blue, Youtube icon should turn red...
+- [x] Click on each social media icon, it should take the user to the corresponding social media page, opening in a new tab. It takes the user to the home page of each social media as this is a mock project - no account was created.  
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 1 - Home page
+
+**Hypothesis:** The user should be logged out to perform this test.
+
+**Test scenario:**
+- [x] The title and the picture of the welcome page loaded successfully. 
+- Our recipes section   
+    - [x] When scrolling down, the user should first see a section teaser for recipes. 
+    - [x] Confirm that the three pictures loaded successfully. 
+    - [x] When the user hovers over `EXPLORE RECIPES`, the font colour should turn pink and the border below should expand. 
+    - [x] Click on `EXPLORE RECIPES`, it should take the user to the explore recipes page. 
+- Online cookbook section
+    - [x] When scrolling down, the user should then see a section teaser for the online cookbook. 
+    - [x] Confirm that the picture loaded successfully. 
+    - [x] When the user hovers over `JOIN US`, the font colour should turn pink and the border below should expand. 
+    - [x] Click on `JOIN US`, it should take the user to the sign up page. 
+- About us section
+    - [x] When scrolling down, the user should finally see a section teaser to present the website.  
+    - [x] Confirm that the picture loaded successfully. 
+    - [x] When the user hovers over `LEARN MORE`, the font colour should turn pink and the border below should expand. 
+    - [x] Click on `LEARN MORE`, it should take the user to the sign up page. 
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 2 - Search recipes using a form
+
+**Test scenario:**
+- [x] The three pictures and the page title loaded successfully.
+- [x] The form loaded successfully with the following fields:
+    - recipe difficulty: confirm that the listings loaded for the dropdown menu and that only single selection is allowed.
+    - preparation time: confirm that single selection is allowed.
+    - max serving: confirm that fill can be filled by increment (using the arrow) or direct input. 
+    - meal category: confirm that the listings loaded and multiple selection is allowed.
+    - diet category: confirm that the listings loaded and multiple selection is allowed.
+    - exclude allergens: confirm that the listings loaded for the dropdown menu and that multiple selection is allowed.
+    - exclude specific tools: confirm that the listings loaded for the dropdown menu and that multiple selection is allowed.
+    - occasion: confirm that the listings loaded for the dropdown menu and that multiple selection is allowed.
+    - geography: confirm that the listings loaded for the dropdown menu and that multiple selection is allowed.
+- [x] Leave all the fields blank, it should not prevent the user from submitting the form. 
+- [x] Combine several fields to search for a recipe and confirm that the results match the criteria. More detailed tests were already done in the user stories testing section (user stories 2 & 4).
+- [x] When search results are presented to the user, confirm that:
+    - the number of recipes found is displayed in the title,
+    - the recipe cards loaded successfully displaying the recipe title and an image,
+    - when the user overs the recipe title/image, the title should turn pink,
+    - clicking on the recipe title/image, should take the user to the recipe description page,
+    - the pagination at the bottom of the page loaded successfully,
+    - a maximum of 10 recipes per page should be displayed. 
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 3 - Browse recipes by categories type
+
+**Test scenario:**
+- [x] The pictures and the page title loaded successfully.
+- [x] The following categories presented as image cards should be loaded: Occasion, Geography, Diet, Meal.
+- [x] At the bottom of the page, a carousel presenting the website owners' favorite recipes should be displayed.
+    - Carousel slides are not switched automatically, the user can click on the carousel to change slides. 
+    - When the user clicks on the slide, it should take him to the corresponding recipe description page.
+- [x] Click on the `Occasion` category, the the following sub-categories presented as image cards should be loaded: Christmas, New Year's, Hanukkah, Easter, Birthdays, Weddings, Thanksgiving, Halloween. 
+    - Click on each occasion and confirm that the results displayed match the criteria of the occasion selected. 
+    - Repeat this operation for each individual occasion.
+- [x] Click on the `Geography` category, the following sub-categories presented as a simple list should be loaded: Africa, Asia, Europe, North America, South America, Middle East, Oceania. 
+    - Click on each sub-category and confirm that the results displayed match the criteria of the geographical area selected. 
+    - Repeat this operation for each geographical area.
+- [x] Click on the `Diet` category, the following sub-categories presented as a simple list should be loaded: Vegan, Vegetarian, Gluten-free, Sugar-free, Lactose-free. 
+    - Click on each diet and confirm that the results displayed match the criteria of the diet selected. 
+    - Repeat this operation for each individual diet.
+- [x] Click on the `Meal` category, the the following sub-categories presented as image cards should be loaded: Breakfast, Snack, Drink, Dessert.
+    - Click on each meal cateogry and confirm that the results displayed match the criteria of meal category selected. 
+    - Repeat this operation for each meal category. 
+- [x] Confirm that the recipes results presented after selecting category, and then sub-category display: the number of results in the title, recipe image cards and pagination. 
+- [x] Further testings were also performed in the user stories testing section (user story 3). 
+
 # Compatibility & Responsiveness
 
-A cross browser testing was performed for each user stories scenario to ensure that all functionalities render well in different browsers:
+A cross browser testing was performed for each features:
 - Safari
 - Google Chrome
 - Mozilla Firefox
 - Internet Explorer
 - Opera 
 
-The responsiveness of the webiste was tested thanks to Google Chrome developer tool, the following devices size were tested and all elements were displayed without issued:
+The responsiveness of the webiste was tested thanks to Google Chrome developer tool, the following devices size were tested and all elements were displayed without issues:
 - Galaxy S5 
 - Pixel 2 / Pixel 2 XL 
 - iPhone 5/SE / iPhone X 
