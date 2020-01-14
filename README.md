@@ -430,13 +430,15 @@ Document 2
 
 #### Features for all users
 
+###### Features on every page
+- Navigation bar with a logo and links to the different pages: Home, Explore, Recipes, About, Sign Up and Log In.
+- Footer with icon links to the following social media: Facebook, Instagram, YouTube, Pinterest, and Twitter (no actual account created as this is for education purpose only). 
+
 ###### Feature 1 - Home page
 Any external user landing to the home page of this website will be presented with a general welcome page with the following features:
-- Navigation bar with a logo and links to the different pages: Home, Explore, Recipes, About, Sign Up and Log In.
 - Recipes teaser and a direct link to explore recipes directly by clicking on the headline.
 - Short presentation of the online cookbook and a direct link to register by clicking on the "Join Us" headline.
 - A direct link to the "About Us" section of the website.
-- A footer with icon links to the following social media: Facebook, Instagram, YouTube, Pinterest, and Twitter (no actual account created as this is for education purpose only). 
 
 ###### Feature 2 - Search recipes using a form
 - Users can search for recipes by filtering on any criteria provided within the form.
