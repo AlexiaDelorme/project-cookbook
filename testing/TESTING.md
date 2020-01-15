@@ -2,11 +2,11 @@
 1. [Automated Testing](#automated-testing)
 
 2. [User Stories Testing](#user-stories)
-    - 2.1. [External users](external-users)
-    - 2.2 [Community members](community-members)
+    - 2.1. [External users](#external-users)
+    - 2.2 [Community members](#community-members)
 
 3. [Testing Features](#testing-features)
-    - 3.1 [Features for all users](all-users)
+    - 3.1 [Features for all users](#all-users)
     - 3.2 [Features for community members](#features-community)
 
 4. [Compatibility & Responsiveness](#compatibility)
