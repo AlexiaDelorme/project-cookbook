@@ -1,3 +1,6 @@
+# Testing File
+
+## Table of Content
 
 1. [Automated Testing](#automated-testing)
 
@@ -17,9 +20,9 @@
 
 <a name="automated-testing"/>
 
-# Automated Testing
+## Automated Testing
 
-## Code quality
+### Code quality
 
 ##### HTML5
 
@@ -60,13 +63,13 @@ My JS file was passed through [JS Hint](https://jshint.com/), please find below 
 
 <a name="user-stories"/>
 
-# User Stories Testing
+## User Stories Testing
 
 This project has been tested multiple times against each user stories previously listed in the UX section. 
 
 <a name="external-users"/>
 
-## External users
+### External users
 
 ###### Testing user story 1 
 
@@ -195,7 +198,7 @@ This project has been tested multiple times against each user stories previously
 
 <a name="community-members"/>
 
-## Community members
+### Community members
 
 ###### Testing user story 1
 
@@ -294,11 +297,11 @@ These user stories are out of testing scope.
 
 <a name="testing-features"/>
 
-# Testing Features
+## Testing Features
 
 <a name="all-users"/>
 
-## Features for all users
+### Features for all users
 
 ###### Features on every pages
 
@@ -436,7 +439,7 @@ The testing of this feature was thouroughly tested in the user stories section, 
 
 <a name="features-community"/>
 
-## Features for community members
+### Features for community members
 
 ###### Feature 1 - Log in to their account
 
@@ -464,7 +467,7 @@ The testing of this feature was thouroughly tested in the user stories section, 
 
 <a name="compatibility"/>
 
-# Compatibility & Responsiveness
+## Compatibility & Responsiveness
 
 A cross browser testing was performed for each features:
 - Safari
@@ -482,11 +485,11 @@ The responsiveness of the webiste was tested thanks to Google Chrome developer t
 
 <a name="known-issues"/>
 
-# Known Issues
+## Known Issues
 
 <a name="solved"/>
 
-## Solved Issues
+### Solved Issues
 
 * xxx
 * xxx
@@ -494,4 +497,4 @@ The responsiveness of the webiste was tested thanks to Google Chrome developer t
 
 <a name="unsolved"/>
 
-## Unsolved Issues
+### Unsolved Issues
