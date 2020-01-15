@@ -19,39 +19,44 @@ By creating a community that can share their own recipes, it will enable us to n
 </div> 
 
 ## Table of Contents
-1. [UX](#UX)
-    - [User Stories](#)
-        - [External Users](#)
-        - [Site Owners](#)
-    - [Design](#)
-    - [Wireframes](#)
-    - [Flowchart](#)
-    - [Database structure](#)
-        - [Non-static collections](#)
-        - [Static collections](#)
+1. [UX](#ux)
+    - [User Stories](#user-stories)
+        - [External Users](#external-users)
+        - [Community Members](#community-members)
+        - [Site Owners](#site-owners)
+    - [Design](#design)
+    - [Wireframes](#wireframes)
+    - [Flowchart](#flowchart)
+    - [Database structure](#db)
+        - [Non-static collections](#non-static)
+        - [Static collections](#static)
 
-2. [Features](#)
-    - [Current Features](#)
-    - [Future Features](#)
+2. [Features](#features)
+    - [Current Features](#current-features)
+    - [Future Features](#future-features)
 
-3. [Technologies Used](#)
-    - [Languages](#)
-    - [Libraries](#)
-    - [Tools](#)
+3. [Technologies Used](#tech)
+    - [Languages](#languages)
+    - [Libraries](#libraries)
+    - [Tools](#tools)
 
-4. [Testing](#)
+4. [Testing](#testing)
 
-5. [Deployment](#)
-    - [Heroku Deployment](#)
-    - [Local Deployment (GitPod)](#)
+5. [Deployment](#deployment)
+    - [Heroku Deployment](#depl-heroku)
+    - [Local Deployment (GitPod)](#depl-gitpod)
 
-6. [Credits](#)
-    - [Content](#)
-    - [Media](#)
-    - [Code](#)
-    - [Acknowledgements](#)
+6. [Credits](#credits)
+    - [Content](#content)
+    - [Media](#media)
+    - [Code](#code)
+    - [Acknowledgements](#ack)
+
+<a name="ux"/>
 
 # UX
+
+<a name="user-stories"/>
 
 ## User Stories
 
@@ -59,6 +64,8 @@ For this project, I identified the following stakeholders:
 -	External users
 -	Community members
 -	The site owners
+
+<a name="external-users"/>
 
 ### External users
 
@@ -90,6 +97,8 @@ As an external user, I want to be able to share recipes on different social plat
 
 As an external user, I want to be able to create a free account with minimal steps.
 
+<a name="community-members"/>
+
 ### Community members
 
 ###### User story 1
@@ -112,7 +121,9 @@ As a community member, I want to be able to add/remove a recipe to my favourites
 
 Food lovers, wannabe cooks or anyone passionate about patisserie who wants to try out the success of their recipes.
 
-### Site's owner
+<a name="site-owners"/>
+
+### Site owners
 
 ###### User story 1
 
@@ -125,6 +136,8 @@ Be the first member of this community to share my own patisserie recipes!
 ###### User story 3
 
 Building a full-stack website using Python and mini-framework Flask that allows me to apply my skills in databases handling and interactive design. 
+
+<a name="design"/>
 
 ## Design
 
@@ -148,11 +161,15 @@ In terms of general layout, I wanted a classy style that would remind the user o
 
 In an effort to keep my layout smart but understated, I have decided to select one unique font family from Google Fonts called [Signika](https://fonts.google.com/?query=Signika). 
 
+<a name="wireframes"/>
+
 ## Wireframes
 
 I have used Balsamiq to create my wireframes. I first brainstormed on the structure and then created the site map. There are of course some differences with the final project as these wireframes were created during the preparation phase. 
 
 You can find all my wireframes [here](static/wireframes/).
+
+<a name="flowchart"/>
 
 ## Flowchart
 
@@ -160,9 +177,13 @@ You can find all my wireframes [here](static/wireframes/).
     <img src="static/flowchart/flowchart.png" href="static/flowchart/flowchart.png" target="_blank" alt="Flowchart">
 </div>
 
+<a name="db"/>
+
 ## Database structure
 
 Please find below the structure I used for my database using MongoDB. 
+
+<a name="non-static"/>
 
 ### Non-static collections
 
@@ -205,6 +226,8 @@ Please find below the structure I used for my database using MongoDB.
     "comments_list": <Array>
 }
 ```
+
+<a name="static"/>
 
 ### Static collections
 
@@ -424,7 +447,11 @@ Document 2
 }
 ```
 
+<a name="features"/>
+
 # Features
+
+<a name="current-features"/>
 
 ## Current Features
 
@@ -578,6 +605,8 @@ Any external user landing to the home page of this website will be presented wit
 - Their cookbook will be updated accordingly.
 - While adding a new recipe, users can also directly save it as favorite.
 
+<a name="future-features"/>
+
 ## Future Features
 
 As a matter of feasability or scope, I did not implement the below functionalities in my project and would like to add them to improve my project further. 
@@ -596,7 +625,11 @@ As a matter of feasability or scope, I did not implement the below functionaliti
     - gramms/liters/cups for ingredients
     - celsius/fahrenheit degrees for baking time
 
+<a name="tech"/>
+
 # Technologies Used
+
+<a name="languages"/>
 
 ## languages
 
@@ -614,6 +647,8 @@ As a matter of feasability or scope, I did not implement the below functionaliti
 
 ##### [Python 3](https://www.python.org/downloads/release/python-374/)
 - I used Python 3 as the back-end programming language for my application.
+
+<a name="libraries"/>
 
 ## Libraries
 
@@ -640,6 +675,8 @@ As a matter of feasability or scope, I did not implement the below functionaliti
 
 ##### [Google Fonts](https://fonts.google.com/)
 - I used one of Google Fonts for my website.
+
+<a name="tools"/>
 
 ## Tools
 
@@ -675,11 +712,17 @@ As a matter of feasability or scope, I did not implement the below functionaliti
 ##### [Imgbb](https://imgbb.com)
 - For recipes images, I decided to store them externally using Imgbb.
 
+<a name="testing"/>
+
 # Testing 
 
 All the documentation regarding the testing of this project can be found in this [TESTING.md](testing/TESTING.md) file.
 
+<a name="deployment"/>
+
 # Deployment
+
+<a name="depl-heroku"/>
 
 ## Heroku
 
@@ -699,6 +742,8 @@ My application was deployed through [heroku](https://dashboard.heroku.com) using
     - **MONGO_URI**: `<LINK_TO_MONGO_DB>`
     - **SECRET_KEY**: `<SECRET_KEY>`
 5. In the `Deploy` tab, choose `Connect Github` as **Deployment Method** and *Enable Automatic Deployment* from the Github master branch so that any new commit will be automatically deployed through your heroku app. 
+
+<a name="depl-gitpod"/>
 
 ## Local Deployment (GitPod)
 
@@ -735,11 +780,17 @@ To deploy this project locally using gitpod you will have to create a gitpod acc
     - Click on `Expose` and then `Open Browser`.
     - You should now have a gitpod link to the deployed app. 
 
+<a name="credits"/>
+
 # Credits
+
+<a name="content"/>
 
 ### Content
 - My sister for being the first constributor of recipes for this project. 
 - Only the granola recipes was taken from the beamingbaker.com blog, the full recipe can be found on her website [here](https://beamingbaker.com/4-ingredient-healthy-homemade-gluten-free-vegan-granola-recipe-dairy-free-v-gf-refined-sugar-free/). Cause I was not able to make a better recipe, I decided to include it in my project anyway!
+
+<a name="media"/>
 
 ### Media
 
@@ -747,6 +798,8 @@ To deploy this project locally using gitpod you will have to create a gitpod acc
 - I also used [Font Awesome](https://fontawesome.com/v4.7.0/icons/) on some icons when I could not find the proper icon in the Materialize icon library.
 - Gif used in 404 and access_denied pages: [Dribble](https://dribbble.com/search/shots/popular/animation?q=dessert)
 - Colours of footer incons when hovered: [encycolorpedia.fr](https://encycolorpedia.fr/00acee)
+
+<a name="code"/>
 
 ### Code
 - Dynamically add/remove recipe instructions and ingredients to the form: [StackOverflow](https://stackoverflow.com/questions/9173182/add-remove-input-field-dynamically-with-jquery)
@@ -758,5 +811,6 @@ To deploy this project locally using gitpod you will have to create a gitpod acc
     - Xavier for helping the explore function to sort recipes according to user’s inputs in the form. Credits of the code is stated in my app.py. 
     - Michael and Stephen for helping me setting a sweet alert 2-tier confirmation when the user wants to delete a recipe.
 
+<a name="ack"/>
 ### Acknowledgements
 - My code institute mentor for his patience. 
