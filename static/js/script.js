@@ -1,12 +1,16 @@
 $(document).ready(function() {
 
     // jQuery for materialize components
-    $('.collapsible').collapsible();
+    $(".collapsible").collapsible();
     $(".button-collapse").sideNav();
     $(".parallax").parallax();
     $(".carousel").carousel();
-    $('select').material_select();
-    $('.modal').modal();
+    $("select").material_select();
+    $(".modal").modal();
+
+    // Add center-align class for pagination after DOM is loaded
+    $(".pagination-page-info").addClass("center-align");
+    $(".pagination").addClass("center-align");
 
     // Dynamically add new ingredients for add_recipe and edit_recipe
     $("#add-ingredients").click(function() {
