@@ -1,15 +1,21 @@
 
-1. Automated Testing
-    - Code quality
-    - Jasmine
-    - Python Testing
-2. User Stories Testing
-3. Compatibility & Responsiveness
-    - Desktop 
-    - Tablet and mobile devices
-4. Known issues
-    - Solved 
-    - Unsolved
+1. [Automated Testing](#automated-testing)
+
+2. [User Stories Testing](#user-stories)
+    - 2.1. [External users](external-users)
+    - 2.2 [Community members](community-members)
+
+3. [Testing Features](#testing-features)
+    - 3.1 [Features for all users](all-users)
+    - 3.2 [Features for community members](#features-community)
+
+4. [Compatibility & Responsiveness](#compatibility)
+
+5. [Known issues](#known-issues)
+    - 5.1 [Solved](#solved)
+    - 5.2 [Unsolved](#unsolved)
+
+<a name="automated-testing"/>
 
 # Automated Testing
 
@@ -52,13 +58,13 @@ My JS file was passed through [JS Hint](https://jshint.com/), please find below 
 
 ##### Python
 
-## Jasmine
-
-## Python
+<a name="user-stories"/>
 
 # User Stories Testing
 
 This project has been tested multiple times against each user stories previously listed in the UX section. 
+
+<a name="external-users"/>
 
 ## External users
 
@@ -187,6 +193,8 @@ This project has been tested multiple times against each user stories previously
 
 **Test result:** Successful :white_check_mark:
 
+<a name="community-members"/>
+
 ## Community members
 
 ###### Testing user story 1
@@ -284,7 +292,11 @@ This user story is out of testing scope.
 
 These user stories are out of testing scope.
 
+<a name="testing-features"/>
+
 # Testing Features
+
+<a name="all-users"/>
 
 ## Features for all users
 
@@ -420,7 +432,9 @@ These user stories are out of testing scope.
 
 ###### Feature 6 - View recipe description
 
-The testing of this feature was thouroughly testing in the user stories section, please refer to user stories 5 & 6 for external users.
+The testing of this feature was thouroughly tested in the user stories section, please refer to user stories 5 & 6 for external users.
+
+<a name="features-community"/>
 
 ## Features for community members
 
@@ -448,6 +462,8 @@ The testing of this feature was thouroughly testing in the user stories section,
 
 **Test result:** Successful :white_check_mark:
 
+<a name="compatibility"/>
+
 # Compatibility & Responsiveness
 
 A cross browser testing was performed for each features:
@@ -464,8 +480,18 @@ The responsiveness of the webiste was tested thanks to Google Chrome developer t
 - iPhone 6/7/8 and Plus
 - iPad / iPad Pro 
 
+<a name="known-issues"/>
+
 # Known Issues
+
+<a name="solved"/>
+
+## Solved Issues
 
 * xxx
 * xxx
 * xxx
+
+<a name="unsolved"/>
+
+## Unsolved Issues
