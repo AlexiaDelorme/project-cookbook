@@ -387,6 +387,67 @@ These user stories are out of testing scope.
 - [x] Confirm that the recipes results presented after selecting category, and then sub-category display: the number of results in the title, recipe image cards and pagination. 
 - [x] Further testings were also performed in the user stories testing section (user story 3). 
 
+**Test result:** Successful :white_check_mark:
+
+###### Feature 4 - About us page
+
+**Test scenario:**
+- [x] The title and the picture of the welcome page loaded successfully. 
+- [x] The 3 paragraphs presenting the project are displayed and easily readable.
+- At the bottom of the page, there are three links to other pages of the website.
+    - [x] When the user overs the title/image, the title should turn pink.
+    - [x] Click on `Recipes` title/image, confirm that it takes the user to the recipes by categories page,
+    - [x] Click on `Cookbook` title/image, confirm that it takes the user to their cookbook page (if logged in). If not logged in, the user should be taken to a personalized access denied page.
+    - [x] Click on `Join us` title/image, confirm that it takes the user to the sign up page.
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 5 - Sign up for an account
+
+**Hypothesis:** The user should be logged out to perform this test.
+
+**Test scenario:**
+- [x] Go the sign up page and confirm that the picture, title and the form loaded successfully.
+- [x] Try to submit the form without filling any of the fields, this action should not be possible and an error message should be thrown. 
+- [x] Try to submit the form with only one field missing, this action should not be possible and an error message should be thrown. 
+- [x] Try to submit the form with an incorrect email address format, this action should not be possible and an error message should be thrown. 
+- [x] Try to submit the form with "Password" field not matching "Confirm password" field, a red flash message should be thrown at the top of the form.
+- [x] Submit the form with correct information, confirm that it takes the user to the log in page and a green flash message is thrown at the top of the form confirming that the account was created. 
+- [x] Get back to the sign up form and try to create an other account using the email address you previously used, a red flash message should be thrown at the top of the form saying that an account already exists for this email address. 
+- [x] At the bottom of the page a small paragraph should display "Already Have An Account? Log In", click on the `Log in` anchor tag and confirm that the user is taken to the log in form.
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 6 - View recipe description
+
+The testing of this feature was thouroughly testing in the user stories section, please refer to user stories 5 & 6 for external users.
+
+## Features for community members
+
+###### Feature 1 - Log in to their account
+
+**Hypothesis:** The user should already have created an account. 
+
+**Test scenario:**
+- [x] Go the log in page and confirm that the picture, title and the form loaded successfully.
+- [x] Try to submit the form without filling any of the fields, this action should not be possible and an error message should be thrown. 
+- [x] Try to submit the form with only one field missing, this action should not be possible and an error message should be thrown. 
+- [x] Try to submit the form with an incorrect email address format, this action should not be possible and an error message should be thrown. 
+- [x] Try to submit the form with the email link to your existing account but with an incorrect password, you should be taken back to the log in form and a red flashed message should advise you that the login was unsuccessful. 
+- [x] Submit the form with correct credentials, you should be taken to the account page, and a green flashed message should confirm you that your log in was successful. 
+- [x] Log out and get back to the log in form. At the bottom of the page a small paragraph should display "Do You Need An Account? Sign Up", click on the `Sign Up` anchor tag and confirm that the user is taken to the sign up form.
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 2 - Log out
+
+**Hypothesis:** You should be logged in to perform this test.
+
+**Test scenario:**
+- [x] Click on the `LOG OUT` link in the navigation bar, it should take the user back the log in page. 
+
+**Test result:** Successful :white_check_mark:
+
 # Compatibility & Responsiveness
 
 A cross browser testing was performed for each features:
