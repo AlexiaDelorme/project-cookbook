@@ -240,6 +240,10 @@ def insert_user_account():
             return redirect(url_for("signup"))
         # If no existing account was found user account can be created
         else:
+            # Check if password and confirm password fields are identical
+            if request.form.get("password") != request.form.get("confirm-password"):
+                flash(f'Password and Confirm Password fields should be identical.', 'white-text red')
+                return redirect(url_for("signup"))
             # Encrypt password
             hashed_password = bcrypt.generate_password_hash(request.form.get("password")).decode('utf-8')
             # Insert new user account details to the db
