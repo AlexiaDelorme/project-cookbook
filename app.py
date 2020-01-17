@@ -424,10 +424,10 @@ def edit_password():
             if not bcrypt.check_password_hash(current_user_password_db, request.form.get("current_password")):
                 flash(f"Your current password is incorrect!", "white-text red")
             # Check if current password is different from new password
-            if bcrypt.check_password_hash(current_user_password_db, request.form.get("new_password")):
+            elif bcrypt.check_password_hash(current_user_password_db, request.form.get("new_password")):
                 flash(f"Your new password is not different from your current password.", "white-text red")
             # Check if all conditions to change the password are met
-            if (request.form.get("new_password") == request.form.get("confirm_new_password")) and (bcrypt.check_password_hash(current_user_password_db, request.form.get("current_password"))):
+            elif (request.form.get("new_password") == request.form.get("confirm_new_password")) and (bcrypt.check_password_hash(current_user_password_db, request.form.get("current_password"))):
                 # Encrypt new password before storing it
                 hashed_password = bcrypt.generate_password_hash(request.form.get("new_password")).decode('utf-8')
                 # Update new password into MongoDB
