@@ -516,6 +516,31 @@ This feature was thoroughly tested in the user stories section, please refer to 
 
 **Test result:** Successful :white_check_mark:
 
+###### Feature 6 - Edit password
+
+**Hypothesis:** You should be logged in to perform this test.
+
+**Test scenario:**
+- [x] Confirm that all fieds are mandatory and referenced as such by a small red asterisk next to them.
+- [x] Try to submit the form leaving all the fields empty, confirm that this is not possible. 
+- [x] Try to submit the form with a wrong current password, confirm that the user gets redirected back to the form with a red flashed message saying that their current password is incorrect. 
+- [x] Try to submit the form with:
+    - correct current password
+    - but, new password ≠ confirm new password
+Confirm that the user gets redirected back to the form with a red flashed message saying that the two fields should be identical. 
+- [x] Try to submit the form with:
+    - correct current password
+    - but, current password = new password = confirm new password
+Confirm that the user gets redirected back to the form with a red flashed message saying that the new password should be different than old password. 
+- [x] Finally, submit the form with a correctly that is to say:
+    - correct current password
+    - current password ≠ new password
+    - new password = confirm new password
+Confirm that the user gets redirected back to the view account details form page, with a green flashed message confirm the update of their password. 
+- [x] Log out and then confirm that you can log in with your new credentials. 
+
+**Test result:** Successful :white_check_mark:
+
 ###### Feature 12 - Add/Remove favorites
 
 This feature was thoroughly tested in the user stories section, please refer to the testing of user story 4 for community members. 
