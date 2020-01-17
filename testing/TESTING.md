@@ -541,6 +541,19 @@ Confirm that the user gets redirected back to the view account details form page
 
 **Test result:** Successful :white_check_mark:
 
+###### Feature 7 - Delete account
+
+**Hypothesis:** You should be logged in to perform this test.
+
+**Test scenario:**
+- [x] User can see a form with their email address (non-editable field) and a field to enter their password.
+- [x] Try to submit the form without providing the password, it should not be possible.
+- [x] Try to submit the form, click on the `DELETE ACCOUNT` button, confirm that a warning modal form appeared. Click on `Cancel`, confirm that the account was not deleted.
+- [x] Try to submit the form, click on the `DELETE ACCOUNT` button, confirm that a warning modal form appeared. Click on `Delete`, confirm that the user receives a confirmation of the deletion through the modal form. The user then gets redirected to the home page with a grey flashed message. 
+- [x] Try to submit the form with an incorrect password, click on the `DELETE ACCOUNT` button, confirm that a warning modal form appeared. Click on `Delete`, even though the user is confirmed that his account was deleted, the user gets redirected back to the form and a red flashed message appears confirming that the account has not been deleted because the password provided was incorrect. 
+
+**Test result:** Successful :white_check_mark:
+
 ###### Feature 12 - Add/Remove favorites
 
 This feature was thoroughly tested in the user stories section, please refer to the testing of user story 4 for community members. 
