@@ -435,7 +435,7 @@ These user stories are out of testing scope.
 
 ###### Feature 6 - View recipe description
 
-The testing of this feature was thouroughly tested in the user stories section, please refer to user stories 5 & 6 for external users.
+This feature was thoroughly tested in the user stories section, please refer to the testing of user stories 5 & 6 for external users.
 
 <a name="features-community"/>
 
@@ -464,6 +464,61 @@ The testing of this feature was thouroughly tested in the user stories section, 
 - [x] Click on the `LOG OUT` link in the navigation bar, it should take the user back the log in page. 
 
 **Test result:** Successful :white_check_mark:
+
+###### Feature 3 - Account Dashboard
+
+**Hypothesis:** You should be logged in to perform this test.
+
+**Test scenario:**
+- [x] Once log in form is submitted, confirm that the user is taken to a personalized account dashboard. 
+- [x] The user should view a welcoming message in the title of this page saying "Hi <FIRST_NAME>, welcome!".
+- [x] Confirm that the dashboard contains the following menu items presented as image cards:
+    - `Manage account`
+    - `Manage recipes`
+    - `Add new recipe`
+    - `My cookbook`
+    - `Explore recipes`
+- [x] Hover over the title/image for each menu items, and confirm that the title turns speak.
+- [x] Click on the `Manage account` link, confirm that it takes the user to the manage account details page.
+- [x] Click on the `Manage recipes` link, confirm that it takes the user to the manage recipes page.
+- [x] Click on the `Add new recipe` link, confirm that it takes the user to the add new recipe form. 
+- [x] Click on the `My cookbook` link, confirm that it takes the user to their cookbook page. 
+- [x] Click on the `Explore recipes` link, confirm that it takes the user to the explore recipes form.
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 4 - Manage account details
+
+**Hypothesis:** You should be logged in to perform this test.
+
+**Test scenario:**
+- [x] After landing on the page, confirm that the image and title loaded succesfully. 
+- [x] Confirm that the account details displayed in the form are correct and the form is not editable. 
+- [x] Click on the `Edit Details` button, confirm that it takes the user to an editable form.
+- [x] Click on the `Edit Password` button, confirm that it takes the user to a form to edit its password. 
+- [x] At the bottom of the page, the user should see a small paragraph displaying "You want to delete your account?", confirm that the user can get access to the delete account form by clicking on the anchor tag "Click Here". 
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 5 - Edit account details
+
+**Hypothesis:** You should be logged in to perform this test.
+
+**Test scenario:**
+- [x] After landing on the page, confirm that the image and title loaded succesfully. 
+- [x] The form should be pre-filled and editable.
+- [x] Confirm that all fieds are mandatory and referenced as such with a red asterisk. 
+- [x] Review the account details presented in the form, confirm that they are correct. 
+- [x] Remove all information in each field of the form and confirm that the fields turned red and that the form cannot be submitted. 
+- [x] Try to submit the form with one of the fields missing, or an incorrect format for the email address, confirm that the form cannot be submitted.
+- [x] Now amend all your information in the form, click on the "Edit Account" button, confirm that it takes the user back to view its account details and that the information were indeed updated. You should also view a green flashed message confirming you that your account details were succesfully updated.
+- [x] Try to amend only the email address, using my email address "alexia.delorme@gmail.com" that is already in the db. Confirm that the user gets redirected back to the form with a red flashed message saying that the email address provided is already linked to an existing account. 
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 12 - Add/Remove favorites
+
+This feature was thoroughly tested in the user stories section, please refer to the testing of user story 4 for community members. 
 
 <a name="compatibility"/>
 
