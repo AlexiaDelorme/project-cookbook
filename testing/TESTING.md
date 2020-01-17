@@ -1,22 +1,22 @@
 # Testing File
 
-## Table of Content
+## Table of Contents
 
 1. [Automated Testing](#automated-testing)
 
 2. [User Stories Testing](#user-stories)
-    - 2.1. [External users](#external-users)
-    - 2.2 [Community members](#community-members)
+    - [External users](#external-users)
+    - [Community members](#community-members)
 
 3. [Testing Features](#testing-features)
-    - 3.1 [Features for all users](#all-users)
-    - 3.2 [Features for community members](#features-community)
+    - [Features for all users](#all-users)
+    - [Features for community members](#features-community)
 
 4. [Compatibility & Responsiveness](#compatibility)
 
 5. [Known issues](#known-issues)
-    - 5.1 [Solved](#solved)
-    - 5.2 [Unsolved](#unsolved)
+    - [Solved](#solved)
+    - [Unsolved](#unsolved)
 
 <a name="automated-testing"/>
 
