@@ -557,21 +557,21 @@ Any external user landing to the home page of this website will be presented wit
 - Users are given consistent feedback in the form of flashed messages to let them know if their account details have been succesfully updated or not. 
 
 ###### Feature 6 - Edit password
-- Users can update their password by first providing their current password, creat a new password and then confirming it a second time.
+- Users can update their password by first providing their current password, create a new password and then confirm it a second time.
 - All fieds are mandatory and referenced as such thanks to a small red asterisk next to the obligatory fields. 
-- Users are given consistent feedback in the form of flashed messages to let them know if:
+- Users are given consistent feedback thanks to flashed messages to let them know if:
     - the current password provided in the form is identical to the one stored in the database
     - the new password is indeed different than the current password
     - the two fields "New Password" and "Confirm New Password" are identical 
 - User's password is hashed for security purposes.
-- Once their password has been succesfully updated, users receive feedback in the form of a green flashed message at the top of the page while being redirected to the view account details form page.
+- Once their password has been succesfully updated, users receive feedback through a green flashed message at the top of the page and is redirected to the view account details form page.
 
 ###### Feature 7 - Delete account
 - Users can permanently delete their account by confirming their password and pressing the "Delete Account" button.
 - To increase security, a "warning" modal form will enable users to confirm their will to delete their account. 
     - Users who are not sure can click "Cancel" and will be confirmed that their account are still live. 
     - Users who are sure about deleting their password can click "Delete" and will be confirmed that their account has been deleted.
-- The recipes that were created by a user who deleted their account won't be deleted. This is a preventive choice that I decided to make in order to protect the diversity of recipes in the database.
+- The recipes that were created by a user who deleted their account won't be deleted. This is a preventive choice that I made in order to protect the diversity of recipes in the database.
 
 ###### Feature 8 - Online cookbook
 - Users can access their online cookbook where all their favourite recipes are stored either by:
@@ -598,7 +598,7 @@ Any external user landing to the home page of this website will be presented wit
 - To increase security, a "warning" modal form will enable users to confirm their will to delete the recipe.
     - Users who are not sure can click "Cancel" and will be confirmed that the recipe still exists.
     - Users who are sure about deleting their recipe can click "Delete" and will be confirmed that the recipe was successfully deleted.
-- The now deleted recipe will be removed from the cookbook of any other community memebr who saved it as a favorite.
+- The now deleted recipe will be removed from the cookbook of any other community member who saved it as a favorite.
 
 ###### Feature 12 - Add/Remove favorites
 - At the bottom of the recipe description page, users can add/remove a recipe from their favorites by clicking on the pulse icon button.
