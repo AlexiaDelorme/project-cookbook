@@ -478,7 +478,7 @@ This feature was thoroughly tested in the user stories section, please refer to 
     - `Add new recipe`
     - `My cookbook`
     - `Explore recipes`
-- [x] Hover over the title/image for each menu items, and confirm that the title turns speak.
+- [x] Hover over the title/image for each menu items, and confirm that the title turns pink.
 - [x] Click on the `Manage account` link, confirm that it takes the user to the manage account details page.
 - [x] Click on the `Manage recipes` link, confirm that it takes the user to the manage recipes page.
 - [x] Click on the `Add new recipe` link, confirm that it takes the user to the add new recipe form. 
@@ -551,6 +551,59 @@ Confirm that the user gets redirected back to the view account details form page
 - [x] Try to submit the form, click on the `DELETE ACCOUNT` button, confirm that a warning modal form appeared. Click on `Cancel`, confirm that the account was not deleted.
 - [x] Try to submit the form, click on the `DELETE ACCOUNT` button, confirm that a warning modal form appeared. Click on `Delete`, confirm that the user receives a confirmation of the deletion through the modal form. The user then gets redirected to the home page with a grey flashed message. 
 - [x] Try to submit the form with an incorrect password, click on the `DELETE ACCOUNT` button, confirm that a warning modal form appeared. Click on `Delete`, even though the user is confirmed that his account was deleted, the user gets redirected back to the form and a red flashed message appears confirming that the account has not been deleted because the password provided was incorrect. 
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 8 - Online cookbook
+
+**Hypothesis:** You should be logged in to perform this test.
+
+**Test scenario:**
+- [x] Click on the "cookbook" menu item in the navigation bar, confirm that it takes you to your favorite recipes.
+- [x] After landing on the page, confirm that the image and title of the page loaded succesfully. 
+- [x] The list of favorite recipes are displayed as recipe cards with the recipe name and picture. 
+- [x] Hover over the title/image for each image cards, and confirm that the title turns pink.
+- [x] At the botton of the page, confirm that there is a shortcut link to add new recipe. Click on the link and confirm that it takes you to a form to add a new recipe. 
+- [x] Click on a recipe card, confirm that it takes you to the corresponding recipe description.
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 9 - Add a recipe
+
+**Hypothesis:** You should be logged in to perform this test.
+
+**Test scenario:**
+- [x] Try to submit the form leaving all the fields empty, confirm that this is not possible. 
+- [x] Confirm that all mandatory fields are referenced thanks to a small red asterisk and optional fields are specified as such. 
+- [x] Try to submit the form leaving all optional fields empty, confirm that the form can be submitted. 
+- Checking each fields specificity:
+    - [x] Recipe name: confirm that this field is mandatory, if empty a red "*required" message should appear below the field, all alphanumeric characters are allowed but only a maximum of 50 is allowed. If the field is correct, a "validated" message in gree should appear below the field.
+    - [x] Recipe difficulty: confirm that this field is mandatory, the listings for the dropdown menu loaded and that only single selection is allowed.
+    - [x] Serving: confirm that the field is mandatory, if empty a red "*required & serving >0" message should appear below the field, only numerical values are allowed, minimum value should be 1 and maximum value should be 15. If the field is correct, a "validated" message in green should appear below the field.
+    - [x] Recipe description: confirm that this field is optional, all alphanumeric characters are allowed but only a maximum of 100 is allowed.
+    - [x] Hours & Minutes: confirm that minutes are mandatory and hours are optional, if minutes are empty a red "*required" message should appear below the field, only numerical values are allowed and max value for minutes is 59. 
+    - [x] Meal/Diet Category: confirm that this field is optional, all checkbox options are displaying correctly, multiple selection is allowed. 
+    - [x] Occasion/Geography/Allergens/Tools: confirm that this field is optional, the listings for the dropdown menu loaded and that multiple selection is allowed. 
+    - [x] List of Ingredients: at least one ingredient is mandatory, if field is empty a red "*required" message should appear below the field, all alphanumeric characters are allowed but only a maximum of 100 is allowed. The user can click on the `+` button to add a new ingredient, a new ingredient line should appear with a `-` button to delete the latter. 
+    - [x] List of Instructions: at least one instruction is mandatory, if field is empty a red "*required" message should appear below the field, all alphanumeric characters are allowed but only a maximum of 500 is allowed. The user can click on the `+` button to add a new instruction, a new instruction line should appear with a `-` button to delete the latter. 
+    - [x] Add Image: confirm that this field is optional, all alphanumeric characters are allowed (the user should copy/paste a direct URL to his image).
+    - [x] Add to favorites: optional field, this toggle button can be clicked to directly add the recipe to the user's cookbook. 
+- [x] Fill in all the mandatory fields and confirm that the recipe form is submitted succesfully. 
+    - Confirm that if no picture is provided, then a default picture is added to the recipe.
+    - Confirm that the recipe is added to the user's cookbook, when the "Add to favorites" button is activated.
+- [x] When the recipe is added, the user receives feedback thanks to a green flashed message and is redirected to "my recipes" page. 
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 10 - Edit a recipe
+
+**Hypothesis:** You should be logged in to perform this test.
+
+**Test scenario:**
+- [x] When users click "Manage recipes" in their account dashboard, they can view all the recipes they have created.
+- [x] Then can click the "Edit" button and be redirected to an editable form pre-filled with the existing recipe details.
+- [x] Users can edit recipe information through the form and submit their changes.
+- [x] Users will be confirmed changes to the recipes were saved and will be redirected to the recipe description. 
 
 **Test result:** Successful :white_check_mark:
 
