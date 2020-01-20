@@ -487,7 +487,7 @@ def perm_delete_account(account_id):
         session.pop("email", None)
         session.pop("first_name", None)
         session.pop("last_name", None)
-        flash("Thanks for your visit but we will miss you :(", "blue-grey lighten-5")
+        flash("Thanks, your account has been deleted successfully! We will miss you :(", "blue-grey lighten-5")
         return redirect(url_for('home'))
     else:
         flash(f"Ooops somthing went wrong! Your account has not been deleted.", "white-text red")
