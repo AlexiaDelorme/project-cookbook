@@ -600,10 +600,23 @@ Confirm that the user gets redirected back to the view account details form page
 **Hypothesis:** You should be logged in to perform this test.
 
 **Test scenario:**
-- [x] When users click "Manage recipes" in their account dashboard, they can view all the recipes they have created.
-- [x] Then can click the "Edit" button and be redirected to an editable form pre-filled with the existing recipe details.
-- [x] Users can edit recipe information through the form and submit their changes.
-- [x] Users will be confirmed changes to the recipes were saved and will be redirected to the recipe description. 
+- [x] Confirm that the form displayed is pre-filled with the existing information of the recipe. 
+- [x] Confirm that you can edit the form without any issues.  
+- [x] Confirm that all mandatory fields are referenced thanks to a small red asterisk and optional fields are specified as such. 
+- [x] Check each fields specificity as done in the testing of the add recipe feature below. 
+... TO BE FINISHED - ISSUE TO BE RESOLVED
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 11 - Delete a recipe
+
+**Hypothesis:** You should be logged in to perform this test.
+
+**Test scenario:**
+- [x] In the "Manage recipes" page, click on the `DELETE` button below the recipe card, confirm that a warning modal form appeared.
+- [x] Click on `Cancel`, confirm that the recipe was not deleted.
+- [x] Click on `Delete`, confirm that the recipe was deleted succesfully. 
+- [x] If the recipe was saved as favorite, confirm that it was also removed from the cookbook. 
 
 **Test result:** Successful :white_check_mark:
 
