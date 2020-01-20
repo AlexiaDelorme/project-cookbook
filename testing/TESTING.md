@@ -441,9 +441,19 @@ This feature was thoroughly tested in the user stories section, please refer to 
 
 ### Features for community members
 
+###### Navbar for logged user
+
+**Test scenario:**
+- [x] Check that each following menu items display correctly when the user is logged in (and following this order): The Pâtisserie Logo, Explore, Recipes, About, Cookbook, Account, and Log Out. 
+- [x] Click on `Account`, it should take the user to a personalized account dashboard. 
+- [x] Click on `Cookbook`, it should take the user to his cookbook page.
+- [x] Click on `Log Out`, it should log the user out.
+
+**Test result:** Successful :white_check_mark:
+
 ###### Feature 1 - Log in to their account
 
-**Hypothesis:** The user should already have created an account. 
+**Hypothesis:** The user should have already created an account. 
 
 **Test scenario:**
 - [x] Go the log in page and confirm that the picture, title and the form loaded successfully.
