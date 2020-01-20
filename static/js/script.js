@@ -73,7 +73,7 @@ function deleteRecipeFunction(recipeId) {
         .then((value) => {
             switch (value) {
                 case "delete":
-                    swal("Your recipe was deleted!", {
+                    swal("Request to delete recipe sent!", {
                             icon: "success"
                         })
                         .then((value) => { document.getElementById(recipeId + "Form").submit(); });
@@ -100,7 +100,7 @@ function deleteAccountFunction() {
         .then((value) => {
             switch (value) {
                 case "delete":
-                    swal("Your account was deleted!", {
+                    swal("Request to delete your account sent!", {
                             icon: "success"
                         })
                         .then((value) => { document.getElementById("deleteAccountForm").submit(); });
