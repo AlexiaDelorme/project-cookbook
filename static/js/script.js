@@ -12,6 +12,20 @@ $(document).ready(function() {
     $(".pagination-page-info").addClass("center-align");
     $(".pagination").addClass("center-align");
 
+    // Display difficulty selected by user
+    $("select#difficulty").change(function(){
+        var selectedOption = $(this).children("option:selected").val();
+        console.log(selectedOption);
+        if (selectedOption == "") {
+            console.log("Select-wrapper to turn red"); 
+            $(this).parent(".select-wrapper").children("input").css({"border-bottom": "1px solid #f44336", "box-shadow": "0 1px 0 0 #f44336"});
+        } else {
+            console.log("Select-wrapper to turn green"); 
+            $(this).parent(".select-wrapper").children("input").css({"border-bottom": "1px solid #4CAF50", "box-shadow": "0 1px 0 0 #4CAF50"});
+        };
+    });
+    // Code to be added .select-wrapper input.select-dropdown { border-bottom: 2px solid #f44336; }
+
     // Dynamically add new ingredients for add_recipe and edit_recipe
     $("#add-ingredients").click(function() {
         var lastField = $("#ingredientsform div:last");
@@ -84,6 +98,7 @@ function deleteRecipeFunction(recipeId) {
         });
 }
 
+// Use Sweet Alert to create 2-tier confirmation before deleting an account
 function deleteAccountFunction() {
     swal({
             title: "Are you sure?",
