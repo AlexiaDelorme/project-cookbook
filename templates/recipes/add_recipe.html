@@ -159,7 +159,7 @@
                 <legend for="ingredients">List of Ingredients<span class="red-text">*</span></legend>
                 <div class="input-field col s12" id="ingredientsform">
                     <textarea id="ingredients" name="ingredients" minlength="1" maxlength="100" data-length="100" class="validate materialize-textarea col s12" placeholder="Example: Milk, Eggs, Chocolate, Flour" required></textarea>
-                    <label class="active" for="ingredients" data-error="*required" data-success="validated"></label>
+                    <label class="active" for="ingredients" data-error="*1st ingredient field is required" data-success="validated"></label>
                 </div>
                 <!-- Add new ingredient -->
                 <button class="btn add" id="add-ingredients"><i class="fa fa-plus" aria-hidden="true"></i></button>
@@ -169,8 +169,8 @@
             <div class="row">
                 <legend for="instructions">Preparation Steps<span class="red-text">*</span></legend>
                 <div class="input-field col s12" id="instructionsform">
-                    <textarea id="instructions" name="instructions" minlength="5" maxlength="500" data-length="500" class="validate materialize-textarea col s12" placeholder="Example: In a large bowl, mix all the wet ingregients" required></textarea>
-                    <label class="active" for="instructions" data-error="*required" data-success="validated"></label>
+                    <textarea id="instructions" name="instructions" minlength="1" maxlength="500" data-length="500" class="validate materialize-textarea col s12" placeholder="Example: In a large bowl, mix all the wet ingregients" required></textarea>
+                    <label class="active" for="instructions" data-error="*1st instruction field is required" data-success="validated"></label>
                 </div>
                 <!-- Add new instruction -->
                 <button class="btn add" id="add-instructions"><i class="fa fa-plus" aria-hidden="true"></i></button>
