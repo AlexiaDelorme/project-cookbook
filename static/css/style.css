@@ -245,6 +245,12 @@ textarea.materialize-textarea {
     padding: 0;
 }
 
+.input-field.col .dropdown-content [type="checkbox"]+label {
+    top: -10px;
+    left: 0;
+    height: 18px;
+}
+
 /* ---------------------------------------------------------- 404 PAGE ------ */
 
 .not-found-gif {
