@@ -640,7 +640,7 @@ This feature was thoroughly tested in the user stories section, please refer to 
 
 A cross browser testing was performed for each features:
 - Safari
-- Google Chrome
+- Google Chrome 
 - Mozilla Firefox
 - Internet Explorer
 - Opera 
@@ -648,8 +648,9 @@ A cross browser testing was performed for each features:
 The responsiveness of the webiste was tested thanks to Google Chrome developer tool, the following devices size were tested and all elements were displayed without issues:
 - Galaxy S5 
 - Pixel 2 / Pixel 2 XL 
-- iPhone 5/SE / iPhone X 
+- iPhone 5/SE
 - iPhone 6/7/8 and Plus
+- iPhone X 
 - iPad / iPad Pro 
 
 <a name="known-issues"/>
