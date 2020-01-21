@@ -36,7 +36,7 @@
                 
                 <!-- Difficulty -->
                 <div class="input-field col s12 m6 l3">
-                    <select id="difficulty" name="difficulty" required>
+                    <select id="difficulty" name="difficulty" class="validate" required>
                         <option value="" disabled> Choose Difficulty</option>
                         {% for cat in difficulty %}
                             {% if cat == recipe.difficulty %}
