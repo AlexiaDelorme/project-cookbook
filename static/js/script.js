@@ -24,7 +24,19 @@ $(document).ready(function() {
             $(this).parent(".select-wrapper").children("input").css({"border-bottom": "1px solid #4CAF50", "box-shadow": "0 1px 0 0 #4CAF50"});
         };
     });
-    // Code to be added .select-wrapper input.select-dropdown { border-bottom: 2px solid #f44336; }
+
+    // Display difficulty selected by user
+    $("#hours").change(function(){
+        var inputtedHour = $(this).val();
+        console.log(inputtedHour);
+        if (inputtedHour == "" || inputtedHour == 0) {
+            console.log("Minutes should remain required"); 
+            $("#minutes").prop("required", true);
+        } else {
+            console.log("Minutes should not necessarily be required"); 
+            $("#minutes").prop("required", false);
+        };
+    });
 
     // Dynamically add new ingredients for add_recipe and edit_recipe
     $("#add-ingredients").click(function() {
