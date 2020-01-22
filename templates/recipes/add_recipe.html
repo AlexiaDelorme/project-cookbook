@@ -158,8 +158,10 @@
             <div class="row">
                 <legend for="ingredients">List of Ingredients<span class="red-text">*</span></legend>
                 <div class="input-field col s12" id="ingredientsform">
-                    <textarea id="ingredients" name="ingredients" minlength="1" maxlength="100" data-length="100" class="validate materialize-textarea col s12" placeholder="Example: Milk, Eggs, Chocolate, Flour" required></textarea>
-                    <label class="active" for="ingredients" data-error="*1st ingredient field is required" data-success="validated"></label>
+                    <div id="field0">
+                        <textarea id="ingredients" name="ingredients" minlength="1" maxlength="100" data-length="100" class="validate materialize-textarea col s12" placeholder="Example: Milk, Eggs, Chocolate, Flour" required></textarea>
+                        <label class="active" for="ingredients" data-error="*1st ingredient field is required" data-success="validated"></label>
+                    </div>
                 </div>
                 <!-- Add new ingredient -->
                 <button class="btn add" id="add-ingredients"><i class="fa fa-plus" aria-hidden="true"></i></button>

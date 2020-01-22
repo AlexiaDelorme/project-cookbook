@@ -38,8 +38,20 @@ $(document).ready(function() {
         };
     });
 
-    // Dynamically add new ingredients for add_recipe and edit_recipe
+    // Check if last ingredient field is empty before adding a new one
     $("#add-ingredients").click(function() {
+        var lastIngredientField = $("#instructionsform div:last-child").children("textarea").val();
+        console.log(lastIngredientField); 
+        if (lastIngredientField == "") {
+            $("#ingredientsform").children("label").prop("data-error", "*Fill in this field before adding a new ingredient");
+        } else {
+            console.log("You can invoke the addIngredientFunction");
+            addIngredientFunction();
+        };
+    });
+
+    // Function to add new ingredients for recipes forms
+    function addIngredientFunction() {
         var lastField = $("#ingredientsform div:last");
         var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
         var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
@@ -52,9 +64,9 @@ $(document).ready(function() {
         fieldWrapper.append(fName);
         fieldWrapper.append(removeButton);
         $("#ingredientsform").append(fieldWrapper);
-    });
+    }
 
-    // Dynamically add preparations steps for add_recipe and edit_recipe
+    // Function to add new instructions for recipes forms
     $("#add-instructions").click(function() {
         var lastField = $("#instructionsform div:last");
         var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
