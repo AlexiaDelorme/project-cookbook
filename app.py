@@ -658,7 +658,7 @@ def insert_recipe():
     today = datetime.now().strftime("%Y-%m-%d")
     # Convert prep_time into minutes
     hours = int(request.form.get("hours"))*60 if request.form.get("hours") else ""
-    minutes = int(request.form.get("minutes"))
+    minutes = int(request.form.get("minutes")) if request.form.get("minutes") else 0
     prep_time = minutes + hours if hours else minutes
     # Add default picture if no url was provided
     image_path = request.form.get("image_path") if request.form.get("image_path") else "https://cdn.dribbble.com/users/2921354/screenshots/8956261/media/20d577559d8e99ee0283264f211c7951.jpg"
