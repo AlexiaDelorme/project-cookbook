@@ -69,12 +69,12 @@
 
                 <!-- Hours -->
                 <div class="input-field col s6 m2">
-                    <input value="{{ hours }}" id="hours" name="hours" type="number" min="0" max="12" class="validate">
+                    <input value="{{ hours }}" id="hours" name="hours" type="number" min="1" max="24" class="validate">
                     <label for="hours">Hour(s) - <em>optional</em></label>
                 </div>
                 <!-- Minutes -->
                 <div class="input-field col s6 m2">
-                    <input value="{{ minutes }}" id="minutes" name="minutes" type="number" min="0" max="59" class="validate" required>
+                    <input value="{{ minutes }}" id="minutes" name="minutes" type="number" min="0" max="59" class="validate" required="required">
                     <label for="minutes" data-error="*required" data-success="validated">Minutes<span class="red-text">*</span></label>
                 </div>
                 
