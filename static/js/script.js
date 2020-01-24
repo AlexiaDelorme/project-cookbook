@@ -17,10 +17,8 @@ $(document).ready(function() {
         var selectedOption = $(this).children("option:selected").val();
         console.log(selectedOption);
         if (selectedOption == "") {
-            console.log("Select-wrapper to turn red"); 
             $(this).parent(".select-wrapper").children("input").css({"border-bottom": "1px solid #f44336", "box-shadow": "0 1px 0 0 #f44336"});
         } else {
-            console.log("Select-wrapper to turn green"); 
             $(this).parent(".select-wrapper").children("input").css({"border-bottom": "1px solid #4CAF50", "box-shadow": "0 1px 0 0 #4CAF50"});
         };
     });
@@ -40,10 +38,11 @@ $(document).ready(function() {
 
     // Check if last ingredient field is empty before adding a new one
     $("#add-ingredients").click(function() {
-        var lastIngredientField = $("#instructionsform div:last-child").children("textarea").val();
+        var lastIngredientField = $("#ingredientsform").children("div:last-child").children("textarea").val();
         console.log(lastIngredientField); 
         if (lastIngredientField == "") {
-            $("#ingredientsform").children("label").prop("data-error", "*Fill in this field before adding a new ingredient");
+            console.log("Last ingredient field is empty");
+            $("#ingredientsform").children("#field0").children("label").prop("data-error", "*Fill in this field before adding a new ingredient");
         } else {
             console.log("You can invoke the addIngredientFunction");
             addIngredientFunction();
