@@ -437,6 +437,28 @@ These user stories are out of testing scope.
 
 This feature was thoroughly tested in the user stories section, please refer to the testing of user stories 5 & 6 for external users.
 
+###### Feature 7 - Page not found / 404
+
+**Test scenario:**
+- [x] In the browser, type an incorrect URL and confirm that you land to a 404 page. 
+- [x] Confirm that the gif is displaying correctly and that you have the possibility to get back to:
+    - Home page if user is not logged in.
+    - Account page if user is logged in.
+- [x] Click on the button to be redirected to an existing page and confirm that it takes you to the corresponding URL (ie. home page or account page). 
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 8 - Access denied page
+
+**Hypothesis:** The user should be logged out to perform this test.
+
+**Test scenario:**
+- [x] Try to access a page where log in is required such as the account page (`/account`), confirm that you get redirected to a personalized access denied page.
+- [x] Click the `LOG IN` button and confirm that it takes you to the log in page.
+- [x] Click the `SIGN UP` button and confirm that it takes you to the sign up page.
+
+**Test result:** Successful :white_check_mark:
+
 <a name="features-community"/>
 
 ### Features for community members

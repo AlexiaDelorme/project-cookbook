@@ -524,6 +524,14 @@ Any external user landing to the home page of this website will be presented wit
     - button to print the recipe
     - option to check out the website creators' favorite recipes
 
+###### Feature 7 - Page not found / 404
+- If a user types an incorrect URL, a personalized 404 page should display on screen. 
+- The user should have the option to be redirected to an existing page. 
+
+###### Feature 8 - Access denied page
+- If a user tries to access a page where log in is necessary, a personalized access denied page should display. 
+- The user should have the option to be redirected to the log in or sign up page. 
+
 #### (Additional) Features for community members
 
 ###### Feature 1 - Log in to their account
@@ -794,6 +802,7 @@ To deploy this project locally using gitpod you will have to create a gitpod acc
 
 ### Media
 
+- The logo I used for this website was created thanks to [Hatchful](https://hatchful.shopify.com).
 - All the images used for this project were found on [Pexels](https://www.pexels.com).
 - I also used [Font Awesome](https://fontawesome.com/v4.7.0/icons/) on some icons when I could not find the proper icon in the Materialize icon library.
 - Gif used in 404 and access_denied pages: [Dribble](https://dribbble.com/search/shots/popular/animation?q=dessert)
@@ -807,10 +816,18 @@ To deploy this project locally using gitpod you will have to create a gitpod acc
 - Format print area: [StackOverflow](https://stackoverflow.com/questions/468881/print-div-id-printarea-div-only)
 - Center my image card: [StackOverflow](https://stackoverflow.com/questions/50671682/center-align-items-in-materializecss-row)
 - How to resize an image uploaded by one of the user: [CSS-tricks](https://css-tricks.com/on-object-fit-and-object-position/)
+- Set up pagination using flask:
+    - [Tutorial 1](https://pythonhosted.org/Flask-paginate/)
+    - [Tutorial 2](https://www.codementor.io/@arpitbhayani/fast-and-efficient-pagination-in-mongodb-9095flbqr)
 - Tutors at Code Institute
-    - Xavier for helping the explore function to sort recipes according to user’s inputs in the form. Credits of the code is stated in my app.py. 
-    - Michael and Stephen for helping me setting a sweet alert 2-tier confirmation when the user wants to delete a recipe.
+    - **Xavier** for helping me with the explore function to sort recipes according to user’s inputs in the form. Credit for the code is stated in my app.py. 
+    - **Michael** and **Stephen** for helping me setting a sweet alert 2-tier confirmation when the user wants to delete a recipe.
+
 
 <a name="ack"/>
+
 ### Acknowledgements
 - My code institute mentor for his patience. 
+- My sister for her contribution to the content of this website with her delicious recipes!
+- Ella from [Deliciously Ella](https://deliciouslyella.com/) for being such an inspiration both as a cook, entrepreneur and as a person! Her website is also so fantastic and really helped me getting some inspiration!
+
