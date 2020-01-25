@@ -570,8 +570,10 @@ def update_recipe(recipe_id):
     recipes = mongo.db.recipes_information
     # Convert prep_time into minutes
     hours = int(request.form.get("hours"))*60 if request.form.get("hours") else ""
-    minutes = int(request.form.get("minutes"))
+    minutes = int(request.form.get("minutes")) if request.form.get("minutes") else 0
     prep_time = minutes + hours if hours else minutes
+    # Add default picture if no url was provided
+    image_path = request.form.get("image_path") if request.form.get("image_path") else "https://cdn.dribbble.com/users/2921354/screenshots/8956261/media/20d577559d8e99ee0283264f211c7951.jpg"
     # Update recipe informations
     recipes.update(
         {'_id': ObjectId(recipe_id)},
@@ -589,7 +591,7 @@ def update_recipe(recipe_id):
                     "instructions": request.form.getlist("instructions"),
                     "tool": request.form.getlist("tool"),
                     "allergen": request.form.getlist("allergen"),
-                    "image_path": request.form.get("image_path")
+                    "image_path": image_path
                     }})
     flash(f"Thanks, the recipe has been updated!", "white-text green")
     return redirect(url_for('recipe_description', recipe_id=recipe_id))
