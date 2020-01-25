@@ -188,13 +188,17 @@
                 <div class="input-field col s12" id="ingredientsform">
                     {% for ingredient in recipe.ingredients %}
                     <div class="fieldwrapper" id="existingIngredientField{{ loop.index }}">
-                        <textarea id="ingredients" name="ingredients" minlength="1" maxlength="100" data-length="100" class="validate materialize-textarea col s11" required>{{ ingredient }}</textarea>
-                        <label class="active" for="ingredients" data-error="*required" data-success="validated"></label>
-                        <button class="btn remove-btn col s1" value="-"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                        {% if loop.index == 1 %}
+                            <textarea id="ingredients" name="ingredients" minlength="1" maxlength="100" data-length="100" class="validate materialize-textarea manual-feedback col s12" required>{{ ingredient }}</textarea>                     
+                        {% else %}
+                            <textarea id="ingredients" name="ingredients" minlength="1" maxlength="100" data-length="100" class="validate materialize-textarea manual-feedback col s11" required>{{ ingredient }}</textarea>
+                            <button class="btn remove-btn col s1" value="-"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                        {% endif %}
                     </div>
                     {% endfor %}
                 </div>
-
+                <!-- Alert if last field is missing -->
+                <span id="data-error-ingredients" class="data-error-manual">*all fields are required & fill in last ingredient field before adding a new one</span>                 
                 <!-- Add new ingredient -->
                 <button class="btn add" id="add-ingredients"><i class="fa fa-plus" aria-hidden="true"></i></button>
             </div>
@@ -205,12 +209,17 @@
                 <div class="input-field col s12" id="instructionsform">
                     {% for instruction in recipe.instructions %}
                     <div class="fieldwrapper" id="existingInstructionField{{ loop.index }}">
-                        <textarea id="instructions" name="instructions" minlength="5" maxlength="500" data-length="500" class="validate materialize-textarea col s11" required>{{ instruction }}</textarea>
-                        <label class="active" for="instructions" data-error="*required" data-success="validated"></label>
-                        <button class="btn remove-btn col s1" value="-"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                        {% if loop.index == 1 %}
+                            <textarea id="instructions" name="instructions" minlength="5" maxlength="500" data-length="500" class="validate materialize-textarea manual-feedback col s12" required>{{ instruction }}</textarea>
+                        {% else %}
+                            <textarea id="instructions" name="instructions" minlength="5" maxlength="500" data-length="500" class="validate materialize-textarea manual-feedback col s11" required>{{ instruction }}</textarea>
+                            <button class="btn remove-btn col s1" value="-"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                        {% endif %}
                     </div>
                     {% endfor %}
                 </div>
+                <!-- Alert if last field is missing -->
+                <span id="data-error-instructions" class="data-error-manual">*all fields are required & fill in last instruction field before adding a new one</span> 
                 <!-- Add new instruction -->
                 <button class="btn add" id="add-instructions"><i class="fa fa-plus" aria-hidden="true"></i></button>
             </div>
