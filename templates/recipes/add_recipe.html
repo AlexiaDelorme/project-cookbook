@@ -158,10 +158,11 @@
             <div class="row">
                 <legend for="ingredients">List of Ingredients<span class="red-text">*</span></legend>
                 <div class="input-field col s12" id="ingredientsform">
-                    <div id="field0">
+                    <div class="fieldwrapper" id="field0">
                         <textarea id="ingredients" name="ingredients" minlength="1" maxlength="100" data-length="100" class="validate materialize-textarea manual-feedback col s12" placeholder="Example: Milk, Eggs, Chocolate, Flour" required></textarea>
                     </div>
                 </div>
+                <!-- Alert if last field is missing -->
                 <span id="data-error-ingredients" class="data-error-manual">*all fields are required & fill in last ingredient field before adding a new one</span>              
                 <!-- Add new ingredient -->
                 <button class="btn add" id="add-ingredients"><i class="fa fa-plus" aria-hidden="true"></i></button>
@@ -171,10 +172,11 @@
             <div class="row">
                 <legend for="instructions">Preparation Steps<span class="red-text">*</span></legend>
                 <div class="input-field col s12" id="instructionsform">
-                    <div id="field0">
+                    <div class="fieldwrapper" id="field0">
                         <textarea id="instructions" name="instructions" minlength="1" maxlength="500" data-length="500" class="validate materialize-textarea manual-feedback col s12" placeholder="Example: In a large bowl, mix all the wet ingregients" required></textarea>
                     </div>
                 </div>
+                <!-- Alert if last field is missing -->
                 <span id="data-error-instructions" class="data-error-manual">*all fields are required & fill in last instruction field before adding a new one</span>  
                 <!-- Add new instruction -->
                 <button class="btn add" id="add-instructions"><i class="fa fa-plus" aria-hidden="true"></i></button>
