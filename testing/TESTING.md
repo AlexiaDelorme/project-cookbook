@@ -681,11 +681,37 @@ The responsiveness of the webiste was tested thanks to Google Chrome developer t
 
 <a name="solved"/>
 
+While testing this project some bugs were discovered and they have been documented in the section down below. 
+
 ### Solved Issues
 
-* xxx
-* xxx
-* xxx
+1. Recipe difficulty field for add/edit recipe forms
+
+While testing the form to add a recipe, I realized that there was no feedback provided to the user if the latter tried to submit the form without selecting a recipe difficulty. 
+
+This is coming from the fact that the `.validate` class used with for `<select>` elements do not properly with Materialize. As you can see in the picture down below, no feedback was provided for difficulty field while for other fields, they are being underlined in red. 
+
+![Recipe difficulty 1](issues/difficulty1.png)
+
+To solve this issue I decided to manually amend the CSS style according to the input's value. I have not used a data-error/data-success to display a message as for the fields that require direct inputs (like servings etc...) since the value for field difficulty is directly picked up and should not have any formatting issues. 
+
+```
+$("select#difficulty").change(function(){
+    var selectedOption = $(this).children("option:selected").val();
+    if (selectedOption == "") {
+        $(this).parent(".select-wrapper").children("input").css({"border-bottom": "1px solid #f44336", "box-shadow": "0 1px 0 0 #f44336"});
+    } else {
+        $(this).parent(".select-wrapper").children("input").css({"border-bottom": "1px solid #4CAF50", "box-shadow": "0 1px 0 0 #4CAF50"});
+    };
+});
+```
+I also had to remove the `disabled` attribute that would normally be used as a prompt to select options. This was the only way to correctly display the red border-bottom and therefore make the feedback relevant for users who forgot this field. 
+
+`<option value="" selected>Choose Difficulty</option>`
+
+Please see below the resolved bug: 
+
+![Recipe difficulty 2](issues/difficulty2.png)
 
 <a name="unsolved"/>
 
