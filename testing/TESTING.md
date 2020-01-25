@@ -685,15 +685,15 @@ While testing this project some bugs were discovered and they have been document
 
 ### Solved Issues
 
-1. Recipe difficulty field for add/edit recipe forms
+1. Recipe difficulty field (add/edit recipe forms)
 
 While testing the form to add a recipe, I realized that there was no feedback provided to the user if the latter tried to submit the form without selecting a recipe difficulty. 
 
-This is coming from the fact that the `.validate` class used with for `<select>` elements do not properly with Materialize. As you can see in the picture down below, no feedback was provided for difficulty field while for other fields, they are being underlined in red. 
+This is coming from the fact that the `.validate` class used with for `<select>` elements do not properly work with Materialize. As you can see in the picture down below, no feedback was provided for difficulty field while for other fields, they are being underlined in red. 
 
 ![Recipe difficulty 1](issues/difficulty1.png)
 
-To solve this issue I decided to manually amend the CSS style according to the input's value. I have not used a data-error/data-success to display a message as for the fields that require direct inputs (like servings etc...) since the value for field difficulty is directly picked up and should not have any formatting issues. 
+To solve this issue I decided to manually amend the CSS style according to the input's value. I have not used a data-error/data-success attribute to display a message as for the fields that require direct inputs (like servings etc...) since the value for difficulty is directly picked up and should not have any formatting issues. 
 
 ```
 $("select#difficulty").change(function(){
@@ -705,7 +705,7 @@ $("select#difficulty").change(function(){
     };
 });
 ```
-I also had to remove the `disabled` attribute that would normally be used as a prompt to select options. This was the only way to correctly display the red border-bottom and therefore make the feedback relevant for users who forgot this field. 
+I also had to remove the `disabled` attribute that would normally be used as a prompt to select options. This was the only way to correctly display the red border-bottom and therefore make the feedback relevant for users who forgot to update this field. 
 
 `<option value="" selected>Choose Difficulty</option>`
 
@@ -716,3 +716,17 @@ Please see below the resolved bug:
 <a name="unsolved"/>
 
 ### Unsolved Issues
+
+1. Feedback for Ingredients/Instructions list (add/edit recipe forms)
+
+Being a direct text input field `<textarea>`, I decided to add a label for this element and to use data-error and data-success attributes to display customized error/validate messages to provide feedback on user inputs. The issue is that this "input field" for ingredients/instructions is a list. So when the user adds new ingredients/instructions to the list, the feedback is provided only for the first field as it is the first element encontered in the DOM with ID ingredients/instructions. I was therefore faced with multiple issues as shown in the screenshots down below:
+    - there is no data-error/data-success feedback for each individual field 
+    - the content for data-error/data-success appears after the total list (`label::after`) but the feedback only pertains to the first ingredient field
+
+![Ingredient Field 2](issues/ingredient-field-2.png)
+
+![Ingredient Field 1](issues/ingredient-field-1.png)
+
+This created a very confusing feedback for the user and I found that the only way to clear that was to remove the data-error/data-success attributes. The user still gets feedback thanks to the color of the border-bottom for each individual field. 
+
+As discussed in the solved issues section, I introduced a function to prevent the user from adding a new ingredient if the last ingredient field is empty. If I were to keep the data-error/data-success attributes, I think it would cause too much of a confusion. I know there is a smarter way to approach and tackle this issue but being still very new to JS, I think I'll keep this as a future feature. 
