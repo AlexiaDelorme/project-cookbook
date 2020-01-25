@@ -15,7 +15,6 @@ $(document).ready(function() {
     // Display difficulty selected by user
     $("select#difficulty").change(function(){
         var selectedOption = $(this).children("option:selected").val();
-        console.log(selectedOption);
         if (selectedOption == "") {
             $(this).parent(".select-wrapper").children("input").css({"border-bottom": "1px solid #f44336", "box-shadow": "0 1px 0 0 #f44336"});
         } else {
@@ -23,15 +22,13 @@ $(document).ready(function() {
         };
     });
 
-    // Display difficulty selected by user
+    // Remove 'required' attribute for minutes if hours
     $("#hours").change(function(){
         var inputtedHour = $(this).val();
         console.log(inputtedHour);
         if (inputtedHour == "" || inputtedHour == 0) {
-            console.log("Minutes should remain required"); 
             $("#minutes").prop("required", true);
         } else {
-            console.log("Minutes should not necessarily be required"); 
             $("#minutes").prop("required", false);
         };
     });
