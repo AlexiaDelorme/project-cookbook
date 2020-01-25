@@ -250,7 +250,13 @@ textarea.materialize-textarea {
     left: 0;
     height: 18px;
 }
-
+.data-error-manual {
+    color: #F44336;
+    opacity: 1;
+    font-size: 0.9rem;
+    position: relative;
+    top: -23px;
+}
 /* ---------------------------------------------------------- 404 PAGE ------ */
 
 .not-found-gif {

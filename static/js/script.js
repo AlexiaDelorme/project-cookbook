@@ -36,26 +36,30 @@ $(document).ready(function() {
         };
     });
 
+    // Hide all elements with this class when page loaded
+    $(".data-error-manual").hide();
+    $(document).on('keyup', '.manual-feedback', function () {
+        $(this).parent("div").parent("div").next(".data-error-manual").hide("slow");
+    });
+
     // Check if last ingredient field is empty before adding a new one
     $("#add-ingredients").click(function() {
         var lastIngredientField = $("#ingredientsform").children("div:last-child").children("textarea").val();
-        console.log(lastIngredientField); 
         if (lastIngredientField == "") {
-            console.log("Last ingredient field is empty");
-            $("#ingredientsform").children("#field0").children("label").prop("data-error", "*Fill in this field before adding a new ingredient");
+            $("#data-error-ingredients").show();
         } else {
-            console.log("You can invoke the addIngredientFunction");
-            addIngredientFunction();
+            $("#data-error-ingredients").hide();
+            addIngredientsFunction();
         };
     });
 
-    // Function to add new ingredients for recipes forms
-    function addIngredientFunction() {
+    // Function to add new ingredients
+    function addIngredientsFunction() {
         var lastField = $("#ingredientsform div:last");
         var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
         var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
         fieldWrapper.data("idx", intId);
-        var fName = $("<textarea id=\"ingredients\" name=\"ingredients\" autocomplete=\"off\" minlength=\"1\" maxlength=\"100\"  data-length=\"100\" class=\"validate materialize-textarea col s11\" placeholder=\"Example: Milk, Eggs, Chocolate, Flour\" required></textarea>");
+        var fName = $("<textarea id=\"ingredients\" name=\"ingredients\" autocomplete=\"off\" minlength=\"1\" maxlength=\"100\"  data-length=\"100\" class=\"validate materialize-textarea manual-feedback col s11\" placeholder=\"Example: Milk, Eggs, Chocolate, Flour\" required></textarea>");
         var removeButton = $("<button class=\"btn remove col s1\" value=\"-\"><i class=\"fa fa-minus\" aria-hidden=\"true\"></i></button>");
         removeButton.click(function() {
             $(this).parent().remove();
@@ -65,13 +69,24 @@ $(document).ready(function() {
         $("#ingredientsform").append(fieldWrapper);
     }
 
-    // Function to add new instructions for recipes forms
+    // Check if last instruction field is empty before adding a new one
     $("#add-instructions").click(function() {
+        var lastInstructionField = $("#instructionsform").children("div:last-child").children("textarea").val();
+        if (lastInstructionField == "") {
+            $("#data-error-instructions").show();
+        } else {
+            $("#data-error-instructions").hide();
+            addInstructionsFunction();
+        };
+    });
+
+    // Function to add new instructions
+    function addInstructionsFunction() {
         var lastField = $("#instructionsform div:last");
         var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
         var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
         fieldWrapper.data("idx", intId);
-        var fName = $("<textarea id=\"instructions\" name=\"instructions\" autocomplete=\"off\" minlength=\"1\" maxlength=\"500\" data-length=\"500\" class=\"validate materialize-textarea col s11\" placeholder=\"Example: In a large bowl, mix all the wet ingregients\" required></textarea>");
+        var fName = $("<textarea id=\"instructions\" name=\"instructions\" autocomplete=\"off\" minlength=\"1\" maxlength=\"500\" data-length=\"500\" class=\"validate materialize-textarea manual-feedback col s11\" placeholder=\"Example: In a large bowl, mix all the wet ingregients\" required></textarea>");
         var removeButton = $("<button class=\"btn remove col s1\" value=\"-\"><i class=\"fa fa-minus\" aria-hidden=\"true\"></i></button>");
         removeButton.click(function() {
             $(this).parent().remove();
@@ -79,7 +94,7 @@ $(document).ready(function() {
         fieldWrapper.append(fName);
         fieldWrapper.append(removeButton);
         $("#instructionsform").append(fieldWrapper);
-    });
+    };
 
     // Remove existing ingredients/instructions when user edits a recipe
     $(".remove-btn").click(function() {
