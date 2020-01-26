@@ -35,8 +35,30 @@ $(document).ready(function() {
 
     // Hide all elements with this class when page loaded
     $(".add-item-error").hide();
+    //$(".data-error-manual").hide();
+
     $(document).on('keyup', '.manual-feedback', function () {
-        $(this).parent("div").parent("div").siblings(".add-item-error").hide("slow");
+        $(this).parent("div").parent("div").siblings(".add-item-error").hide();
+        $(this).siblings(".alert-div").removeClass("data-error-manual").removeClass("data-success-manual").text("");
+    });
+
+    // Manually check if field is empty
+    $(".manual-feedback").change(function() {
+        var field = $(this).val();
+        if (field== "") {
+            $(this).siblings(".alert-div").removeClass("data-success-manual").addClass("data-error-manual").text("*required");
+        } else {
+            $(this).siblings(".alert-div").removeClass("data-error-manual").addClass("data-success-manual").text("validated");
+        };
+    });
+
+    $(".manual-feedback").focusout(function() {
+        var field = $(this).val();
+        if (field== "") {
+            $(this).siblings(".alert-div").removeClass("data-success-manual").addClass("data-error-manual").text("*required");
+        } else {
+            $(this).siblings(".alert-div").removeClass("data-error-manual").addClass("data-success-manual").text("validated");
+        };
     });
 
     // Check if last ingredient field is empty before adding a new one
@@ -56,13 +78,15 @@ $(document).ready(function() {
         var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
         var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
         fieldWrapper.data("idx", intId);
-        var fName = $("<textarea id=\"ingredients\" name=\"ingredients\" autocomplete=\"off\" minlength=\"1\" maxlength=\"100\"  data-length=\"100\" class=\"validate materialize-textarea manual-feedback col s11\" placeholder=\"Example: Milk, Eggs, Chocolate, Flour\" required></textarea>");
+        var fName = $("<textarea id=\"ingredients\" name=\"ingredients\" minlength=\"1\" maxlength=\"100\" class=\"validate materialize-textarea manual-feedback col s11\" placeholder=\"Example: Milk, Eggs, Chocolate, Flour\" required></textarea>");
         var removeButton = $("<button class=\"btn remove col s1\" value=\"-\"><i class=\"fa fa-minus\" aria-hidden=\"true\"></i></button>");
+        var alertDiv = $("<div class=\"col s12 left-align alert-div\"></div>");
         removeButton.click(function() {
             $(this).parent().remove();
         });
         fieldWrapper.append(fName);
         fieldWrapper.append(removeButton);
+        fieldWrapper.append(alertDiv);
         $("#ingredientsform").append(fieldWrapper);
     }
 
@@ -83,7 +107,7 @@ $(document).ready(function() {
         var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
         var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
         fieldWrapper.data("idx", intId);
-        var fName = $("<textarea id=\"instructions\" name=\"instructions\" autocomplete=\"off\" minlength=\"1\" maxlength=\"500\" data-length=\"500\" class=\"validate materialize-textarea manual-feedback col s11\" placeholder=\"Example: In a large bowl, mix all the wet ingregients\" required></textarea>");
+        var fName = $("<textarea id=\"instructions\" name=\"instructions\" minlength=\"1\" maxlength=\"500\" class=\"validate materialize-textarea manual-feedback col s11\" placeholder=\"Example: In a large bowl, mix all the wet ingregients\" required></textarea>");
         var removeButton = $("<button class=\"btn remove col s1\" value=\"-\"><i class=\"fa fa-minus\" aria-hidden=\"true\"></i></button>");
         removeButton.click(function() {
             $(this).parent().remove();

@@ -255,7 +255,15 @@ textarea.materialize-textarea {
     opacity: 1;
     font-size: 0.9rem;
     position: relative;
-    top: -23px;
+    top: -20px;
+}
+
+.data-success-manual {
+    color: #4CAF50;
+    opacity: 1;
+    font-size: 0.9rem;
+    position: relative;
+    top: -20px;
 }
 
 .add-item-error {

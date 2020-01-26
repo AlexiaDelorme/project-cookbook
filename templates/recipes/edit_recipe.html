@@ -189,11 +189,13 @@
                     {% for ingredient in recipe.ingredients %}
                     <div class="fieldwrapper" id="existingIngredientField{{ loop.index }}">
                         {% if loop.index == 1 %}
-                            <textarea id="ingredients" name="ingredients" minlength="1" maxlength="100" data-length="100" class="validate materialize-textarea manual-feedback col s12" required>{{ ingredient }}</textarea>                     
+                            <textarea id="ingredients" name="ingredients" minlength="1" maxlength="100" class="validate materialize-textarea manual-feedback col s12" required>{{ ingredient }}</textarea>                  
                         {% else %}
-                            <textarea id="ingredients" name="ingredients" minlength="1" maxlength="100" data-length="100" class="validate materialize-textarea manual-feedback col s11" required>{{ ingredient }}</textarea>
+                            <textarea id="ingredients" name="ingredients" minlength="1" maxlength="100"  class="validate materialize-textarea manual-feedback col s11" required>{{ ingredient }}</textarea>
                             <button class="btn remove-btn col s1" value="-"><i class="fa fa-minus" aria-hidden="true"></i></button>
                         {% endif %}
+                        <!-- Manual alert for feedback -->
+                        <div class="col s12 left-align alert-div"></div>
                     </div>
                     {% endfor %}
                 </div>              
@@ -201,7 +203,7 @@
                 <button class="btn add" id="add-ingredients" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
                 <!-- Alert if last field is missing -->
                 <div id="data-error-ingredients" class="col s12 add-item-error">
-                    <div class="center-align"> <i class="material-icons">warning</i> Please make sure the last ingredient field is not empty before adding a new one. </div>
+                    <div class="center-align"> <i class="material-icons">warning</i> Make sure the last ingredient field is not empty before adding a new one!</div>
                 </div>
             </div>
                         
@@ -212,11 +214,13 @@
                     {% for instruction in recipe.instructions %}
                     <div class="fieldwrapper" id="existingInstructionField{{ loop.index }}">
                         {% if loop.index == 1 %}
-                            <textarea id="instructions" name="instructions" minlength="5" maxlength="500" data-length="500" class="validate materialize-textarea manual-feedback col s12" required>{{ instruction }}</textarea>
+                            <textarea id="instructions" name="instructions" minlength="5" maxlength="500" class="validate materialize-textarea manual-feedback col s12" required>{{ instruction }}</textarea>
                         {% else %}
-                            <textarea id="instructions" name="instructions" minlength="5" maxlength="500" data-length="500" class="validate materialize-textarea manual-feedback col s11" required>{{ instruction }}</textarea>
+                            <textarea id="instructions" name="instructions" minlength="5" maxlength="500" class="validate materialize-textarea manual-feedback col s11" required>{{ instruction }}</textarea>
                             <button class="btn remove-btn col s1" value="-"><i class="fa fa-minus" aria-hidden="true"></i></button>
                         {% endif %}
+                        <!-- Manual alert for feedback -->
+                        <div class="col s12 left-align alert-div"></div>
                     </div>
                     {% endfor %}
                 </div>
@@ -224,7 +228,7 @@
                 <button class="btn add" id="add-instructions" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
                 <!-- Alert if last field is missing -->
                 <div id="data-error-instructions" class="col s12 add-item-error">
-                    <div class="center-align"> <i class="material-icons">warning</i> Please make sure the last instruction field is not empty before adding a new one. </div>
+                    <div class="center-align"> <i class="material-icons">warning</i> Make sure the last instruction field is not empty before adding a new one!</div>
                 </div>
             </div>
             
