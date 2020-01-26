@@ -34,9 +34,9 @@ $(document).ready(function() {
     });
 
     // Hide all elements with this class when page loaded
-    $(".data-error-manual").hide();
+    $(".add-item-error").hide();
     $(document).on('keyup', '.manual-feedback', function () {
-        $(this).parent("div").parent("div").next(".data-error-manual").hide("slow");
+        $(this).parent("div").parent("div").siblings(".add-item-error").hide("slow");
     });
 
     // Check if last ingredient field is empty before adding a new one

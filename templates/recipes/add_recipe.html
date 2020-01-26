@@ -161,11 +161,13 @@
                     <div class="fieldwrapper" id="field0">
                         <textarea id="ingredients" name="ingredients" minlength="1" maxlength="100" data-length="100" class="validate materialize-textarea manual-feedback col s12" placeholder="Example: Milk, Eggs, Chocolate, Flour" required></textarea>
                     </div>
-                </div>
-                <!-- Alert if last field is missing -->
-                <span id="data-error-ingredients" class="data-error-manual">*all fields are required & fill in last ingredient field before adding a new one</span>              
+                </div>                              
                 <!-- Add new ingredient -->
                 <button class="btn add" id="add-ingredients"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                <!-- Alert if last field is missing -->
+                <div id="data-error-ingredients" class="col s12 add-item-error">
+                    <div class="center-align"> <i class="material-icons">warning</i> Please make sure the last ingredient field is not empty before adding a new one. </div>
+                </div>
             </div>
                         
             <!-- Recipe instructions -->
@@ -175,11 +177,13 @@
                     <div class="fieldwrapper" id="field0">
                         <textarea id="instructions" name="instructions" minlength="1" maxlength="500" data-length="500" class="validate materialize-textarea manual-feedback col s12" placeholder="Example: In a large bowl, mix all the wet ingregients" required></textarea>
                     </div>
-                </div>
-                <!-- Alert if last field is missing -->
-                <span id="data-error-instructions" class="data-error-manual">*all fields are required & fill in last instruction field before adding a new one</span>  
+                </div>  
                 <!-- Add new instruction -->
                 <button class="btn add" id="add-instructions"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                <!-- Alert if last field is missing -->
+                <div id="data-error-instructions" class="col s12 add-item-error">
+                    <div class="center-align"> <i class="material-icons">warning</i> Please make sure the last instruction field is not empty before adding a new one. </div>
+                </div>
             </div>
             
             <!-- Recipe Image -->

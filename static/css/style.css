@@ -257,6 +257,13 @@ textarea.materialize-textarea {
     position: relative;
     top: -23px;
 }
+
+.add-item-error {
+    color: #F44336;
+    opacity: 1; 
+    font-size: 1.1rem;
+}
+
 /* ---------------------------------------------------------- 404 PAGE ------ */
 
 .not-found-gif {
