@@ -61,6 +61,12 @@ My JS file was passed through [JS Hint](https://jshint.com/), please find below 
 
 ##### Python
 
+My [app.py](../app.py) file and [helpers.py](../herlpers.py) were passed through the [PEP8 Online Check](http://pep8online.com/). Both files are PEP8 compliant, I just have one error type (E501) "line too long (84 > 79 characters)" for my app.py. This is due to the fact that some lines in my file exceed 79 characters. I tried to find a way to solve it using a line wrapper to automatically magnify the file but it did not work in my gitpod IDE.
+
+After discussing the issue with my mentor, he confirmed me that there was no problem keeping my file as it is. As long as the file is readable, this is not a common industry practice to keep the number of characters per line < 79 in python files.
+
+![PEP8](validators/py-errors)
+
 <a name="user-stories"/>
 
 ## User Stories Testing
