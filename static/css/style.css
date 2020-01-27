@@ -58,6 +58,11 @@ p {
     }
 }
 
+nav .button-collapse i {
+    height: 56px;
+    line-height: 100px;
+}
+
 /* -------------------------------------------------------------- FOOTER ------ */
 
 ul:not(.browser-default)>li {
