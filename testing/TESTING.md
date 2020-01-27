@@ -41,10 +41,10 @@ My style.css file succesfully passed this [CSS code validator](https://jigsaw.w3
 My JS file was passed through [JS Hint](https://jshint.com/), please find below the information provided by the code validator. 
 
 **Metrics:**
-- There are 12 functions in this file. 
+- There are 22 functions in this file. 
 - Function with the largest signature take 1 arguments, while the median is 0.
-- Largest function has 10 statements in it, while the median is 1.
-- The most complex function has a cyclomatic complexity value of 2 while the median is 1.
+- Largest function has 21 statements in it, while the median is 1.
+-The most complex function has a cyclomatic complexity value of 3 while the median is 1.
 
 **Warnings:**
 - Arrow function syntax `=>` is only available in ES6 (use 'esversion: 6').
