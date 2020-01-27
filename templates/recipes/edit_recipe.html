@@ -37,7 +37,7 @@
                 <!-- Difficulty -->
                 <div class="input-field col s12 m6 l3">
                     <select id="difficulty" name="difficulty" class="validate" required>
-                        <option value="" disabled> Choose Difficulty</option>
+                        <option value=""> Choose Difficulty</option>
                         {% for cat in difficulty %}
                             {% if cat == recipe.difficulty %}
                             <option value="{{cat}}" selected>{{ cat.capitalize() }}</option>
@@ -187,7 +187,7 @@
                 <legend for="ingredients">List of Ingredients<span class="red-text">*</span></legend>
                 <div class="input-field col s12" id="ingredientsform">
                     {% for ingredient in recipe.ingredients %}
-                    <div class="fieldwrapper" id="existingIngredientField{{ loop.index }}">
+                    <div class="fieldwrapper">
                         {% if loop.index == 1 %}
                             <textarea id="ingredients" name="ingredients" minlength="1" maxlength="100" class="validate materialize-textarea manual-feedback col s12" required>{{ ingredient }}</textarea>                  
                         {% else %}
@@ -212,7 +212,7 @@
                 <legend for="instructions">Preparation Steps<span class="red-text">*</span></legend>
                 <div class="input-field col s12" id="instructionsform">
                     {% for instruction in recipe.instructions %}
-                    <div class="fieldwrapper" id="existingInstructionField{{ loop.index }}">
+                    <div class="fieldwrapper">
                         {% if loop.index == 1 %}
                             <textarea id="instructions" name="instructions" minlength="5" maxlength="500" class="validate materialize-textarea manual-feedback col s12" required>{{ instruction }}</textarea>
                         {% else %}
