@@ -1,6 +1,11 @@
 {% extends 'general/base.html' %} 
 {% block content %}
 
+<div class="fixed-action-btn">
+	<!-- Code credit for the use of "javascript:history.back()": Tim from the Code Institute's tutor team -->
+	<a class="btn-floating btn-large" href="javascript:history.back()"><i class="material-icons left">refresh</i></a>
+</div>
+
 <!-- Category cards -->
  
 {% if (category.category_name=="geography" or category.category_name=="diet" ) %} 
