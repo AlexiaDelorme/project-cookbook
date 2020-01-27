@@ -108,7 +108,7 @@ def explore_results():
     query = []
     # Prevent empty fields from being passed to the query
     for field_name, field_value in form_dictionary.items():
-        if (field_value != None) and (field_value != "") and (field_value != []):
+        if (field_value is not None) and (field_value != "") and (field_value != []):
             condition = {field_name: {map_condition[field_name]: field_value}}
             query.append(condition)
     # logging.info('Query is {}'.format(query))
@@ -372,7 +372,7 @@ def update_my_details(account_id):
     """
     # Check if email provided is not already linked to an existing account
     user = mongo.db.user_accounts.find_one({"email": request.form.get("email").lower()})
-    if user != None:
+    if user is not None:
         user_first_name = user["first_name"]
         user_last_name = user["last_name"]
         # User found is not the user that is logged in
