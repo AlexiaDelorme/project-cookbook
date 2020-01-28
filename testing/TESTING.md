@@ -1,6 +1,6 @@
 # Testing File
 
-Back to [READNE.md](../README.md)
+Back to [README.md](../README.md)
 
 ## Table of Contents
 
@@ -67,13 +67,13 @@ My [app.py](../app.py) file and [helpers.py](../herlpers.py) were passed through
 
 After discussing the issue with my mentor, he confirmed me that there was no problem keeping my file as it is. As long as the file is readable, this is not a common industry practice to keep the number of characters per line < 79 in python files.
 
-![PEP8](validators/py-errors)
+![PEP8](validators/py-errors.png)
 
 <a name="user-stories"/>
 
 ## User Stories Testing
 
-This project has been tested multiple times against each user stories listed in the UX section of the [READNE.md](../README.md) file. 
+This project has been tested multiple times against each user stories listed in the UX section of the [README.md](../README.md) file. 
 
 <a name="external-users"/>
 
