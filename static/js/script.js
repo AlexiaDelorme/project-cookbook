@@ -18,13 +18,13 @@ $(document).ready(function () {
 
     /*
         Center pagination after page loaded 
-    */   
+    */
     $(".pagination-page-info").addClass("center-align");
     $(".pagination").addClass("center-align");
 
     /*
         Display feedback to user for difficulty select field
-    */  
+    */
     $("select#difficulty").change(function () {
         var selectedOption = $(this).children("option:selected").val();
         if (selectedOption == "") {
@@ -50,7 +50,7 @@ $(document).ready(function () {
         Hide all elements with this class after page loaded
     */
     $(".add-item-error").hide();
-    
+
     /*
         Hide all manual feedbacks when user is typing in the field
     */
