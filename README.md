@@ -847,7 +847,7 @@ To deploy this project locally using gitpod you will have to create a gitpod acc
 
 ### Code
 - Dynamically add/remove recipe instructions and ingredients to the form: [StackOverflow](https://stackoverflow.com/questions/9173182/add-remove-input-field-dynamically-with-jquery)
-- Buttons to share recipes on social medial: [jsfiddle.net](http://jsfiddle.net/0erh1xv7/)
+- Buttons to share recipes on social medial: [AddToAny](https://www.addtoany.com/)
 - Format print area: [StackOverflow](https://stackoverflow.com/questions/468881/print-div-id-printarea-div-only)
 - Center my image card: [StackOverflow](https://stackoverflow.com/questions/50671682/center-align-items-in-materializecss-row)
 - How to resize an image uploaded by one of the user: [CSS-tricks](https://css-tricks.com/on-object-fit-and-object-position/)
@@ -856,7 +856,7 @@ To deploy this project locally using gitpod you will have to create a gitpod acc
     - [Tutorial 2](https://www.codementor.io/@arpitbhayani/fast-and-efficient-pagination-in-mongodb-9095flbqr)
 - Tutors at Code Institute
     - **Xavier** for helping me with the explore function to sort recipes according to user’s inputs in the form. Credit for the code is stated in my app.py file. 
-    - **Michael** and **Stephen** for helping me setting a sweet alert two-tier confirmation when the user wants to delete a recipe.
+    - **Michael** and **Stephen** for helping me set up a sweet alert two-tier confirmation when the user wants to delete a recipe.
 
 <a name="ack"/>
 
