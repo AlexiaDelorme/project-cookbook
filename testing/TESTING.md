@@ -26,13 +26,13 @@
 
 ##### HTML5
 
-HTML files were passed through this [HTML code validator](https://validator.w3.org/) at the exception of errors related to the use of jinja templating language that is currently not recognized by the code validator. You can see below a screenshot of these recurring errors:
+HTML files were passed through this [HTML code validator](https://validator.w3.org/). All files were compliant at the exception of errors related to the use of jinja templating language that is currently not recognized by the code validator. You can see below a screenshot of these recurring errors:
 
 ![HTML5 Code Validator Errors](validators/html-errors.png)
 
 ##### CSS3
 
-My style.css file succesfully passed this [CSS code validator](https://jigsaw.w3.org/css-validator/).
+My css file succesfully passed this [CSS code validator](https://jigsaw.w3.org/css-validator/).
 
 ![CSS Code Validator](validators/css3.png)
 
@@ -719,11 +719,11 @@ Please see below the resolved bug:
 
 ![Recipe difficulty 2](issues/difficulty2.png)
 
-<a name="unsolved"/>
+2. No feedback when user adds new item to ingredient/instruction list (add/edit recipe forms)
 
-### Unsolved Issues
+I introduced a function to prevent the user from adding a new ingredient if the last ingredient field is empty.
 
-1. Feedback for Ingredients/Instructions list (add/edit recipe forms)
+3. Feedback for ingredient/instruction fields (add/edit recipe forms)
 
 Being a direct text input field `<textarea>`, I decided to add a label for this element and to use data-error and data-success attributes to display customized error/validate messages to provide feedback on user inputs. The issue is that this "input field" for ingredients/instructions is a list. So when the user adds new ingredients/instructions to the list, the feedback is provided only for the first field as it is the first element encontered in the DOM with ID ingredients/instructions. I was therefore faced with multiple issues as shown in the screenshots down below:
     - there is no data-error/data-success feedback for each individual field 
@@ -733,6 +733,41 @@ Being a direct text input field `<textarea>`, I decided to add a label for this 
 
 ![Ingredient Field 1](issues/ingredient-field-1.png)
 
-This created a very confusing feedback for the user and I found that the only way to clear that was to remove the data-error/data-success attributes. The user still gets feedback thanks to the color of the border-bottom for each individual field. 
+This created a very confusing feedback for the user and the only way to clear that was to remove the data-error/data-success attributes. The user still gets feedback thanks to the color of the border-bottom for each individual field but I wanted my form to remain harmonized in terms of feedback. 
 
-As discussed in the solved issues section, I introduced a function to prevent the user from adding a new ingredient if the last ingredient field is empty. If I were to keep the data-error/data-success attributes, I think it would cause too much of a confusion. I know there is a smarter way to approach and tackle this issue but being still very new to JS, I think I'll keep this as a future feature. 
+I have therefore introduced two anonymous functions to provide feedback to the user. Below each ingredient/instruction field I have added an empty div with a class of `.alert-div`. When the user changes the textarea field (with a class of `.manual-feedback`), it will add the class `.data-success-manual` to the `.alert-div` element and shows "validated". If the textarea field remains empty then it will display "*required" in red thanks to `.data-error-manual` class. 
+
+```
+function feedbackChangeFunction() {
+    $(".manual-feedback").change(function () {
+        var field = $(this).val();
+        if (field == "") {
+            $(this).siblings(".alert-div").removeClass("data-success-manual").addClass("data-error-manual").text("*required");
+        } else {
+            $(this).siblings(".alert-div").removeClass("data-error-manual").addClass("data-success-manual").text("validated");
+        }
+    });
+}
+
+function feedbackFocusFunction() {
+    $(".manual-feedback").focusout(function () {
+        var field = $(this).val();
+        if (field == "") {
+            $(this).siblings(".alert-div").removeClass("data-success-manual").addClass("data-error-manual").text("*required");
+        } else {
+            $(this).siblings(".alert-div").removeClass("data-error-manual").addClass("data-success-manual").text("validated");
+        }
+    });
+}
+feedbackFocusFunction();
+feedbackChangeFunction();
+```
+
+These two functions where also added the `addIngredientsFunction()` and the `addInstructionsFunction()` as event listeners so the script would also apply to newly added field items! 
+
+<a name="unsolved"/>
+
+### Unsolved Issues
+
+That I am aware of, there are currently no unsolved issues/bugs for this project. 
+
