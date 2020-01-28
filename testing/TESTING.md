@@ -812,4 +812,28 @@ These two functions where also added to the `addIngredientsFunction()` and the `
 
 ### Unsolved Issues
 
-That I am aware of, there are currently no unsolved issues/bugs for this project.
+1. ChromeDev tool displaying error in the console (add recipe form)
+
+When trying to submit the recipe form without selecting a valid option for the field difficulty, the following error appears in the console of the Chrome developer tool. 
+
+![Difficulty Field Form-control](issues/issue-diff-field.png)
+
+I found this [article](https://stackoverflow.com/questions/22148080/an-invalid-form-control-with-name-is-not-focusable) on Stack Overflow regarding this issue. The `ADD RECIPE` button has a type of `submit` so for now I have not found a way to remove this error from the console. Nonetheless, this is not creating any negative user experience as the user still gets a feedback (as per the first solved bug in the previous section). 
+
+2. Non-unique ID used for ingredients/instructions list (edit recipe form)
+
+The following errors display in the console when the edit recipe form loads. Indeed, for the ingredients and instructions list, the ID for each item of the field is not unique. 
+
+![Multiple ID Edit Recipe](issues/multiple-id.png)
+
+I decided to use a unique ID for the ingredients/instructions field as it was simpler to extract the list from the form.
+
+```
+"ingredients": request.form.getlist("ingredients")
+"instructions": request.form.getlist("instructions")
+```
+
+Nonetheless, this is not causing any major issues apart from this console error and it has absolutely no impact on the end user. 
+
+
+*Apart from the previously mentioned issues, there are currently no other unsolved issues/bugs for this project.*
