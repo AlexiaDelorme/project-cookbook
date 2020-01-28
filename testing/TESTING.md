@@ -1,5 +1,7 @@
 # Testing File
 
+Back to [READNE.md](../README.md)
+
 ## Table of Contents
 
 1. [Automated Testing](#automated-testing)
@@ -32,7 +34,7 @@ HTML files were passed through this [HTML code validator](https://validator.w3.o
 
 ##### CSS3
 
-My css file succesfully passed this [CSS code validator](https://jigsaw.w3.org/css-validator/).
+My css file successfully passed this [CSS code validator](https://jigsaw.w3.org/css-validator/).
 
 ![CSS Code Validator](validators/css3.png)
 
@@ -44,7 +46,7 @@ My JS file was passed through [JS Hint](https://jshint.com/), please find below 
 - There are 22 functions in this file. 
 - Function with the largest signature take 1 arguments, while the median is 0.
 - Largest function has 21 statements in it, while the median is 1.
--The most complex function has a cyclomatic complexity value of 3 while the median is 1.
+- The most complex function has a cyclomatic complexity value of 3 while the median is 1.
 
 **Warnings:**
 - Arrow function syntax `=>` is only available in ES6 (use 'esversion: 6').
@@ -54,8 +56,8 @@ My JS file was passed through [JS Hint](https://jshint.com/), please find below 
 
 **3 unused variables:**
 - `myPrintFunction` (function is invoked when print button is clicked)
-- `deleteRecipeFunction`(function is invoked when delete recipe button is clicked)
-- `deleteAccountFunction` (function is invoked delete account button is clicked)
+- `deleteRecipeFunction` (function is invoked when delete recipe button is clicked)
+- `deleteAccountFunction` (function is invoked when delete account button is clicked)
 
 ![JS Hint](validators/js.png)
 
@@ -71,7 +73,7 @@ After discussing the issue with my mentor, he confirmed me that there was no pro
 
 ## User Stories Testing
 
-This project has been tested multiple times against each user stories previously listed in the UX section. 
+This project has been tested multiple times against each user stories listed in the UX section of the [READNE.md](../README.md) file. 
 
 <a name="external-users"/>
 
@@ -86,7 +88,7 @@ This project has been tested multiple times against each user stories previously
 **Test scenario:**
 - [x] Click on the `EXPLORE` menu item in the navigation bar.
 - [x] Leave the explore recipes form blank from any filters and click on the `SEARCH RECIPES` button.
-- [x] You should have a total number of "x" recipes. TO BE UPDATED
+- [x] You should have a total number of 13 recipes (as of January 28th, 2020).
 - [x] Click on any of the recipes and you should be able to access the recipe description page without restriction.
 
 **Test result:** Successful :white_check_mark:
@@ -111,7 +113,7 @@ This project has been tested multiple times against each user stories previously
 **Hypothesis:** The user should be logged out to perform this test.
 
 **Test scenario:**
-- [x] Click on the `RECIPES` menu item in the navigation bar. You should be presented with the 4 following recipe categories:
+- [x] Click on the `RECIPES` menu item in the navigation bar. You should be presented with the 4 following categories:
     - occasion
     - geography
     - diet
@@ -185,7 +187,7 @@ This project has been tested multiple times against each user stories previously
 - [x] A modal form should open with the list of social media icons on which it's possible to share the recipe.
 - [x] Click on each icon to check if a new window opens to share the recipe on the corresponding media platform. Remember that you have to be logged in on the social media to be able to view the recipe post. 
 - [x] Get back to the recipe description and click on the "print" button just next to the "share" button. 
-- [x] A preview print window should open displaying all the relevant information that pertain to the recipe.
+- [x] A preview print window should open displaying all the relevant information that pertains to the recipe.
 
 **Test result:** Successful :white_check_mark:
 
@@ -227,7 +229,7 @@ This project has been tested multiple times against each user stories previously
 **Hypothesis:** The user should be logged in to perform this test. 
 
 **Test scenario:**
-- [x] After being logged in to your account, on your account dashboard, click on `Manage Account`.
+- [x] After logging in to your account dashboard, click on `Manage Account`.
 - [x] You should view your account details via an non-editable form (First Name, Last Name, Email address).
 - Edit account details
     - [x] Click on the `EDIT DETAILS` button. You should now be able to view an editable form.
@@ -238,7 +240,7 @@ This project has been tested multiple times against each user stories previously
     - [x] Enter your current password, choose a new password and then confirm it, finally click on the `UPDATE PASSWORD` button.
     - [x] Your password should be updated. Log out and test logging in with this new password. 
 - Delete account
-    - [x] Get back to your account details page. At the bottom of the page below the `EDIT PASSWORD` button and above the footer, there should be a small paragraph saying "You want to delete your account? Click Here". Click on the `Here`anchor tag.
+    - [x] Get back to your account details page. At the bottom of the page below the `EDIT PASSWORD` button and above the footer, there should be a small paragraph saying "You want to delete your account? Click Here". Click on the `Here` anchor tag.
     - [x] Confirm your password and then press the `DELETE ACCOUNT` button. 
     - [x] A modal form should appear asking you to confirm your decision. Press the `Delete` button.
     - [x] You should be logged out and a message should confirm you that your account was deleted. 
@@ -256,7 +258,7 @@ This project has been tested multiple times against each user stories previously
 - Add new recipe
     - [x] After being logged in to your account, on your account dashboard, click on `Add new recipe`.
     - [x] You should view a form to add a new recipe. Fill in all the madatory fields that are highlighted with a red star and then click on the `ADD RECIPE` button at the bottom of the form.
-    - [x] If you filled in the form correctly, you should see a message confirming that your recipe was added succesfully. 
+    - [x] If you filled in the form correctly, you should see a message confirming that your recipe was added successfully. 
 - Edit recipe
     - [x] Get back to your account dashboard and click on `Manage recipes`.
     - [x] You should have a list of recipe cards for all the recipes you have added. Choose the last recipe you just created and click the `EDIT` button. 
@@ -329,7 +331,7 @@ These user stories are out of testing scope.
 *Specific test undertaken for mobile and tablet devices:*
 
 **Test scenario:**
-- [x] Open the website on a mobile or a tablet and confirm that the navbar is collapsed into a hambuger button (the logo should still be visible).
+- [x] Open the website on a mobile or a tablet and confirm that the navbar is collapsed into a hamburger button (the logo should still be visible).
 - [x] Click on the hamburger button and confirm that the menu items are correctly displayed and that each link refers to the corresponding page. 
 - [x] When logged in/out, confirm that you have the expected view.
 
@@ -375,7 +377,7 @@ These user stories are out of testing scope.
 - [x] The form loaded successfully with the following fields:
     - recipe difficulty: confirm that the listings loaded for the dropdown menu and that only single selection is allowed.
     - preparation time: confirm that single selection is allowed.
-    - max serving: confirm that fill can be filled by increment (using the arrow) or direct input. 
+    - max serving: confirm that field can be filled by increment (using the arrow) or direct input. 
     - meal category: confirm that the listings loaded and multiple selection is allowed.
     - diet category: confirm that the listings loaded and multiple selection is allowed.
     - exclude allergens: confirm that the listings loaded for the dropdown menu and that multiple selection is allowed.
@@ -387,7 +389,7 @@ These user stories are out of testing scope.
 - [x] When search results are presented to the user, confirm that:
     - the number of recipes found is displayed in the title,
     - the recipe cards loaded successfully displaying the recipe title and an image,
-    - when the user overs the recipe title/image, the title should turn pink,
+    - when the user hovers over the recipe title/image, the title should turn pink,
     - clicking on the recipe title/image, should take the user to the recipe description page,
     - the pagination at the bottom of the page loaded successfully,
     - a maximum of 10 recipes per page should be displayed. 
@@ -402,7 +404,7 @@ These user stories are out of testing scope.
 - [x] At the bottom of the page, a carousel presenting the website owners' favorite recipes should be displayed.
     - Carousel slides are not switched automatically, the user can click on the carousel to change slides. 
     - When the user clicks on the slide, it should take him to the corresponding recipe description page.
-- [x] Click on the `Occasion` category, the the following sub-categories presented as image cards should be loaded: Christmas, New Year's, Hanukkah, Easter, Birthdays, Weddings, Thanksgiving, Halloween. 
+- [x] Click on the `Occasion` category, the following sub-categories presented as image cards should be loaded: Christmas, New Year's, Hanukkah, Easter, Birthdays, Weddings, Thanksgiving, Halloween. 
     - Click on each occasion and confirm that the results displayed match the criteria of the occasion selected. 
     - Repeat this operation for each individual occasion.
 - [x] Click on the `Geography` category, the following sub-categories presented as a simple list should be loaded: Africa, Asia, Europe, North America, South America, Middle East, Oceania. 
@@ -411,7 +413,7 @@ These user stories are out of testing scope.
 - [x] Click on the `Diet` category, the following sub-categories presented as a simple list should be loaded: Vegan, Vegetarian, Gluten-free, Sugar-free, Lactose-free. 
     - Click on each diet and confirm that the results displayed match the criteria of the diet selected. 
     - Repeat this operation for each individual diet.
-- [x] Click on the `Meal` category, the the following sub-categories presented as image cards should be loaded: Breakfast, Snack, Drink, Dessert.
+- [x] Click on the `Meal` category, the following sub-categories presented as image cards should be loaded: Breakfast, Snack, Drink, Dessert.
     - Click on each meal cateogry and confirm that the results displayed match the criteria of meal category selected. 
     - Repeat this operation for each meal category. 
 - [x] Confirm that the recipes results presented after selecting category, and then sub-category display: the number of results in the title, recipe image cards and pagination. 
@@ -425,7 +427,7 @@ These user stories are out of testing scope.
 - [x] The title and the picture of the welcome page loaded successfully. 
 - [x] The 3 paragraphs presenting the project are displayed and easily readable.
 - At the bottom of the page, there are three links to other pages of the website.
-    - [x] When the user overs the title/image, the title should turn pink.
+    - [x] When the user hovers over the title/image, the title should turn pink.
     - [x] Click on `Recipes` title/image, confirm that it takes the user to the recipes by categories page,
     - [x] Click on `Cookbook` title/image, confirm that it takes the user to their cookbook page (if logged in). If not logged in, the user should be taken to a personalized access denied page.
     - [x] Click on `Join us` title/image, confirm that it takes the user to the sign up page.
@@ -441,9 +443,9 @@ These user stories are out of testing scope.
 - [x] Try to submit the form without filling any of the fields, this action should not be possible and an error message should be thrown. 
 - [x] Try to submit the form with only one field missing, this action should not be possible and an error message should be thrown. 
 - [x] Try to submit the form with an incorrect email address format, this action should not be possible and an error message should be thrown. 
-- [x] Try to submit the form with "Password" field not matching "Confirm password" field, a red flash message should be thrown at the top of the form.
-- [x] Submit the form with correct information, confirm that it takes the user to the log in page and a green flash message is thrown at the top of the form confirming that the account was created. 
-- [x] Get back to the sign up form and try to create an other account using the email address you previously used, a red flash message should be thrown at the top of the form saying that an account already exists for this email address. 
+- [x] Try to submit the form with "Password" field not matching "Confirm password" field, a red flashed message should be thrown at the top of the form.
+- [x] Submit the form with correct information, confirm that it takes the user to the log in page and a green flashed message is thrown at the top of the form confirming that the account was created. 
+- [x] Get back to the sign up form and try to create an other account using the email address you previously used, a red flashed message should be thrown at the top of the form saying that an account already exists for this email address. 
 - [x] At the bottom of the page a small paragraph should display "Already Have An Account? Log In", click on the `Log in` anchor tag and confirm that the user is taken to the log in form.
 
 **Test result:** Successful :white_check_mark:
@@ -456,7 +458,7 @@ This feature was thoroughly tested in the user stories section, please refer to 
 
 **Test scenario:**
 - [x] In the browser, type an incorrect URL and confirm that you land to a 404 page. 
-- [x] Confirm that the gif is displaying correctly and that you have the possibility to get back to:
+- [x] Confirm that the gif is displayed correctly and that you have the possibility to get back to:
     - Home page if user is not logged in.
     - Account page if user is logged in.
 - [x] Click on the button to be redirected to an existing page and confirm that it takes you to the corresponding URL (ie. home page or account page). 
@@ -481,7 +483,7 @@ This feature was thoroughly tested in the user stories section, please refer to 
 ###### Navbar for logged user
 
 **Test scenario:**
-- [x] Check that each following menu items display correctly when the user is logged in (and following this order): The Pâtisserie Logo, Explore, Recipes, About, Cookbook, Account, and Log Out. 
+- [x] Check that the following menu items correctly display when the user is logged in (and following this order): The Pâtisserie Logo, Explore, Recipes, About, Cookbook, Account, and Log Out. 
 - [x] Click on `Account`, it should take the user to a personalized account dashboard. 
 - [x] Click on `Cookbook`, it should take the user to his cookbook page.
 - [x] Click on `Log Out`, it should log the user out.
@@ -539,10 +541,10 @@ This feature was thoroughly tested in the user stories section, please refer to 
 **Hypothesis:** You should be logged in to perform this test.
 
 **Test scenario:**
-- [x] After landing on the page, confirm that the image and title loaded succesfully. 
+- [x] After landing on the page, confirm that the image and title loaded successfully. 
 - [x] Confirm that the account details displayed in the form are correct and the form is not editable. 
 - [x] Click on the `Edit Details` button, confirm that it takes the user to an editable form.
-- [x] Click on the `Edit Password` button, confirm that it takes the user to a form to edit its password. 
+- [x] Click on the `Edit Password` button, confirm that it takes the user to a form to edit his password. 
 - [x] At the bottom of the page, the user should see a small paragraph displaying "You want to delete your account?", confirm that the user can get access to the delete account form by clicking on the anchor tag "Click Here". 
 
 **Test result:** Successful :white_check_mark:
@@ -552,14 +554,14 @@ This feature was thoroughly tested in the user stories section, please refer to 
 **Hypothesis:** You should be logged in to perform this test.
 
 **Test scenario:**
-- [x] After landing on the page, confirm that the image and title loaded succesfully. 
+- [x] After landing on the page, confirm that the image and title loaded successfully. 
 - [x] The form should be pre-filled and editable.
 - [x] Confirm that all fieds are mandatory and referenced as such with a red asterisk. 
 - [x] Review the account details presented in the form, confirm that they are correct. 
 - [x] Remove all information in each field of the form and confirm that the fields turned red and that the form cannot be submitted. 
 - [x] Try to submit the form with one of the fields missing, or an incorrect format for the email address, confirm that the form cannot be submitted.
-- [x] Now amend all your information in the form, click on the "Edit Account" button, confirm that it takes the user back to view its account details and that the information were indeed updated. You should also view a green flashed message confirming you that your account details were succesfully updated.
-- [x] Try to amend only the email address, using my email address "alexia.delorme@gmail.com" that is already in the db. Confirm that the user gets redirected back to the form with a red flashed message saying that the email address provided is already linked to an existing account. 
+- [x] Now amend all your information in the form, click on the "Edit Account" button, confirm that it takes the user back to view its account details and that the information were indeed updated. You should also view a green flashed message confirming you that your account details were successfully updated.
+- [x] Try to amend only the email address, using my email address alexia.delorme@gmail.com that is already in the db. Confirm that the user gets redirected back to the form with a red flashed message saying that the email address provided is already linked to an existing account. 
 
 **Test result:** Successful :white_check_mark:
 
@@ -583,7 +585,7 @@ Confirm that the user gets redirected back to the form with a red flashed messag
     - correct current password
     - current password ≠ new password
     - new password = confirm new password
-Confirm that the user gets redirected back to the view account details form page, with a green flashed message confirm the update of their password. 
+Confirm that the user gets redirected back to the view account details form page, with a green flashed message confirming the update of their password. 
 - [x] Log out and then confirm that you can log in with your new credentials. 
 
 **Test result:** Successful :white_check_mark:
@@ -597,7 +599,7 @@ Confirm that the user gets redirected back to the view account details form page
 - [x] Try to submit the form without providing the password, it should not be possible.
 - [x] Try to submit the form, click on the `DELETE ACCOUNT` button, confirm that a warning modal form appeared. Click on `Cancel`, confirm that the account was not deleted.
 - [x] Try to submit the form, click on the `DELETE ACCOUNT` button, confirm that a warning modal form appeared. Click on `Delete`, confirm that the user receives a confirmation of the deletion through the modal form. The user then gets redirected to the home page with a grey flashed message. 
-- [x] Try to submit the form with an incorrect password, click on the `DELETE ACCOUNT` button, confirm that a warning modal form appeared. Click on `Delete`, even though the user is confirmed that his account was deleted, the user gets redirected back to the form and a red flashed message appears confirming that the account has not been deleted because the password provided was incorrect. 
+- [x] Try to submit the form with an incorrect password, click on the `DELETE ACCOUNT` button, confirm that a warning modal form appeared. Click on `Delete`, the user gets redirected back to the form and a red flashed message appears saying that the account was not deleted because the password provided was incorrect. 
 
 **Test result:** Successful :white_check_mark:
 
@@ -606,8 +608,8 @@ Confirm that the user gets redirected back to the view account details form page
 **Hypothesis:** You should be logged in to perform this test.
 
 **Test scenario:**
-- [x] Click on the "cookbook" menu item in the navigation bar, confirm that it takes you to your favorite recipes.
-- [x] After landing on the page, confirm that the image and title of the page loaded succesfully. 
+- [x] Click on the `COOKBOOK` menu item in the navigation bar, confirm that it takes you to your favorite recipes.
+- [x] After landing on the page, confirm that the image and title of the page loaded successfully. 
 - [x] The list of favorite recipes are displayed as recipe cards with the recipe name and picture. 
 - [x] Hover over the title/image for each image cards, and confirm that the title turns pink.
 - [x] At the botton of the page, confirm that there is a shortcut link to add new recipe. Click on the link and confirm that it takes you to a form to add a new recipe. 
@@ -635,7 +637,7 @@ Confirm that the user gets redirected back to the view account details form page
     - [x] List of Instructions: at least one instruction is mandatory, if field is empty a red "*required" message should appear below the field, all alphanumeric characters are allowed but only a maximum of 500 is allowed. The user can click on the `+` button to add a new instruction, a new instruction line should appear with a `-` button to delete the latter. 
     - [x] Add Image: confirm that this field is optional, all alphanumeric characters are allowed (the user should copy/paste a direct URL to his image).
     - [x] Add to favorites: optional field, this toggle button can be clicked to directly add the recipe to the user's cookbook. 
-- [x] Fill in all the mandatory fields and confirm that the recipe form is submitted succesfully. 
+- [x] Fill in all the mandatory fields and confirm that the recipe form is submitted successfully. 
     - Confirm that if no picture is provided, then a default picture is added to the recipe.
     - Confirm that the recipe is added to the user's cookbook, when the "Add to favorites" button is activated.
 - [x] When the recipe is added, the user receives feedback thanks to a green flashed message and is redirected to "my recipes" page. 
@@ -662,14 +664,14 @@ Confirm that the user gets redirected back to the view account details form page
 **Test scenario:**
 - [x] In the "Manage recipes" page, click on the `DELETE` button below the recipe card, confirm that a warning modal form appeared.
 - [x] Click on `Cancel`, confirm that the recipe was not deleted.
-- [x] Click on `Delete`, confirm that the recipe was deleted succesfully. 
+- [x] Click on `Delete`, confirm that the recipe was deleted successfully. 
 - [x] If the recipe was saved as favorite, confirm that it was also removed from the cookbook. 
 
 **Test result:** Successful :white_check_mark:
 
 ###### Feature 12 - Add/Remove favorites
 
-This feature was thoroughly tested in the user stories section, please refer to the testing of user story 4 for community members. 
+This feature was tested in the user stories section, please refer to the testing of user story 4 for community members. 
 
 <a name="compatibility"/>
 
@@ -739,7 +741,7 @@ While testing the form to add/edit a recipe, I realized that the user could add 
 
 ![Ingredient Field 2](issues/ingredient-field-2.png)
 
-To solve this issue I introduced a function to prevent the user from adding a new field to the list if the previous field was still empty. I created two anonymous functions, one for the ingredients list and one for the instructions list but bother are identical.
+To solve this issue I introduced a function to prevent the user from adding a new field to the list if the previous field was still empty. I created two anonymous functions, one for the ingredients list and one for the instructions list but both are identical.
 
 I have created a div with class of `.add-item-error` which is hidden when the page loads. If the user clicks the button to input a new field to the list while the previous existing field is empty, it will display this div and warn the user that is not possible do so.  
 
@@ -773,7 +775,7 @@ Being a direct text input field `<textarea>`, I decided to add a label for this 
 
 This created a very confusing feedback for the user and the only way to clear that was to remove the data-error/data-success attributes. The user still gets feedback thanks to the color of the border-bottom for each individual field but I wanted my form to remain harmonized in terms of feedback. 
 
-I have therefore introduced two anonymous functions to provide feedback to the user. Below each ingredient/instruction field I have added an empty div with a class of `.alert-div`. When the user changes the textarea field (with a class of `.manual-feedback`), it will add the class `.data-success-manual` to the `.alert-div` element and shows "validated". If the textarea field remains empty then it will display "*required" in red thanks to `.data-error-manual` class. 
+I have therefore introduced two anonymous functions to provide feedback to the user. Below each ingredient/instruction field I have added an empty div with a class of `.alert-div`. When the user changes the textarea field (with a class of `.manual-feedback`), it will add the class `.data-success-manual` to the `.alert-div` element and shows "validated" as text. If the textarea field remains empty then it will display "*required" in red thanks to `.data-error-manual` class. 
 
 ```
 function feedbackChangeFunction() {
@@ -801,11 +803,10 @@ feedbackFocusFunction();
 feedbackChangeFunction();
 ```
 
-These two functions where also added the `addIngredientsFunction()` and the `addInstructionsFunction()` as event listeners so the script would also apply to newly added field items! 
+These two functions where also added to the `addIngredientsFunction()` and the `addInstructionsFunction()` as event listeners so the script would also apply to newly added field items! 
 
 <a name="unsolved"/>
 
 ### Unsolved Issues
 
-That I am aware of, there are currently no unsolved issues/bugs for this project. 
-
+That I am aware of, there are currently no unsolved issues/bugs for this project.
