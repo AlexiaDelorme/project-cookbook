@@ -326,6 +326,15 @@ These user stories are out of testing scope.
 
 **Test result:** Successful :white_check_mark:
 
+*Specific test undertaken for mobile and tablet devices:*
+
+**Test scenario:**
+- [x] Open the website on a mobile or a tablet and confirm that the navbar is collapsed into a hambuger button (the logo should still be visible).
+- [x] Click on the hamburger button and confirm that the menu items are correctly displayed and that each link refers to the corresponding page. 
+- [x] When logged in/out, confirm that you have the expected view.
+
+**Test result:** Successful :white_check_mark:
+
 2. Footer 
 
 **Test scenario:**
@@ -666,20 +675,25 @@ This feature was thoroughly tested in the user stories section, please refer to 
 
 ## Compatibility & Responsiveness
 
-A cross browser testing was performed for each features:
+### Testing compatibility
+
+A manual cross-browser testing was performed for each features for the following browsers:
 - Safari
 - Google Chrome 
 - Mozilla Firefox
-- Internet Explorer
-- Opera 
+- Opera
 
-The responsiveness of the webiste was tested thanks to Google Chrome developer tool, the following devices size were tested and all elements were displayed without issues:
+### Testing responsiveness
+
+The responsiveness of the webiste was tested thanks to Google Chrome developer tool, the following devices size were tested for all features and all elements were displayed without issues:
 - Galaxy S5 
 - Pixel 2 / Pixel 2 XL 
 - iPhone 5/SE
 - iPhone 6/7/8 and Plus
 - iPhone X 
 - iPad / iPad Pro 
+
+The automated tool [BrowserStack](https://www.browserstack.com) was also used to review responsiveness on a wide range of devices. 
 
 <a name="known-issues"/>
 
@@ -721,7 +735,31 @@ Please see below the resolved bug:
 
 2. No feedback when user adds new item to ingredient/instruction list (add/edit recipe forms)
 
-I introduced a function to prevent the user from adding a new ingredient if the last ingredient field is empty.
+While testing the form to add/edit a recipe, I realized that the user could add new fields to the ingredients/instructions list when the previous fields were still empty. 
+
+![Ingredient Field 2](issues/ingredient-field-2.png)
+
+To solve this issue I introduced a function to prevent the user from adding a new field to the list if the previous field was still empty. I created two anonymous functions, one for the ingredients list and one for the instructions list but bother are identical.
+
+I have created a div with class of `.add-item-error` which is hidden when the page loads. If the user clicks the button to input a new field to the list while the previous existing field is empty, it will display this div and warn the user that is not possible do so.  
+
+```
+<div id="data-error-ingredients" class="col s12 add-item-error">
+    <div class="center-align"> <i class="material-icons">warning</i> Make sure the last ingredient field is not empty before adding a new one! </div>
+</div>
+
+$(".add-item-error").hide();
+
+$("#add-ingredients").click(function () {
+    var lastIngredientField = $("#ingredientsform").children("div:last-child").children("textarea").val();
+    if (lastIngredientField == "") {
+        $("#data-error-ingredients").show();
+    } else {
+        $("#data-error-ingredients").hide();
+        addIngredientsFunction();
+    }
+});
+```
 
 3. Feedback for ingredient/instruction fields (add/edit recipe forms)
 
