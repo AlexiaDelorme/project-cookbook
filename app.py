@@ -78,8 +78,8 @@ def explore_results():
     # Prepare prep_time data
     prep_time = int(request.form.get("prep_time")) if request.form.get("prep_time") else ""
     """
-    The following code block (from line 86 to 113) was implemented thanks
-    to the Code Institute Tutor Team.
+    The following code block (from line 85 to 113) was implemented thanks
+    to Xavier, Tutor at Code Institute.
     """
     # Create a dictionary to store the form fields
     form_dictionary = {
@@ -111,7 +111,6 @@ def explore_results():
         if (field_value is not None) and (field_value != "") and (field_value != []):
             condition = {field_name: {map_condition[field_name]: field_value}}
             query.append(condition)
-    # logging.info('Query is {}'.format(query))
     if query != []:
         # Pass the formatted dictionary into mongoDB query
         if len(query) == 1:
@@ -274,7 +273,6 @@ def login():
     if request.method == "POST":
         # Create a query to get the user stored in the user variable
         user = mongo.db.user_accounts.find_one({"email": request.form.get("email")})
-        logging.info('User found {}'.format(user))
         # Creat user password var only if user object is not empty
         if user:
             user_password = user["password"]
@@ -475,7 +473,6 @@ def perm_delete_account(account_id):
     user = user_accounts.find_one({"_id": ObjectId(account_id)})
     current_user_password_db = user["password"]
     # Check if password provided by the user is incorrect
-    logging.info('Form is {}'.format(request.form))
     if not bcrypt.check_password_hash(current_user_password_db, request.form.get("password")):
         flash(f"The account has not been deleted because the password provided is incorrect!", "white-text red")
         return redirect(url_for('delete_account'))
@@ -514,7 +511,6 @@ def my_recipes():
             # Create a query to get recipes information based on user list
             recipe_information_i = mongo.db.recipes_information.find_one({"_id": ObjectId(my_recipes[i])})
             recipes_list_information.append(recipe_information_i)
-            logging.info('For i={}, the recipes information found is {}'.format(i, recipe_information_i))
         return render_template("users/my_recipes.html",
                                Page_name="My recipes",
                                Page_title="MANAGE RECIPES",
@@ -716,7 +712,6 @@ def cookbook():
             # Create a query to get recipes information based on user list
             recipe_information_i = mongo.db.recipes_information.find_one({"_id": ObjectId(favorite_recipes[i])})
             recipes_list_information.append(recipe_information_i)
-            logging.info('For i={}, the recipes information found is {}'.format(i, recipe_information_i))
         return render_template("users/cookbook.html",
                                Page_name="Cookbook",
                                Page_title="COOKBOOK",
@@ -856,4 +851,4 @@ def access_denied():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "0.0.0.0"),
             port=os.environ.get("PORT", 8000),
-            debug=True)
+            debug=False)
