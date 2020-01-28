@@ -63,7 +63,7 @@ My JS file was passed through [JS Hint](https://jshint.com/), please find below 
 
 ##### Python
 
-My [app.py](../app.py) file and [helpers.py](../herlpers.py) were passed through the [PEP8 Online Check](http://pep8online.com/). Both files are PEP8 compliant, I just have one error type (E501) "line too long (84 > 79 characters)" for my app.py. This is due to the fact that some lines in my file exceed 79 characters. I tried to find a way to solve it using a line wrapper to automatically magnify the file but it did not work in my gitpod IDE.
+My [app.py](../app.py) file and [helpers.py](../helpers.py) were passed through the [PEP8 Online Check](http://pep8online.com/). Both files are PEP8 compliant, I just have one error type (E501) "line too long (84 > 79 characters)" for my app.py. This is due to the fact that some lines in my file exceed 79 characters. I tried to find a way to solve it using a line wrapper to automatically magnify the file but it did not work in my gitpod IDE.
 
 After discussing the issue with my mentor, he confirmed me that there was no problem keeping my file as it is. As long as the file is readable, this is not a common industry practice to keep the number of characters per line < 79 in python files.
 
@@ -652,8 +652,9 @@ Confirm that the user gets redirected back to the view account details form page
 - [x] Confirm that the form displayed is pre-filled with the existing information of the recipe. 
 - [x] Confirm that you can edit the form without any issues.  
 - [x] Confirm that all mandatory fields are referenced thanks to a small red asterisk and optional fields are specified as such. 
-- [x] Check each fields specificity as done in the testing of the add recipe feature below. 
-... TO BE FINISHED - ISSUE TO BE RESOLVED
+- [x] Check each fields specificity as done in the testing of the add recipe feature just above. 
+- [x] Edit several features of the recipe and then submit the form, you should be redirected to the recipe page.
+- [x] Confirm that the amendments were taken into account and are now reflected in the recipe.
 
 **Test result:** Successful :white_check_mark:
 
@@ -749,7 +750,9 @@ I have created a div with class of `.add-item-error` which is hidden when the pa
 <div id="data-error-ingredients" class="col s12 add-item-error">
     <div class="center-align"> <i class="material-icons">warning</i> Make sure the last ingredient field is not empty before adding a new one! </div>
 </div>
+```
 
+```
 $(".add-item-error").hide();
 
 $("#add-ingredients").click(function () {
