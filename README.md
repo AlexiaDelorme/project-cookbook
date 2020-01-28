@@ -10,9 +10,9 @@ Welcome!
 
 [The Pâtisserie Journal](https://patisserie-cookbook.herokuapp.com) is an intuitive online cookbook tool to help you find new recipes and implement them interactively while cooking. You can also share your own recipes by creating an account and join our onlince community!
 
-The purpose of this project is to make patisserie inclusive meaning that anyone with food allergies, specific diet or simply missing an ingredient or a cooking tool would be able to find a suitable recipe. 
+The purpose of this project is to make patisserie inclusive meaning that anyone with food allergies, a specific diet or simply missing an ingredient or a cooking tool will be able to find a suitable recipe. 
 
-By creating a community that can share their own recipes, it will enable us to naturally expand our database but also promote new "chefs" by providing them with visibility.
+By creating a community that can share their own recipes, it will enable us to naturally expand our database.
 
 <div align="center">
     <img src="https://i.ibb.co/TP0mdjr/readme-welcome.png" href="https://patisserie-cookbook.herokuapp.com" target="_blank" alt="The Pâtisserie Journal" />
@@ -28,8 +28,8 @@ By creating a community that can share their own recipes, it will enable us to n
     - [Wireframes](#wireframes)
     - [Flowchart](#flowchart)
     - [Database structure](#db)
-        - [Non-static collections](#non-static)
-        - [Static collections](#static)
+        - [Non-static Collections](#non-static)
+        - [Static Collections](#static)
 
 2. [Features](#features)
     - [Current Features](#current-features)
@@ -87,7 +87,7 @@ As a user with specific constraints (food allergies, specific diets or simply mi
 
 ###### User story 5
 
-As an external user, I want to be able to view the recipe instructions for all the recipes available in the database with the same level of details as a community member. I also want to be recommended some of the website creators' favorite recipes. 
+As an external user, I want to be able to view the recipe instructions for all the recipes available in the database with the same level of details as a community member. I also want to be recommended favorite recipes of the website creators. 
 
 ###### User story 6
 
@@ -111,7 +111,7 @@ As a community member, I want to be able to edit my information details, passwor
 
 ###### User story 3
 
-As a community member, I want to be able to create new recipes and then have the possibility to edit and/or to delete any of recipes that I have shared with the community.
+As a community member, I want to be able to create new recipes and then have the possibility to edit and/or delete any of the recipes that I have shared with the community.
 
 ###### User story 4
 
@@ -143,7 +143,7 @@ Building a full-stack website using Python and mini-framework Flask that allows 
 
 ### Theme
 
-In terms of general layout, I wanted a classy style that would remind the user of an elegant French Pâtisserie. Therefore, I have decided to keep it very simple with no extravagant colours but instead use visually impacting images. I have therefore put a lot of efforts on selecting colourful and meaningful pictures for my website. This was very crucial to me as bakery pictures are made to draw user's attention and so combined with a very clogged styled website, it can be very overwhelming for the user. 
+In terms of layout, I wanted a classy style that would remind the user of an elegant French Pâtisserie. I have therefore decided to keep it very simple with no angry colours but instead use visually impacting images. I have therefore put a lot of efforts on selecting colourful and meaningful pictures for my website. This was very crucial to me as bakery pictures are made to draw user's attention, Combined with a very clogged styled website, it can be very overwhelming for the user. 
 
 ### Colors
 
@@ -159,7 +159,7 @@ In terms of general layout, I wanted a classy style that would remind the user o
 
 ### Typography
 
-In an effort to keep my layout smart but understated, I have decided to select one unique font family from Google Fonts called [Signika](https://fonts.google.com/?query=Signika). 
+In an effort to keep my layout smart, I have decided to select one unique font family from Google Fonts called [Signika](https://fonts.google.com/?query=Signika). 
 
 <a name="wireframes"/>
 
@@ -192,12 +192,12 @@ Please find below the structure I used for my database using MongoDB.
 ```
 {
     "_id": <ObjectId>,
-    "first_name": <string>,
-    "last_name": <string>,
-    "email": <string>",
-    "password": <string>,
-    "my_recipes": <array>,
-    "favorite_recipes": <array>
+    "first_name": <String>,
+    "last_name": <String>,
+    "email": <String>",
+    "password": <String>,
+    "my_recipes": <Array>,
+    "favorite_recipes": <Array>
 }
 ```
 
@@ -238,28 +238,28 @@ Document 1
 ```
 {
     "_id": <ObjectId>,
-    "category_name":"meal",
-    "image_path":"static/img/categories/meal.jpg",
+    "category_name": "meal",
+    "image_path": "static/img/categories/meal.jpg",
     "list":[
         {
             "_id": <ObjectId>,
-            "category_name":"breakfast",
-            "image_path":"static/img/categories/meal/breakfast.jpg"
+            "category_name": "breakfast",
+            "image_path": "static/img/categories/meal/breakfast.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"snack",
-            "image_path":"static/img/categories/meal/snack.jpg"
+            "category_name": "snack",
+            "image_path": "static/img/categories/meal/snack.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"drink",
-            "image_path":"static/img/categories/meal/drink.jpg"
+            "category_name": "drink",
+            "image_path": "static/img/categories/meal/drink.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"dessert",
-            "image_path":"static/img/categories/meal/dessert.jpg"
+            "category_name": "dessert",
+            "image_path": "static/img/categories/meal/dessert.jpg"
         }
     ]
 }
@@ -270,48 +270,48 @@ Document 2
 ```
 {
     "_id": <ObjectId>,
-    "category_name":"occasion",
-    "image_path":"static/img/categories/occasion.jpg",
+    "category_name": "occasion",
+    "image_path": "static/img/categories/occasion.jpg",
     "list":[
         {
             "_id": <ObjectId>,
-            "category_name":"christmas",
-            "image_path":"static/img/categories/occasion/christmas.jpg"
+            "category_name": "christmas",
+            "image_path": "static/img/categories/occasion/christmas.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"new year's",
-            "image_path":"static/img/categories/occasion/newyear.jpg"
+            "category_name": "new year's",
+            "image_path": "static/img/categories/occasion/newyear.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"hanukkah",
+            "category_name": "hanukkah",
             "image_path":"static/img/categories/occasion/hanukkah.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"easter",
-            "image_path":"static/img/categories/occasion/easter.jpg"
+            "category_name": "easter",
+            "image_path": "static/img/categories/occasion/easter.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"birthdays",
-            "image_path":"static/img/categories/occasion/birthdays.jpg"
+            "category_name": "birthdays",
+            "image_path": "static/img/categories/occasion/birthdays.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"weddings",
-            "image_path":"static/img/categories/occasion/weddings.jpg"
+            "category_name": "weddings",
+            "image_path": "static/img/categories/occasion/weddings.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"thanksgiving",
-            "image_path":"static/img/categories/occasion/thanksgiving.jpg"
+            "category_name": "thanksgiving",
+            "image_path": "static/img/categories/occasion/thanksgiving.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"halloween",
-            "image_path":"static/img/categories/occasion/halloween.jpg"
+            "category_name": "halloween",
+            "image_path": "static/img/categories/occasion/halloween.jpg"
         }
     ]
 }
@@ -322,43 +322,43 @@ Document 3
 ```
 {
     "_id": <ObjectId>,
-    "category_name":"geography",
-    "image_path":"static/img/categories/geography.jpg",
+    "category_name": "geography",
+    "image_path": "static/img/categories/geography.jpg",
     "list":[
         {
             "_id": <ObjectId>,
-            "category_name":"africa",
-            "image_path":"static/img/categories/geography/africa.jpg"
+            "category_name": "africa",
+            "image_path": "static/img/categories/geography/africa.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"asia",
-            "image_path":"static/img/categories/geography/asia.jpg"
+            "category_name": "asia",
+            "image_path": "static/img/categories/geography/asia.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"europe",
-            "image_path":"static/img/categories/geography/europe.jpg"
+            "category_name": "europe",
+            "image_path": "static/img/categories/geography/europe.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"north america",
-            "image_path":"static/img/categories/geography/north-america.jpg"
+            "category_name": "north america",
+            "image_path": "static/img/categories/geography/north-america.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"south america",
-            "image_path":"static/img/categories/geography/south-america.jpg"
+            "category_name": "south america",
+            "image_path": "static/img/categories/geography/south-america.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"middle east",
-            "image_path":"static/img/categories/geography/middle-east.jpg"
+            "category_name": "middle east",
+            "image_path": "static/img/categories/geography/middle-east.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"oceania",
-            "image_path":"static/img/categories/geography/oceania.jpg"
+            "category_name": "oceania",
+            "image_path": "static/img/categories/geography/oceania.jpg"
         }
     ]
 }
@@ -369,34 +369,34 @@ Document 4
 ```
 {
     "_id": <ObjectId>,
-    "category_name":"diet",
-    "image_path":"static/img/categories/diet.jpg",
+    "category_name": "diet",
+    "image_path": "static/img/categories/diet.jpg",
     "list":[
         {
             "_id": <ObjectId>,
-            "category_name":"vegan",
-            "image_path":"static/img/categories/diet/vegan.jpg"
+            "category_name": "vegan",
+            "image_path": "static/img/categories/diet/vegan.jpg"
         },
         {   
             "_id": <ObjectId>,
-            "category_name":"vegetarian",
-            "image_path":"static/img/categories/diet/vegetarian.jpg"
+            "category_name": "vegetarian",
+            "image_path": "static/img/categories/diet/vegetarian.jpg"
         }
         ,
         {
             "_id": <ObjectId>,
-            "category_name":"gluten-free",
-            "image_path":"static/img/categories/diet/gluten-free.jpg"
+            "category_name": "gluten-free",
+            "image_path": "static/img/categories/diet/gluten-free.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"sugar-free",
-            "image_path":"static/img/categories/diet/sugar-free.jpg"
+            "category_name": "sugar-free",
+            "image_path": "static/img/categories/diet/sugar-free.jpg"
         },
         {
             "_id": <ObjectId>,
-            "category_name":"lactose-free",
-            "image_path":"static/img/categories/diet/lactose-free.jpg"
+            "category_name": "lactose-free",
+            "image_path": "static/img/categories/diet/lactose-free.jpg"
         }
     ]
 }
@@ -409,7 +409,7 @@ Document 1
 ```
 {
     "_id": <ObjectId>,
-    "category_name":"allergen",
+    "category_name": "allergen",
     "image_path": <String>,
     "list":[
         "gluten",
@@ -429,7 +429,7 @@ Document 2
 ```
 {
     "_id": <ObjectId>,
-    "category_name":"tool",
+    "category_name": "tool",
     "image_path": <String>,
     "list":[
         "oven",
@@ -447,6 +447,37 @@ Document 2
 }
 ```
 
+Document 3
+
+```
+{ 
+    "_id": <ObjectId>, 
+    "category_name": "carousel", 
+    "list": [
+        {
+            "_id": <ObjectId>, 
+            "image_path": "https://i.ibb.co/M9xGc1y/img3.jpg" 
+        }, 
+        { 
+            "_id": <ObjectId>, 
+            "image_path": "https://i.ibb.co/pbrXnWH/img4.jpg" 
+        },
+        { 
+            "_id": <ObjectId>, 
+            "image_path": "https://i.ibb.co/bJV6QLT/img5.jpg" 
+        }, 
+        { 
+            "_id": <ObjectId>, 
+            "image_path": "https://i.ibb.co/dKFdDLQ/smoothie-berries.jpg" 
+        }, 
+        { 
+            "_id": <ObjectId>, 
+            "image_path": "https://i.ibb.co/sw7JYL7/img3.jpg" 
+        }
+    ]
+}
+```
+
 <a name="features"/>
 
 # Features
@@ -459,7 +490,7 @@ Document 2
 
 ###### Features on every page
 - Navigation bar with a logo and links to the different pages: Home, Explore, Recipes, About, Sign Up and Log In.
-- Footer with icon links to the following social media: Facebook, Instagram, YouTube, Pinterest, and Twitter (no actual account created as this is for education purpose only). 
+- Footer with icon links to the following social media: Facebook, Instagram, YouTube, Pinterest, and Twitter (no actual account created as this is for educational purposes only). 
 
 ###### Feature 1 - Home page
 Any external user landing to the home page of this website will be presented with a general welcome page with the following features:
@@ -480,21 +511,21 @@ Any external user landing to the home page of this website will be presented wit
     - occasion (multiple selection allowed)
     - geography (multiple selection allowed)
 - Users have the possibility to leave some fields blank, this will not prevent the form from being submitted. The criteria for which the field was left blank will simply be disregarded. 
-- Once the form is succesfully submitted, users will be presented with a list of the recipes matching his criteria. Users are provided with the number of recipes matching their search, and can click any recipe cards (with recipe name and a small picture) and will be redirected to the recipe description. 
+- Once the form is succesfully submitted, users will be presented with a list of the recipes matching their criteria. Users are provided with the number of recipes matching their search, and can click any recipe cards (with recipe name and a small picture) and will be redirected to the recipe description. 
 
 ###### Feature 3 - Browse recipes by categories type
 - Users who are looking for inspiration or would like to search for recipes based on specific categories can actually do so.
 - After clicking on the "Recipes" menu item in the navigation bar, users will be first presented with 4 general categories to "sort" recipes:
-    - occasion
-    - geography
-    - diet
-    - meal
+    - Occasion
+    - Geography
+    - Diet
+    - Meal
 - After selecting one of the previous categories, users can then choose to sort the recipes by sub-categories as follow:
-    - occassion: Christmas, New Year's, Weddings...
-    - geography: North America, Asia...
-    - diet: Vegan, Vegeterian...
-    - meal: Breakfast, Snacks...
-- Once users have clicked the desired sub-category, they are then presented with a list of all the recipes matching their category and sub-category selection. Users can click on any recipe cards (with recipe name and a small picture) and will be redirected to the recipe description. 
+    - Occassion: Christmas, New Year's, Weddings...
+    - Geography: North America, Asia...
+    - Diet: Vegan, Vegeterian...
+    - Meal: Breakfast, Snacks...
+- Once users click the desired sub-category, they are then presented with a list of all the recipes matching their category and sub-category selections. Users can click on any recipe cards (with recipe name and a small picture) and will be redirected to the recipe description. 
 
 ###### Feature 4 - About us page
 - Users can learn more about the purpose of this website.
@@ -502,7 +533,7 @@ Any external user landing to the home page of this website will be presented wit
 
 ###### Feature 5 - Sign up for an account
 - Any external user can join the community by creating a new account with us.
-- Users are provided with a simple sign up form requiring only basic information: First Name, Last Name, Email and Password (and confirmation).
+- Users are provided with a simple sign up form requiring only basic information: First Name, Last Name, Email and Password.
 - Before any account is created, the email provided by the user will be checked to ensure that an existing account is not already link to this email. 
 - Users are provided with relevant feedback (flashed messages at the top of the page) if any field is missing or if any information provided is incorrect.
 - User's password is hashed for security purposes.
@@ -520,7 +551,7 @@ Any external user landing to the home page of this website will be presented wit
     - cooking tools
     - preparation setps
 - Users will also have the following additional options:
-    - button to share the recipe on a wide range of social media
+    - button to share the recipe on a wide range of social medias
     - button to print the recipe
     - option to check out the website creators' favorite recipes
 
@@ -529,23 +560,23 @@ Any external user landing to the home page of this website will be presented wit
 - The user should have the option to be redirected to an existing page. 
 
 ###### Feature 8 - Access denied page
-- If a user tries to access a page where log in is necessary, a personalized access denied page should display. 
+- If a user tries to access a page where log in is required, a personalized access denied page should display. 
 - The user should have the option to be redirected to the log in or sign up page. 
 
 #### (Additional) Features for community members
 
 ###### Feature 1 - Log in to their account
-- Users will only need to enter his email and password for authentication and authorization.
+- Users will only need to enter their email and password for authentication and authorization.
 - The hashed version of the password provided by the user will be checked with the password saved in the database. 
 - Users are provided with a feedback "login unsuccessful..." (red flashed message at the top of the page) if the email and/or password provided are incorrect. 
-- Once users succesfully logged in to their account, they get a green flashed message saying "login successful!" and are redirected to their account dashboard.
+- Once users successfully logged in to their account, they get a green flashed message saying "login successful!" and are redirected to their account dashboard.
 
 ###### Feature 2 - Log out
 - Users can easilly log out of their account by clicking on the log out button in the navigation bar in the top right corner. 
 
 ###### Feature 3 - Account Dashboard
 - Users have a summary of all the functionalities they can perform as being a community member.
-- By clicking on the corresponding menu item in their account dashboard, user can:
+- By clicking on the corresponding menu item in their account dashboard, users can:
     - manage their account details
     - manage their own recipes
     - get access to the form to add new recipe
@@ -553,23 +584,24 @@ Any external user landing to the home page of this website will be presented wit
     - explore new recipes
 
 ###### Feature 4 - Manage account details
-- Users can review their account details (First Name, Last Name, Email) in total security thanks to a non-editable form.
+- Users can review their account details (First Name, Last Name, Email) in a secure manner thanks to a non-editable form.
 - Users can click the "Edit Details" button to get access to the edit account details form. 
 - Users can click the "Edit Password" button to get access to the edit password form. 
-- At the bottom of the page, after a small paragraph displaying "You want to delete your account?", the user can get access to the delete account form by clicking on the anchor tag "Click Here". I intentionnally made it small and not that obvious so the user is not prompted to delete their account. Nonetheless, any user wanting to delete their account will be looking for this functionality in the manage account details.
+- At the bottom of the page, after a small paragraph displaying "You want to delete your account?", the user can get access to the delete account form by clicking on the anchor tag "Click Here". 
+*I intentionnally made it small and not that obvious so the user is not prompted to delete their account. Nonetheless, any user wanting to delete their account will be looking for this functionality in the manage account details.*
 
 ###### Feature 5 - Edit account details
 - Users are presented with a pre-filled editable form displaying their current account details. 
 - Users can edit the following account details: First Name, Last Name and Email. All fieds are mandatory and referenced as such thanks to a small red asterisk next to the obligatory fields. 
 - Once users are ready to submit their new account details, they can click on the "Edit Account" button.
-- Users are given consistent feedback in the form of flashed messages to let them know if their account details have been succesfully updated or not. 
+- Users are given consistent feedback in the form of flashed messages to let them know if their account details have been successfully updated or not. 
 
 ###### Feature 6 - Edit password
 - Users can update their password by first providing their current password, create a new password and then confirm it a second time.
 - All fieds are mandatory and referenced as such thanks to a small red asterisk next to the obligatory fields. 
 - Users are given consistent feedback thanks to flashed messages to let them know if:
     - the current password provided in the form is identical to the one stored in the database
-    - the new password is indeed different than the current password
+    - the new password is indeed different from the current password
     - the two fields "New Password" and "Confirm New Password" are identical 
 - User's password is hashed for security purposes.
 - Once their password has been succesfully updated, users receive feedback through a green flashed message at the top of the page and is redirected to the view account details form page.
@@ -577,8 +609,8 @@ Any external user landing to the home page of this website will be presented wit
 ###### Feature 7 - Delete account
 - Users can permanently delete their account by confirming their password and pressing the "Delete Account" button.
 - To increase security, a "warning" modal form will enable users to confirm their will to delete their account. 
-    - Users who are not sure can click "Cancel" and will be confirmed that their account are still live. 
-    - Users who are sure about deleting their password can click "Delete" and will be confirmed that their account has been deleted.
+    - Users who are not sure can click "Cancel" and will be advised that their account are still live. 
+    - Users who are sure about deleting their password can click "Delete" and will be advised that their account has been deleted.
 - The recipes that were created by a user who deleted their account won't be deleted. This is a preventive choice that I made in order to protect the diversity of recipes in the database.
 
 ###### Feature 8 - Online cookbook
@@ -591,47 +623,49 @@ Any external user landing to the home page of this website will be presented wit
 ###### Feature 9 - Add a recipe
 [**C**RUD] - **C**reate
 - Users can create new recipes by filling the form.
-- Mandatory fields are referenced thanks to a small red asterisk. Fields that are optional are referenced as such.
+- Mandatory fields are referenced thanks to a small red asterisk. 
+- Fields that are optional are referenced as such.
 
 ###### Feature 10 - Edit a recipe
 [CR**U**D] - **U**pdate
 - When users click "Manage recipes" in their account dashboard, they can view all the recipes they have created.
-- Then can click the "Edit" button and be redirected to an editable form pre-filled with the existing recipe details.
+- They can click the "Edit" button and be redirected to an editable form pre-filled with the existing recipe details.
 - Users can edit recipe information through the form and submit their changes.
-- Users will be confirmed changes to the recipes were saved and will be redirected to the recipe description. 
+- Users will be confirmed that the changes to the recipes were saved and will be redirected to the recipe description. 
 
 ###### Feature 11 - Delete a recipe
 [CRU**D**] - **D**elete
-- From their "Manage recipes" menu, users can also click the "Delete" button to permanently deleted one of their recipes.
+- From their "Manage recipes" menu, users can also click the "Delete" button to permanently delete one of their recipes.
 - To increase security, a "warning" modal form will enable users to confirm their will to delete the recipe.
-    - Users who are not sure can click "Cancel" and will be confirmed that the recipe still exists.
-    - Users who are sure about deleting their recipe can click "Delete" and will be confirmed that the recipe was successfully deleted.
+    - Users who are not sure can click "Cancel" and will be advised that the recipe still exists.
+    - Users who are sure about deleting their recipe can click "Delete" and will be advised that the recipe was successfully deleted.
 - The now deleted recipe will be removed from the cookbook of any other community member who saved it as a favorite.
 
 ###### Feature 12 - Add/Remove favorites
 - At the bottom of the recipe description page, users can add/remove a recipe from their favorites by clicking on the pulse icon button.
 - Their cookbook will be updated accordingly.
-- While adding a new recipe, users can also directly save it as favorite.
+- While adding a new recipes, users can also directly save them as favorite.
 
 <a name="future-features"/>
 
 ## Future Features
 
-As a matter of feasability or scope, I did not implement the below functionalities in my project and would like to add them to improve my project further. 
+As a matter of feasability or scope, I did not implement the below functionalities in my project and would like to add them to improve my project in the near future. 
 
 ###### Future Feature 1 - Rate and add comments to recipes
 - Users could add a grade (out of 5 stars) to the recipe and then a mean of all the users' grades would be displayed on the recipe description. 
-- While rating the recipe, users can also add a comment to share their opinions about the recipe.
+- While rating the recipe, users can also add a review about the recipe.
 
 ###### Future Feature 2 - Multiple languages
 - I would like to add the option to switch to other languages (French, English and Spanish).
-- I have noticed that there are very few cooking websites with multiple languages options. Well this is not a surprise as it can be very complicated to implement translation of recipes when the users are adding recipes to the database themselves.
+
+I have noticed that there are very few cooking websites with multiple languages option. Well this is not a surprise as it can be very complicated to implement translation of recipes when the users are adding recipes to the database themselves.
 
 ###### Future Feature 3 - Change unit of measures
 - I would like to add a button on the recipe description page so the user can switch units of measures.
 - For that, I would have to normalize commonly used units of measures:
     - gramms/liters/cups for ingredients
-    - celsius/fahrenheit degrees for baking time
+    - celsius/fahrenheit degrees for baking temperature
 
 <a name="tech"/>
 
@@ -639,10 +673,10 @@ As a matter of feasability or scope, I did not implement the below functionaliti
 
 <a name="languages"/>
 
-## languages
+## Languages
 
 ##### [HTML5](https://www.w3.org/TR/html/)
-- I used HTML for creating the static content of my website.
+- I used HTML to create the static content of my website.
 - The following [code validator](https://validator.w3.org/) was used to test my HTML code.
 
 ##### [CSS3](https://www.w3.org/Style/CSS/)
@@ -661,7 +695,7 @@ As a matter of feasability or scope, I did not implement the below functionaliti
 ## Libraries
 
 ##### [Flask](http://flask.palletsprojects.com/en/1.1.x/)
-- I used microframework flask as my Python framework to build this website. 
+- I used microframework Flask as my Python framework to build this website. 
 
 ##### [Jinja](https://jinja.palletsprojects.com/en/2.10.x/)
 - I used Jinja as the Python templating language in coordination with Flask. 
@@ -676,13 +710,13 @@ As a matter of feasability or scope, I did not implement the below functionaliti
 - I used jQuery to simplify the DOM manipulation.
 
 ##### [Sweet Alert](https://sweetalert.js.org/) 
-- I used Sweet Alert to have a 2-tier validation modal before deletion of data. 
+- I used Sweet Alert to have a two-tier validation modal before deleting data. 
 
 ##### [Font Awesome](https://origin.fontawesome.com/)
 - I used Font Awesome to display social media icons for my footer.
 
 ##### [Google Fonts](https://fonts.google.com/)
-- I used one of Google Fonts for my website.
+- I used one of Google fonts for my website.
 
 <a name="tools"/>
 
@@ -715,7 +749,7 @@ As a matter of feasability or scope, I did not implement the below functionaliti
 - I used Picasa to resize some of the images. 
 
 ##### [ImageOptim](https://imageoptim.com/mac) & [TinyPNG](https://tinypng.com)
-- I used ImageOptim and TinyPNG to optimize the size of the images.
+- I used ImageOptim and TinyPNG to optimize the size of my images.
 
 ##### [Imgbb](https://imgbb.com)
 - For recipes images, I decided to store them externally using Imgbb.
@@ -746,7 +780,7 @@ My application was deployed through [heroku](https://dashboard.heroku.com) using
     - Set the name of your application and select your region and click on `create app` to finalize the creation of your app. 
 4. Set the following config variables (click `Settings` then `Reveal Config Vars`)
     - **IP**: `0.0.0.0`
-    - **PORT**: `5000`
+    - **PORT**: `8000`
     - **MONGO_URI**: `<LINK_TO_MONGO_DB>`
     - **SECRET_KEY**: `<SECRET_KEY>`
 5. In the `Deploy` tab, choose `Connect Github` as **Deployment Method** and *Enable Automatic Deployment* from the Github master branch so that any new commit will be automatically deployed through your heroku app. 
@@ -778,12 +812,12 @@ To deploy this project locally using gitpod you will have to create a gitpod acc
         | MONGO_URI | <LINK_TO_MONGO_DB> | username/repository_name |
         | SECRET_KEY | <SECRET_KEY> | username/repository_name |
 
-5. Make sure you have created a database within MongoDB using the same template and structure as my db as per this section [here](TO BE DONE).
+5. Make sure you have created a database within MongoDB using the same template and structure as my db as per this section [here](#db).
 
 6. Download all the dependencies necessary to run this project and listed in the **requirements.txt** file. 
     - Run the following command `pip3 install -r requirements.txt`
 
-7. Create a development server:
+7. Create a local development server:
     - In the workspace run the following command `Python3 app.py`.
     - Click on `Expose` and then `Open Browser`.
     - You should now have a gitpod link to the deployed app. 
@@ -795,8 +829,8 @@ To deploy this project locally using gitpod you will have to create a gitpod acc
 <a name="content"/>
 
 ### Content
-- My sister for being the first constributor of recipes for this project. 
-- Only the granola recipes was taken from the beamingbaker.com blog, the full recipe can be found on her website [here](https://beamingbaker.com/4-ingredient-healthy-homemade-gluten-free-vegan-granola-recipe-dairy-free-v-gf-refined-sugar-free/). Cause I was not able to make a better recipe, I decided to include it in my project anyway!
+- Most of the recipes shared in this website were created by both my sister and I. 
+- Only the granola recipe was taken from the beamingbaker.com blog, the full recipe can be found on her website [here](https://beamingbaker.com/4-ingredient-healthy-homemade-gluten-free-vegan-granola-recipe-dairy-free-v-gf-refined-sugar-free/). Cause I was not able to elaborate a better recipe, I decided to include it in my project!
 
 <a name="media"/>
 
@@ -807,6 +841,7 @@ To deploy this project locally using gitpod you will have to create a gitpod acc
 - I also used [Font Awesome](https://fontawesome.com/v4.7.0/icons/) on some icons when I could not find the proper icon in the Materialize icon library.
 - Gif used in 404 and access_denied pages: [Dribble](https://dribbble.com/search/shots/popular/animation?q=dessert)
 - Colours of footer incons when hovered: [encycolorpedia.fr](https://encycolorpedia.fr/00acee)
+- Demo picture of my app used in this README file: [Am I Responsive](http://ami.responsivedesign.is/#)
 
 <a name="code"/>
 
@@ -820,14 +855,15 @@ To deploy this project locally using gitpod you will have to create a gitpod acc
     - [Tutorial 1](https://pythonhosted.org/Flask-paginate/)
     - [Tutorial 2](https://www.codementor.io/@arpitbhayani/fast-and-efficient-pagination-in-mongodb-9095flbqr)
 - Tutors at Code Institute
-    - **Xavier** for helping me with the explore function to sort recipes according to user’s inputs in the form. Credit for the code is stated in my app.py. 
-    - **Michael** and **Stephen** for helping me setting a sweet alert 2-tier confirmation when the user wants to delete a recipe.
-
+    - **Xavier** for helping me with the explore function to sort recipes according to user’s inputs in the form. Credit for the code is stated in my app.py file. 
+    - **Michael** and **Stephen** for helping me setting a sweet alert two-tier confirmation when the user wants to delete a recipe.
 
 <a name="ack"/>
 
 ### Acknowledgements
-- My code institute mentor for his patience. 
-- My sister for her contribution to the content of this website with her delicious recipes!
+- My Code Institute mentor, Nishant Kumar, for his patience and great support throughout this project! 
+- My sister for her contribution to the content of this website with her delicious recipes.
 - Ella from [Deliciously Ella](https://deliciouslyella.com/) for being such an inspiration both as a cook, entrepreneur and as a person! Her website is also so fantastic and really helped me getting some inspiration!
-
+- I also want to deeply thank the entire team of tutors at Code Institute for their never-ending support throughout this project. I also want to thank the following tutors who shared with me their project. It really helped me get some inspiration, organize my code better, and create an efficient testing procedure!
+    - [Anna](https://github.com/AJGreaves): the repository of her third milestone project can be found [here](https://github.com/AJGreaves/thehouseofmouse).
+    - [Tim](https://github.com/TravelTimN): the repository of his third milestone project can be found [here](https://github.com/TravelTimN/ci-milestone04-dcd).
