@@ -109,7 +109,7 @@ $(document).ready(function () {
     function addIngredientsFunction() {
         var fieldWrapper = $("<div class=\"fieldwrapper\"/>");
         var fName = $("<textarea id=\"ingredients\" name=\"ingredients\" minlength=\"1\" maxlength=\"100\" class=\"validate materialize-textarea manual-feedback col s11\" placeholder=\"Example: Milk, Eggs, Chocolate, Flour\" required></textarea>");
-        var removeButton = $("<button class=\"btn remove-btn col s1\" value=\"-\"><i class=\"fa fa-minus\" aria-hidden=\"true\"></i></button>");
+        var removeButton = $("<button class=\"btn remove-btn col s1\" value=\"-\" type=\"button\"><i class=\"fa fa-minus\" aria-hidden=\"true\"></i></button>");
         var alertDiv = $("<div class=\"col s12 left-align alert-div\"></div>");
         removeButton.click(function () {
             $(this).parent().remove();
@@ -142,7 +142,7 @@ $(document).ready(function () {
     function addInstructionsFunction() {
         var fieldWrapper = $("<div class=\"fieldwrapper\"/>");
         var fName = $("<textarea id=\"instructions\" name=\"instructions\" minlength=\"1\" maxlength=\"500\" class=\"validate materialize-textarea manual-feedback col s11\" placeholder=\"Example: In a large bowl, mix all the wet ingregients\" required></textarea>");
-        var removeButton = $("<button class=\"btn remove col s1\" value=\"-\"><i class=\"fa fa-minus\" aria-hidden=\"true\"></i></button>");
+        var removeButton = $("<button class=\"btn remove col s1\" value=\"-\" type=\"button\"><i class=\"fa fa-minus\" aria-hidden=\"true\"></i></button>");
         removeButton.click(function () {
             $(this).parent().remove();
         });
