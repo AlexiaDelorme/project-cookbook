@@ -118,7 +118,7 @@ $(document).ready(function () {
         fieldWrapper.append(removeButton);
         fieldWrapper.append(alertDiv);
         $("#ingredientsform").append(fieldWrapper);
-        // Add event listeners when a new item is created
+        // Add event listeners when a new item is created (on advice of Xavier, tutor at Code Institute)
         feedbackFocusFunction();
         feedbackChangeFunction();
     }
@@ -151,7 +151,7 @@ $(document).ready(function () {
         fieldWrapper.append(removeButton);
         fieldWrapper.append(alertDiv);
         $("#instructionsform").append(fieldWrapper);
-        // Add event listeners when a new item is created
+        // Add event listeners when a new item is created (on advice of Xavier, tutor at Code Institute)
         feedbackFocusFunction();
         feedbackChangeFunction();
     }
